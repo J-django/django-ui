@@ -1,0 +1,19 @@
+{
+  "name": "django-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "django-ui.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "django",
+    "DJANGO",
+    "django-ui",
+    "Django-UI",
+    "djangoui",
+    "DjangoUI"
+  ],
+  "author": "",
+  "license": "ISC"
+}
