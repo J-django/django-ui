@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
-import './style.css'
 import App from './App.vue'
-import DJUI from './components/django-ui'
+import "@/style/index.less"
+import DjangoUI from '@/index';
 
 const app = createApp(App);
-app.use(DJUI)
+app.use(DjangoUI)
 app.mount('#app')

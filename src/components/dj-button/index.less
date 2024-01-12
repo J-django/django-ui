@@ -1,0 +1,64 @@
+.dj-button {
+  --dj-button-text-color: #333;
+  --dj-button-background-color: #eee;
+  --dj-button-hover-background-color: #000;
+  --dj-button-active-background-color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  padding: 0 rem(14px);
+  margin: 0;
+  position: relative;
+  height: rem(32px);
+  text-align: left;
+  text-decoration: none;
+  line-height: 1;
+  font-size: rem(14px);
+  color: var(--t-text-color, --dj-button-text-color);
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: rem(4px);
+  border: 1px solid transparent;
+  background-color: var(
+    --custom-background-color,
+    --dj-button-background-color
+  );
+  transition: opacity 0.25s;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.75 !important;
+  }
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active:not(:disabled) {
+    opacity: 1;
+  }
+
+  .dj-button-inner {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    height: 100%;
+    font-weight: 600;
+    overflow: visible;
+  }
+}
+
+.dj-button + .dj-button {
+  margin-left: rem(12px);
+}
