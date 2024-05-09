@@ -1,0 +1,22 @@
+.dj-button-group {
+  display: inline-block;
+  padding: 0;
+
+  .dj-button + .dj-button {
+    border-radius: 0;
+  }
+
+  .dj-button {
+    margin: 0;
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-top-right-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+    }
+  }
+}

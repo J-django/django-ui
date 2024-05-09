@@ -1,22 +1,24 @@
-import DJAccordion from './dj-accordion/index.vue'
-import DJAudio from './dj-audio/index.vue'
-import DJButton from './dj-button/index.vue'
-import DJCard from './dj-card/index.vue'
-import DJDivider from './dj-divider/index.vue'
-import DJInput from './dj-input/index.vue'
-import DJSelect from './dj-select/index.vue'
-import DJTextarea from './dj-textarea/index.vue'
-import DJVideo from './dj-video/index.vue'
+import DJAccordion from './dj-accordion'
+// import DJAudio from './dj-audio/index.vue'
+import DJButton from './dj-button'
+import DJButtonGroup from './dj-button-group'
+import DJCard from './dj-card'
+import DJDivider from './dj-divider'
+import DJInput from './dj-input'
+// import DJSelect from './dj-select/index.vue'
+// import DJTextarea from './dj-textarea/index.vue'
+// import DJVideo from './dj-video/index.vue'
 
 
 export {
     DJAccordion,
-    DJAudio,
+    // DJAudio,
     DJButton,
+    DJButtonGroup,
     DJCard,
     DJDivider,
     DJInput,
-    DJSelect,
-    DJTextarea,
-    DJVideo
+    // DJSelect,
+    // DJTextarea,
+    // DJVideo
 }

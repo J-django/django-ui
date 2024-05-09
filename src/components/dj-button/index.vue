@@ -1,6 +1,7 @@
 <script setup lang="ts" name="dj-button">
 // plugins
 import "./index.less";
+import { isDarkColor } from '@/utils/tool'
 
 // script
 defineProps({
@@ -23,7 +24,8 @@ defineProps({
 </script>
 
 <template>
-    <button class="dj-button" :class="[type]" :style="{ '--custom-background-color': color }">
+    <button class="dj-button" :class="[type]"
+        :style="{ '--custom-background-color': color, '--custom-text-color': color ? isDarkColor(color) ? 'var(--white)' : 'var(--black)' : '' }">
         <span class="dj-button-inner">
             <slot>
                 {{ text }}

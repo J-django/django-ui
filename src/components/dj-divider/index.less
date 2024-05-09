@@ -1,0 +1,55 @@
+.dj-divider {
+  --dj-divider-text-color: rgba(60, 60, 67, 0.75);
+  --dj-divider-color: rgba(60, 60, 67, 0.33);
+  margin: 1.25rem 0;
+  width: 100%;
+
+  .dj-divider-inner {
+    line-height: 1.5;
+    font-size: 12px;
+    color: var(--dj-divider-text-color);
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+      flex: 1 1 0%;
+      height: 0.0625rem;
+      margin-right: 0.625rem;
+    }
+
+    &::after {
+      content: "";
+      flex: 1 1 0%;
+      margin-left: 0.625rem;
+    }
+  }
+
+  .dj-divider-inner.dj-divider-inner--solid {
+    &::before,
+    &::after {
+      border-top: 0.0625rem solid var(--dj-divider-color);
+    }
+  }
+
+  .dj-divider-inner.dj-divider-inner--dashed {
+    &::before,
+    &::after {
+      border-top: 0.0625rem dashed var(--dj-divider-color);
+    }
+  }
+
+  .dj-divider-inner.dj-divider-inner--dotted {
+    &::before,
+    &::after {
+      border-top: 0.0625rem dotted var(--dj-divider-color);
+    }
+  }
+
+  .dj-divider-inner.dj-divider-inner--double {
+    &::before,
+    &::after {
+      border-top: 0.0625rem dotted var(--dj-divider-color);
+    }
+  }
+}
