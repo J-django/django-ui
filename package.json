@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "django-ui": "^2.0.6",
     "nanoid": "^5.0.7",
     "vue": "^3.3.11"
   },

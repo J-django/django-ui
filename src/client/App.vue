@@ -1,39 +1,21 @@
 <template>
     <div class="layout">
         <div class="line">
-            <dj-button>Default</dj-button>
-            <dj-button type="primary">Primary</dj-button>
-            <dj-button type="success">Success</dj-button>
-            <dj-button type="warning">Warning</dj-button>
-            <dj-button type="danger">Danger</dj-button>
-            <dj-button color="#b80d57">Default</dj-button>
-        </div>
-        <div class="line">
             <dj-button disabled>Default</dj-button>
-            <dj-button type="primary" disabled>Primary</dj-button>
+            <dj-button type="primary">Primary</dj-button>
             <dj-button type="success" disabled>Success</dj-button>
-            <dj-button type="warning" disabled>Warning</dj-button>
+            <dj-button type="warning">Warning</dj-button>
             <dj-button type="danger" disabled>Danger</dj-button>
-            <dj-button color="#b80d57" disabled>Default</dj-button>
-        </div>
-        <div class="line">
-            <dj-button-group>
-                <dj-button>Default</dj-button>
-                <dj-button type="primary">Primary</dj-button>
-                <dj-button type="success">Success</dj-button>
-                <dj-button type="warning">Warning</dj-button>
-                <dj-button type="danger">Danger</dj-button>
-                <dj-button color="#b80d57">Default</dj-button>
-            </dj-button-group>
+            <dj-button color="#b80d57">Default</dj-button>
         </div>
         <div class="line">
             <dj-button-group>
                 <dj-button disabled>Default</dj-button>
-                <dj-button type="primary" disabled>Primary</dj-button>
+                <dj-button type="primary">Primary</dj-button>
                 <dj-button type="success" disabled>Success</dj-button>
-                <dj-button type="warning" disabled>Warning</dj-button>
+                <dj-button type="warning">Warning</dj-button>
                 <dj-button type="danger" disabled>Danger</dj-button>
-                <dj-button color="#b80d57" disabled>Default</dj-button>
+                <dj-button color="#b80d57">Default</dj-button>
             </dj-button-group>
         </div>
         <div class="line">
