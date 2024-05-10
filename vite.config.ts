@@ -6,6 +6,10 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [vue(), vueSetupExtend()],
+  server: {
+    host: true,
+    open: true
+  },
   build: {
     outDir: "django-ui",
     lib: {

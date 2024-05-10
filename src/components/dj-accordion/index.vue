@@ -3,6 +3,7 @@
 import "./index.less";
 import { ref, reactive, watch, onMounted } from 'vue'
 
+// script
 const props = defineProps({
     title: {
         type: String,

@@ -1,4 +1,5 @@
 <script setup lang="ts" name="dj-button-group">
+// plugins
 import "./index.less";
 </script>
 

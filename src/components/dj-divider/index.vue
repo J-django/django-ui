@@ -3,6 +3,7 @@
 import "./index.less";
 import { useSlots } from 'vue'
 
+// script
 const slots = useSlots();
 
 defineProps({

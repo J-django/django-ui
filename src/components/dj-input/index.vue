@@ -4,6 +4,7 @@ import "./index.less";
 import { ref, reactive, useSlots } from 'vue'
 import { nanoid } from 'nanoid';
 
+// script
 defineProps({
     id: {
         type: String,

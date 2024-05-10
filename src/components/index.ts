@@ -1,5 +1,5 @@
 import DJAccordion from './dj-accordion'
-// import DJAudio from './dj-audio/index.vue'
+import DJAudio from './dj-audio'
 import DJButton from './dj-button'
 import DJButtonGroup from './dj-button-group'
 import DJCard from './dj-card'
@@ -12,7 +12,7 @@ import DJInput from './dj-input'
 
 export {
     DJAccordion,
-    // DJAudio,
+    DJAudio,
     DJButton,
     DJButtonGroup,
     DJCard,

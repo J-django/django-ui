@@ -3,6 +3,7 @@
 import "./index.less";
 import { reactive, useSlots, onMounted } from 'vue'
 
+// script
 const props = defineProps({
     align: {
         type: String,

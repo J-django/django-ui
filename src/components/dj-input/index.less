@@ -1,6 +1,7 @@
 .dj-input {
   --dj-input-height: 34px;
   --dj-input-background-color: #f1f1f2;
+  --dj-input-background-color: rgba(33, 37, 41, 0.03);
   --dj-input-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-input-placeholder-color: rgba(60, 60, 67, 0.75);
   --dj-input-icon-color: rgba(60, 60, 67, 0.75);
@@ -107,18 +108,19 @@
   }
 
   .dj-input__clear {
-    @clear_height: calc(var(--dj-input-height) - 2px);
+    @clear_height: calc(var(--dj-input-height) - 6px);
     position: absolute;
     right: 3px;
     width: @clear_height;
     height: @clear_height;
+    background-color: #f1f1f2;
+    border-radius: var(--border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--dj-input-background-color);
     cursor: pointer;
 
-    svg.icon {
+    .icon {
       display: flex;
       align-items: center;
       justify-content: center;

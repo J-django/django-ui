@@ -1,5 +1,18 @@
+<script lang="ts" setup>
+// plugins
+import { ref } from "vue";
+import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
+
+// script
+const accordion = ref(false);
+const djInputClear = ref();
+</script>
+
 <template>
     <div class="layout">
+        <div class="line">
+            <dj-audio :src="AudioSrc" />
+        </div>
         <div class="line">
             <dj-button disabled>Default</dj-button>
             <dj-button type="primary">Primary</dj-button>
@@ -10,12 +23,12 @@
         </div>
         <div class="line">
             <dj-button-group>
-                <dj-button disabled>Default</dj-button>
-                <dj-button type="primary">Primary</dj-button>
-                <dj-button type="success" disabled>Success</dj-button>
-                <dj-button type="warning">Warning</dj-button>
-                <dj-button type="danger" disabled>Danger</dj-button>
-                <dj-button color="#b80d57">Default</dj-button>
+                <dj-button>Default</dj-button>
+                <dj-button type="primary" disabled>Primary</dj-button>
+                <dj-button type="success">Success</dj-button>
+                <dj-button type="warning" disabled>Warning</dj-button>
+                <dj-button type="danger">Danger</dj-button>
+                <dj-button color="#b80d57" disabled>Default</dj-button>
             </dj-button-group>
         </div>
         <div class="line">
@@ -120,9 +133,3 @@
     }
 }
 </style>
-
-<script lang="ts" setup>
-import { ref } from "vue";
-const accordion = ref(false);
-const djInputClear = ref();
-</script>
