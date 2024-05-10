@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   django-ui:
-    specifier: ^2.0.6
-    version: 2.0.6
+    specifier: ^3.0.0
+    version: 3.0.0
   nanoid:
     specifier: ^5.0.7
     version: 5.0.7
@@ -549,6 +549,12 @@ packages:
 
   /django-ui@2.0.6:
     resolution: {integrity: sha512-R+2g2tojvdVyJSuEkTy8BD10peZDO6M+zCV0vQMxEdDlm1gj+XOBPpYBRpdEZ+Dh0taM7KF33ejWj01EXXCwtA==}
+    dev: false
+
+  /django-ui@3.0.0:
+    resolution: {integrity: sha512-JNtUcL4VBJzrIv8nYyYWNdJEMMWXsiBtukjPKoX37FHESTCsZtZyhHACXQ2wD8d+nPwarVLvoo2BcmAwp2qrJQ==}
+    dependencies:
+      django-ui: 2.0.6
     dev: false
 
   /entities@4.5.0:
