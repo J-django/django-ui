@@ -1,180 +1,180 @@
-import { defineComponent as p, watch as ee, ref as U, reactive as O, onMounted as J, openBlock as d, createElementBlock as f, createElementVNode as c, normalizeClass as h, normalizeStyle as A, renderSlot as y, createTextVNode as _, toDisplayString as j, unref as $, useSlots as k, createCommentVNode as m, Fragment as te, withKeys as ne } from "vue";
-var K = typeof global == "object" && global && global.Object === Object && global, re = typeof self == "object" && self && self.Object === Object && self, N = K || re || Function("return this")(), S = N.Symbol, G = Object.prototype, oe = G.hasOwnProperty, ae = G.toString, v = S ? S.toStringTag : void 0;
-function se(e) {
-  var t = oe.call(e, v), n = e[v];
+import { defineComponent as g, watch as ne, ref as F, reactive as O, onMounted as R, openBlock as u, createElementBlock as d, createElementVNode as o, normalizeClass as m, normalizeStyle as S, renderSlot as _, createTextVNode as j, toDisplayString as v, withDirectives as oe, vModelText as se, createStaticVNode as ae, unref as C, useSlots as D, createCommentVNode as T, Fragment as ie, withKeys as ce } from "vue";
+var q = typeof global == "object" && global && global.Object === Object && global, le = typeof self == "object" && self && self.Object === Object && self, H = q || le || Function("return this")(), k = H.Symbol, X = Object.prototype, ue = X.hasOwnProperty, de = X.toString, w = k ? k.toStringTag : void 0;
+function pe(e) {
+  var r = ue.call(e, w), t = e[w];
   try {
-    e[v] = void 0;
-    var r = !0;
+    e[w] = void 0;
+    var n = !0;
   } catch {
   }
-  var o = ae.call(e);
-  return r && (t ? e[v] = n : delete e[v]), o;
+  var s = de.call(e);
+  return n && (r ? e[w] = t : delete e[w]), s;
 }
-var ie = Object.prototype, ce = ie.toString;
-function le(e) {
-  return ce.call(e);
+var fe = Object.prototype, ge = fe.toString;
+function ye(e) {
+  return ge.call(e);
 }
-var ue = "[object Null]", de = "[object Undefined]", B = S ? S.toStringTag : void 0;
-function I(e) {
-  return e == null ? e === void 0 ? de : ue : B && B in Object(e) ? se(e) : le(e);
+var he = "[object Null]", _e = "[object Undefined]", U = k ? k.toStringTag : void 0;
+function V(e) {
+  return e == null ? e === void 0 ? _e : he : U && U in Object(e) ? pe(e) : ye(e);
 }
-function E(e) {
+function M(e) {
   return e != null && typeof e == "object";
 }
-var R = Array.isArray;
-function fe(e) {
-  var t = typeof e;
-  return e != null && (t == "object" || t == "function");
+var W = Array.isArray;
+function be(e) {
+  var r = typeof e;
+  return e != null && (r == "object" || r == "function");
 }
-function pe(e) {
+function ve(e) {
   return e;
 }
-var ge = "[object AsyncFunction]", ye = "[object Function]", be = "[object GeneratorFunction]", he = "[object Proxy]";
-function _e(e) {
-  if (!fe(e))
+var me = "[object AsyncFunction]", je = "[object Function]", we = "[object GeneratorFunction]", Te = "[object Proxy]";
+function $e(e) {
+  if (!be(e))
     return !1;
-  var t = I(e);
-  return t == ye || t == be || t == ge || t == he;
+  var r = V(e);
+  return r == je || r == we || r == me || r == Te;
 }
-function je(e, t) {
-  for (var n = -1, r = e == null ? 0 : e.length; ++n < r && t(e[n], n, e) !== !1; )
+function Se(e, r) {
+  for (var t = -1, n = e == null ? 0 : e.length; ++t < n && r(e[t], t, e) !== !1; )
     ;
   return e;
 }
-var ve = 9007199254740991, me = /^(?:0|[1-9]\d*)$/;
-function Te(e, t) {
-  var n = typeof e;
-  return t = t ?? ve, !!t && (n == "number" || n != "symbol" && me.test(e)) && e > -1 && e % 1 == 0 && e < t;
+var xe = 9007199254740991, Ae = /^(?:0|[1-9]\d*)$/;
+function Ce(e, r) {
+  var t = typeof e;
+  return r = r ?? xe, !!r && (t == "number" || t != "symbol" && Ae.test(e)) && e > -1 && e % 1 == 0 && e < r;
 }
-var we = 9007199254740991;
-function z(e) {
-  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= we;
+var ke = 9007199254740991;
+function Z(e) {
+  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= ke;
 }
-function q(e) {
-  return e != null && z(e.length) && !_e(e);
+function Q(e) {
+  return e != null && Z(e.length) && !$e(e);
 }
-var $e = Object.prototype;
-function Se(e) {
-  var t = e && e.constructor, n = typeof t == "function" && t.prototype || $e;
-  return e === n;
+var Oe = Object.prototype;
+function Pe(e) {
+  var r = e && e.constructor, t = typeof r == "function" && r.prototype || Oe;
+  return e === t;
 }
-function xe(e, t) {
-  for (var n = -1, r = Array(e); ++n < e; )
-    r[n] = t(n);
-  return r;
+function Ee(e, r) {
+  for (var t = -1, n = Array(e); ++t < e; )
+    n[t] = r(t);
+  return n;
 }
-var Ae = "[object Arguments]";
-function V(e) {
-  return E(e) && I(e) == Ae;
+var Be = "[object Arguments]";
+function N(e) {
+  return M(e) && V(e) == Be;
 }
-var H = Object.prototype, Oe = H.hasOwnProperty, ke = H.propertyIsEnumerable, Ie = V(/* @__PURE__ */ function() {
+var Y = Object.prototype, Ie = Y.hasOwnProperty, Fe = Y.propertyIsEnumerable, De = N(/* @__PURE__ */ function() {
   return arguments;
-}()) ? V : function(e) {
-  return E(e) && Oe.call(e, "callee") && !ke.call(e, "callee");
+}()) ? N : function(e) {
+  return M(e) && Ie.call(e, "callee") && !Fe.call(e, "callee");
 };
-function Ee() {
+function Ve() {
   return !1;
 }
-var X = typeof exports == "object" && exports && !exports.nodeType && exports, P = X && typeof module == "object" && module && !module.nodeType && module, Fe = P && P.exports === X, D = Fe ? N.Buffer : void 0, Ce = D ? D.isBuffer : void 0, Be = Ce || Ee, Ve = "[object Arguments]", Pe = "[object Array]", De = "[object Boolean]", Le = "[object Date]", Me = "[object Error]", Ue = "[object Function]", Je = "[object Map]", Ke = "[object Number]", Ne = "[object Object]", Ge = "[object RegExp]", Re = "[object Set]", ze = "[object String]", qe = "[object WeakMap]", He = "[object ArrayBuffer]", Xe = "[object DataView]", We = "[object Float32Array]", Ze = "[object Float64Array]", Qe = "[object Int8Array]", Ye = "[object Int16Array]", et = "[object Int32Array]", tt = "[object Uint8Array]", nt = "[object Uint8ClampedArray]", rt = "[object Uint16Array]", ot = "[object Uint32Array]", s = {};
-s[We] = s[Ze] = s[Qe] = s[Ye] = s[et] = s[tt] = s[nt] = s[rt] = s[ot] = !0;
-s[Ve] = s[Pe] = s[He] = s[De] = s[Xe] = s[Le] = s[Me] = s[Ue] = s[Je] = s[Ke] = s[Ne] = s[Ge] = s[Re] = s[ze] = s[qe] = !1;
-function at(e) {
-  return E(e) && z(e.length) && !!s[I(e)];
+var ee = typeof exports == "object" && exports && !exports.nodeType && exports, J = ee && typeof module == "object" && module && !module.nodeType && module, Me = J && J.exports === ee, K = Me ? H.Buffer : void 0, Le = K ? K.isBuffer : void 0, Ue = Le || Ve, Ne = "[object Arguments]", Je = "[object Array]", Ke = "[object Boolean]", ze = "[object Date]", Ge = "[object Error]", Re = "[object Function]", qe = "[object Map]", He = "[object Number]", Xe = "[object Object]", We = "[object RegExp]", Ze = "[object Set]", Qe = "[object String]", Ye = "[object WeakMap]", et = "[object ArrayBuffer]", tt = "[object DataView]", rt = "[object Float32Array]", nt = "[object Float64Array]", ot = "[object Int8Array]", st = "[object Int16Array]", at = "[object Int32Array]", it = "[object Uint8Array]", ct = "[object Uint8ClampedArray]", lt = "[object Uint16Array]", ut = "[object Uint32Array]", i = {};
+i[rt] = i[nt] = i[ot] = i[st] = i[at] = i[it] = i[ct] = i[lt] = i[ut] = !0;
+i[Ne] = i[Je] = i[et] = i[Ke] = i[tt] = i[ze] = i[Ge] = i[Re] = i[qe] = i[He] = i[Xe] = i[We] = i[Ze] = i[Qe] = i[Ye] = !1;
+function dt(e) {
+  return M(e) && Z(e.length) && !!i[V(e)];
 }
-function st(e) {
-  return function(t) {
-    return e(t);
+function pt(e) {
+  return function(r) {
+    return e(r);
   };
 }
-var W = typeof exports == "object" && exports && !exports.nodeType && exports, T = W && typeof module == "object" && module && !module.nodeType && module, it = T && T.exports === W, x = it && K.process, L = function() {
+var te = typeof exports == "object" && exports && !exports.nodeType && exports, $ = te && typeof module == "object" && module && !module.nodeType && module, ft = $ && $.exports === te, I = ft && q.process, z = function() {
   try {
-    var e = T && T.require && T.require("util").types;
-    return e || x && x.binding && x.binding("util");
+    var e = $ && $.require && $.require("util").types;
+    return e || I && I.binding && I.binding("util");
   } catch {
   }
-}(), M = L && L.isTypedArray, ct = M ? st(M) : at, lt = Object.prototype, ut = lt.hasOwnProperty;
-function dt(e, t) {
-  var n = R(e), r = !n && Ie(e), o = !n && !r && Be(e), a = !n && !r && !o && ct(e), l = n || r || o || a, g = l ? xe(e.length, String) : [], b = g.length;
-  for (var i in e)
-    (t || ut.call(e, i)) && !(l && // Safari 9 has enumerable `arguments.length` in strict mode.
-    (i == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
-    o && (i == "offset" || i == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
-    a && (i == "buffer" || i == "byteLength" || i == "byteOffset") || // Skip index properties.
-    Te(i, b))) && g.push(i);
-  return g;
+}(), G = z && z.isTypedArray, gt = G ? pt(G) : dt, yt = Object.prototype, ht = yt.hasOwnProperty;
+function _t(e, r) {
+  var t = W(e), n = !t && De(e), s = !t && !n && Ue(e), a = !t && !n && !s && gt(e), p = t || n || s || a, y = p ? Ee(e.length, String) : [], h = y.length;
+  for (var l in e)
+    (r || ht.call(e, l)) && !(p && // Safari 9 has enumerable `arguments.length` in strict mode.
+    (l == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
+    s && (l == "offset" || l == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
+    a && (l == "buffer" || l == "byteLength" || l == "byteOffset") || // Skip index properties.
+    Ce(l, h))) && y.push(l);
+  return y;
 }
-function ft(e, t) {
-  return function(n) {
-    return e(t(n));
+function bt(e, r) {
+  return function(t) {
+    return e(r(t));
   };
 }
-var pt = ft(Object.keys, Object);
-const gt = pt;
-var yt = Object.prototype, bt = yt.hasOwnProperty;
-function ht(e) {
-  if (!Se(e))
-    return gt(e);
-  var t = [];
-  for (var n in Object(e))
-    bt.call(e, n) && n != "constructor" && t.push(n);
-  return t;
+var vt = bt(Object.keys, Object);
+const mt = vt;
+var jt = Object.prototype, wt = jt.hasOwnProperty;
+function Tt(e) {
+  if (!Pe(e))
+    return mt(e);
+  var r = [];
+  for (var t in Object(e))
+    wt.call(e, t) && t != "constructor" && r.push(t);
+  return r;
 }
-function _t(e) {
-  return q(e) ? dt(e) : ht(e);
+function $t(e) {
+  return Q(e) ? _t(e) : Tt(e);
 }
-function jt(e) {
-  return function(t, n, r) {
-    for (var o = -1, a = Object(t), l = r(t), g = l.length; g--; ) {
-      var b = l[e ? g : ++o];
-      if (n(a[b], b, a) === !1)
+function St(e) {
+  return function(r, t, n) {
+    for (var s = -1, a = Object(r), p = n(r), y = p.length; y--; ) {
+      var h = p[e ? y : ++s];
+      if (t(a[h], h, a) === !1)
         break;
     }
+    return r;
+  };
+}
+var xt = St();
+const At = xt;
+function Ct(e, r) {
+  return e && At(e, r, $t);
+}
+function kt(e, r) {
+  return function(t, n) {
+    if (t == null)
+      return t;
+    if (!Q(t))
+      return e(t, n);
+    for (var s = t.length, a = r ? s : -1, p = Object(t); (r ? a-- : ++a < s) && n(p[a], a, p) !== !1; )
+      ;
     return t;
   };
 }
-var vt = jt();
-const mt = vt;
-function Tt(e, t) {
-  return e && mt(e, t, _t);
+var Ot = kt(Ct);
+const Pt = Ot;
+function Et(e) {
+  return typeof e == "function" ? e : ve;
 }
-function wt(e, t) {
-  return function(n, r) {
-    if (n == null)
-      return n;
-    if (!q(n))
-      return e(n, r);
-    for (var o = n.length, a = t ? o : -1, l = Object(n); (t ? a-- : ++a < o) && r(l[a], a, l) !== !1; )
-      ;
-    return n;
-  };
+function Bt(e, r) {
+  var t = W(e) ? Se : Pt;
+  return t(e, Et(r));
 }
-var $t = wt(Tt);
-const St = $t;
-function xt(e) {
-  return typeof e == "function" ? e : pe;
-}
-function At(e, t) {
-  var n = R(e) ? je : St;
-  return n(e, xt(t));
-}
-const Ot = { class: "dj-accordion" }, kt = { class: "dj-accordion__header-label" }, It = /* @__PURE__ */ c("span", { class: "dj-accordion__header-icon" }, [
-  /* @__PURE__ */ c("svg", {
+const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label" }, Dt = /* @__PURE__ */ o("span", { class: "dj-accordion__header-icon" }, [
+  /* @__PURE__ */ o("svg", {
     class: "button-icon",
     viewBox: "0 0 15 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, [
-    /* @__PURE__ */ c("path", {
+    /* @__PURE__ */ o("path", {
       d: "M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z",
       fill: "currentColor",
       "fill-rule": "evenodd",
       "clip-rule": "evenodd"
     })
   ])
-], -1), Et = { class: "dj-accordion__inner-content" }, Ft = p({
+], -1), Vt = { class: "dj-accordion__inner-content" }, Mt = g({
   name: "dj-accordion"
-}), Ct = /* @__PURE__ */ p({
-  ...Ft,
+}), Lt = /* @__PURE__ */ g({
+  ...Mt,
   props: {
     title: {
       type: String,
@@ -190,78 +190,209 @@ const Ot = { class: "dj-accordion" }, kt = { class: "dj-accordion__header-label"
     }
   },
   emits: ["update:modelValue", "change"],
-  setup(e, { emit: t }) {
-    const n = e;
-    ee(() => n.modelValue, (i) => {
-      i ? (a.wrapperStyle = {
+  setup(e, { emit: r }) {
+    const t = e;
+    ne(() => t.modelValue, (l) => {
+      l ? (a.wrapperStyle = {
         transition: "background-color .25s"
-      }, o.value.style.display = "block", a.contentStyle = {
+      }, s.value.style.display = "block", a.contentStyle = {
         overflow: "hidden",
-        height: `${o.value.scrollHeight}px`,
+        height: `${s.value.scrollHeight}px`,
         willChange: "height",
         transition: "height .25s"
       }) : (a.wrapperStyle = {
         transition: "background-color .25s"
-      }, o.value.style.height = `${o.value.scrollHeight}px`, setTimeout(() => {
+      }, s.value.style.height = `${s.value.scrollHeight}px`, setTimeout(() => {
         a.contentStyle = {
           transition: "height .25s",
           willChange: "height",
           height: "0px",
           overflow: "hidden"
         };
-      }, 0)), r("change", i);
+      }, 0)), n("change", l);
     });
-    const r = t, o = U(), a = O({
+    const n = r, s = F(), a = O({
       wrapperStyle: {},
       contentStyle: {}
-    }), l = () => {
-      r("update:modelValue", !n.modelValue);
-    }, g = () => {
-      n.modelValue ? (a.wrapperStyle = {}, o.value.style.display = "", a.contentStyle = {}) : (a.wrapperStyle = {}, a.contentStyle = {
+    }), p = () => {
+      n("update:modelValue", !t.modelValue);
+    }, y = () => {
+      t.modelValue ? (a.wrapperStyle = {}, s.value.style.display = "", a.contentStyle = {}) : (a.wrapperStyle = {}, a.contentStyle = {
         height: "0px",
         overflow: "hidden",
         display: "none"
       });
-    }, b = () => {
-      n.modelValue || (o.value.style.display = "none", o.value.style.height = "0", o.value.style.overflow = "hidden");
+    }, h = () => {
+      t.modelValue || (s.value.style.display = "none", s.value.style.height = "0", s.value.style.overflow = "hidden");
     };
-    return J(() => {
-      b();
-    }), (i, F) => (d(), f("div", Ot, [
-      c("div", {
-        class: h(["dj-accordion__wrapper", [n.modelValue ? "is-active" : ""]]),
-        style: A(a.wrapperStyle)
+    return R(() => {
+      h();
+    }), (l, x) => (u(), d("div", It, [
+      o("div", {
+        class: m(["dj-accordion__wrapper", [t.modelValue ? "is-active" : ""]]),
+        style: S(a.wrapperStyle)
       }, [
-        c("button", {
+        o("button", {
           class: "dj-accordion__header",
-          onClick: l
+          onClick: p
         }, [
-          c("span", kt, [
-            y(i.$slots, "title", {}, () => [
-              _(j(n.title), 1)
+          o("span", Ft, [
+            _(l.$slots, "title", {}, () => [
+              j(v(t.title), 1)
             ])
           ]),
-          It
+          Dt
         ]),
-        c("div", {
+        o("div", {
           class: "dj-accordion__inner",
-          style: A(a.contentStyle),
+          style: S(a.contentStyle),
           ref_key: "DJAccordionInner",
-          ref: o,
-          onTransitionend: g
+          ref: s,
+          onTransitionend: y
         }, [
-          c("div", Et, [
-            y(i.$slots, "default", {}, () => [
-              _(j(n.content), 1)
+          o("div", Vt, [
+            _(l.$slots, "default", {}, () => [
+              j(v(t.content), 1)
             ])
           ])
         ], 36)
       ], 6)
     ]));
   }
-}), Bt = (e) => {
+}), Ut = { class: "dj-audio" }, Nt = { class: "dj-audio__wrapper" }, Jt = { class: "dj-audio-button__wrapper" }, Kt = {
+  key: 0,
+  class: "icon",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
+  viewBox: "0 0 24 24"
+}, zt = /* @__PURE__ */ o("path", {
+  fill: "currentColor",
+  stroke: "currentColor",
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "1.5",
+  d: "M6.906 4.537A.6.6 0 0 0 6 5.053v13.894a.6.6 0 0 0 .906.516l11.723-6.947a.6.6 0 0 0 0-1.032z"
+}, null, -1), Gt = [
+  zt
+], Rt = {
+  key: 1,
+  xmlns: "http://www.w3.org/2000/svg",
+  fill: "currentColor",
+  class: "icon",
+  viewBox: "0 0 32 32"
+}, qt = /* @__PURE__ */ o("path", {
+  fill: "currentColor",
+  d: "M12 6h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm10 0h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
+}, null, -1), Ht = [
+  qt
+], Xt = { class: "dj-audio-progress__wrapper" }, Wt = { class: "dj-audio-progress__start-time" }, Zt = { class: "dj-audio-progress__inner" }, Qt = ["src"], Yt = ["src"], er = { class: "dj-audio-progress__end-time" }, tr = {
+  key: 0,
+  xmlns: "http://www.w3.org/2000/svg",
+  class: "icon",
+  viewBox: "0 0 24 24"
+}, rr = /* @__PURE__ */ ae('<circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate></circle>', 3), nr = [
+  rr
+], or = { key: 1 }, sr = g({
+  name: "dj-audio"
+}), ar = /* @__PURE__ */ g({
+  ...sr,
+  props: {
+    src: {
+      type: String,
+      default: ""
+    }
+  },
+  emits: [],
+  setup(e, { emit: r }) {
+    const t = F(), n = O({
+      loading: !0,
+      state: !1,
+      isDragProgress: !1,
+      progress: 0,
+      buffered: 0,
+      currentTime: "00:00",
+      duration: "00:00"
+    }), s = (c) => {
+      var f = Math.floor(c % 3600 / 60), b = Math.floor(c % 3600 % 60), L = f > 0 ? f < 10 ? "0" + f : f : "00", re = b > 0 ? b < 10 ? "0" + b : b : "00";
+      return L + ":" + re;
+    }, a = () => {
+      t.value.play();
+    }, p = () => {
+      t.value.pause();
+    }, y = () => {
+      n.state = !n.state, n.state ? a() : p();
+    }, h = () => {
+      n.duration = s(t.value.duration), n.loading = !1;
+    }, l = (c, f) => f / c * 100, x = () => {
+      t.value.volume = 0.3;
+    }, P = () => {
+      var c = t.value.buffered;
+      n.buffered = c.end(c.length - 1) / t.value.duration * 100;
+    }, E = () => {
+      n.currentTime = s(t.value.currentTime), n.isDragProgress || (n.progress = l(t.value.duration, t.value.currentTime));
+    }, A = () => {
+      n.state = !1;
+    }, B = () => {
+      t.value.currentTime = n.progress / 100 * t.value.duration, console.log(t.value.currentTime), n.isDragProgress = !1;
+    };
+    return (c, f) => (u(), d("div", Ut, [
+      o("div", Nt, [
+        o("div", Jt, [
+          o("button", {
+            class: "dj-audio-button__play",
+            onClick: y
+          }, [
+            n.state ? (u(), d("svg", Rt, Ht)) : (u(), d("svg", Kt, Gt))
+          ])
+        ]),
+        o("div", Xt, [
+          o("span", Wt, v(n.currentTime), 1),
+          o("div", Zt, [
+            o("audio", {
+              class: "dj-audio-process__audio",
+              ref_key: "audioRef",
+              ref: t,
+              preload: "auto",
+              onLoadedmetadata: h,
+              onProgress: P,
+              onPlaying: x,
+              onTimeupdate: E,
+              onEnded: A
+            }, [
+              o("source", {
+                type: "audio/ogg",
+                src: e.src
+              }, null, 8, Qt),
+              o("source", {
+                type: "audio/mpeg",
+                src: e.src
+              }, null, 8, Yt)
+            ], 544),
+            o("div", {
+              class: "dj-audio-buffered__bar",
+              style: S({ "--buffer-value": `${n.buffered}%` })
+            }, null, 4),
+            oe(o("input", {
+              type: "range",
+              style: S({ "--progress-value": `${n.progress}%` }),
+              "onUpdate:modelValue": f[0] || (f[0] = (b) => n.progress = b),
+              onMousedown: f[1] || (f[1] = (b) => n.isDragProgress = !0),
+              onMouseup: B
+            }, null, 36), [
+              [se, n.progress]
+            ])
+          ]),
+          o("span", er, [
+            n.loading ? (u(), d("svg", tr, nr)) : (u(), d("span", or, v(n.duration), 1))
+          ])
+        ])
+      ])
+    ]));
+  }
+}), ir = (e) => {
   e = e.replace("#", "");
-  const t = [
+  const r = [
     parseInt(e.substr(0, 2), 16),
     // 红色通道值
     parseInt(e.substr(2, 2), 16),
@@ -269,11 +400,11 @@ const Ot = { class: "dj-accordion" }, kt = { class: "dj-accordion__header-label"
     parseInt(e.substr(4, 2), 16)
     // 蓝色通道值
   ];
-  return (0.299 * t[0] + 0.587 * t[1] + 0.114 * t[2]) / 255 <= 0.5;
-}, Vt = { class: "dj-button-inner" }, Pt = p({
+  return (0.299 * r[0] + 0.587 * r[1] + 0.114 * r[2]) / 255 <= 0.5;
+}, cr = { class: "dj-button-inner" }, lr = g({
   name: "dj-button"
-}), Dt = /* @__PURE__ */ p({
-  ...Pt,
+}), ur = /* @__PURE__ */ g({
+  ...lr,
   props: {
     type: {
       type: String,
@@ -290,36 +421,36 @@ const Ot = { class: "dj-accordion" }, kt = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    return (t, n) => (d(), f("button", {
-      class: h(["dj-button", [e.type]]),
-      style: A({ "--custom-background-color": e.color, "--custom-text-color": e.color ? $(Bt)(e.color) ? "var(--white)" : "var(--black)" : "" })
+    return (r, t) => (u(), d("button", {
+      class: m(["dj-button", [e.type]]),
+      style: S({ "--custom-background-color": e.color, "--custom-text-color": e.color ? C(ir)(e.color) ? "var(--white)" : "var(--black)" : "" })
     }, [
-      c("span", Vt, [
-        y(t.$slots, "default", {}, () => [
-          _(j(e.text), 1)
+      o("span", cr, [
+        _(r.$slots, "default", {}, () => [
+          j(v(e.text), 1)
         ])
       ])
     ], 6));
   }
-}), Lt = { class: "dj-button-group" }, Mt = p({
+}), dr = { class: "dj-button-group" }, pr = g({
   name: "dj-button-group"
-}), Ut = /* @__PURE__ */ p({
-  ...Mt,
+}), fr = /* @__PURE__ */ g({
+  ...pr,
   setup(e) {
-    return (t, n) => (d(), f("div", Lt, [
-      y(t.$slots, "default")
+    return (r, t) => (u(), d("div", dr, [
+      _(r.$slots, "default")
     ]));
   }
-}), Jt = {
+}), gr = {
   key: 0,
   class: "dj-card-header"
-}, Kt = { class: "dj-card-body" }, Nt = {
+}, yr = { class: "dj-card-body" }, hr = {
   key: 1,
   class: "dj-card-footer"
-}, Gt = p({
+}, _r = g({
   name: "dj-card"
-}), Rt = /* @__PURE__ */ p({
-  ...Gt,
+}), br = /* @__PURE__ */ g({
+  ..._r,
   props: {
     align: {
       type: String,
@@ -335,34 +466,34 @@ const Ot = { class: "dj-accordion" }, kt = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    const t = e, n = k(), r = O({
+    const r = e, t = D(), n = O({
       showTitle: !0,
       showFooter: !0
     });
-    return J(() => {
-      r.showTitle = (t.title || n.header) !== void 0, r.showFooter = (t.footer || n.footer) !== void 0;
-    }), (o, a) => (d(), f("div", {
-      class: h(["dj-card", [e.align]])
+    return R(() => {
+      n.showTitle = (r.title || t.header) !== void 0, n.showFooter = (r.footer || t.footer) !== void 0;
+    }), (s, a) => (u(), d("div", {
+      class: m(["dj-card", [e.align]])
     }, [
-      r.showTitle ? (d(), f("div", Jt, [
-        y(o.$slots, "header", {}, () => [
-          _(j(e.title), 1)
+      n.showTitle ? (u(), d("div", gr, [
+        _(s.$slots, "header", {}, () => [
+          j(v(e.title), 1)
         ])
-      ])) : m("", !0),
-      c("div", Kt, [
-        y(o.$slots, "default")
+      ])) : T("", !0),
+      o("div", yr, [
+        _(s.$slots, "default")
       ]),
-      r.showFooter ? (d(), f("div", Nt, [
-        y(o.$slots, "footer", {}, () => [
-          _(j(e.footer), 1)
+      n.showFooter ? (u(), d("div", hr, [
+        _(s.$slots, "footer", {}, () => [
+          j(v(e.footer), 1)
         ])
-      ])) : m("", !0)
+      ])) : T("", !0)
     ], 2));
   }
-}), zt = { class: "dj-divider" }, qt = p({
+}), vr = { class: "dj-divider" }, mr = g({
   name: "dj-divider"
-}), Ht = /* @__PURE__ */ p({
-  ...qt,
+}), jr = /* @__PURE__ */ g({
+  ...mr,
   props: {
     text: {
       type: String,
@@ -375,28 +506,28 @@ const Ot = { class: "dj-accordion" }, kt = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    const t = k();
-    return (n, r) => (d(), f("div", zt, [
-      c("div", {
-        class: h(["dj-divider-inner", ["dj-divider-inner--" + e.type]])
+    const r = D();
+    return (t, n) => (u(), d("div", vr, [
+      o("div", {
+        class: m(["dj-divider-inner", ["dj-divider-inner--" + e.type]])
       }, [
-        $(t).default ? y(n.$slots, "default", { key: 0 }) : (d(), f(te, { key: 1 }, [
-          _(j(e.text), 1)
+        C(r).default ? _(t.$slots, "default", { key: 0 }) : (u(), d(ie, { key: 1 }, [
+          j(v(e.text), 1)
         ], 64))
       ], 2)
     ]));
   }
-}), Xt = "useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";
-let Wt = (e = 21) => {
-  let t = "", n = crypto.getRandomValues(new Uint8Array(e));
+}), wr = "useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";
+let Tr = (e = 21) => {
+  let r = "", t = crypto.getRandomValues(new Uint8Array(e));
   for (; e--; )
-    t += Xt[n[e] & 63];
-  return t;
+    r += wr[t[e] & 63];
+  return r;
 };
-const Zt = ["id"], Qt = {
+const $r = ["id"], Sr = {
   key: 0,
   class: "dj-input__prefix"
-}, Yt = { class: "dj-input__prefix__inner" }, en = ["id", "placeholder", "enterkeyhint", "disabled", "value"], tn = /* @__PURE__ */ c("svg", {
+}, xr = { class: "dj-input__prefix__inner" }, Ar = ["id", "placeholder", "enterkeyhint", "disabled", "value"], Cr = /* @__PURE__ */ o("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   width: "16",
   height: "16",
@@ -404,16 +535,16 @@ const Zt = ["id"], Qt = {
   class: "bi bi-x-circle-fill icon",
   viewBox: "0 0 16 16"
 }, [
-  /* @__PURE__ */ c("path", { d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" })
-], -1), nn = [
-  tn
-], rn = {
+  /* @__PURE__ */ o("path", { d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" })
+], -1), kr = [
+  Cr
+], Or = {
   key: 2,
   class: "dj-input__suffix"
-}, on = { class: "dj-input__suffix__inner" }, an = p({
+}, Pr = { class: "dj-input__suffix__inner" }, Er = g({
   name: "dj-input"
-}), sn = /* @__PURE__ */ p({
-  ...an,
+}), Br = /* @__PURE__ */ g({
+  ...Er,
   props: {
     id: {
       type: String,
@@ -441,83 +572,84 @@ const Zt = ["id"], Qt = {
     }
   },
   emits: ["update:modelValue", "keyup.enter", "change", "input", "focus", "blur", "clear"],
-  setup(e, { expose: t, emit: n }) {
-    const r = n, o = k(), a = U(Wt()), l = O({
+  setup(e, { expose: r, emit: t }) {
+    const n = t, s = D(), a = F(Tr()), p = O({
       focus: !1,
       active: !1
-    }), g = () => {
-      const u = document.getElementById(a.value);
-      u == null || u.focus();
-    }, b = (u) => {
-      const w = document.getElementById(u);
-      w == null || w.blur();
-    }, i = (u) => {
-      r("change", u.target.value);
-    }, F = (u) => {
-      r("input", u.target.value), r("update:modelValue", u.target.value);
-    }, Z = () => {
-      l.focus = !0, r("focus");
-    }, Q = () => {
-      l.focus = !1, r("blur");
-    }, C = () => {
-      r("clear", void 0), r("update:modelValue", void 0);
-    }, Y = () => {
-      r("keyup.enter");
+    }), y = () => {
+      const c = document.getElementById(a.value);
+      c == null || c.focus();
+    }, h = (c) => {
+      const f = document.getElementById(c);
+      f == null || f.blur();
+    }, l = (c) => {
+      n("change", c.target.value);
+    }, x = (c) => {
+      n("input", c.target.value), n("update:modelValue", c.target.value);
+    }, P = () => {
+      p.focus = !0, n("focus");
+    }, E = () => {
+      p.focus = !1, n("blur");
+    }, A = () => {
+      n("clear", void 0), n("update:modelValue", void 0);
+    }, B = () => {
+      n("keyup.enter");
     };
-    return t({ focus: g, blur: b, clear: C }), (u, w) => (d(), f("div", {
-      class: h(["dj-input", [e.disabled ? "is-disabled" : ""]])
+    return r({ focus: y, blur: h, clear: A }), (c, f) => (u(), d("div", {
+      class: m(["dj-input", [e.disabled ? "is-disabled" : ""]])
     }, [
-      c("div", {
+      o("div", {
         id: a.value,
-        class: h(["dj-input__wrapper", [l.focus ? "is-focus" : ""]]),
-        onClick: g
+        class: m(["dj-input__wrapper", [p.focus ? "is-focus" : ""]]),
+        onClick: y
       }, [
-        $(o)["prefix-icon"] ? (d(), f("span", Qt, [
-          c("span", Yt, [
-            y(u.$slots, "prefix-icon")
+        C(s)["prefix-icon"] ? (u(), d("span", Sr, [
+          o("span", xr, [
+            _(c.$slots, "prefix-icon")
           ])
-        ])) : m("", !0),
-        c("input", {
+        ])) : T("", !0),
+        o("input", {
           id: e.id,
           class: "dj-input__inner",
           placeholder: e.placeholder,
           enterkeyhint: e.enterkeyhint,
           disabled: e.disabled,
           value: e.modelValue,
-          onChange: i,
-          onInput: F,
-          onFocus: Z,
-          onFocusout: Q,
-          onKeyup: ne(Y, ["enter", "native"])
-        }, null, 40, en),
-        e.clear && e.modelValue ? (d(), f("div", {
+          onChange: l,
+          onInput: x,
+          onFocus: P,
+          onFocusout: E,
+          onKeyup: ce(B, ["enter", "native"])
+        }, null, 40, Ar),
+        e.clear && e.modelValue ? (u(), d("div", {
           key: 1,
           class: "dj-input__clear",
-          onClick: C
-        }, nn)) : m("", !0),
-        $(o)["suffix-icon"] ? (d(), f("span", rn, [
-          c("span", on, [
-            y(u.$slots, "suffix-icon")
+          onClick: A
+        }, kr)) : T("", !0),
+        C(s)["suffix-icon"] ? (u(), d("span", Or, [
+          o("span", Pr, [
+            _(c.$slots, "suffix-icon")
           ])
-        ])) : m("", !0)
-      ], 10, Zt)
+        ])) : T("", !0)
+      ], 10, $r)
     ], 2));
   }
-}), cn = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), Ir = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  DJAccordion: Ct,
-  DJButton: Dt,
-  DJButtonGroup: Ut,
-  DJCard: Rt,
-  DJDivider: Ht,
-  DJInput: sn
-}, Symbol.toStringTag, { value: "Module" })), un = {
+  DJAccordion: Lt,
+  DJAudio: ar,
+  DJButton: ur,
+  DJButtonGroup: fr,
+  DJCard: br,
+  DJDivider: jr,
+  DJInput: Br
+}, Symbol.toStringTag, { value: "Module" })), Dr = {
   install(e) {
-    At(cn, (t) => {
-      console.log(t), e.component(t.name, t);
+    Bt(Ir, (r) => {
+      e.component(r.name, r);
     });
   }
 };
 export {
-  un as default
+  Dr as default
 };

@@ -13,7 +13,9 @@ npm i django-ui
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
+// 引入django-ui组件库
 import DjangoUI from "django-ui";
+// 引入django-ui样式
 import "django-ui/style.css";
 
 const app = createApp(App);
@@ -32,6 +34,7 @@ app.mount("#app");
 | 名称            | 说明                   |
 | --------------- | ---------------------- |
 | dj-accordion    | Accordion（抽屉）      |
+| dj-audio        | Audio（音频）          |
 | dj-button       | Button（按钮）         |
 | dj-button-group | Button-Group（按钮组） |
 | dj-card         | Card（卡片）           |
