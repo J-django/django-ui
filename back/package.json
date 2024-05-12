@@ -1,6 +1,6 @@
 {
   "name": "django-ui",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "",
   "main": "django-ui.es.js",
   "scripts": {
@@ -20,6 +20,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "django-ui": "2.0.6"
+    "django-ui": "3.0.1"
   }
 }

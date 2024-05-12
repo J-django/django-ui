@@ -1,4 +1,4 @@
-# DJANGO-UI Node API Library
+# Django-ui Of Vue
 
 [![NPM version](https://img.shields.io/npm/v/django-ui.svg)](https://npmjs.org/package/django-ui)
 

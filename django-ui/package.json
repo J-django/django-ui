@@ -1,11 +1,12 @@
 {
   "name": "django-ui",
-  "version": "3.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "django-ui.es.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://www.dialin.cn",
   "repository": {
     "type": "git",
     "url": "https://gitee.com/J-Django-Gitee/django-ui.git"
@@ -19,7 +20,5 @@
   ],
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "django-ui": "2.0.6"
-  }
+  "dependencies": {}
 }

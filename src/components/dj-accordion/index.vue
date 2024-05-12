@@ -19,11 +19,10 @@ const props = defineProps({
     }
 })
 
+const emits = defineEmits(["update:modelValue", "change"])
+
 watch(() => props.modelValue, (val: boolean) => {
     if (val) {
-        accordionConfig.wrapperStyle = {
-            transition: "background-color .25s"
-        }
         DJAccordionInner.value.style.display = "block"
         accordionConfig.contentStyle = {
             overflow: "hidden",
@@ -32,9 +31,6 @@ watch(() => props.modelValue, (val: boolean) => {
             transition: "height .25s"
         }
     } else {
-        accordionConfig.wrapperStyle = {
-            transition: "background-color .25s"
-        }
         DJAccordionInner.value.style.height = `${DJAccordionInner.value.scrollHeight}px`;
         setTimeout(() => {
             accordionConfig.contentStyle = {
@@ -45,10 +41,7 @@ watch(() => props.modelValue, (val: boolean) => {
             }
         }, 0);
     }
-    emits("change", val)
 })
-
-const emits = defineEmits(["update:modelValue", "change"])
 
 const DJAccordionInner = ref();
 const accordionConfig = reactive({
@@ -57,6 +50,7 @@ const accordionConfig = reactive({
 })
 
 const accordion__toggle = () => {
+    emits("change", !props.modelValue)
     emits("update:modelValue", !props.modelValue)
 }
 
@@ -99,10 +93,9 @@ onMounted(() => {
                     </slot>
                 </span>
                 <span class="dj-accordion__header-icon">
-                    <svg class="button-icon" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z"
-                            fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0" />
                     </svg>
                 </span>
             </button>

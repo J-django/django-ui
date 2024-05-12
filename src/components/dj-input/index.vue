@@ -2,10 +2,9 @@
 // plugins
 import "./index.less";
 import { ref, reactive, useSlots } from 'vue'
-import { nanoid } from 'nanoid';
 
 // script
-defineProps({
+const props = defineProps({
     id: {
         type: String,
         default: ""
@@ -32,72 +31,99 @@ defineProps({
     }
 })
 
-const emits = defineEmits(['update:modelValue', 'keyup.enter', 'change', 'input', 'focus', 'blur', 'clear'])
+const emits = defineEmits(['update:modelValue', 'input', 'change', 'keyup.enter', 'focus', 'blur', 'clear'])
 
 const slots = useSlots();
 
-const dj_input_id = ref(nanoid());
+const DjInputRef = ref();
 
 const input__inner = reactive({
     focus: false,
     active: false,
 })
 
-const getFocus = () => {
-    const dom = document.getElementById(dj_input_id.value);
-    dom?.focus();
+// Event
+/**
+ * 输入时触发
+ * @param event Event
+ */
+const input__innerInputChange = (event: Event) => {
+    emits("input", (event.target as any).value)
+    emits("update:modelValue", (event.target as any).value)
 }
 
-const getBlur = (id: string) => {
-    const dom = document.getElementById(id);
-    dom?.blur();
+/**
+ * 值改变时触发
+ * @param event Event
+ */
+const input__innerChange = (event: Event) => {
+    emits("change", (event.target as any).value)
 }
 
-const input__innerChange = (e: Event) => {
-    emits("change", (e.target as any).value)
-}
-
-const input__innerInputChange = (e: Event) => {
-    emits("input", (e.target as any).value)
-    emits("update:modelValue", (e.target as any).value)
-}
-
-const input__innerFocusChange = () => {
+/**
+ * 获取焦点时触发
+ * @param event Event
+ */
+const input__innerFocusChange = (event: Event) => {
     input__inner.focus = true;
-    emits("focus")
+    emits("focus", event)
 }
 
-const input__innerFocusoutChange = () => {
+/**
+ * 失去焦点时触发
+ * @param event Event
+ */
+const input__innerFocusoutChange = (event: Event) => {
     input__inner.focus = false;
-    emits("blur")
+    emits("blur", event)
 }
 
-const clearInput = () => {
+/**
+ * 回车时触发
+ * @param event Event
+ */
+const input__innerKeyupEnterChange = (event: Event) => {
+    emits("keyup.enter", event);
+}
+
+/**
+ * 获取输入框焦点
+ */
+const focus = () => {
+    DjInputRef.value.focus();
+}
+
+/**
+ * 失去输入框焦点
+ */
+const blur = () => {
+    DjInputRef.value.blur();
+}
+
+/**
+ * 清空输入框
+ */
+const clear = () => {
     emits("clear", undefined)
-    emits("update:modelValue", undefined)
+    emits("update:modelValue", "")
 }
 
-const input__innerKeyupEnterChange = () => {
-    emits("keyup.enter");
-}
-
-defineExpose({ focus: getFocus, blur: getBlur, clear: clearInput })
+defineExpose({ focus: focus, blur: blur, clear: clear })
 </script>
 
 <template>
     <div class="dj-input" :class="[disabled ? 'is-disabled' : '']">
-        <div :id="dj_input_id" class="dj-input__wrapper" :class="[input__inner.focus ? 'is-focus' : '']"
-            @click="getFocus">
+        <div class="dj-input__wrapper" :class="[input__inner.focus ? 'is-focus' : '']" @click="focus">
             <span class="dj-input__prefix" v-if="slots['prefix-icon']">
                 <span class="dj-input__prefix__inner">
                     <slot name="prefix-icon" />
                 </span>
             </span>
-            <input :id="id" class="dj-input__inner" :placeholder="placeholder" :enterkeyhint="enterkeyhint"
-                :disabled="disabled" :value="modelValue" @change="input__innerChange" @input="input__innerInputChange"
-                @focus="input__innerFocusChange" @focusout="input__innerFocusoutChange"
+            <input :id="id" ref="DjInputRef" class="dj-input__inner" :placeholder="placeholder"
+                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="input__innerChange"
+                @input="input__innerInputChange" @focus="input__innerFocusChange" @focusout="input__innerFocusoutChange"
                 @keyup.enter.native="input__innerKeyupEnterChange" />
-            <div class="dj-input__clear" v-if="clear && modelValue" @click="clearInput">
+            <div class="dj-input__clear" v-if="props.clear && modelValue" @click="clear">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-x-circle-fill icon" viewBox="0 0 16 16">
                     <path

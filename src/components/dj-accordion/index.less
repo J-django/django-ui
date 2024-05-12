@@ -1,14 +1,20 @@
 .dj-accordion {
-  --dj-accordion-background-color: rgba(33, 37, 41, 0.03);
+  --dj-accordion-background-color: #f1f1f2;
+  --dj-accordion-border-color: #e5e5e5;
+  --dj-accordion-border-focus-color: rgba(60, 60, 67, 0.33);
 
   .dj-accordion__wrapper {
-    border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     background-color: var(--dj-accordion-background-color);
+    transition: box-shadow 0.25s;
+
+    &:hover {
+      box-shadow: 0 0 0 1px var(--dj-accordion-border-color) inset;
+    }
 
     .dj-accordion__header {
       appearance: none;
-      padding: 10px;
+      padding: 7px 10px;
       width: 100%;
       color: var(--black);
       font-size: 14px;
@@ -33,16 +39,17 @@
       }
 
       .dj-accordion__header-icon {
+        @size: 20px;
         margin-left: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: transform 0.25s;
 
-        .button-icon {
+        .icon {
           color: inherit;
-          width: 20px;
-          height: 20px;
+          width: @size;
+          height: @size;
         }
       }
     }
@@ -57,7 +64,7 @@
   }
 
   .dj-accordion__wrapper.is-active {
-    background-color: var(--white);
+    box-shadow: 0 0 0 1px var(--dj-accordion-border-focus-color) inset;
 
     .dj-accordion__header {
       .dj-accordion__header-icon {
