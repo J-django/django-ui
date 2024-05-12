@@ -31,12 +31,13 @@ app.mount("#app");
 
 ## 本次更新内容
 
-| 名称            | 说明                   |
-| --------------- | ---------------------- |
-| dj-accordion    | Accordion（抽屉）      |
-| dj-audio        | Audio（音频）          |
-| dj-button       | Button（按钮）         |
-| dj-button-group | Button-Group（按钮组） |
-| dj-card         | Card（卡片）           |
-| dj-divider      | Divider（分割线）      |
-| dj-input        | Input（输入框）        |
+| 名称            |
+| --------------- |
+| dj-accordion    |
+| dj-audio        |
+| dj-button       |
+| dj-button-group |
+| dj-card         |
+| dj-divider      |
+| dj-input        |
+| dj-textarea     |

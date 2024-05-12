@@ -1,180 +1,179 @@
-import { defineComponent as g, watch as ne, ref as F, reactive as O, onMounted as R, openBlock as u, createElementBlock as d, createElementVNode as o, normalizeClass as m, normalizeStyle as S, renderSlot as _, createTextVNode as j, toDisplayString as v, withDirectives as oe, vModelText as se, createStaticVNode as ae, unref as C, useSlots as D, createCommentVNode as T, Fragment as ie, withKeys as ce } from "vue";
-var q = typeof global == "object" && global && global.Object === Object && global, le = typeof self == "object" && self && self.Object === Object && self, H = q || le || Function("return this")(), k = H.Symbol, X = Object.prototype, ue = X.hasOwnProperty, de = X.toString, w = k ? k.toStringTag : void 0;
-function pe(e) {
-  var r = ue.call(e, w), t = e[w];
+import { defineComponent as h, watch as fe, ref as I, reactive as F, onMounted as H, openBlock as f, createElementBlock as p, createElementVNode as l, normalizeClass as j, normalizeStyle as O, renderSlot as m, createTextVNode as x, toDisplayString as T, Fragment as X, withDirectives as pe, vModelText as ge, createStaticVNode as he, unref as V, useSlots as N, createCommentVNode as C, withKeys as ye } from "vue";
+var Q = typeof global == "object" && global && global.Object === Object && global, _e = typeof self == "object" && self && self.Object === Object && self, Y = Q || _e || Function("return this")(), B = Y.Symbol, Z = Object.prototype, be = Z.hasOwnProperty, ve = Z.toString, k = B ? B.toStringTag : void 0;
+function me(e) {
+  var t = be.call(e, k), r = e[k];
   try {
-    e[w] = void 0;
-    var n = !0;
+    e[k] = void 0;
+    var s = !0;
   } catch {
   }
-  var s = de.call(e);
-  return n && (r ? e[w] = t : delete e[w]), s;
+  var o = ve.call(e);
+  return s && (t ? e[k] = r : delete e[k]), o;
 }
-var fe = Object.prototype, ge = fe.toString;
-function ye(e) {
-  return ge.call(e);
+var je = Object.prototype, we = je.toString;
+function Te(e) {
+  return we.call(e);
 }
-var he = "[object Null]", _e = "[object Undefined]", U = k ? k.toStringTag : void 0;
-function V(e) {
-  return e == null ? e === void 0 ? _e : he : U && U in Object(e) ? pe(e) : ye(e);
+var $e = "[object Null]", xe = "[object Undefined]", J = B ? B.toStringTag : void 0;
+function L(e) {
+  return e == null ? e === void 0 ? xe : $e : J && J in Object(e) ? me(e) : Te(e);
 }
-function M(e) {
+function z(e) {
   return e != null && typeof e == "object";
 }
-var W = Array.isArray;
-function be(e) {
-  var r = typeof e;
-  return e != null && (r == "object" || r == "function");
+var ee = Array.isArray;
+function Se(e) {
+  var t = typeof e;
+  return e != null && (t == "object" || t == "function");
 }
-function ve(e) {
+function ke(e) {
   return e;
 }
-var me = "[object AsyncFunction]", je = "[object Function]", we = "[object GeneratorFunction]", Te = "[object Proxy]";
-function $e(e) {
-  if (!be(e))
+var Ce = "[object AsyncFunction]", Ae = "[object Function]", Oe = "[object GeneratorFunction]", Fe = "[object Proxy]";
+function Pe(e) {
+  if (!Se(e))
     return !1;
-  var r = V(e);
-  return r == je || r == we || r == me || r == Te;
+  var t = L(e);
+  return t == Ae || t == Oe || t == Ce || t == Fe;
 }
-function Se(e, r) {
-  for (var t = -1, n = e == null ? 0 : e.length; ++t < n && r(e[t], t, e) !== !1; )
+function De(e, t) {
+  for (var r = -1, s = e == null ? 0 : e.length; ++r < s && t(e[r], r, e) !== !1; )
     ;
   return e;
 }
-var xe = 9007199254740991, Ae = /^(?:0|[1-9]\d*)$/;
-function Ce(e, r) {
-  var t = typeof e;
-  return r = r ?? xe, !!r && (t == "number" || t != "symbol" && Ae.test(e)) && e > -1 && e % 1 == 0 && e < r;
+var Ve = 9007199254740991, Be = /^(?:0|[1-9]\d*)$/;
+function Ie(e, t) {
+  var r = typeof e;
+  return t = t ?? Ve, !!t && (r == "number" || r != "symbol" && Be.test(e)) && e > -1 && e % 1 == 0 && e < t;
 }
-var ke = 9007199254740991;
-function Z(e) {
-  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= ke;
+var Me = 9007199254740991;
+function te(e) {
+  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= Me;
 }
-function Q(e) {
-  return e != null && Z(e.length) && !$e(e);
+function re(e) {
+  return e != null && te(e.length) && !Pe(e);
 }
-var Oe = Object.prototype;
-function Pe(e) {
-  var r = e && e.constructor, t = typeof r == "function" && r.prototype || Oe;
-  return e === t;
+var Ee = Object.prototype;
+function Ne(e) {
+  var t = e && e.constructor, r = typeof t == "function" && t.prototype || Ee;
+  return e === r;
 }
-function Ee(e, r) {
-  for (var t = -1, n = Array(e); ++t < e; )
-    n[t] = r(t);
-  return n;
+function Le(e, t) {
+  for (var r = -1, s = Array(e); ++r < e; )
+    s[r] = t(r);
+  return s;
 }
-var Be = "[object Arguments]";
-function N(e) {
-  return M(e) && V(e) == Be;
+var ze = "[object Arguments]";
+function R(e) {
+  return z(e) && L(e) == ze;
 }
-var Y = Object.prototype, Ie = Y.hasOwnProperty, Fe = Y.propertyIsEnumerable, De = N(/* @__PURE__ */ function() {
+var oe = Object.prototype, Ue = oe.hasOwnProperty, Je = oe.propertyIsEnumerable, Re = R(/* @__PURE__ */ function() {
   return arguments;
-}()) ? N : function(e) {
-  return M(e) && Ie.call(e, "callee") && !Fe.call(e, "callee");
+}()) ? R : function(e) {
+  return z(e) && Ue.call(e, "callee") && !Je.call(e, "callee");
 };
-function Ve() {
+function Ke() {
   return !1;
 }
-var ee = typeof exports == "object" && exports && !exports.nodeType && exports, J = ee && typeof module == "object" && module && !module.nodeType && module, Me = J && J.exports === ee, K = Me ? H.Buffer : void 0, Le = K ? K.isBuffer : void 0, Ue = Le || Ve, Ne = "[object Arguments]", Je = "[object Array]", Ke = "[object Boolean]", ze = "[object Date]", Ge = "[object Error]", Re = "[object Function]", qe = "[object Map]", He = "[object Number]", Xe = "[object Object]", We = "[object RegExp]", Ze = "[object Set]", Qe = "[object String]", Ye = "[object WeakMap]", et = "[object ArrayBuffer]", tt = "[object DataView]", rt = "[object Float32Array]", nt = "[object Float64Array]", ot = "[object Int8Array]", st = "[object Int16Array]", at = "[object Int32Array]", it = "[object Uint8Array]", ct = "[object Uint8ClampedArray]", lt = "[object Uint16Array]", ut = "[object Uint32Array]", i = {};
-i[rt] = i[nt] = i[ot] = i[st] = i[at] = i[it] = i[ct] = i[lt] = i[ut] = !0;
-i[Ne] = i[Je] = i[et] = i[Ke] = i[tt] = i[ze] = i[Ge] = i[Re] = i[qe] = i[He] = i[Xe] = i[We] = i[Ze] = i[Qe] = i[Ye] = !1;
-function dt(e) {
-  return M(e) && Z(e.length) && !!i[V(e)];
+var ne = typeof exports == "object" && exports && !exports.nodeType && exports, K = ne && typeof module == "object" && module && !module.nodeType && module, Ge = K && K.exports === ne, G = Ge ? Y.Buffer : void 0, We = G ? G.isBuffer : void 0, qe = We || Ke, He = "[object Arguments]", Xe = "[object Array]", Qe = "[object Boolean]", Ye = "[object Date]", Ze = "[object Error]", et = "[object Function]", tt = "[object Map]", rt = "[object Number]", ot = "[object Object]", nt = "[object RegExp]", at = "[object Set]", st = "[object String]", it = "[object WeakMap]", lt = "[object ArrayBuffer]", ut = "[object DataView]", ct = "[object Float32Array]", dt = "[object Float64Array]", ft = "[object Int8Array]", pt = "[object Int16Array]", gt = "[object Int32Array]", ht = "[object Uint8Array]", yt = "[object Uint8ClampedArray]", _t = "[object Uint16Array]", bt = "[object Uint32Array]", u = {};
+u[ct] = u[dt] = u[ft] = u[pt] = u[gt] = u[ht] = u[yt] = u[_t] = u[bt] = !0;
+u[He] = u[Xe] = u[lt] = u[Qe] = u[ut] = u[Ye] = u[Ze] = u[et] = u[tt] = u[rt] = u[ot] = u[nt] = u[at] = u[st] = u[it] = !1;
+function vt(e) {
+  return z(e) && te(e.length) && !!u[L(e)];
 }
-function pt(e) {
-  return function(r) {
-    return e(r);
+function mt(e) {
+  return function(t) {
+    return e(t);
   };
 }
-var te = typeof exports == "object" && exports && !exports.nodeType && exports, $ = te && typeof module == "object" && module && !module.nodeType && module, ft = $ && $.exports === te, I = ft && q.process, z = function() {
+var ae = typeof exports == "object" && exports && !exports.nodeType && exports, A = ae && typeof module == "object" && module && !module.nodeType && module, jt = A && A.exports === ae, E = jt && Q.process, W = function() {
   try {
-    var e = $ && $.require && $.require("util").types;
-    return e || I && I.binding && I.binding("util");
+    var e = A && A.require && A.require("util").types;
+    return e || E && E.binding && E.binding("util");
   } catch {
   }
-}(), G = z && z.isTypedArray, gt = G ? pt(G) : dt, yt = Object.prototype, ht = yt.hasOwnProperty;
-function _t(e, r) {
-  var t = W(e), n = !t && De(e), s = !t && !n && Ue(e), a = !t && !n && !s && gt(e), p = t || n || s || a, y = p ? Ee(e.length, String) : [], h = y.length;
-  for (var l in e)
-    (r || ht.call(e, l)) && !(p && // Safari 9 has enumerable `arguments.length` in strict mode.
-    (l == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
-    s && (l == "offset" || l == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
-    a && (l == "buffer" || l == "byteLength" || l == "byteOffset") || // Skip index properties.
-    Ce(l, h))) && y.push(l);
-  return y;
+}(), q = W && W.isTypedArray, wt = q ? mt(q) : vt, Tt = Object.prototype, $t = Tt.hasOwnProperty;
+function xt(e, t) {
+  var r = ee(e), s = !r && Re(e), o = !r && !s && qe(e), a = !r && !s && !o && wt(e), n = r || s || o || a, g = n ? Le(e.length, String) : [], v = g.length;
+  for (var c in e)
+    (t || $t.call(e, c)) && !(n && // Safari 9 has enumerable `arguments.length` in strict mode.
+    (c == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
+    o && (c == "offset" || c == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
+    a && (c == "buffer" || c == "byteLength" || c == "byteOffset") || // Skip index properties.
+    Ie(c, v))) && g.push(c);
+  return g;
 }
-function bt(e, r) {
-  return function(t) {
-    return e(r(t));
+function St(e, t) {
+  return function(r) {
+    return e(t(r));
   };
 }
-var vt = bt(Object.keys, Object);
-const mt = vt;
-var jt = Object.prototype, wt = jt.hasOwnProperty;
-function Tt(e) {
-  if (!Pe(e))
-    return mt(e);
-  var r = [];
-  for (var t in Object(e))
-    wt.call(e, t) && t != "constructor" && r.push(t);
-  return r;
+var kt = St(Object.keys, Object);
+const Ct = kt;
+var At = Object.prototype, Ot = At.hasOwnProperty;
+function Ft(e) {
+  if (!Ne(e))
+    return Ct(e);
+  var t = [];
+  for (var r in Object(e))
+    Ot.call(e, r) && r != "constructor" && t.push(r);
+  return t;
 }
-function $t(e) {
-  return Q(e) ? _t(e) : Tt(e);
+function Pt(e) {
+  return re(e) ? xt(e) : Ft(e);
 }
-function St(e) {
-  return function(r, t, n) {
-    for (var s = -1, a = Object(r), p = n(r), y = p.length; y--; ) {
-      var h = p[e ? y : ++s];
-      if (t(a[h], h, a) === !1)
+function Dt(e) {
+  return function(t, r, s) {
+    for (var o = -1, a = Object(t), n = s(t), g = n.length; g--; ) {
+      var v = n[e ? g : ++o];
+      if (r(a[v], v, a) === !1)
         break;
     }
-    return r;
-  };
-}
-var xt = St();
-const At = xt;
-function Ct(e, r) {
-  return e && At(e, r, $t);
-}
-function kt(e, r) {
-  return function(t, n) {
-    if (t == null)
-      return t;
-    if (!Q(t))
-      return e(t, n);
-    for (var s = t.length, a = r ? s : -1, p = Object(t); (r ? a-- : ++a < s) && n(p[a], a, p) !== !1; )
-      ;
     return t;
   };
 }
-var Ot = kt(Ct);
-const Pt = Ot;
-function Et(e) {
-  return typeof e == "function" ? e : ve;
+var Vt = Dt();
+const Bt = Vt;
+function It(e, t) {
+  return e && Bt(e, t, Pt);
 }
-function Bt(e, r) {
-  var t = W(e) ? Se : Pt;
-  return t(e, Et(r));
+function Mt(e, t) {
+  return function(r, s) {
+    if (r == null)
+      return r;
+    if (!re(r))
+      return e(r, s);
+    for (var o = r.length, a = t ? o : -1, n = Object(r); (t ? a-- : ++a < o) && s(n[a], a, n) !== !1; )
+      ;
+    return r;
+  };
 }
-const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label" }, Dt = /* @__PURE__ */ o("span", { class: "dj-accordion__header-icon" }, [
-  /* @__PURE__ */ o("svg", {
-    class: "button-icon",
-    viewBox: "0 0 15 15",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg"
+var Et = Mt(It);
+const Nt = Et;
+function Lt(e) {
+  return typeof e == "function" ? e : ke;
+}
+function zt(e, t) {
+  var r = ee(e) ? De : Nt;
+  return r(e, Lt(t));
+}
+const Ut = { class: "dj-accordion" }, Jt = { class: "dj-accordion__header-label" }, Rt = /* @__PURE__ */ l("span", { class: "dj-accordion__header-icon" }, [
+  /* @__PURE__ */ l("svg", {
+    class: "icon",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "32",
+    height: "32",
+    viewBox: "0 0 24 24"
   }, [
-    /* @__PURE__ */ o("path", {
-      d: "M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z",
+    /* @__PURE__ */ l("path", {
       fill: "currentColor",
-      "fill-rule": "evenodd",
-      "clip-rule": "evenodd"
+      d: "M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0"
     })
   ])
-], -1), Vt = { class: "dj-accordion__inner-content" }, Mt = g({
+], -1), Kt = { class: "dj-accordion__inner-content" }, Gt = h({
   name: "dj-accordion"
-}), Lt = /* @__PURE__ */ g({
-  ...Mt,
+}), Wt = /* @__PURE__ */ h({
+  ...Gt,
   props: {
     title: {
       type: String,
@@ -190,209 +189,261 @@ const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label"
     }
   },
   emits: ["update:modelValue", "change"],
-  setup(e, { emit: r }) {
-    const t = e;
-    ne(() => t.modelValue, (l) => {
-      l ? (a.wrapperStyle = {
-        transition: "background-color .25s"
-      }, s.value.style.display = "block", a.contentStyle = {
+  setup(e, { emit: t }) {
+    const r = e, s = t;
+    fe(() => r.modelValue, (c) => {
+      c ? (o.value.style.display = "block", a.contentStyle = {
         overflow: "hidden",
-        height: `${s.value.scrollHeight}px`,
+        height: `${o.value.scrollHeight}px`,
         willChange: "height",
         transition: "height .25s"
-      }) : (a.wrapperStyle = {
-        transition: "background-color .25s"
-      }, s.value.style.height = `${s.value.scrollHeight}px`, setTimeout(() => {
+      }) : (o.value.style.height = `${o.value.scrollHeight}px`, setTimeout(() => {
         a.contentStyle = {
           transition: "height .25s",
           willChange: "height",
           height: "0px",
           overflow: "hidden"
         };
-      }, 0)), n("change", l);
+      }, 0));
     });
-    const n = r, s = F(), a = O({
+    const o = I(), a = F({
       wrapperStyle: {},
       contentStyle: {}
-    }), p = () => {
-      n("update:modelValue", !t.modelValue);
-    }, y = () => {
-      t.modelValue ? (a.wrapperStyle = {}, s.value.style.display = "", a.contentStyle = {}) : (a.wrapperStyle = {}, a.contentStyle = {
+    }), n = () => {
+      s("change", !r.modelValue), s("update:modelValue", !r.modelValue);
+    }, g = () => {
+      r.modelValue ? (a.wrapperStyle = {}, o.value.style.display = "", a.contentStyle = {}) : (a.wrapperStyle = {}, a.contentStyle = {
         height: "0px",
         overflow: "hidden",
         display: "none"
       });
-    }, h = () => {
-      t.modelValue || (s.value.style.display = "none", s.value.style.height = "0", s.value.style.overflow = "hidden");
+    }, v = () => {
+      r.modelValue || (o.value.style.display = "none", o.value.style.height = "0", o.value.style.overflow = "hidden");
     };
-    return R(() => {
-      h();
-    }), (l, x) => (u(), d("div", It, [
-      o("div", {
-        class: m(["dj-accordion__wrapper", [t.modelValue ? "is-active" : ""]]),
-        style: S(a.wrapperStyle)
+    return H(() => {
+      v();
+    }), (c, $) => (f(), p("div", Ut, [
+      l("div", {
+        class: j(["dj-accordion__wrapper", [r.modelValue ? "is-active" : ""]]),
+        style: O(a.wrapperStyle)
       }, [
-        o("button", {
+        l("button", {
           class: "dj-accordion__header",
-          onClick: p
+          onClick: n
         }, [
-          o("span", Ft, [
-            _(l.$slots, "title", {}, () => [
-              j(v(t.title), 1)
+          l("span", Jt, [
+            m(c.$slots, "title", {}, () => [
+              x(T(r.title), 1)
             ])
           ]),
-          Dt
+          Rt
         ]),
-        o("div", {
+        l("div", {
           class: "dj-accordion__inner",
-          style: S(a.contentStyle),
+          style: O(a.contentStyle),
           ref_key: "DJAccordionInner",
-          ref: s,
-          onTransitionend: y
+          ref: o,
+          onTransitionend: g
         }, [
-          o("div", Vt, [
-            _(l.$slots, "default", {}, () => [
-              j(v(t.content), 1)
+          l("div", Kt, [
+            m(c.$slots, "default", {}, () => [
+              x(T(r.content), 1)
             ])
           ])
         ], 36)
       ], 6)
     ]));
   }
-}), Ut = { class: "dj-audio" }, Nt = { class: "dj-audio__wrapper" }, Jt = { class: "dj-audio-button__wrapper" }, Kt = {
+}), qt = { class: "dj-audio" }, Ht = { class: "dj-audio-button__wrapper" }, Xt = ["disabled"], Qt = {
   key: 0,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, zt = /* @__PURE__ */ o("path", {
+}, Yt = /* @__PURE__ */ l("path", {
   fill: "currentColor",
   stroke: "currentColor",
   "stroke-linecap": "round",
   "stroke-linejoin": "round",
   "stroke-width": "1.5",
   d: "M6.906 4.537A.6.6 0 0 0 6 5.053v13.894a.6.6 0 0 0 .906.516l11.723-6.947a.6.6 0 0 0 0-1.032z"
-}, null, -1), Gt = [
-  zt
-], Rt = {
+}, null, -1), Zt = [
+  Yt
+], er = {
   key: 1,
   xmlns: "http://www.w3.org/2000/svg",
   fill: "currentColor",
   class: "icon",
   viewBox: "0 0 32 32"
-}, qt = /* @__PURE__ */ o("path", {
+}, tr = /* @__PURE__ */ l("path", {
   fill: "currentColor",
   d: "M12 6h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm10 0h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
-}, null, -1), Ht = [
-  qt
-], Xt = { class: "dj-audio-progress__wrapper" }, Wt = { class: "dj-audio-progress__start-time" }, Zt = { class: "dj-audio-progress__inner" }, Qt = ["src"], Yt = ["src"], er = { class: "dj-audio-progress__end-time" }, tr = {
-  key: 0,
-  xmlns: "http://www.w3.org/2000/svg",
+}, null, -1), rr = [
+  tr
+], or = {
+  key: 1,
   class: "icon",
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "32",
+  height: "32",
   viewBox: "0 0 24 24"
-}, rr = /* @__PURE__ */ ae('<circle cx="18" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".67" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate></circle><circle cx="12" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin=".33" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate></circle><circle cx="6" cy="12" r="0" fill="currentColor"><animate attributeName="r" begin="0" calcMode="spline" dur="1.5s" keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8" repeatCount="indefinite" values="0;2;0;0"></animate></circle>', 3), nr = [
-  rr
-], or = { key: 1 }, sr = g({
+}, nr = /* @__PURE__ */ he('<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"></animate></path><path stroke-dasharray="30" stroke-dashoffset="30" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.3s" values="30;0"></animate></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 16v-7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"></animate></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 8.5l3.5 3.5M12 8.5l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"></animate></path></g>', 1), ar = [
+  nr
+], sr = { class: "dj-audio-progress__wrapper" }, ir = { class: "dj-audio-progress__start-time" }, lr = { class: "dj-audio-progress__inner" }, ur = ["src"], cr = ["src"], dr = { class: "dj-audio-progress__end-time" }, fr = h({
   name: "dj-audio"
-}), ar = /* @__PURE__ */ g({
-  ...sr,
+}), pr = /* @__PURE__ */ h({
+  ...fr,
   props: {
     src: {
       type: String,
       default: ""
+    },
+    autoplay: {
+      type: Boolean,
+      default: !1
+    },
+    loop: {
+      type: Boolean,
+      default: !1
+    },
+    muted: {
+      type: Boolean,
+      default: !1
     }
   },
-  emits: [],
-  setup(e, { emit: r }) {
-    const t = F(), n = O({
-      loading: !0,
-      state: !1,
+  emits: ["loadedmetadata", "play", "pause", "canplay", "playing", "progress", "timeupdate", "seeked", "waiting", "ended"],
+  setup(e, { expose: t, emit: r }) {
+    const s = e, o = I(), a = r, n = F({
+      waiting: !0,
+      paused: !0,
       isDragProgress: !1,
+      volume: 1,
       progress: 0,
       buffered: 0,
       currentTime: "00:00",
       duration: "00:00"
-    }), s = (c) => {
-      var f = Math.floor(c % 3600 / 60), b = Math.floor(c % 3600 % 60), L = f > 0 ? f < 10 ? "0" + f : f : "00", re = b > 0 ? b < 10 ? "0" + b : b : "00";
-      return L + ":" + re;
-    }, a = () => {
-      t.value.play();
-    }, p = () => {
-      t.value.pause();
-    }, y = () => {
-      n.state = !n.state, n.state ? a() : p();
-    }, h = () => {
-      n.duration = s(t.value.duration), n.loading = !1;
-    }, l = (c, f) => f / c * 100, x = () => {
-      t.value.volume = 0.3;
+    }), g = (i) => {
+      var d = Math.floor(i % 3600 / 60), _ = Math.floor(i % 3600 % 60), w = d > 0 ? d < 10 ? "0" + d : d : "00", de = _ > 0 ? _ < 10 ? "0" + _ : _ : "00";
+      return w + ":" + de;
+    }, v = (i, d) => d / i * 100, c = () => {
+      o.value.play();
+    }, $ = () => {
+      o.value.pause();
     }, P = () => {
-      var c = t.value.buffered;
-      n.buffered = c.end(c.length - 1) / t.value.duration * 100;
-    }, E = () => {
-      n.currentTime = s(t.value.currentTime), n.isDragProgress || (n.progress = l(t.value.duration, t.value.currentTime));
-    }, A = () => {
-      n.state = !1;
-    }, B = () => {
-      t.value.currentTime = n.progress / 100 * t.value.duration, console.log(t.value.currentTime), n.isDragProgress = !1;
+      n.paused = !n.paused, n.paused ? $() : c();
+    }, b = (i) => {
+      var d;
+      n.duration = g((d = o.value) == null ? void 0 : d.duration), n.waiting = !1, a("loadedmetadata", i);
+    }, S = (i) => {
+      n.waiting = !1, a("canplay", i);
+    }, M = (i) => {
+      n.paused = !1, o.value.volume = n.volume = 0.5, a("play", i);
+    }, D = (i) => {
+      a("pause", i), n.paused = !0;
+    }, y = (i) => {
+      a("playing", i);
+    }, U = (i) => {
+      var _, w;
+      var d = (_ = o.value) == null ? void 0 : _.buffered;
+      n.buffered = parseFloat((d.end(d.length - 1) / ((w = o.value) == null ? void 0 : w.duration) * 100).toFixed(2)), a("progress", i);
+    }, se = (i) => {
+      var d, _, w;
+      n.currentTime = g((d = o.value) == null ? void 0 : d.currentTime), n.isDragProgress || (n.progress = parseFloat(v((_ = o.value) == null ? void 0 : _.duration, (w = o.value) == null ? void 0 : w.currentTime).toFixed(2))), a("timeupdate", n.progress, i);
+    }, ie = (i) => {
+      a("seeked", i);
+    }, le = (i) => {
+      n.waiting = !0, a("waiting", i);
+    }, ue = (i) => {
+      n.paused = !0, a("ended", i);
+    }, ce = () => {
+      var i;
+      o.value.currentTime = n.progress / 100 * ((i = o.value) == null ? void 0 : i.duration), n.isDragProgress = !1;
     };
-    return (c, f) => (u(), d("div", Ut, [
-      o("div", Nt, [
-        o("div", Jt, [
-          o("button", {
+    return t({
+      src: s.src,
+      autoplay: s.autoplay,
+      loop: s.loop,
+      muted: s.muted,
+      paused: () => n.paused,
+      volume: () => n.volume,
+      progress: () => n.progress,
+      buffered: () => n.buffered,
+      currentTime: () => {
+        var i;
+        return (i = o.value) == null ? void 0 : i.currentTime;
+      },
+      duration: () => {
+        var i;
+        return (i = o.value) == null ? void 0 : i.duration;
+      },
+      play: c,
+      pause: $
+    }), (i, d) => (f(), p("div", qt, [
+      l("div", {
+        class: j(["dj-audio__wrapper", [n.paused ? "" : "is-play"]])
+      }, [
+        l("div", Ht, [
+          l("button", {
             class: "dj-audio-button__play",
-            onClick: y
+            disabled: n.waiting,
+            onClick: P
           }, [
-            n.state ? (u(), d("svg", Rt, Ht)) : (u(), d("svg", Kt, Gt))
-          ])
+            n.waiting ? (f(), p("svg", or, ar)) : (f(), p(X, { key: 0 }, [
+              n.paused ? (f(), p("svg", Qt, Zt)) : (f(), p("svg", er, rr))
+            ], 64))
+          ], 8, Xt)
         ]),
-        o("div", Xt, [
-          o("span", Wt, v(n.currentTime), 1),
-          o("div", Zt, [
-            o("audio", {
+        l("div", sr, [
+          l("span", ir, T(n.currentTime), 1),
+          l("div", lr, [
+            l("audio", {
               class: "dj-audio-process__audio",
               ref_key: "audioRef",
-              ref: t,
+              ref: o,
               preload: "auto",
-              onLoadedmetadata: h,
-              onProgress: P,
-              onPlaying: x,
-              onTimeupdate: E,
-              onEnded: A
+              onLoadedmetadata: b,
+              onProgress: U,
+              onCanplay: S,
+              onPlay: M,
+              onPlaying: y,
+              onPause: D,
+              onTimeupdate: se,
+              onSeeked: ie,
+              onWaiting: le,
+              onEnded: ue
             }, [
-              o("source", {
+              l("source", {
                 type: "audio/ogg",
                 src: e.src
-              }, null, 8, Qt),
-              o("source", {
+              }, null, 8, ur),
+              l("source", {
                 type: "audio/mpeg",
                 src: e.src
-              }, null, 8, Yt)
+              }, null, 8, cr)
             ], 544),
-            o("div", {
+            l("div", {
               class: "dj-audio-buffered__bar",
-              style: S({ "--buffer-value": `${n.buffered}%` })
+              style: O({ "--buffer-value": `${n.buffered}%` })
             }, null, 4),
-            oe(o("input", {
+            pe(l("input", {
               type: "range",
-              style: S({ "--progress-value": `${n.progress}%` }),
-              "onUpdate:modelValue": f[0] || (f[0] = (b) => n.progress = b),
-              onMousedown: f[1] || (f[1] = (b) => n.isDragProgress = !0),
-              onMouseup: B
+              style: O({ "--progress-value": `${n.progress}%` }),
+              "onUpdate:modelValue": d[0] || (d[0] = (_) => n.progress = _),
+              onMousedown: d[1] || (d[1] = (_) => n.isDragProgress = !0),
+              onMouseup: ce
             }, null, 36), [
-              [se, n.progress]
+              [ge, n.progress]
             ])
           ]),
-          o("span", er, [
-            n.loading ? (u(), d("svg", tr, nr)) : (u(), d("span", or, v(n.duration), 1))
-          ])
+          l("span", dr, T(n.duration), 1)
         ])
-      ])
+      ], 2)
     ]));
   }
-}), ir = (e) => {
+}), gr = (e) => {
   e = e.replace("#", "");
-  const r = [
+  const t = [
     parseInt(e.substr(0, 2), 16),
     // 红色通道值
     parseInt(e.substr(2, 2), 16),
@@ -400,11 +451,11 @@ const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label"
     parseInt(e.substr(4, 2), 16)
     // 蓝色通道值
   ];
-  return (0.299 * r[0] + 0.587 * r[1] + 0.114 * r[2]) / 255 <= 0.5;
-}, cr = { class: "dj-button-inner" }, lr = g({
+  return (0.299 * t[0] + 0.587 * t[1] + 0.114 * t[2]) / 255 <= 0.5;
+}, hr = { class: "dj-button-inner" }, yr = h({
   name: "dj-button"
-}), ur = /* @__PURE__ */ g({
-  ...lr,
+}), _r = /* @__PURE__ */ h({
+  ...yr,
   props: {
     type: {
       type: String,
@@ -421,36 +472,36 @@ const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    return (r, t) => (u(), d("button", {
-      class: m(["dj-button", [e.type]]),
-      style: S({ "--custom-background-color": e.color, "--custom-text-color": e.color ? C(ir)(e.color) ? "var(--white)" : "var(--black)" : "" })
+    return (t, r) => (f(), p("button", {
+      class: j(["dj-button", [e.type]]),
+      style: O({ "--custom-background-color": e.color, "--custom-text-color": e.color ? V(gr)(e.color) ? "var(--white)" : "var(--black)" : "" })
     }, [
-      o("span", cr, [
-        _(r.$slots, "default", {}, () => [
-          j(v(e.text), 1)
+      l("span", hr, [
+        m(t.$slots, "default", {}, () => [
+          x(T(e.text), 1)
         ])
       ])
     ], 6));
   }
-}), dr = { class: "dj-button-group" }, pr = g({
+}), br = { class: "dj-button-group" }, vr = h({
   name: "dj-button-group"
-}), fr = /* @__PURE__ */ g({
-  ...pr,
+}), mr = /* @__PURE__ */ h({
+  ...vr,
   setup(e) {
-    return (r, t) => (u(), d("div", dr, [
-      _(r.$slots, "default")
+    return (t, r) => (f(), p("div", br, [
+      m(t.$slots, "default")
     ]));
   }
-}), gr = {
+}), jr = {
   key: 0,
   class: "dj-card-header"
-}, yr = { class: "dj-card-body" }, hr = {
+}, wr = { class: "dj-card-body" }, Tr = {
   key: 1,
   class: "dj-card-footer"
-}, _r = g({
+}, $r = h({
   name: "dj-card"
-}), br = /* @__PURE__ */ g({
-  ..._r,
+}), xr = /* @__PURE__ */ h({
+  ...$r,
   props: {
     align: {
       type: String,
@@ -466,34 +517,34 @@ const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    const r = e, t = D(), n = O({
+    const t = e, r = N(), s = F({
       showTitle: !0,
       showFooter: !0
     });
-    return R(() => {
-      n.showTitle = (r.title || t.header) !== void 0, n.showFooter = (r.footer || t.footer) !== void 0;
-    }), (s, a) => (u(), d("div", {
-      class: m(["dj-card", [e.align]])
+    return H(() => {
+      s.showTitle = (t.title || r.header) !== void 0, s.showFooter = (t.footer || r.footer) !== void 0;
+    }), (o, a) => (f(), p("div", {
+      class: j(["dj-card", [e.align]])
     }, [
-      n.showTitle ? (u(), d("div", gr, [
-        _(s.$slots, "header", {}, () => [
-          j(v(e.title), 1)
+      s.showTitle ? (f(), p("div", jr, [
+        m(o.$slots, "header", {}, () => [
+          x(T(e.title), 1)
         ])
-      ])) : T("", !0),
-      o("div", yr, [
-        _(s.$slots, "default")
+      ])) : C("", !0),
+      l("div", wr, [
+        m(o.$slots, "default")
       ]),
-      n.showFooter ? (u(), d("div", hr, [
-        _(s.$slots, "footer", {}, () => [
-          j(v(e.footer), 1)
+      s.showFooter ? (f(), p("div", Tr, [
+        m(o.$slots, "footer", {}, () => [
+          x(T(e.footer), 1)
         ])
-      ])) : T("", !0)
+      ])) : C("", !0)
     ], 2));
   }
-}), vr = { class: "dj-divider" }, mr = g({
+}), Sr = { class: "dj-divider" }, kr = h({
   name: "dj-divider"
-}), jr = /* @__PURE__ */ g({
-  ...mr,
+}), Cr = /* @__PURE__ */ h({
+  ...kr,
   props: {
     text: {
       type: String,
@@ -506,28 +557,21 @@ const It = { class: "dj-accordion" }, Ft = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    const r = D();
-    return (t, n) => (u(), d("div", vr, [
-      o("div", {
-        class: m(["dj-divider-inner", ["dj-divider-inner--" + e.type]])
+    const t = N();
+    return (r, s) => (f(), p("div", Sr, [
+      l("div", {
+        class: j(["dj-divider-inner", ["dj-divider-inner--" + e.type]])
       }, [
-        C(r).default ? _(t.$slots, "default", { key: 0 }) : (u(), d(ie, { key: 1 }, [
-          j(v(e.text), 1)
+        V(t).default ? m(r.$slots, "default", { key: 0 }) : (f(), p(X, { key: 1 }, [
+          x(T(e.text), 1)
         ], 64))
       ], 2)
     ]));
   }
-}), wr = "useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";
-let Tr = (e = 21) => {
-  let r = "", t = crypto.getRandomValues(new Uint8Array(e));
-  for (; e--; )
-    r += wr[t[e] & 63];
-  return r;
-};
-const $r = ["id"], Sr = {
+}), Ar = {
   key: 0,
   class: "dj-input__prefix"
-}, xr = { class: "dj-input__prefix__inner" }, Ar = ["id", "placeholder", "enterkeyhint", "disabled", "value"], Cr = /* @__PURE__ */ o("svg", {
+}, Or = { class: "dj-input__prefix__inner" }, Fr = ["id", "placeholder", "enterkeyhint", "disabled", "value"], Pr = /* @__PURE__ */ l("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   width: "16",
   height: "16",
@@ -535,16 +579,16 @@ const $r = ["id"], Sr = {
   class: "bi bi-x-circle-fill icon",
   viewBox: "0 0 16 16"
 }, [
-  /* @__PURE__ */ o("path", { d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" })
-], -1), kr = [
-  Cr
-], Or = {
+  /* @__PURE__ */ l("path", { d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" })
+], -1), Dr = [
+  Pr
+], Vr = {
   key: 2,
   class: "dj-input__suffix"
-}, Pr = { class: "dj-input__suffix__inner" }, Er = g({
+}, Br = { class: "dj-input__suffix__inner" }, Ir = h({
   name: "dj-input"
-}), Br = /* @__PURE__ */ g({
-  ...Er,
+}), Mr = /* @__PURE__ */ h({
+  ...Ir,
   props: {
     id: {
       type: String,
@@ -571,85 +615,157 @@ const $r = ["id"], Sr = {
       default: ""
     }
   },
-  emits: ["update:modelValue", "keyup.enter", "change", "input", "focus", "blur", "clear"],
-  setup(e, { expose: r, emit: t }) {
-    const n = t, s = D(), a = F(Tr()), p = O({
+  emits: ["update:modelValue", "input", "change", "keyup.enter", "focus", "blur", "clear"],
+  setup(e, { expose: t, emit: r }) {
+    const s = e, o = r, a = N(), n = I(), g = F({
       focus: !1,
       active: !1
-    }), y = () => {
-      const c = document.getElementById(a.value);
-      c == null || c.focus();
-    }, h = (c) => {
-      const f = document.getElementById(c);
-      f == null || f.blur();
-    }, l = (c) => {
-      n("change", c.target.value);
-    }, x = (c) => {
-      n("input", c.target.value), n("update:modelValue", c.target.value);
-    }, P = () => {
-      p.focus = !0, n("focus");
-    }, E = () => {
-      p.focus = !1, n("blur");
-    }, A = () => {
-      n("clear", void 0), n("update:modelValue", void 0);
-    }, B = () => {
-      n("keyup.enter");
+    }), v = (y) => {
+      o("input", y.target.value), o("update:modelValue", y.target.value);
+    }, c = (y) => {
+      o("change", y.target.value);
+    }, $ = (y) => {
+      g.focus = !0, o("focus", y);
+    }, P = (y) => {
+      g.focus = !1, o("blur", y);
+    }, b = (y) => {
+      o("keyup.enter", y);
+    }, S = () => {
+      n.value.focus();
+    }, M = () => {
+      n.value.blur();
+    }, D = () => {
+      o("clear", void 0), o("update:modelValue", "");
     };
-    return r({ focus: y, blur: h, clear: A }), (c, f) => (u(), d("div", {
-      class: m(["dj-input", [e.disabled ? "is-disabled" : ""]])
+    return t({ focus: S, blur: M, clear: D }), (y, U) => (f(), p("div", {
+      class: j(["dj-input", [e.disabled ? "is-disabled" : ""]])
     }, [
-      o("div", {
-        id: a.value,
-        class: m(["dj-input__wrapper", [p.focus ? "is-focus" : ""]]),
-        onClick: y
+      l("div", {
+        class: j(["dj-input__wrapper", [g.focus ? "is-focus" : ""]]),
+        onClick: S
       }, [
-        C(s)["prefix-icon"] ? (u(), d("span", Sr, [
-          o("span", xr, [
-            _(c.$slots, "prefix-icon")
+        V(a)["prefix-icon"] ? (f(), p("span", Ar, [
+          l("span", Or, [
+            m(y.$slots, "prefix-icon")
           ])
-        ])) : T("", !0),
-        o("input", {
+        ])) : C("", !0),
+        l("input", {
           id: e.id,
+          ref_key: "DjInputRef",
+          ref: n,
           class: "dj-input__inner",
           placeholder: e.placeholder,
           enterkeyhint: e.enterkeyhint,
           disabled: e.disabled,
           value: e.modelValue,
-          onChange: l,
-          onInput: x,
-          onFocus: P,
-          onFocusout: E,
-          onKeyup: ce(B, ["enter", "native"])
-        }, null, 40, Ar),
-        e.clear && e.modelValue ? (u(), d("div", {
+          onChange: c,
+          onInput: v,
+          onFocus: $,
+          onFocusout: P,
+          onKeyup: ye(b, ["enter", "native"])
+        }, null, 40, Fr),
+        s.clear && e.modelValue ? (f(), p("div", {
           key: 1,
           class: "dj-input__clear",
-          onClick: A
-        }, kr)) : T("", !0),
-        C(s)["suffix-icon"] ? (u(), d("span", Or, [
-          o("span", Pr, [
-            _(c.$slots, "suffix-icon")
+          onClick: D
+        }, Dr)) : C("", !0),
+        V(a)["suffix-icon"] ? (f(), p("span", Vr, [
+          l("span", Br, [
+            m(y.$slots, "suffix-icon")
           ])
-        ])) : T("", !0)
-      ], 10, $r)
+        ])) : C("", !0)
+      ], 2)
     ], 2));
   }
-}), Ir = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), Er = ["id", "rows", "cols", "placeholder", "disabled", "value"], Nr = h({
+  name: "dj-textarea"
+}), Lr = /* @__PURE__ */ h({
+  ...Nr,
+  props: {
+    id: {
+      type: String,
+      default: ""
+    },
+    disabled: {
+      type: Boolean,
+      default: !1
+    },
+    placeholder: {
+      type: String,
+      default: ""
+    },
+    rows: {
+      type: Number,
+      default: 3
+    },
+    cols: {
+      type: Number,
+      default: 5
+    },
+    modelValue: {
+      type: String,
+      default: ""
+    }
+  },
+  emits: ["update:modelValue", "input", "change", "focus", "blur"],
+  setup(e, { expose: t, emit: r }) {
+    const s = r, o = I(), a = F({
+      focus: !1,
+      active: !1
+    }), n = (b) => {
+      s("input", b);
+    }, g = (b) => {
+      s("change", b), s("update:modelValue", b.target.value);
+    }, v = (b) => {
+      a.focus = !0, s("focus", b);
+    }, c = (b) => {
+      a.focus = !1, s("blur", b);
+    };
+    return t({ focus: () => {
+      o.value.focus();
+    }, blur: () => {
+      o.value.blur();
+    } }), (b, S) => (f(), p("div", {
+      class: j(["dj-textarea", [e.disabled ? "is-disabled" : ""]])
+    }, [
+      l("div", {
+        class: j(["dj-textarea__wrapper", [a.focus ? "is-focus" : ""]])
+      }, [
+        l("textarea", {
+          id: e.id,
+          ref_key: "DjTextareaRef",
+          ref: o,
+          class: "dj-textarea__inner",
+          rows: e.rows,
+          cols: e.cols,
+          placeholder: e.placeholder,
+          disabled: e.disabled,
+          value: e.modelValue,
+          onInput: g,
+          onChange: n,
+          onFocus: v,
+          onFocusout: c
+        }, null, 40, Er)
+      ], 2)
+    ], 2));
+  }
+}), zr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  DJAccordion: Lt,
-  DJAudio: ar,
-  DJButton: ur,
-  DJButtonGroup: fr,
-  DJCard: br,
-  DJDivider: jr,
-  DJInput: Br
-}, Symbol.toStringTag, { value: "Module" })), Dr = {
+  DJAccordion: Wt,
+  DJAudio: pr,
+  DJButton: _r,
+  DJButtonGroup: mr,
+  DJCard: xr,
+  DJDivider: Cr,
+  DJInput: Mr,
+  DJTextarea: Lr
+}, Symbol.toStringTag, { value: "Module" })), Jr = {
   install(e) {
-    Bt(Ir, (r) => {
-      e.component(r.name, r);
+    zt(zr, (t) => {
+      e.component(t.name, t);
     });
   }
 };
 export {
-  Dr as default
+  Jr as default
 };
