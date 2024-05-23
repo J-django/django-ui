@@ -2,6 +2,7 @@
 // plugins
 import { ref } from "vue";
 import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
+import VideoSrc from '@/assets/video/20600550-uhd_3840_2160_30fps.mp4'
 
 // script
 const accordion = ref(false);
@@ -10,6 +11,9 @@ const content = ref();
 
 <template>
     <div class="layout">
+        <div class="line">
+            <dj-video :src="VideoSrc" width="auto" height="auto" />
+        </div>
         <div class="line">
             <dj-button disabled>Default</dj-button>
             <dj-button type="primary">Primary</dj-button>
@@ -115,10 +119,10 @@ const content = ref();
             </dj-input>
         </div>
         <div class="line">
-            <dj-audio :src="AudioSrc" ref="djAudioRef" />
+            <dj-textarea placeholder="Please Input" v-model="content" />
         </div>
         <div class="line">
-            <dj-textarea placeholder="Please Input" v-model="content" />
+            <dj-audio :src="AudioSrc" ref="djAudioRef" />
         </div>
     </div>
 </template>
@@ -129,6 +133,8 @@ const content = ref();
     flex-direction: column;
 
     .line {
+        padding-left: rem(8px);
+        padding-right: rem(8px);
         margin-bottom: rem(8px);
         padding-bottom: rem(8px);
         width: 100%;

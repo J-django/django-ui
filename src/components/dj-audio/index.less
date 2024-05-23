@@ -87,16 +87,18 @@
 
       .dj-audio-progress__start-time,
       .dj-audio-progress__end-time {
-        color: transparent;
         flex-shrink: 0;
         display: inline-flex;
         justify-content: center;
         min-width: 40px;
+        color: rgba(60, 60, 67, 0.75);
         font-size: 12px;
         font-weight: 500;
         line-height: 1;
         will-change: color, opacity;
+        opacity: 0;
         animation: progressTimeAnimation @progressTime 1 forwards;
+        transition: opacity 0.25s;
         z-index: 20;
       }
 
@@ -192,6 +194,6 @@
 
 @keyframes progressTimeAnimation {
   100% {
-    color: rgba(60, 60, 67, 0.75);
+    opacity: 1;
   }
 }

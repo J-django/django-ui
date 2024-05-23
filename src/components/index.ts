@@ -5,9 +5,8 @@ import DJButtonGroup from './dj-button-group'
 import DJCard from './dj-card'
 import DJDivider from './dj-divider'
 import DJInput from './dj-input'
-// import DJSelect from './dj-select/index.vue'
 import DJTextarea from './dj-textarea'
-// import DJVideo from './dj-video/index.vue'
+import DJVideo from './dj-video/index.vue'
 
 
 export {
@@ -18,7 +17,6 @@ export {
     DJCard,
     DJDivider,
     DJInput,
-    // DJSelect,
     DJTextarea,
-    // DJVideo
+    DJVideo
 }

@@ -2,6 +2,7 @@
 // plugins
 import "./index.less"
 import { ref, reactive } from 'vue'
+import { formatSongsTime, formatProgress } from "@/utils/tool"
 
 // script
 const props = defineProps({
@@ -39,31 +40,6 @@ const audioConfig = reactive({
 })
 
 /**
- * 格式化音频时间
- * @param duration 
- */
-const formatSongsTime = (duration: any) => {
-    var m = Math.floor(duration % 3600 / 60);
-    var s = Math.floor(duration % 3600 % 60);
-
-    var mDisplay = m > 0 ? (m < 10 ? "0" + m : m) : "00";
-    var sDisplay = s > 0 ? (s < 10 ? "0" + s : s) : "00";
-
-    return mDisplay + ":" + sDisplay;
-};
-
-/**
- * 格式化播放进度
- * @param duration 
- * @param currentTime 
- */
-const formatProgress = (duration: any, currentTime: any) => {
-    const percentage: any = currentTime / duration;
-    const currentProgress = percentage * 100;
-    return currentProgress;
-};
-
-/**
  * 播放
  */
 const play = () => {
@@ -91,7 +67,7 @@ const audioSwitch = () => {
  * @param event Event
  * @returns
  */
-const progressLoadedMetaDataChange = (event: Event) => {
+const audioLoadedMetaDataChange = (event: Event) => {
     audioConfig.duration = formatSongsTime(audioRef.value?.duration)
     audioConfig.waiting = false;
     emits("loadedmetadata", event)
@@ -101,7 +77,7 @@ const progressLoadedMetaDataChange = (event: Event) => {
  * 可以开始播放时触发
  * @param event Event
  */
-const progressCanplayChange = (event: Event) => {
+const audioCanplayChange = (event: Event) => {
     audioConfig.waiting = false;
     emits("canplay", event)
 }
@@ -110,7 +86,7 @@ const progressCanplayChange = (event: Event) => {
  * 调用play()方法后触发
  * @param event Event
  */
-const progressPlayChange = (event: Event) => {
+const audioPlayChange = (event: Event) => {
     audioConfig.paused = false;
     audioRef.value.volume = audioConfig.volume = 0.5;
     emits("play", event)
@@ -120,7 +96,7 @@ const progressPlayChange = (event: Event) => {
  * 播放暂停触发
  * @param event Event
  */
-const progressPauseChange = (event: Event) => {
+const audioPauseChange = (event: Event) => {
     emits("pause", event)
     audioConfig.paused = true;
 }
@@ -129,7 +105,7 @@ const progressPauseChange = (event: Event) => {
  * 开始播放后触发
  * @param event Event
  */
-const progressPlayingChange = (event: Event) => {
+const audioPlayingChange = (event: Event) => {
     emits("playing", event)
 }
 
@@ -137,7 +113,7 @@ const progressPlayingChange = (event: Event) => {
  * 进度改变时触发
  * @param event Event
  */
-const progressChange = (event: Event) => {
+const audioProgressChange = (event: Event) => {
     var bufferedTime = audioRef.value?.buffered;
     audioConfig.buffered = parseFloat((bufferedTime.end(bufferedTime.length - 1) / audioRef.value?.duration * 100).toFixed(2));
     emits("progress", event)
@@ -147,7 +123,7 @@ const progressChange = (event: Event) => {
  * 播放中触发
  * @param event Event
  */
-const progressTimeUpdateChange = (event: Event) => {
+const audioTimeUpdateChange = (event: Event) => {
     audioConfig.currentTime = formatSongsTime(audioRef.value?.currentTime);
     if (!audioConfig.isDragProgress) audioConfig.progress = parseFloat(formatProgress(audioRef.value?.duration, audioRef.value?.currentTime).toFixed(2));
     emits("timeupdate", audioConfig.progress, event)
@@ -157,7 +133,7 @@ const progressTimeUpdateChange = (event: Event) => {
  * 音频位置发生改变后触发
  * @param event Event
  */
-const progressSeekedChange = (event: Event) => {
+const audioSeekedChange = (event: Event) => {
     emits("seeked", event)
 }
 
@@ -165,7 +141,7 @@ const progressSeekedChange = (event: Event) => {
  * 缓冲暂停播放时触发
  * @param event Event
  */
-const progressWaitingChange = (event: Event) => {
+const audioWaitingChange = (event: Event) => {
     audioConfig.waiting = true;
     emits("waiting", event)
 }
@@ -174,7 +150,7 @@ const progressWaitingChange = (event: Event) => {
  * 播放结束时触发
  * @param event Event
  */
-const progressEndedChange = (event: Event) => {
+const audioEndedChange = (event: Event) => {
     audioConfig.paused = true;
     emits("ended", event)
 }
@@ -210,10 +186,9 @@ defineExpose({
                 <button class="dj-audio-button__play" :disabled="audioConfig.waiting" @click="audioSwitch">
                     <template v-if="!audioConfig.waiting">
                         <svg v-if="audioConfig.paused" class="icon" xmlns="http://www.w3.org/2000/svg" width="32"
-                            height="32" viewBox="0 0 24 24">
-                            <path fill="currentColor" stroke="currentColor" stroke-linecap="round"
-                                stroke-linejoin="round" stroke-width="1.5"
-                                d="M6.906 4.537A.6.6 0 0 0 6 5.053v13.894a.6.6 0 0 0 .906.516l11.723-6.947a.6.6 0 0 0 0-1.032z" />
+                            height="32" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                d="M133 440a35.37 35.37 0 0 1-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0 1 35.77.45l247.85 148.36a36 36 0 0 1 0 61l-247.89 148.4A35.5 35.5 0 0 1 133 440" />
                         </svg>
                         <svg v-else xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon"
                             viewBox="0 0 32 32">
@@ -251,10 +226,10 @@ defineExpose({
                 <span class="dj-audio-progress__start-time">{{ audioConfig.currentTime }}</span>
                 <div class="dj-audio-progress__inner">
                     <audio class="dj-audio-process__audio" ref="audioRef" preload="auto"
-                        @loadedmetadata="progressLoadedMetaDataChange" @progress="progressChange"
-                        @canplay="progressCanplayChange" @play="progressPlayChange" @playing="progressPlayingChange"
-                        @pause="progressPauseChange" @timeupdate="progressTimeUpdateChange"
-                        @seeked="progressSeekedChange" @waiting="progressWaitingChange" @ended="progressEndedChange">
+                        @loadedmetadata="audioLoadedMetaDataChange" @progress="audioProgressChange"
+                        @canplay="audioCanplayChange" @play="audioPlayChange" @playing="audioPlayingChange"
+                        @pause="audioPauseChange" @timeupdate="audioTimeUpdateChange" @seeked="audioSeekedChange"
+                        @waiting="audioWaitingChange" @ended="audioEndedChange">
                         <source type="audio/ogg" :src="src">
                         <source type="audio/mpeg" :src="src">
                     </audio>
