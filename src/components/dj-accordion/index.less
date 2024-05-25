@@ -1,34 +1,44 @@
 .dj-accordion {
+  --dj-accordion-header-padding: rem(7px) rem(10px);
+  --dj-accordion-content-padding: rem(0) rem(10px) rem(10px) rem(10px);
+  --dj-accordion-header-color: #3c3c43;
   --dj-accordion-background-color: #f1f1f2;
   --dj-accordion-border-color: #e5e5e5;
   --dj-accordion-border-focus-color: rgba(60, 60, 67, 0.33);
+  --dj-accordion-border-radius: rem(6px);
 
   .dj-accordion__wrapper {
-    border-radius: var(--border-radius);
+    border-radius: var(--dj-accordion-border-radius);
     background-color: var(--dj-accordion-background-color);
     transition: box-shadow 0.25s;
 
     &:hover {
-      box-shadow: 0 0 0 1px var(--dj-accordion-border-color) inset;
+      box-shadow: 0 0 0 rem(1px) var(--dj-accordion-border-color) inset;
     }
 
     .dj-accordion__header {
+      -webkit-appearance: none;
       appearance: none;
-      padding: 7px 10px;
+      touch-action: manipulation;
+      padding: var(--dj-accordion-header-padding);
       width: 100%;
-      color: var(--black);
-      font-size: 14px;
-      font-weight: 500;
+      min-height: rem(34px);
+      color: var(--dj-accordion-header-color);
+      font-size: rem(14px);
+      font-family: inherit;
+      font-weight: 600;
       text-align: left;
       border: none;
-      background-color: transparent;
+      background: none;
       display: flex;
       -webkit-box-align: center;
       align-items: center;
+      cursor: pointer;
       transition: color 0.25s;
 
       .dj-accordion__header-label {
         color: inherit;
+        font-family: inherit;
         flex-grow: 1;
         flex-shrink: 1;
         flex-basis: 0%;
@@ -39,8 +49,8 @@
       }
 
       .dj-accordion__header-icon {
-        @size: 20px;
-        margin-left: 1rem;
+        @size: rem(20px);
+        margin-left: rem(16px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -56,15 +66,17 @@
 
     .dj-accordion__inner {
       .dj-accordion__inner-content {
-        padding: 0 10px 10px 10px;
+        padding: var(--dj-accordion-content-padding);
         line-height: 1.5;
-        font-size: 14px;
+        color: var(--dj-accordion-header-color);
+        font-size: rem(14px);
+        font-family: inherit;
       }
     }
   }
 
   .dj-accordion__wrapper.is-active {
-    box-shadow: 0 0 0 1px var(--dj-accordion-border-focus-color) inset;
+    box-shadow: 0 0 0 rem(1px) var(--dj-accordion-border-focus-color) inset;
 
     .dj-accordion__header {
       .dj-accordion__header-icon {

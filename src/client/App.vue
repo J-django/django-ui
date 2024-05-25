@@ -133,8 +133,6 @@ const content = ref();
     flex-direction: column;
 
     .line {
-        padding-left: rem(8px);
-        padding-right: rem(8px);
         margin-bottom: rem(8px);
         padding-bottom: rem(8px);
         width: 100%;

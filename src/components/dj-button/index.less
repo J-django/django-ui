@@ -1,30 +1,36 @@
 .dj-button {
-  --border-radius: 0.25rem;
+  --dj-button-black-color: #3c3c43;
+  --dj-button-padding: rem(2px) rem(12px);
+  --dj-button-height: rem(34px);
+  --dj-button-font-size: rem(14px);
   --dj-button-background-color: #f1f1f2;
+  --dj-button-border-radius: rem(4px);
+  @dj-button-color: var(--dj-button-black-color);
+  @dj-button-background-color: var(--dj-button-background-color);
+  -webkit-appearance: none;
+  appearance: none;
+  touch-action: manipulation;
+  border: 0;
+  padding: var(--dj-button-padding);
+  margin: 0;
+  position: relative;
+  height: var(--dj-button-height);
+  line-height: 1;
+  color: var(--custom-text-color, @dj-button-color);
+  font-size: var(--dj-button-font-size);
+  font-family: inherit;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  appearance: none;
-  padding: 0 1.125rem;
-  margin: 0;
-  position: relative;
-  height: 2.25rem;
-  text-align: left;
-  text-decoration: none;
-  line-height: 1;
-  font-size: 14px;
-  color: var(--custom-text-color, var(--black));
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  -webkit-tap-highlight-color: transparent;
-  white-space: nowrap;
+  background-color: var(--custom-background-color, @dj-button-background-color);
+  background-image: none;
+  border-radius: var(--dj-button-border-radius);
   cursor: pointer;
-  border-radius: var(--border-radius);
-  background-color: var(
-    --custom-background-color,
-    var(--dj-button-background-color)
-  );
   transition: opacity 0.25s, color 0.25s;
+  box-sizing: border-box;
 
   &:disabled {
     cursor: not-allowed;
@@ -55,23 +61,31 @@
 }
 
 .dj-button.primary {
-  background-color: var(--blue);
-  color: var(--white);
+  --dj-button-primary-color: #0d6efd;
+  --dj-button-white-color: #ffffff;
+  background-color: var(--dj-button-primary-color);
+  color: var(--dj-button-white-color);
 }
 
 .dj-button.success {
-  background-color: var(--green);
-  color: var(--white);
+  --dj-button-success-color: #00ad7c;
+  --dj-button-white-color: #ffffff;
+  background-color: var(--dj-button-success-color);
+  color: var(--dj-button-white-color);
 }
 
 .dj-button.warning {
-  background-color: var(--orange);
-  color: var(--white);
+  --dj-button-warning-color: #fd7e14;
+  --dj-button-white-color: #ffffff;
+  background-color: var(--dj-button-warning-color);
+  color: var(--dj-button-white-color);
 }
 
 .dj-button.danger {
-  background-color: var(--red);
-  color: var(--white);
+  --dj-button-danger-color: #ee2b47;
+  --dj-button-white-color: #ffffff;
+  background-color: var(--dj-button-danger-color);
+  color: var(--dj-button-white-color);
 }
 
 .dj-button + .dj-button {

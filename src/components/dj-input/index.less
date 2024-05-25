@@ -1,19 +1,24 @@
 .dj-input {
-  --dj-input-height: 34px;
-  --dj-input-background-color: #f1f1f2;
-  --dj-input-focus-border-color: rgba(60, 60, 67, 0.33);
-  --dj-input-placeholder-color: rgba(60, 60, 67, 0.75);
+  --dj-input-height: rem(34px);
+  --dj-input-padding: rem(1px) rem(10px);
+  --dj-input-color: #3c3c43;
   --dj-input-icon-color: rgba(60, 60, 67, 0.75);
+  --dj-input-placeholder-color: rgba(60, 60, 67, 0.75);
+  --dj-input-clear-color: #a8a8a8;
+  --dj-input-background-color: #f1f1f2;
+  --dj-input-border-color: rgba(60, 60, 67, 0.12);
+  --dj-input-focus-border-color: rgba(60, 60, 67, 0.33);
+  --dj-input-border-radius: 0.375rem;
   position: relative;
   display: inline-flex;
   width: 100%;
   line-height: var(--dj-input-height);
-  font-size: 14px;
+  font-size: rem(14px);
   vertical-align: middle;
 
   &:hover {
     .dj-input__wrapper {
-      box-shadow: 0 0 0 1px var(--border-color) inset;
+      box-shadow: 0 0 0 rem(1px) var(--dj-input-border-color) inset;
     }
   }
 
@@ -22,12 +27,13 @@
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding: rem(1px) rem(10px);
+    padding: var(--dj-input-padding);
     background-color: var(--dj-input-background-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--dj-input-border-radius);
     transform: translateZ(0);
     transition: box-shadow 0.25s;
     box-shadow: 0 0 0 1px transparent inset;
+    box-sizing: border-box;
 
     form {
       flex-grow: 1;
@@ -43,8 +49,9 @@
       appearance: none;
       padding: 0;
       flex-grow: 1;
-      color: var(--black);
+      color: inherit;
       font-size: inherit;
+      font-family: inherit;
       width: 100%;
       height: @inner_height;
       line-height: @inner_height;
@@ -52,6 +59,7 @@
       outline: none;
       border: none;
       box-shadow: none;
+      touch-action: manipulation;
 
       &::placeholder {
         color: var(--dj-input-placeholder-color);
@@ -103,7 +111,7 @@
   }
 
   .dj-input__wrapper.is-focus {
-    box-shadow: 0 0 0 1px var(--dj-input-focus-border-color) inset;
+    box-shadow: 0 0 0 rem(1px) var(--dj-input-focus-border-color) inset;
   }
 
   .dj-input__clear {
@@ -112,8 +120,8 @@
     right: 3px;
     width: @clear_height;
     height: @clear_height;
-    background-color: #f1f1f2;
-    border-radius: var(--border-radius);
+    background-color: var(--dj-input-background-color);
+    border-radius: var(--dj-input-border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -124,9 +132,9 @@
       align-items: center;
       justify-content: center;
       font-size: inherit;
-      width: 18px;
-      height: 18px;
-      color: var(--grey);
+      width: rem(18px);
+      height: rem(18px);
+      color: var(--dj-input-clear-color);
     }
   }
 }
@@ -136,7 +144,7 @@
 
   .dj-input__wrapper {
     opacity: 0.6;
-    box-shadow: 0 0 0 1px transparent inset;
+    box-shadow: 0 0 0 rem(1px) transparent inset;
 
     .dj-input__inner {
       cursor: not-allowed;
@@ -145,5 +153,5 @@
 }
 
 .dj-input + .dj-input {
-  margin-top: 8px;
+  margin-top: rem(8px);
 }

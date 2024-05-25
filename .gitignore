@@ -10,8 +10,9 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-/django-ui/
-/back/
+back
+django-ui
+src/assets
 *.local
 
 # Editor directories and files

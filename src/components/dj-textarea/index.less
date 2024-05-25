@@ -1,37 +1,42 @@
 .dj-textarea {
+  --dj-textarea-min-height: rem(50px);
+  --dj-textarea-padding: rem(8px) rem(10px);
   --dj-textarea-background-color: #f1f1f2;
   --dj-textarea-color: var(--black);
   --dj-textarea-placeholder-color: rgba(60, 60, 67, 0.75);
-  --dj-textarea-border-color: var(--border-color);
+  --dj-textarea-border-color: rgba(60, 60, 67, 0.12);
   --dj-textarea-border-focus-color: rgba(60, 60, 67, 0.33);
+  --dj-textarea-border-radius: rem(6px);
   position: relative;
   display: inline-block;
   width: 100%;
   vertical-align: bottom;
-  font-size: 14px;
+  font-size: rem(14px);
   transform: translateZ(0);
 
   &:hover {
     .dj-textarea__wrapper {
-      box-shadow: 0 0 0 1px var(--border-color) inset;
+      box-shadow: 0 0 0 rem(1px) var(--dj-textarea-border-color) inset;
     }
   }
 
   .dj-textarea__wrapper {
-    padding: 8px 12px;
+    padding: var(--dj-textarea-padding);
     background-color: var(--dj-textarea-background-color);
-    border-radius: var(--border-radius);
-    box-shadow: 0 0 0 1px transparent inset;
+    border-radius: var(--dj-textarea-border-radius);
+    box-shadow: 0 0 0 rem(1px) transparent inset;
     transition: box-shadow 0.25s;
+    box-sizing: border-box;
 
     .dj-textarea__inner {
       position: relative;
       display: block;
       height: auto;
-      min-height: 50px;
+      min-height: var(--dj-textarea-min-height);
       resize: vertical;
       line-height: 1.5;
       width: 100%;
+      color: inherit;
       font-size: inherit;
       font-family: inherit;
       color: var(--dj-textarea-color);
@@ -51,7 +56,7 @@
   }
 
   .dj-textarea__wrapper.is-focus {
-    box-shadow: 0 0 0 1px var(--dj-textarea-border-focus-color) inset;
+    box-shadow: 0 0 0 rem(1px) var(--dj-textarea-border-focus-color) inset;
   }
 }
 
@@ -60,12 +65,12 @@
 
   .dj-textarea__inner {
     opacity: 0.6;
-    box-shadow: 0 0 0 1px transparent inset;
+    box-shadow: 0 0 0 rem(1px) transparent inset;
     cursor: not-allowed;
     resize: none;
   }
 }
 
 .dj-textarea + .dj-textarea {
-  margin-top: 8px;
+  margin-top: rem(8px);
 }

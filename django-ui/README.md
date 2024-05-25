@@ -28,16 +28,3 @@ app.mount("#app");
   <dj-button type="primary">Primary</dj-button>
 </template>
 ```
-
-## 本次更新内容
-
-| 名称            |
-| --------------- |
-| dj-accordion    |
-| dj-audio        |
-| dj-button       |
-| dj-button-group |
-| dj-card         |
-| dj-divider      |
-| dj-input        |
-| dj-textarea     |

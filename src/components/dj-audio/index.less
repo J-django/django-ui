@@ -1,34 +1,37 @@
 .dj-audio {
-  --dj-aduio-color: var(--black);
+  --dj-audio-height: rem(34px);
+  --dj-aduio-color: #3c3c43;
   --dj-audio-background-color: #f1f1f2;
-  --dj-audio-progress-color: rgba(60, 60, 67, 0.15);
-  --dj-audio-current-progress-color: #b80d57;
-  --dj-audio-buffer-color: rgba(33, 37, 41, 0.15);
-  --dj-audio-border-color: var(--border-color);
+  --dj-audio-progress-color: rgba(60, 60, 67, 0.25);
+  --dj-audio-current-progress-color: rgba(60, 60, 67, 0.5);
+  --dj-audio-buffer-color: rgba(33, 37, 41, 0.25);
+  --dj-audio-border-color: rgba(60, 60, 67, 0.12);
+  --dj-audio-border-radius: rem(6px);
   --dj-audio-border-focus-color: rgba(60, 60, 67, 0.33);
   position: relative;
   width: 100%;
 
   .dj-audio__wrapper {
-    @gap: 4px;
+    @gap: rem(4px);
     position: relative;
     display: flex;
     flex-direction: row;
     padding: @gap;
     width: 100%;
-    height: 34px;
+    height: var(--dj-audio-height);
     line-height: 1.5;
-    color: var(--black);
-    font-size: 12px;
+    color: var(--dj-aduio-color);
+    font-size: rem(12px);
     background-color: var(--dj-audio-background-color);
-    border-radius: var(--border-radius);
+    border-radius: var(--dj-audio-border-radius);
     transform: translateZ(0);
     transition: box-shadow 0.25s;
-    box-shadow: 0 0 0 1px var(--dj-audio-border-color) inset;
+    box-shadow: 0 0 0 rem(1px) var(--dj-audio-border-color) inset;
+    box-sizing: border-box;
 
     .dj-audio-button__wrapper {
-      @buttonSize: 20px;
-      @gap: 4px;
+      @buttonSize: rem(20px);
+      @gap: rem(4px);
       flex-shrink: 0;
       padding: @gap;
       color: var(--dj-aduio-color);
@@ -39,10 +42,20 @@
       -webkit-user-select: none;
       user-select: none;
       -webkit-user-drag: none;
+      box-sizing: border-box;
 
       .dj-audio-button__play {
+        -webkit-appearance: none;
+        appearance: none;
+        touch-action: manipulation;
+        padding: 0;
+        border: none;
+        background: none;
+        box-shadow: none;
+        outline: none;
         color: inherit;
         display: inline-flex;
+        cursor: pointer;
         transition: opacity 0.25s;
 
         &:active {
@@ -51,6 +64,15 @@
 
           .icon {
             transform: scale(0.75);
+          }
+        }
+
+        &:disabled {
+          cursor: default;
+          opacity: 1;
+
+          .icon {
+            transform: scale(1);
           }
         }
 
@@ -64,7 +86,7 @@
       }
 
       .dj-audio-volume__inner {
-        margin-left: 20px;
+        margin-left: rem(20px);
         display: inline-flex;
         gap: @gap;
 
@@ -76,7 +98,7 @@
 
     .dj-audio-progress__wrapper {
       @progressTime: 0.75s;
-      @radius: 0.1rem;
+      @radius: rem(2px);
       flex-grow: 1;
       gap: @gap;
       position: relative;
@@ -90,9 +112,9 @@
         flex-shrink: 0;
         display: inline-flex;
         justify-content: center;
-        min-width: 40px;
+        min-width: rem(40px);
         color: rgba(60, 60, 67, 0.75);
-        font-size: 12px;
+        font-size: rem(12px);
         font-weight: 500;
         line-height: 1;
         will-change: color, opacity;
@@ -108,14 +130,14 @@
         .icon {
           -webkit-user-select: none;
           user-select: none;
-          width: 32px;
-          height: 32px;
+          width: rem(32px);
+          height: rem(32px);
           color: inherit;
         }
       }
 
       .dj-audio-progress__inner {
-        @barHeight: 6px;
+        @barHeight: rem(6px);
         position: relative;
         width: 0;
         height: @barHeight;
@@ -143,7 +165,7 @@
           width: 100%;
           height: 100%;
           background: -webkit-linear-gradient(@current-buffer-color) no-repeat;
-          background-size: var(--buffer-value) 100%;
+          background-size: var(--dj-audio-buffer-value) 100%;
           transition: background-size 0.25s;
           z-index: 5;
         }
@@ -151,11 +173,11 @@
         input {
           @current-progress-color: var(--dj-audio-current-progress-color),
             var(--dj-audio-current-progress-color);
+          -webkit-appearance: none;
+          appearance: none;
           position: absolute;
           top: 0;
           left: 0;
-          -webkit-appearance: none;
-          appearance: none;
           margin: 0;
           padding: 0;
           width: 100%;
@@ -173,7 +195,7 @@
             height: 100%;
             background: -webkit-linear-gradient(@current-progress-color)
               no-repeat;
-            background-size: var(--progress-value) 100%;
+            background-size: var(--dj-audio-progress-value) 100%;
           }
         }
       }

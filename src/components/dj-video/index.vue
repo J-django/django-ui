@@ -30,10 +30,10 @@ const videoConfig = reactive({
     waiting: <boolean>true,
     paused: <boolean>true,
     isDragProgress: <boolean>false,
-    volume: <number>0.5,
-    volumeBackup: <number>0.5,
     mute: <boolean>false,
-    volumeProgress: <number>50,
+    volume: <number>1,
+    volumeBackup: <number>1,
+    volumeProgress: <number>100,
     progress: <number>0,
     buffered: <number>0,
     currentTime: <string>"00:00",
@@ -69,12 +69,12 @@ const videoSwitch = () => {
 /**
  * 切换
  */
-const toggleFullScreen = async () => {
+const toggleFullScreen = () => {
     try {
         const pictureInPictureElement = unref(videoRef);
         const VideoElement = unref(videoFullScreenElementRef);
         if (pictureInPictureElement === document.pictureInPictureElement) {
-            await document.exitPictureInPicture();
+            document.exitPictureInPicture();
         }
         if (VideoElement !== document.fullscreenElement) {
             if (VideoElement.requestFullscreen) {
@@ -99,13 +99,16 @@ const toggleFullScreen = async () => {
 /**
  * 切换画中画模式
  */
-const togglePictureInPicture = async () => {
+const togglePictureInPicture = () => {
     try {
-        const element = unref(videoRef);
-        if (element !== document.pictureInPictureElement) {
-            await element.requestPictureInPicture();
-        } else {
-            await document.exitPictureInPicture();
+        if ('pictureInPictureEnabled' in document) {
+            if (unref(videoRef) && typeof unref(videoRef).requestPictureInPicture === 'function') {
+                if (unref(videoRef) !== document.pictureInPictureElement) {
+                    unref(videoRef).requestPictureInPicture();
+                } else {
+                    document.exitPictureInPicture();
+                }
+            }
         }
     } catch (error) {
         console.error(`Failed to toggle Picture-in-Picture mode: ${error}`);
@@ -338,6 +341,10 @@ const videoTimeupdateChange = (event: Event) => {
  * @param event Event
  */
 const videoVolumechangeChange = (event: Event) => {
+    const volume = (event.target as any).volume;
+    videoConfig.volume = volume;
+    videoConfig.volumeProgress = volume * 100;
+    if (volume == 0) videoConfig.mute = true; else videoConfig.mute = false;
     emits("volumechange", event);
 }
 
@@ -437,19 +444,37 @@ const volumeProgressInputChange = () => {
  */
 const videoKeydownChange = (event: KeyboardEvent) => {
     try {
-        event.preventDefault();
-        if (event.keyCode === 32) {
-            if (videoConfig.paused) {
-                unref(videoRef).play();
-            } else {
-                unref(videoRef).pause();
-            }
-        } else if (event.keyCode === 37) {
-            if (videoConfig.paused) return;
-            unref(videoRef).currentTime -= 5;
-        } else if (event.keyCode === 39) {
-            if (videoConfig.paused) return;
-            unref(videoRef).currentTime += 5;
+        switch (event.keyCode) {
+            case 32:
+                // 空格
+                event.preventDefault();
+                if (videoConfig.paused) {
+                    unref(videoRef).play();
+                } else {
+                    unref(videoRef).pause();
+                }
+                break;
+            case 37:
+                // 左
+                event.preventDefault();
+                unref(videoRef).currentTime -= 5;
+                break;
+            case 39:
+                // 右
+                event.preventDefault();
+                if (videoConfig.paused) return;
+                unref(videoRef).currentTime += 5;
+                break;
+            case 38:
+                // 上
+                event.preventDefault();
+                unref(videoRef).volume = (unref(videoRef).volume + 0.05).toFixed(2);
+                break;
+            case 40:
+                // 下
+                event.preventDefault();
+                unref(videoRef).volume = (unref(videoRef).volume - 0.05).toFixed(2);
+                break;
         }
     } catch { }
 }

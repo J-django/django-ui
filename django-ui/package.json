@@ -1,6 +1,6 @@
 {
   "name": "django-ui",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "description": "",
   "main": "django-ui.es.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "homepage": "https://www.dialin.cn",
   "repository": {
     "type": "git",
-    "url": "https://github.com/J-django/django-ui.git"
+    "url": "https://gitee.com/J-Django-Gitee/django-ui.git"
   },
   "keywords": [
     "django-ui",
