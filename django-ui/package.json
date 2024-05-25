@@ -9,7 +9,7 @@
   "homepage": "https://www.dialin.cn",
   "repository": {
     "type": "git",
-    "url": "https://gitee.com/J-Django-Gitee/django-ui.git"
+    "url": "https://github.com/J-django/django-ui.git"
   },
   "keywords": [
     "django-ui",
