@@ -95,7 +95,7 @@ defineExpose({ focus: focus, blur: blur })
 ˝
 <template>
     <div class="dj-textarea" :class="[disabled ? 'is-disabled' : '']">
-        <div class="dj-textarea__wrapper" :class="[textarea__inner.focus ? 'is-focus' : '']">
+        <div class="dj-textarea__wrapper" :class="[textarea__inner.focus ? 'is-focus' : '']" @click="focus">
             <textarea :id="id" ref="DjTextareaRef" class="dj-textarea__inner" :rows="rows" :cols="cols"
                 :placeholder="placeholder" :disabled="disabled" :value="modelValue" @input="textarea__innerInputChange"
                 @change="textarea__innerChange" @focus="textarea__innerFocusChange"

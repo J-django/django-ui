@@ -1,6 +1,6 @@
 {
   "name": "django-ui",
-  "version": "1.0.7",
+  "version": "1.0.6-beta",
   "description": "",
   "main": "django-ui.es.js",
   "scripts": {
