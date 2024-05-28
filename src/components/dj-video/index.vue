@@ -14,10 +14,18 @@ const props = defineProps({
         type: String,
         default: "100%"
     },
+    minWidth: {
+        type: String,
+        default: ""
+    },
     height: {
         type: String,
         default: "100%"
     },
+    minHeight: {
+        type: String,
+        default: ""
+    }
 })
 
 const emits = defineEmits(["abort", "canplay", "canplaythrough", "durationchange", "emptied", "ended", "error", "loadeddata", "loadedmetadata", "loadstart", "pause", "play", "playing", "progress", "ratechange", "seeked", "seeking", "stalled", "suspend", "timeupdate", "volumechange", "waiting", "fullscreenchange", "enterpictureinpicture", "leavepictureinpicture"])
@@ -25,8 +33,10 @@ const emits = defineEmits(["abort", "canplay", "canplaythrough", "durationchange
 const videoRef = ref();
 const videoFullScreenElementRef = ref();
 const mousemoveTimeout = ref();
+const volumePromtTimeout = ref();
 
 const videoConfig = reactive({
+    error: <boolean>false,
     waiting: <boolean>true,
     paused: <boolean>true,
     isDragProgress: <boolean>false,
@@ -34,6 +44,7 @@ const videoConfig = reactive({
     volume: <number>1,
     volumeBackup: <number>1,
     volumeProgress: <number>100,
+    isVolumePrompt: <boolean>false,
     progress: <number>0,
     buffered: <number>0,
     currentTime: <string>"00:00",
@@ -145,7 +156,7 @@ const showMousemoveTimeout = () => {
     }
     mousemoveTimeout.value = setTimeout(() => {
         videoConfig.isMove = false;
-    }, 1000);
+    }, 1500);
 }
 
 /**
@@ -221,6 +232,7 @@ const videoEndedChange = (event: Event) => {
  * @param event Event
  */
 const videoErrorChange = (event: Event) => {
+    videoConfig.error = true;
     emits("error", event);
 }
 
@@ -343,7 +355,7 @@ const videoTimeupdateChange = (event: Event) => {
 const videoVolumechangeChange = (event: Event) => {
     const volume = (event.target as any).volume;
     videoConfig.volume = volume;
-    videoConfig.volumeProgress = volume * 100;
+    videoConfig.volumeProgress = Math.floor(volume * 100);
     if (volume == 0) videoConfig.mute = true; else videoConfig.mute = false;
     emits("volumechange", event);
 }
@@ -469,14 +481,37 @@ const videoKeydownChange = (event: KeyboardEvent) => {
                 // 上
                 event.preventDefault();
                 unref(videoRef).volume = (unref(videoRef).volume + 0.05).toFixed(2);
+                volumePromtFunc();
                 break;
             case 40:
                 // 下
                 event.preventDefault();
                 unref(videoRef).volume = (unref(videoRef).volume - 0.05).toFixed(2);
+                volumePromtFunc();
                 break;
         }
     } catch { }
+}
+
+/**
+ * 音量提示
+ */
+const volumePromtFunc = () => {
+    videoConfig.isVolumePrompt = true;
+    if (unref(volumePromtTimeout)) {
+        clearTimeout(unref(volumePromtTimeout))
+    }
+    volumePromtTimeout.value = setTimeout(() => {
+        videoConfig.isVolumePrompt = false;
+    }, 1500);
+}
+
+/**
+ * 重新加载
+ */
+const videoLoaded = () => {
+    unref(videoRef).load();
+    videoConfig.error = false;
 }
 
 onMounted(() => {
@@ -489,13 +524,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="dj-video" :style="{ width: width, height: height }">
-        <div class="dj-video__wrapper">
+    <div class="dj-video" :style="{ width: width, minWidth: minWidth }">
+        <div class="dj-video__wrapper" :class="[!videoConfig.paused ? 'is-play' : '']">
             <div class="dj-video__inner">
                 <div class="dj-video-source">
                     <div class="dj-video-source__wrapper">
-                        <div class="dj-video-source__inner" ref="videoFullScreenElementRef"
-                            @mouseenter="videoFullScreenElementMouseenterChange"
+                        <div class="dj-video-source__inner" :style="{ height: height, minHeight: minHeight }"
+                            ref="videoFullScreenElementRef" @mouseenter="videoFullScreenElementMouseenterChange"
                             @mouseleave="videoFullScreenElementMouseleaveChange"
                             @mousemove="videoFullScreenElementMousemoveChange"
                             @fullscreenchange="videoFullscreenchangeChange">
@@ -521,7 +556,8 @@ onUnmounted(() => {
                                 </video>
                             </div>
                             <div class="dj-video-progress"
-                                :class="[videoConfig.paused || videoConfig.isMove ? 'is-show' : '']">
+                                :class="[videoConfig.paused || videoConfig.isMove ? 'is-show' : '']"
+                                @mouseenter="videoFullScreenElementMouseenterChange">
                                 <div class="dj-video-progress__wrapper">
                                     <div class="dj-video-button__wrapper">
                                         <button class="dj-video-button__play" :disabled="videoConfig.waiting"
@@ -654,6 +690,17 @@ onUnmounted(() => {
                                             </svg>
                                         </button>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="dj-video-volumePrompt"
+                                :class="[videoConfig.paused || videoConfig.isMove ? 'is-move' : '', videoConfig.isVolumePrompt ? 'is-show' : '']">
+                                <div class="dj-video-volumePrompt__wrapper">
+                                    {{ videoConfig.volumeProgress + '%' }}
+                                </div>
+                            </div>
+                            <div class="dj-video-error-message" :class="[videoConfig.error ? 'is-error' : '']">
+                                <div class="dj-video-error-message__wrapper">
+                                    <button class="dj-video-error-restart" @click="videoLoaded">ERRROR RESTART</button>
                                 </div>
                             </div>
                         </div>

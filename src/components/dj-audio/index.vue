@@ -1,7 +1,7 @@
 <script lang="ts" setup name="dj-audio">
 // plugins
 import "./index.less"
-import { ref, reactive } from 'vue'
+import { ref, unref, reactive } from 'vue'
 import { formatSongsTime, formatProgress } from "@/utils/tool"
 
 // script
@@ -43,14 +43,14 @@ const audioConfig = reactive({
  * 播放
  */
 const play = () => {
-    audioRef.value.play();
+    unref(audioRef).play();
 }
 
 /**
  * 暂停
  */
 const pause = () => {
-    audioRef.value.pause();
+    unref(audioRef).pause();
 }
 
 /**
@@ -68,7 +68,7 @@ const audioSwitch = () => {
  * @returns
  */
 const audioLoadedMetaDataChange = (event: Event) => {
-    audioConfig.duration = formatSongsTime(audioRef.value?.duration)
+    audioConfig.duration = formatSongsTime(unref(audioRef)?.duration)
     audioConfig.waiting = false;
     emits("loadedmetadata", event)
 }
@@ -88,7 +88,7 @@ const audioCanplayChange = (event: Event) => {
  */
 const audioPlayChange = (event: Event) => {
     audioConfig.paused = false;
-    audioRef.value.volume = audioConfig.volume = 0.5;
+    unref(audioRef).volume = audioConfig.volume = 0.5;
     emits("play", event)
 }
 
@@ -114,8 +114,8 @@ const audioPlayingChange = (event: Event) => {
  * @param event Event
  */
 const audioProgressChange = (event: Event) => {
-    var bufferedTime = audioRef.value?.buffered;
-    audioConfig.buffered = parseFloat((bufferedTime.end(bufferedTime.length - 1) / audioRef.value?.duration * 100).toFixed(2));
+    var bufferedTime = unref(audioRef)?.buffered;
+    audioConfig.buffered = parseFloat((bufferedTime.end(bufferedTime.length - 1) / unref(audioRef)?.duration * 100).toFixed(2));
     emits("progress", event)
 }
 
@@ -124,8 +124,8 @@ const audioProgressChange = (event: Event) => {
  * @param event Event
  */
 const audioTimeUpdateChange = (event: Event) => {
-    audioConfig.currentTime = formatSongsTime(audioRef.value?.currentTime);
-    if (!audioConfig.isDragProgress) audioConfig.progress = parseFloat(formatProgress(audioRef.value?.duration, audioRef.value?.currentTime).toFixed(2));
+    audioConfig.currentTime = formatSongsTime(unref(audioRef)?.currentTime);
+    if (!audioConfig.isDragProgress) audioConfig.progress = parseFloat(formatProgress(unref(audioRef)?.duration, unref(audioRef)?.currentTime).toFixed(2));
     emits("timeupdate", audioConfig.progress, event)
 }
 
@@ -159,7 +159,7 @@ const audioEndedChange = (event: Event) => {
  * 拖拽改变音频进度
  */
 const progressMouseupChange = () => {
-    audioRef.value.currentTime = (audioConfig.progress / 100) * audioRef.value?.duration;
+    unref(audioRef).currentTime = (audioConfig.progress / 100) * unref(audioRef)?.duration;
     audioConfig.isDragProgress = false;
 }
 
@@ -172,8 +172,8 @@ defineExpose({
     volume: () => audioConfig.volume,
     progress: () => audioConfig.progress,
     buffered: () => audioConfig.buffered,
-    currentTime: () => audioRef.value?.currentTime,
-    duration: () => audioRef.value?.duration,
+    currentTime: () => unref(audioRef)?.currentTime,
+    duration: () => unref(audioRef)?.duration,
     play: play,
     pause: pause
 })
@@ -234,7 +234,8 @@ defineExpose({
                         <source type="audio/ogg" :src="src">
                         <source type="audio/mpeg" :src="src">
                     </audio>
-                    <div class="dj-audio-buffered__bar" :style="{ '--dj-audio-buffer-value': `${audioConfig.buffered}%` }">
+                    <div class="dj-audio-buffered__bar"
+                        :style="{ '--dj-audio-buffer-value': `${audioConfig.buffered}%` }">
                     </div>
                     <input type="range" :style="{ '--dj-audio-progress-value': `${audioConfig.progress}%` }"
                         v-model="audioConfig.progress" @mousedown="audioConfig.isDragProgress = true"

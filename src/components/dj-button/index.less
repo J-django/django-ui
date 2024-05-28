@@ -1,31 +1,38 @@
 .dj-button {
+  --dj-button-white-color: #ffffff;
   --dj-button-black-color: #3c3c43;
-  --dj-button-padding: rem(2px) rem(12px);
-  --dj-button-height: rem(34px);
+  --dj-button-padding: rem(2px) rem(16px);
+  --dj-button-height: rem(32px);
   --dj-button-font-size: rem(14px);
   --dj-button-background-color: #f1f1f2;
-  --dj-button-border-radius: rem(4px);
+  --dj-button-border-color: rgba(60, 60, 67, 0.12);
+  --dj-button-border-radius: rem(6px);
   @dj-button-color: var(--dj-button-black-color);
   @dj-button-background-color: var(--dj-button-background-color);
+  -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
   appearance: none;
   touch-action: manipulation;
+  text-decoration: none;
+  text-transform: none;
   border: 0;
   padding: var(--dj-button-padding);
   margin: 0;
   position: relative;
   height: var(--dj-button-height);
-  line-height: 1;
-  color: var(--custom-text-color, @dj-button-color);
+  line-height: 1.5;
+  color: var(--dj-button-custom-color, @dj-button-color);
   font-size: var(--dj-button-font-size);
   font-family: inherit;
-  text-align: left;
-  -webkit-tap-highlight-color: transparent;
+  text-align: center;
   white-space: nowrap;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--custom-background-color, @dj-button-background-color);
+  background-color: var(
+    --dj-button-custom-background-color,
+    @dj-button-background-color
+  );
   background-image: none;
   border-radius: var(--dj-button-border-radius);
   cursor: pointer;
@@ -38,7 +45,7 @@
   }
 
   &:active:not(:disabled) {
-    transform: translateY(0.075rem);
+    transform: translateY(rem(1px));
   }
 
   .jy-button-inner {
@@ -60,34 +67,6 @@
   }
 }
 
-.dj-button.primary {
-  --dj-button-primary-color: #0d6efd;
-  --dj-button-white-color: #ffffff;
-  background-color: var(--dj-button-primary-color);
-  color: var(--dj-button-white-color);
-}
-
-.dj-button.success {
-  --dj-button-success-color: #00ad7c;
-  --dj-button-white-color: #ffffff;
-  background-color: var(--dj-button-success-color);
-  color: var(--dj-button-white-color);
-}
-
-.dj-button.warning {
-  --dj-button-warning-color: #fd7e14;
-  --dj-button-white-color: #ffffff;
-  background-color: var(--dj-button-warning-color);
-  color: var(--dj-button-white-color);
-}
-
-.dj-button.danger {
-  --dj-button-danger-color: #ee2b47;
-  --dj-button-white-color: #ffffff;
-  background-color: var(--dj-button-danger-color);
-  color: var(--dj-button-white-color);
-}
-
 .dj-button + .dj-button {
-  margin-left: rem(12px);
+  margin-left: rem(8px);
 }

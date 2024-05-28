@@ -2,7 +2,7 @@
 // plugins
 import { ref } from "vue";
 import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
-import VideoSrc from '@/assets/video/20600550-uhd_3840_2160_30fps.mp4'
+import VideoSrc from '@/assets/video/Blue_Sky_and_Clouds_Timelapse_0892__Videvo_1080p_12000br.mp4'
 
 // script
 const accordion = ref(false);
@@ -12,25 +12,12 @@ const content = ref();
 <template>
     <div class="layout">
         <div class="line">
-            <dj-video :src="VideoSrc" width="auto" height="auto" />
-        </div>
-        <div class="line">
-            <dj-button disabled>Default</dj-button>
-            <dj-button type="primary">Primary</dj-button>
-            <dj-button type="success" disabled>Success</dj-button>
-            <dj-button type="warning">Warning</dj-button>
-            <dj-button type="danger" disabled>Danger</dj-button>
-            <dj-button color="#b80d57">Default</dj-button>
-        </div>
-        <div class="line">
-            <dj-button-group>
-                <dj-button>Default</dj-button>
-                <dj-button type="primary" disabled>Primary</dj-button>
-                <dj-button type="success">Success</dj-button>
-                <dj-button type="warning" disabled>Warning</dj-button>
-                <dj-button type="danger">Danger</dj-button>
-                <dj-button color="#b80d57" disabled>Default</dj-button>
-            </dj-button-group>
+            <dj-button>Default</dj-button>
+            <dj-button disabled>Disabled Default</dj-button>
+            <dj-button color="#0d6efd">Custom Primary</dj-button>
+            <dj-button color="#0d6efd" disabled>Disabled Custom Primary</dj-button>
+            <dj-button color="#d63384">Custom Pink</dj-button>
+            <dj-button color="#d63384" disabled>Disabled Custom Pink</dj-button>
         </div>
         <div class="line">
             <dj-card align="center">
@@ -122,7 +109,10 @@ const content = ref();
             <dj-textarea placeholder="Please Input" v-model="content" />
         </div>
         <div class="line">
-            <dj-audio :src="AudioSrc" ref="djAudioRef" />
+            <dj-audio :src="AudioSrc" />
+        </div>
+        <div class="line">
+            <dj-video :src="VideoSrc" width="100%" min-height="400px" />
         </div>
     </div>
 </template>

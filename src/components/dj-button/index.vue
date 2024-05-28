@@ -5,13 +5,6 @@ import { isDarkColor } from '@/utils/tool'
 
 // script
 defineProps({
-    type: {
-        type: String,
-        default: "",
-        validate: (type: string) => {
-            return ["primary", "success", "warning", "danger"].includes(type);
-        }
-    },
     text: {
         type: String,
         default: "",
@@ -19,13 +12,13 @@ defineProps({
     color: {
         type: String,
         default: ""
-    }
+    },
 })
 </script>
 
 <template>
-    <button class="dj-button" :class="[type]"
-        :style="{ '--custom-background-color': color, '--custom-text-color': color ? isDarkColor(color) ? 'var(--white)' : 'var(--black)' : '' }">
+    <button class="dj-button"
+        :style="{ '--dj-button-custom-background-color': color, '--dj-button-custom-color': color ? isDarkColor(color) ? 'var(--dj-button-white-color)' : 'var(--dj-button-black-color)' : '' }">
         <span class="dj-button-inner">
             <slot>
                 {{ text }}

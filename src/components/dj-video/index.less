@@ -5,21 +5,20 @@
   --dj-video-volume-progress-color: rgba(235, 235, 245, 0.5);
   --dj-video-current-progress-color: rgba(235, 235, 245, 0.5);
   --dj-video-buffer-color: rgba(235, 235, 245, 0.25);
-  --dj-video-border-color: rgba(60, 60, 67, 0.12);
-  --dj-video-border-focus-color: rgba(60, 60, 67, 0.33);
   --dj-video-border-radius: rem(6px);
   .dj-video__wrapper {
     .dj-video__inner {
       .dj-video-source {
         .dj-video-source__wrapper {
           width: 100%;
-          background-color: #000000;
           border-radius: var(--dj-video-border-radius);
+          transition: box-shadow 0.25s;
           overflow: hidden;
 
           .dj-video-source__inner {
             position: relative;
             width: 100%;
+            background-color: #141414;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,7 +103,7 @@
                         border-radius: var(--dj-video-border-radius);
 
                         .dj-video-volume {
-                          @radius: 0.1rem;
+                          @radius: rem(1px);
 
                           .dj-video-volume__wrapper {
                             width: rem(120px);
@@ -222,7 +221,7 @@
 
                 .dj-video-progress__inner {
                   @progressTime: 0.75s;
-                  @radius: 0.1rem;
+                  @radius: rem(1px);
                   flex-grow: 1;
                   gap: @gap;
                   position: relative;
@@ -334,6 +333,84 @@
 
             .dj-video-progress.is-show {
               opacity: 1;
+            }
+
+            .dj-video-volumePrompt {
+              @bottom: rem(6px);
+              position: absolute;
+              bottom: @bottom;
+              left: rem(6px);
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+
+              .dj-video-volumePrompt__wrapper {
+                padding: rem(1px) rem(14px);
+                height: rem(34px);
+                line-height: rem(34px);
+                color: var(--dj-video-color);
+                font-size: rem(14px);
+                font-family: inherit;
+                text-align: center;
+                background-color: var(--dj-video-background-color);
+                border-radius: var(--dj-video-border-radius);
+                box-sizing: border-box;
+              }
+            }
+
+            .dj-video-volumePrompt.is-move {
+              @translateY: calc(calc(rem(34px) + rem(6px)) * -1);
+              transform: translateY(@translateY);
+            }
+
+            .dj-video-volumePrompt.is-show {
+              opacity: 1;
+              visibility: visible;
+            }
+
+            .dj-video-error-message {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 0.25s, visibility 0.25s;
+
+              .dj-video-error-message__wrapper {
+                width: 100%;
+                height: 100%;
+                color: var(--dj-video-color);
+                background-color: #141414;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                .dj-video-error-restart {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  margin-top: rem(8px);
+                  padding: rem(1px) rem(16px);
+                  height: rem(34px);
+                  color: inherit;
+                  font-size: rem(14px);
+                  font-family: inherit;
+                  font-weight: 600;
+                  border-radius: var(--dj-video-border-radius);
+                  border: none;
+                  background-color: var(--dj-video-background-color);
+                  cursor: pointer;
+                }
+              }
+            }
+
+            .dj-video-error-message.is-error {
+              opacity: 1;
+              visibility: visible;
             }
           }
         }

@@ -1,7 +1,7 @@
 <script setup lang="ts" name="dj-input">
 // plugins
 import "./index.less";
-import { ref, reactive, useSlots } from 'vue'
+import { ref, unref, reactive, useSlots } from 'vue'
 
 // script
 const props = defineProps({
@@ -35,9 +35,8 @@ const emits = defineEmits(['update:modelValue', 'input', 'change', 'keyup.enter'
 
 const slots = useSlots();
 
-const DjInputRef = ref();
-
-const input__inner = reactive({
+const inputRef = ref();
+const inputConfig = reactive({
     focus: false,
     active: false,
 })
@@ -47,7 +46,7 @@ const input__inner = reactive({
  * 输入时触发
  * @param event Event
  */
-const input__innerInputChange = (event: Event) => {
+const inputConfigInputChange = (event: Event) => {
     emits("input", (event.target as any).value)
     emits("update:modelValue", (event.target as any).value)
 }
@@ -56,7 +55,7 @@ const input__innerInputChange = (event: Event) => {
  * 值改变时触发
  * @param event Event
  */
-const input__innerChange = (event: Event) => {
+const inputConfigChange = (event: Event) => {
     emits("change", (event.target as any).value)
 }
 
@@ -64,8 +63,8 @@ const input__innerChange = (event: Event) => {
  * 获取焦点时触发
  * @param event Event
  */
-const input__innerFocusChange = (event: Event) => {
-    input__inner.focus = true;
+const inputConfigFocusChange = (event: Event) => {
+    inputConfig.focus = true;
     emits("focus", event)
 }
 
@@ -73,8 +72,8 @@ const input__innerFocusChange = (event: Event) => {
  * 失去焦点时触发
  * @param event Event
  */
-const input__innerFocusoutChange = (event: Event) => {
-    input__inner.focus = false;
+const inputConfigFocusoutChange = (event: Event) => {
+    inputConfig.focus = false;
     emits("blur", event)
 }
 
@@ -82,7 +81,7 @@ const input__innerFocusoutChange = (event: Event) => {
  * 回车时触发
  * @param event Event
  */
-const input__innerKeyupEnterChange = (event: Event) => {
+const inputConfigKeyupEnterChange = (event: Event) => {
     emits("keyup.enter", event);
 }
 
@@ -90,14 +89,14 @@ const input__innerKeyupEnterChange = (event: Event) => {
  * 获取输入框焦点
  */
 const focus = () => {
-    DjInputRef.value.focus();
+    unref(inputRef).focus();
 }
 
 /**
  * 失去输入框焦点
  */
 const blur = () => {
-    DjInputRef.value.blur();
+    unref(inputRef).blur();
 }
 
 /**
@@ -113,16 +112,16 @@ defineExpose({ focus: focus, blur: blur, clear: clear })
 
 <template>
     <div class="dj-input" :class="[disabled ? 'is-disabled' : '']">
-        <div class="dj-input__wrapper" :class="[input__inner.focus ? 'is-focus' : '']" @click="focus">
+        <div class="dj-input__wrapper" :class="[inputConfig.focus ? 'is-focus' : '']" @click="focus">
             <span class="dj-input__prefix" v-if="slots['prefix-icon']">
                 <span class="dj-input__prefix__inner">
                     <slot name="prefix-icon" />
                 </span>
             </span>
-            <input :id="id" ref="DjInputRef" class="dj-input__inner" :placeholder="placeholder"
-                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="input__innerChange"
-                @input="input__innerInputChange" @focus="input__innerFocusChange" @focusout="input__innerFocusoutChange"
-                @keyup.enter.native="input__innerKeyupEnterChange" />
+            <input :id="id" ref="inputRef" class="dj-input__inner" :placeholder="placeholder"
+                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="inputConfigChange"
+                @input="inputConfigInputChange" @focus="inputConfigFocusChange" @focusout="inputConfigFocusoutChange"
+                @keyup.enter.native="inputConfigKeyupEnterChange" />
             <div class="dj-input__clear" v-if="props.clear && modelValue" @click="clear">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-x-circle-fill icon" viewBox="0 0 16 16">

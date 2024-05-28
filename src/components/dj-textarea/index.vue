@@ -1,7 +1,7 @@
 <script setup lang="ts" name="dj-textarea">
 // plugins
 import "./index.less"
-import { ref, reactive } from "vue";
+import { ref, unref, reactive } from "vue";
 
 // script
 defineProps({
@@ -33,9 +33,8 @@ defineProps({
 
 const emits = defineEmits(["update:modelValue", "input", "change", "focus", "blur"])
 
-const DjTextareaRef = ref();
-
-const textarea__inner = reactive({
+const textareaRef = ref();
+const textareaConfig = reactive({
     focus: false,
     active: false,
 })
@@ -45,7 +44,7 @@ const textarea__inner = reactive({
  * 输入时触发
  * @param event Event
  */
-const textarea__innerChange = (event: Event) => {
+const textareaConfigChange = (event: Event) => {
     emits("input", event)
 }
 
@@ -53,7 +52,7 @@ const textarea__innerChange = (event: Event) => {
  * 值改变时触发
  * @param event Event
  */
-const textarea__innerInputChange = (event: Event) => {
+const textareaConfigInputChange = (event: Event) => {
     emits("change", event)
     emits("update:modelValue", (event.target as any).value)
 }
@@ -62,8 +61,8 @@ const textarea__innerInputChange = (event: Event) => {
  * 获取焦点时触发
  * @param event Event
  */
-const textarea__innerFocusChange = (event: Event) => {
-    textarea__inner.focus = true;
+const textareaConfigFocusChange = (event: Event) => {
+    textareaConfig.focus = true;
     emits("focus", event)
 }
 
@@ -71,8 +70,8 @@ const textarea__innerFocusChange = (event: Event) => {
  * 失去焦点时触发
  * @param event Event
  */
-const textarea__innerFocusoutChange = (event: Event) => {
-    textarea__inner.focus = false;
+const textareaConfigFocusoutChange = (event: Event) => {
+    textareaConfig.focus = false;
     emits("blur", event)
 }
 
@@ -80,14 +79,14 @@ const textarea__innerFocusoutChange = (event: Event) => {
  * 获取输入框焦点
  */
 const focus = () => {
-    DjTextareaRef.value.focus();
+    unref(textareaRef).focus();
 }
 
 /**
  * 失去输入框焦点
  */
 const blur = () => {
-    DjTextareaRef.value.blur();
+    unref(textareaRef).blur();
 }
 
 defineExpose({ focus: focus, blur: blur })
@@ -95,11 +94,11 @@ defineExpose({ focus: focus, blur: blur })
 ˝
 <template>
     <div class="dj-textarea" :class="[disabled ? 'is-disabled' : '']">
-        <div class="dj-textarea__wrapper" :class="[textarea__inner.focus ? 'is-focus' : '']" @click="focus">
-            <textarea :id="id" ref="DjTextareaRef" class="dj-textarea__inner" :rows="rows" :cols="cols"
-                :placeholder="placeholder" :disabled="disabled" :value="modelValue" @input="textarea__innerInputChange"
-                @change="textarea__innerChange" @focus="textarea__innerFocusChange"
-                @focusout="textarea__innerFocusoutChange" />
+        <div class="dj-textarea__wrapper" :class="[textareaConfig.focus ? 'is-focus' : '']" @click="focus">
+            <textarea :id="id" ref="textareaRef" class="dj-textarea__inner" :rows="rows" :cols="cols"
+                :placeholder="placeholder" :disabled="disabled" :value="modelValue" @input="textareaConfigInputChange"
+                @change="textareaConfigChange" @focus="textareaConfigFocusChange"
+                @focusout="textareaConfigFocusoutChange" />
         </div>
     </div>
 </template>

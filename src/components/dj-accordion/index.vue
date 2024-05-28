@@ -1,7 +1,7 @@
 <script setup lang="ts" name="dj-accordion">
 // plugins
 import "./index.less";
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, unref, reactive, watch, onMounted } from 'vue'
 
 // script
 const props = defineProps({
@@ -21,17 +21,23 @@ const props = defineProps({
 
 const emits = defineEmits(["update:modelValue", "change"])
 
+const accordionRef = ref();
+const accordionConfig = reactive({
+    wrapperStyle: {},
+    contentStyle: {}
+})
+
 watch(() => props.modelValue, (val: boolean) => {
     if (val) {
-        DJAccordionInner.value.style.display = "block"
+        unref(accordionRef).style.display = "block"
         accordionConfig.contentStyle = {
             overflow: "hidden",
-            height: `${DJAccordionInner.value.scrollHeight}px`,
+            height: `${unref(accordionRef).scrollHeight}px`,
             willChange: "height",
             transition: "height .25s"
         }
     } else {
-        DJAccordionInner.value.style.height = `${DJAccordionInner.value.scrollHeight}px`;
+        unref(accordionRef).style.height = `${unref(accordionRef)?.scrollHeight}px`;
         setTimeout(() => {
             accordionConfig.contentStyle = {
                 transition: "height .25s",
@@ -43,12 +49,6 @@ watch(() => props.modelValue, (val: boolean) => {
     }
 })
 
-const DJAccordionInner = ref();
-const accordionConfig = reactive({
-    wrapperStyle: {},
-    contentStyle: {}
-})
-
 const accordion__toggle = () => {
     emits("change", !props.modelValue)
     emits("update:modelValue", !props.modelValue)
@@ -57,7 +57,7 @@ const accordion__toggle = () => {
 const accordionTransitionEnd = () => {
     if (props.modelValue) {
         accordionConfig.wrapperStyle = {};
-        DJAccordionInner.value.style.display = "";
+        unref(accordionRef).style.display = "";
         accordionConfig.contentStyle = {};
     } else {
         accordionConfig.wrapperStyle = {};
@@ -71,9 +71,9 @@ const accordionTransitionEnd = () => {
 
 const initAccordion = () => {
     if (!props.modelValue) {
-        DJAccordionInner.value.style.display = "none";
-        DJAccordionInner.value.style.height = "0";
-        DJAccordionInner.value.style.overflow = "hidden";
+        unref(accordionRef).style.display = "none";
+        unref(accordionRef).style.height = "0";
+        unref(accordionRef).style.overflow = "hidden";
     }
 }
 
@@ -99,7 +99,7 @@ onMounted(() => {
                     </svg>
                 </span>
             </button>
-            <div class="dj-accordion__inner" :style="accordionConfig.contentStyle" ref="DJAccordionInner"
+            <div class="dj-accordion__inner" :style="accordionConfig.contentStyle" ref="accordionRef"
                 @transitionend="accordionTransitionEnd">
                 <div class="dj-accordion__inner-content">
                     <slot name="default">
