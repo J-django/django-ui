@@ -106,7 +106,7 @@ const content = ref();
             </dj-input>
         </div>
         <div class="line">
-            <dj-textarea placeholder="Please Input" v-model="content" />
+            <dj-textarea placeholder="Please Input" v-model="content" disabled />
         </div>
         <div class="line">
             <dj-audio :src="AudioSrc" />
