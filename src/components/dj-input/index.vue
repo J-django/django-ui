@@ -31,7 +31,7 @@ const props = defineProps({
     }
 })
 
-const emits = defineEmits(['update:modelValue', 'input', 'change', 'keyup.enter', 'focus', 'blur', 'clear'])
+const emits = defineEmits(['update:modelValue', 'input', 'change', 'keyup', 'focus', 'blur', 'clear'])
 
 const slots = useSlots();
 
@@ -46,7 +46,7 @@ const inputConfig = reactive({
  * 输入时触发
  * @param event Event
  */
-const inputConfigInputChange = (event: Event) => {
+const inputInputChange = (event: Event) => {
     emits("input", (event.target as any).value)
     emits("update:modelValue", (event.target as any).value)
 }
@@ -55,7 +55,7 @@ const inputConfigInputChange = (event: Event) => {
  * 值改变时触发
  * @param event Event
  */
-const inputConfigChange = (event: Event) => {
+const inputChange = (event: Event) => {
     emits("change", (event.target as any).value)
 }
 
@@ -63,7 +63,7 @@ const inputConfigChange = (event: Event) => {
  * 获取焦点时触发
  * @param event Event
  */
-const inputConfigFocusChange = (event: Event) => {
+const inputFocusChange = (event: Event) => {
     inputConfig.focus = true;
     emits("focus", event)
 }
@@ -72,7 +72,7 @@ const inputConfigFocusChange = (event: Event) => {
  * 失去焦点时触发
  * @param event Event
  */
-const inputConfigFocusoutChange = (event: Event) => {
+const inputFocusoutChange = (event: Event) => {
     inputConfig.focus = false;
     emits("blur", event)
 }
@@ -81,8 +81,8 @@ const inputConfigFocusoutChange = (event: Event) => {
  * 回车时触发
  * @param event Event
  */
-const inputConfigKeyupEnterChange = (event: Event) => {
-    emits("keyup.enter", event);
+const inputKeyupChange = (event: Event) => {
+    emits("keyup", event);
 }
 
 /**
@@ -119,9 +119,9 @@ defineExpose({ focus: focus, blur: blur, clear: clear })
                 </span>
             </span>
             <input :id="id" ref="inputRef" class="dj-input__inner" :placeholder="placeholder"
-                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="inputConfigChange"
-                @input="inputConfigInputChange" @focus="inputConfigFocusChange" @focusout="inputConfigFocusoutChange"
-                @keyup.enter.native="inputConfigKeyupEnterChange" />
+                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="inputChange"
+                @input="inputInputChange" @focus="inputFocusChange" @focusout="inputFocusoutChange"
+                @keyup.native="inputKeyupChange" />
             <div class="dj-input__clear" v-if="props.clear && modelValue" @click="clear">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-x-circle-fill icon" viewBox="0 0 16 16">

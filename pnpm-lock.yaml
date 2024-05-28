@@ -5,12 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  django-ui:
-    specifier: ^3.0.0
-    version: 3.0.0
-  nanoid:
-    specifier: ^5.0.7
-    version: 5.0.7
   vue:
     specifier: ^3.3.11
     version: 3.4.10(typescript@5.3.3)
@@ -547,16 +541,6 @@ packages:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
     dev: true
 
-  /django-ui@2.0.6:
-    resolution: {integrity: sha512-R+2g2tojvdVyJSuEkTy8BD10peZDO6M+zCV0vQMxEdDlm1gj+XOBPpYBRpdEZ+Dh0taM7KF33ejWj01EXXCwtA==}
-    dev: false
-
-  /django-ui@3.0.0:
-    resolution: {integrity: sha512-JNtUcL4VBJzrIv8nYyYWNdJEMMWXsiBtukjPKoX37FHESTCsZtZyhHACXQ2wD8d+nPwarVLvoo2BcmAwp2qrJQ==}
-    dependencies:
-      django-ui: 2.0.6
-    dev: false
-
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
@@ -718,12 +702,6 @@ packages:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
-
-  /nanoid@5.0.7:
-    resolution: {integrity: sha512-oLxFY2gd2IqnjcYyOXD8XGCftpGtZP2AbHbOkthDkvRywH5ayNtPVy9YlOPcHckXzbLTCHpkb7FB+yuxKV13pQ==}
-    engines: {node: ^18 || >=20}
-    hasBin: true
-    dev: false
 
   /needle@3.3.1:
     resolution: {integrity: sha512-6k0YULvhpw+RoLNiQCRKOl09Rv1dPLr8hHnVjHqdolKwDrdNyk+Hmrthi4lIGPPz3r39dLx0hsF5s40sZ3Us4Q==}
