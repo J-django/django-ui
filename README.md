@@ -25,6 +25,6 @@ app.mount("#app");
 
 ```vue
 <template>
-  <dj-button type="primary">Primary</dj-button>
+  <dj-button>Default</dj-button>
 </template>
 ```
