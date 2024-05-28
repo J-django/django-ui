@@ -63,13 +63,14 @@
 }
 
 .dj-textarea.is-disabled {
-  cursor: not-allowed;
-
-  .dj-textarea__inner {
-    opacity: 0.6;
-    box-shadow: 0 0 0 rem(1px) transparent inset;
+  .dj-textarea__wrapper {
     cursor: not-allowed;
-    resize: none;
+    .dj-textarea__inner {
+      opacity: 0.6;
+      box-shadow: 0 0 0 rem(1px) transparent inset;
+      cursor: not-allowed;
+      resize: none;
+    }
   }
 }
 
