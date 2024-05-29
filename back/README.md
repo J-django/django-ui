@@ -25,19 +25,6 @@ app.mount("#app");
 
 ```vue
 <template>
-  <dj-button type="primary">Primary</dj-button>
+  <dj-button>Default</dj-button>
 </template>
 ```
-
-## 本次更新内容
-
-| 名称            |
-| --------------- |
-| dj-accordion    |
-| dj-audio        |
-| dj-button       |
-| dj-button-group |
-| dj-card         |
-| dj-divider      |
-| dj-input        |
-| dj-textarea     |

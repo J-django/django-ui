@@ -1,163 +1,163 @@
-import { defineComponent as y, ref as P, reactive as L, watch as Je, unref as l, onMounted as G, openBlock as f, createElementBlock as g, createElementVNode as s, normalizeClass as C, normalizeStyle as x, renderSlot as $, createTextVNode as E, toDisplayString as k, Fragment as X, withDirectives as K, vModelText as W, createStaticVNode as fe, useSlots as Q, createCommentVNode as O, withKeys as Ke, onUnmounted as We } from "vue";
-var ge = typeof global == "object" && global && global.Object === Object && global, Ge = typeof self == "object" && self && self.Object === Object && self, he = ge || Ge || Function("return this")(), R = he.Symbol, ve = Object.prototype, Xe = ve.hasOwnProperty, Qe = ve.toString, I = R ? R.toStringTag : void 0;
-function Ye(e) {
-  var r = Xe.call(e, I), a = e[I];
+import { defineComponent as b, ref as S, reactive as I, watch as Je, unref as l, onMounted as G, openBlock as f, createElementBlock as g, createElementVNode as s, normalizeClass as C, normalizeStyle as x, renderSlot as P, createTextVNode as L, toDisplayString as k, Fragment as X, withDirectives as J, vModelText as K, createStaticVNode as ge, useSlots as Q, createCommentVNode as O, withKeys as Ke, onUnmounted as Ge } from "vue";
+var he = typeof global == "object" && global && global.Object === Object && global, Xe = typeof self == "object" && self && self.Object === Object && self, ve = he || Xe || Function("return this")(), R = ve.Symbol, me = Object.prototype, Qe = me.hasOwnProperty, Ye = me.toString, B = R ? R.toStringTag : void 0;
+function Ze(e) {
+  var n = Qe.call(e, B), i = e[B];
   try {
-    e[I] = void 0;
-    var i = !0;
+    e[B] = void 0;
+    var d = !0;
   } catch {
   }
-  var o = Qe.call(e);
-  return i && (r ? e[I] = a : delete e[I]), o;
+  var r = Ye.call(e);
+  return d && (n ? e[B] = i : delete e[B]), r;
 }
-var Ze = Object.prototype, et = Ze.toString;
-function tt(e) {
-  return et.call(e);
+var et = Object.prototype, tt = et.toString;
+function ot(e) {
+  return tt.call(e);
 }
-var ot = "[object Null]", st = "[object Undefined]", ie = R ? R.toStringTag : void 0;
+var st = "[object Null]", rt = "[object Undefined]", le = R ? R.toStringTag : void 0;
 function Y(e) {
-  return e == null ? e === void 0 ? st : ot : ie && ie in Object(e) ? Ye(e) : tt(e);
+  return e == null ? e === void 0 ? rt : st : le && le in Object(e) ? Ze(e) : ot(e);
 }
 function Z(e) {
   return e != null && typeof e == "object";
 }
-var me = Array.isArray;
+var _e = Array.isArray;
 function nt(e) {
-  var r = typeof e;
-  return e != null && (r == "object" || r == "function");
+  var n = typeof e;
+  return e != null && (n == "object" || n == "function");
 }
-function rt(e) {
+function at(e) {
   return e;
 }
-var at = "[object AsyncFunction]", it = "[object Function]", lt = "[object GeneratorFunction]", ct = "[object Proxy]";
-function dt(e) {
+var it = "[object AsyncFunction]", lt = "[object Function]", ct = "[object GeneratorFunction]", dt = "[object Proxy]";
+function ut(e) {
   if (!nt(e))
     return !1;
-  var r = Y(e);
-  return r == it || r == lt || r == at || r == ct;
+  var n = Y(e);
+  return n == lt || n == ct || n == it || n == dt;
 }
-function ut(e, r) {
-  for (var a = -1, i = e == null ? 0 : e.length; ++a < i && r(e[a], a, e) !== !1; )
+function pt(e, n) {
+  for (var i = -1, d = e == null ? 0 : e.length; ++i < d && n(e[i], i, e) !== !1; )
     ;
   return e;
 }
-var pt = 9007199254740991, ft = /^(?:0|[1-9]\d*)$/;
-function gt(e, r) {
-  var a = typeof e;
-  return r = r ?? pt, !!r && (a == "number" || a != "symbol" && ft.test(e)) && e > -1 && e % 1 == 0 && e < r;
+var ft = 9007199254740991, gt = /^(?:0|[1-9]\d*)$/;
+function ht(e, n) {
+  var i = typeof e;
+  return n = n ?? ft, !!n && (i == "number" || i != "symbol" && gt.test(e)) && e > -1 && e % 1 == 0 && e < n;
 }
-var ht = 9007199254740991;
-function _e(e) {
-  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= ht;
-}
+var vt = 9007199254740991;
 function ye(e) {
-  return e != null && _e(e.length) && !dt(e);
+  return typeof e == "number" && e > -1 && e % 1 == 0 && e <= vt;
 }
-var vt = Object.prototype;
-function mt(e) {
-  var r = e && e.constructor, a = typeof r == "function" && r.prototype || vt;
-  return e === a;
+function be(e) {
+  return e != null && ye(e.length) && !ut(e);
 }
-function _t(e, r) {
-  for (var a = -1, i = Array(e); ++a < e; )
-    i[a] = r(a);
-  return i;
+var mt = Object.prototype;
+function _t(e) {
+  var n = e && e.constructor, i = typeof n == "function" && n.prototype || mt;
+  return e === i;
 }
-var yt = "[object Arguments]";
-function le(e) {
-  return Z(e) && Y(e) == yt;
+function yt(e, n) {
+  for (var i = -1, d = Array(e); ++i < e; )
+    d[i] = n(i);
+  return d;
 }
-var be = Object.prototype, bt = be.hasOwnProperty, wt = be.propertyIsEnumerable, jt = le(/* @__PURE__ */ function() {
+var bt = "[object Arguments]";
+function ce(e) {
+  return Z(e) && Y(e) == bt;
+}
+var we = Object.prototype, wt = we.hasOwnProperty, jt = we.propertyIsEnumerable, Ct = ce(/* @__PURE__ */ function() {
   return arguments;
-}()) ? le : function(e) {
-  return Z(e) && bt.call(e, "callee") && !wt.call(e, "callee");
+}()) ? ce : function(e) {
+  return Z(e) && wt.call(e, "callee") && !jt.call(e, "callee");
 };
-function Ct() {
+function kt() {
   return !1;
 }
-var we = typeof exports == "object" && exports && !exports.nodeType && exports, ce = we && typeof module == "object" && module && !module.nodeType && module, kt = ce && ce.exports === we, de = kt ? he.Buffer : void 0, Tt = de ? de.isBuffer : void 0, xt = Tt || Ct, $t = "[object Arguments]", Pt = "[object Array]", St = "[object Boolean]", Mt = "[object Date]", Ft = "[object Error]", Vt = "[object Function]", At = "[object Map]", Et = "[object Number]", Lt = "[object Object]", Bt = "[object RegExp]", It = "[object Set]", Ot = "[object String]", Dt = "[object WeakMap]", zt = "[object ArrayBuffer]", Rt = "[object DataView]", Ht = "[object Float32Array]", Nt = "[object Float64Array]", Ut = "[object Int8Array]", qt = "[object Int16Array]", Jt = "[object Int32Array]", Kt = "[object Uint8Array]", Wt = "[object Uint8ClampedArray]", Gt = "[object Uint16Array]", Xt = "[object Uint32Array]", h = {};
-h[Ht] = h[Nt] = h[Ut] = h[qt] = h[Jt] = h[Kt] = h[Wt] = h[Gt] = h[Xt] = !0;
-h[$t] = h[Pt] = h[zt] = h[St] = h[Rt] = h[Mt] = h[Ft] = h[Vt] = h[At] = h[Et] = h[Lt] = h[Bt] = h[It] = h[Ot] = h[Dt] = !1;
-function Qt(e) {
-  return Z(e) && _e(e.length) && !!h[Y(e)];
-}
+var je = typeof exports == "object" && exports && !exports.nodeType && exports, de = je && typeof module == "object" && module && !module.nodeType && module, Tt = de && de.exports === je, ue = Tt ? ve.Buffer : void 0, xt = ue ? ue.isBuffer : void 0, Pt = xt || kt, $t = "[object Arguments]", St = "[object Array]", Mt = "[object Boolean]", Vt = "[object Date]", Ft = "[object Error]", At = "[object Function]", Et = "[object Map]", Lt = "[object Number]", It = "[object Object]", Bt = "[object RegExp]", Ot = "[object Set]", Dt = "[object String]", zt = "[object WeakMap]", Rt = "[object ArrayBuffer]", Ht = "[object DataView]", Nt = "[object Float32Array]", Ut = "[object Float64Array]", qt = "[object Int8Array]", Wt = "[object Int16Array]", Jt = "[object Int32Array]", Kt = "[object Uint8Array]", Gt = "[object Uint8ClampedArray]", Xt = "[object Uint16Array]", Qt = "[object Uint32Array]", h = {};
+h[Nt] = h[Ut] = h[qt] = h[Wt] = h[Jt] = h[Kt] = h[Gt] = h[Xt] = h[Qt] = !0;
+h[$t] = h[St] = h[Rt] = h[Mt] = h[Ht] = h[Vt] = h[Ft] = h[At] = h[Et] = h[Lt] = h[It] = h[Bt] = h[Ot] = h[Dt] = h[zt] = !1;
 function Yt(e) {
-  return function(r) {
-    return e(r);
+  return Z(e) && ye(e.length) && !!h[Y(e)];
+}
+function Zt(e) {
+  return function(n) {
+    return e(n);
   };
 }
-var je = typeof exports == "object" && exports && !exports.nodeType && exports, D = je && typeof module == "object" && module && !module.nodeType && module, Zt = D && D.exports === je, J = Zt && ge.process, ue = function() {
+var Ce = typeof exports == "object" && exports && !exports.nodeType && exports, D = Ce && typeof module == "object" && module && !module.nodeType && module, eo = D && D.exports === Ce, W = eo && he.process, pe = function() {
   try {
     var e = D && D.require && D.require("util").types;
-    return e || J && J.binding && J.binding("util");
+    return e || W && W.binding && W.binding("util");
   } catch {
   }
-}(), pe = ue && ue.isTypedArray, eo = pe ? Yt(pe) : Qt, to = Object.prototype, oo = to.hasOwnProperty;
-function so(e, r) {
-  var a = me(e), i = !a && jt(e), o = !a && !i && xt(e), d = !a && !i && !o && eo(e), c = a || i || o || d, m = c ? _t(e.length, String) : [], t = m.length;
-  for (var v in e)
-    (r || oo.call(e, v)) && !(c && // Safari 9 has enumerable `arguments.length` in strict mode.
-    (v == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
-    o && (v == "offset" || v == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
-    d && (v == "buffer" || v == "byteLength" || v == "byteOffset") || // Skip index properties.
-    gt(v, t))) && m.push(v);
-  return m;
+}(), fe = pe && pe.isTypedArray, to = fe ? Zt(fe) : Yt, oo = Object.prototype, so = oo.hasOwnProperty;
+function ro(e, n) {
+  var i = _e(e), d = !i && Ct(e), r = !i && !d && Pt(e), a = !i && !d && !r && to(e), c = i || d || r || a, v = c ? yt(e.length, String) : [], m = v.length;
+  for (var t in e)
+    (n || so.call(e, t)) && !(c && // Safari 9 has enumerable `arguments.length` in strict mode.
+    (t == "length" || // Node.js 0.10 has enumerable non-index properties on buffers.
+    r && (t == "offset" || t == "parent") || // PhantomJS 2 has enumerable non-index properties on typed arrays.
+    a && (t == "buffer" || t == "byteLength" || t == "byteOffset") || // Skip index properties.
+    ht(t, m))) && v.push(t);
+  return v;
 }
-function no(e, r) {
-  return function(a) {
-    return e(r(a));
+function no(e, n) {
+  return function(i) {
+    return e(n(i));
   };
 }
-var ro = no(Object.keys, Object);
-const ao = ro;
-var io = Object.prototype, lo = io.hasOwnProperty;
-function co(e) {
-  if (!mt(e))
-    return ao(e);
-  var r = [];
-  for (var a in Object(e))
-    lo.call(e, a) && a != "constructor" && r.push(a);
-  return r;
-}
+var ao = no(Object.keys, Object);
+const io = ao;
+var lo = Object.prototype, co = lo.hasOwnProperty;
 function uo(e) {
-  return ye(e) ? so(e) : co(e);
+  if (!_t(e))
+    return io(e);
+  var n = [];
+  for (var i in Object(e))
+    co.call(e, i) && i != "constructor" && n.push(i);
+  return n;
 }
 function po(e) {
-  return function(r, a, i) {
-    for (var o = -1, d = Object(r), c = i(r), m = c.length; m--; ) {
-      var t = c[e ? m : ++o];
-      if (a(d[t], t, d) === !1)
+  return be(e) ? ro(e) : uo(e);
+}
+function fo(e) {
+  return function(n, i, d) {
+    for (var r = -1, a = Object(n), c = d(n), v = c.length; v--; ) {
+      var m = c[e ? v : ++r];
+      if (i(a[m], m, a) === !1)
         break;
     }
-    return r;
+    return n;
   };
 }
-var fo = po();
-const go = fo;
-function ho(e, r) {
-  return e && go(e, r, uo);
+var go = fo();
+const ho = go;
+function vo(e, n) {
+  return e && ho(e, n, po);
 }
-function vo(e, r) {
-  return function(a, i) {
-    if (a == null)
-      return a;
-    if (!ye(a))
-      return e(a, i);
-    for (var o = a.length, d = r ? o : -1, c = Object(a); (r ? d-- : ++d < o) && i(c[d], d, c) !== !1; )
+function mo(e, n) {
+  return function(i, d) {
+    if (i == null)
+      return i;
+    if (!be(i))
+      return e(i, d);
+    for (var r = i.length, a = n ? r : -1, c = Object(i); (n ? a-- : ++a < r) && d(c[a], a, c) !== !1; )
       ;
-    return a;
+    return i;
   };
 }
-var mo = vo(ho);
-const _o = mo;
-function yo(e) {
-  return typeof e == "function" ? e : rt;
+var _o = mo(vo);
+const yo = _o;
+function bo(e) {
+  return typeof e == "function" ? e : at;
 }
-function bo(e, r) {
-  var a = me(e) ? ut : _o;
-  return a(e, yo(r));
+function wo(e, n) {
+  var i = _e(e) ? pt : yo;
+  return i(e, bo(n));
 }
-const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label" }, Co = /* @__PURE__ */ s("span", { class: "dj-accordion__header-icon" }, [
+const jo = { class: "dj-accordion" }, Co = { class: "dj-accordion__header-label" }, ko = /* @__PURE__ */ s("span", { class: "dj-accordion__header-icon" }, [
   /* @__PURE__ */ s("svg", {
     class: "icon",
     xmlns: "http://www.w3.org/2000/svg",
@@ -170,10 +170,10 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       d: "M8.12 9.29L12 13.17l3.88-3.88a.996.996 0 1 1 1.41 1.41l-4.59 4.59a.996.996 0 0 1-1.41 0L6.7 10.7a.996.996 0 0 1 0-1.41c.39-.38 1.03-.39 1.42 0"
     })
   ])
-], -1), ko = { class: "dj-accordion__inner-content" }, To = y({
+], -1), To = { class: "dj-accordion__inner-content" }, xo = b({
   name: "dj-accordion"
-}), xo = /* @__PURE__ */ y({
-  ...To,
+}), Po = /* @__PURE__ */ b({
+  ...xo,
   props: {
     title: {
       type: String,
@@ -189,20 +189,20 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   emits: ["update:modelValue", "change"],
-  setup(e, { emit: r }) {
-    const a = e, i = r, o = P(), d = L({
+  setup(e, { emit: n }) {
+    const i = e, d = n, r = S(), a = I({
       wrapperStyle: {},
       contentStyle: {}
     });
-    Je(() => a.modelValue, (v) => {
+    Je(() => i.modelValue, (t) => {
       var j;
-      v ? (l(o).style.display = "block", d.contentStyle = {
+      t ? (l(r).style.display = "block", a.contentStyle = {
         overflow: "hidden",
-        height: `${l(o).scrollHeight}px`,
+        height: `${l(r).scrollHeight}px`,
         willChange: "height",
         transition: "height .25s"
-      }) : (l(o).style.height = `${(j = l(o)) == null ? void 0 : j.scrollHeight}px`, setTimeout(() => {
-        d.contentStyle = {
+      }) : (l(r).style.height = `${(j = l(r)) == null ? void 0 : j.scrollHeight}px`, setTimeout(() => {
+        a.contentStyle = {
           transition: "height .25s",
           willChange: "height",
           height: "0px",
@@ -211,44 +211,44 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       }, 0));
     });
     const c = () => {
-      i("change", !a.modelValue), i("update:modelValue", !a.modelValue);
-    }, m = () => {
-      a.modelValue ? (d.wrapperStyle = {}, l(o).style.display = "", d.contentStyle = {}) : (d.wrapperStyle = {}, d.contentStyle = {
+      d("change", !i.modelValue), d("update:modelValue", !i.modelValue);
+    }, v = () => {
+      i.modelValue ? (a.wrapperStyle = {}, l(r).style.display = "", a.contentStyle = {}) : (a.wrapperStyle = {}, a.contentStyle = {
         height: "0px",
         overflow: "hidden",
         display: "none"
       });
-    }, t = () => {
-      a.modelValue || (l(o).style.display = "none", l(o).style.height = "0", l(o).style.overflow = "hidden");
+    }, m = () => {
+      i.modelValue || (l(r).style.display = "none", l(r).style.height = "0", l(r).style.overflow = "hidden");
     };
     return G(() => {
-      t();
-    }), (v, j) => (f(), g("div", wo, [
+      m();
+    }), (t, j) => (f(), g("div", jo, [
       s("div", {
-        class: C(["dj-accordion__wrapper", [a.modelValue ? "is-active" : ""]]),
-        style: x(d.wrapperStyle)
+        class: C(["dj-accordion__wrapper", [i.modelValue ? "is-active" : ""]]),
+        style: x(a.wrapperStyle)
       }, [
         s("button", {
           class: "dj-accordion__header",
           onClick: c
         }, [
-          s("span", jo, [
-            $(v.$slots, "title", {}, () => [
-              E(k(a.title), 1)
+          s("span", Co, [
+            P(t.$slots, "title", {}, () => [
+              L(k(i.title), 1)
             ])
           ]),
-          Co
+          ko
         ]),
         s("div", {
           class: "dj-accordion__inner",
-          style: x(d.contentStyle),
+          style: x(a.contentStyle),
           ref_key: "accordionRef",
-          ref: o,
-          onTransitionend: m
+          ref: r,
+          onTransitionend: v
         }, [
-          s("div", ko, [
-            $(v.$slots, "default", {}, () => [
-              E(k(a.content), 1)
+          s("div", To, [
+            P(t.$slots, "default", {}, () => [
+              L(k(i.content), 1)
             ])
           ])
         ], 36)
@@ -257,7 +257,7 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
   }
 }), $o = (e) => {
   e = e.replace("#", "");
-  const r = [
+  const n = [
     parseInt(e.substr(0, 2), 16),
     // 红色通道值
     parseInt(e.substr(2, 2), 16),
@@ -265,23 +265,23 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     parseInt(e.substr(4, 2), 16)
     // 蓝色通道值
   ];
-  return (0.299 * r[0] + 0.587 * r[1] + 0.114 * r[2]) / 255 <= 0.5;
+  return (0.299 * n[0] + 0.587 * n[1] + 0.114 * n[2]) / 255 <= 0.5;
 }, H = (e) => {
-  var r = Math.floor(e % 3600 / 60), a = Math.floor(e % 3600 % 60), i = r > 0 ? r < 10 ? "0" + r : r : "00", o = a > 0 ? a < 10 ? "0" + a : a : "00";
-  return i + ":" + o;
-}, Ce = (e, r) => r / e * 100, Po = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), So = { class: "dj-audio" }, Mo = { class: "dj-audio-button__wrapper" }, Fo = ["disabled"], Vo = {
+  var n = Math.floor(e % 3600 / 60), i = Math.floor(e % 3600 % 60), d = n > 0 ? n < 10 ? "0" + n : n : "00", r = i > 0 ? i < 10 ? "0" + i : i : "00";
+  return d + ":" + r;
+}, ke = (e, n) => n / e * 100, So = () => /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent), Mo = { class: "dj-audio" }, Vo = { class: "dj-audio-button__wrapper" }, Fo = ["disabled"], Ao = {
   key: 0,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 512 512"
-}, Ao = /* @__PURE__ */ s("path", {
+}, Eo = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M133 440a35.37 35.37 0 0 1-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0 1 35.77.45l247.85 148.36a36 36 0 0 1 0 61l-247.89 148.4A35.5 35.5 0 0 1 133 440"
-}, null, -1), Eo = [
-  Ao
-], Lo = {
+}, null, -1), Lo = [
+  Eo
+], Io = {
   key: 1,
   xmlns: "http://www.w3.org/2000/svg",
   fill: "currentColor",
@@ -290,20 +290,20 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
 }, Bo = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M12 6h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm10 0h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
-}, null, -1), Io = [
+}, null, -1), Oo = [
   Bo
-], Oo = {
+], Do = {
   key: 1,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, Do = /* @__PURE__ */ fe('<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"></animate></path><path stroke-dasharray="30" stroke-dashoffset="30" d="M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.3s" values="30;0"></animate></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 8v7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"></animate></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"></animate></path></g>', 1), zo = [
-  Do
-], Ro = { class: "dj-audio-progress__wrapper" }, Ho = { class: "dj-audio-progress__start-time" }, No = { class: "dj-audio-progress__inner" }, Uo = ["src"], qo = ["src"], Jo = { class: "dj-audio-progress__end-time" }, Ko = y({
+}, zo = /* @__PURE__ */ ge('<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"></animate></path><path stroke-dasharray="30" stroke-dashoffset="30" d="M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.3s" values="30;0"></animate></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 8v7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"></animate></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"></animate></path></g>', 1), Ro = [
+  zo
+], Ho = { class: "dj-audio-progress__wrapper" }, No = { class: "dj-audio-progress__start-time" }, Uo = { class: "dj-audio-progress__inner" }, qo = ["src"], Wo = ["src"], Jo = { class: "dj-audio-progress__end-time" }, Ko = b({
   name: "dj-audio"
-}), Wo = /* @__PURE__ */ y({
+}), Go = /* @__PURE__ */ b({
   ...Ko,
   props: {
     src: {
@@ -324,8 +324,8 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   emits: ["loadedmetadata", "play", "pause", "canplay", "playing", "progress", "timeupdate", "seeked", "waiting", "ended"],
-  setup(e, { expose: r, emit: a }) {
-    const i = e, o = P(), d = a, c = L({
+  setup(e, { expose: n, emit: i }) {
+    const d = e, r = S(), a = i, c = I({
       waiting: !0,
       paused: !0,
       isDragProgress: !1,
@@ -334,88 +334,88 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       buffered: 0,
       currentTime: "00:00",
       duration: "00:00"
-    }), m = () => {
-      l(o).play();
+    }), v = () => {
+      l(r).play();
+    }, m = () => {
+      l(r).pause();
     }, t = () => {
-      l(o).pause();
-    }, v = () => {
-      c.paused = !c.paused, c.paused ? t() : m();
+      c.paused = !c.paused, c.paused ? m() : v();
     }, j = (p) => {
       var w;
-      c.duration = H((w = l(o)) == null ? void 0 : w.duration), c.waiting = !1, d("loadedmetadata", p);
-    }, S = (p) => {
-      c.waiting = !1, d("canplay", p);
-    }, b = (p) => {
-      c.paused = !1, l(o).volume = c.volume = 0.5, d("play", p);
+      c.duration = H((w = l(r)) == null ? void 0 : w.duration), c.waiting = !1, a("loadedmetadata", p);
     }, M = (p) => {
-      d("pause", p), c.paused = !0;
-    }, B = (p) => {
-      d("playing", p);
+      c.waiting = !1, a("canplay", p);
+    }, y = (p) => {
+      c.paused = !1, l(r).volume = c.volume = 0.5, a("play", p);
+    }, $ = (p) => {
+      a("pause", p), c.paused = !0;
     }, A = (p) => {
-      var T, F;
-      var w = (T = l(o)) == null ? void 0 : T.buffered;
-      c.buffered = parseFloat((w.end(w.length - 1) / ((F = l(o)) == null ? void 0 : F.duration) * 100).toFixed(2)), d("progress", p);
+      a("playing", p);
+    }, E = (p) => {
+      var T, V;
+      var w = (T = l(r)) == null ? void 0 : T.buffered;
+      c.buffered = parseFloat((w.end(w.length - 1) / ((V = l(r)) == null ? void 0 : V.duration) * 100).toFixed(2)), a("progress", p);
     }, _ = (p) => {
-      var w, T, F;
-      c.currentTime = H((w = l(o)) == null ? void 0 : w.currentTime), c.isDragProgress || (c.progress = parseFloat(Ce((T = l(o)) == null ? void 0 : T.duration, (F = l(o)) == null ? void 0 : F.currentTime).toFixed(2))), d("timeupdate", c.progress, p);
+      var w, T, V;
+      c.currentTime = H((w = l(r)) == null ? void 0 : w.currentTime), c.isDragProgress || (c.progress = parseFloat(ke((T = l(r)) == null ? void 0 : T.duration, (V = l(r)) == null ? void 0 : V.currentTime).toFixed(2))), a("timeupdate", c.progress, p);
     }, z = (p) => {
-      d("seeked", p);
+      a("seeked", p);
     }, N = (p) => {
-      c.waiting = !0, d("waiting", p);
+      c.waiting = !0, a("waiting", p);
     }, U = (p) => {
-      c.paused = !0, d("ended", p);
+      c.paused = !0, a("ended", p);
     }, q = () => {
       var p;
-      l(o).currentTime = c.progress / 100 * ((p = l(o)) == null ? void 0 : p.duration), c.isDragProgress = !1;
+      l(r).currentTime = c.progress / 100 * ((p = l(r)) == null ? void 0 : p.duration), c.isDragProgress = !1;
     };
-    return r({
-      src: i.src,
-      autoplay: i.autoplay,
-      loop: i.loop,
-      muted: i.muted,
+    return n({
+      src: d.src,
+      autoplay: d.autoplay,
+      loop: d.loop,
+      muted: d.muted,
       paused: () => c.paused,
       volume: () => c.volume,
       progress: () => c.progress,
       buffered: () => c.buffered,
       currentTime: () => {
         var p;
-        return (p = l(o)) == null ? void 0 : p.currentTime;
+        return (p = l(r)) == null ? void 0 : p.currentTime;
       },
       duration: () => {
         var p;
-        return (p = l(o)) == null ? void 0 : p.duration;
+        return (p = l(r)) == null ? void 0 : p.duration;
       },
-      play: m,
-      pause: t
-    }), (p, w) => (f(), g("div", So, [
+      play: v,
+      pause: m
+    }), (p, w) => (f(), g("div", Mo, [
       s("div", {
         class: C(["dj-audio__wrapper", [c.paused ? "" : "is-play"]])
       }, [
-        s("div", Mo, [
+        s("div", Vo, [
           s("button", {
             class: "dj-audio-button__play",
             disabled: c.waiting,
-            onClick: v
+            onClick: t
           }, [
-            c.waiting ? (f(), g("svg", Oo, zo)) : (f(), g(X, { key: 0 }, [
-              c.paused ? (f(), g("svg", Vo, Eo)) : (f(), g("svg", Lo, Io))
+            c.waiting ? (f(), g("svg", Do, Ro)) : (f(), g(X, { key: 0 }, [
+              c.paused ? (f(), g("svg", Ao, Lo)) : (f(), g("svg", Io, Oo))
             ], 64))
           ], 8, Fo)
         ]),
-        s("div", Ro, [
-          s("span", Ho, k(c.currentTime), 1),
-          s("div", No, [
+        s("div", Ho, [
+          s("span", No, k(c.currentTime), 1),
+          s("div", Uo, [
             s("audio", {
               class: "dj-audio-process__audio",
               ref_key: "audioRef",
-              ref: o,
+              ref: r,
               preload: "auto",
               onLoadedmetadata: j,
-              onProgress: A,
-              onCanplay: S,
-              onPlay: b,
-              onPlaying: B,
-              onPause: M,
+              onProgress: E,
+              onCanplay: M,
+              onPlay: y,
+              onPlaying: A,
+              onPause: $,
               onTimeupdate: _,
               onSeeked: z,
               onWaiting: N,
@@ -424,24 +424,24 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
               s("source", {
                 type: "audio/ogg",
                 src: e.src
-              }, null, 8, Uo),
+              }, null, 8, qo),
               s("source", {
                 type: "audio/mpeg",
                 src: e.src
-              }, null, 8, qo)
+              }, null, 8, Wo)
             ], 544),
             s("div", {
               class: "dj-audio-buffered__bar",
               style: x({ "--dj-audio-buffer-value": `${c.buffered}%` })
             }, null, 4),
-            K(s("input", {
+            J(s("input", {
               type: "range",
               style: x({ "--dj-audio-progress-value": `${c.progress}%` }),
               "onUpdate:modelValue": w[0] || (w[0] = (T) => c.progress = T),
               onMousedown: w[1] || (w[1] = (T) => c.isDragProgress = !0),
               onMouseup: q
             }, null, 36), [
-              [W, c.progress]
+              [K, c.progress]
             ])
           ]),
           s("span", Jo, k(c.duration), 1)
@@ -449,10 +449,10 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       ], 2)
     ]));
   }
-}), Go = { class: "dj-button-inner" }, Xo = y({
+}), Xo = { class: "dj-button-inner" }, Qo = b({
   name: "dj-button"
-}), Qo = /* @__PURE__ */ y({
-  ...Xo,
+}), Yo = /* @__PURE__ */ b({
+  ...Qo,
   props: {
     text: {
       type: String,
@@ -464,27 +464,27 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    return (r, a) => (f(), g("button", {
+    return (n, i) => (f(), g("button", {
       class: "dj-button",
       style: x({ "--dj-button-custom-background-color": e.color, "--dj-button-custom-color": e.color ? l($o)(e.color) ? "var(--dj-button-white-color)" : "var(--dj-button-black-color)" : "" })
     }, [
-      s("span", Go, [
-        $(r.$slots, "default", {}, () => [
-          E(k(e.text), 1)
+      s("span", Xo, [
+        P(n.$slots, "default", {}, () => [
+          L(k(e.text), 1)
         ])
       ])
     ], 4));
   }
-}), Yo = {
+}), Zo = {
   key: 0,
   class: "dj-card-header"
-}, Zo = { class: "dj-card-body" }, es = {
+}, es = { class: "dj-card-body" }, ts = {
   key: 1,
   class: "dj-card-footer"
-}, ts = y({
+}, os = b({
   name: "dj-card"
-}), os = /* @__PURE__ */ y({
-  ...ts,
+}), ss = /* @__PURE__ */ b({
+  ...os,
   props: {
     align: {
       type: String,
@@ -500,33 +500,33 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    const r = e, a = Q(), i = L({
+    const n = e, i = Q(), d = I({
       showTitle: !0,
       showFooter: !0
     });
     return G(() => {
-      i.showTitle = (r.title || a.header) !== void 0, i.showFooter = (r.footer || a.footer) !== void 0;
-    }), (o, d) => (f(), g("div", {
+      d.showTitle = (n.title || i.header) !== void 0, d.showFooter = (n.footer || i.footer) !== void 0;
+    }), (r, a) => (f(), g("div", {
       class: C(["dj-card", [e.align]])
     }, [
-      i.showTitle ? (f(), g("div", Yo, [
-        $(o.$slots, "header", {}, () => [
-          E(k(e.title), 1)
+      d.showTitle ? (f(), g("div", Zo, [
+        P(r.$slots, "header", {}, () => [
+          L(k(e.title), 1)
         ])
       ])) : O("", !0),
-      s("div", Zo, [
-        $(o.$slots, "default")
+      s("div", es, [
+        P(r.$slots, "default")
       ]),
-      i.showFooter ? (f(), g("div", es, [
-        $(o.$slots, "footer", {}, () => [
-          E(k(e.footer), 1)
+      d.showFooter ? (f(), g("div", ts, [
+        P(r.$slots, "footer", {}, () => [
+          L(k(e.footer), 1)
         ])
       ])) : O("", !0)
     ], 2));
   }
-}), ss = { class: "dj-divider" }, ns = y({
+}), rs = { class: "dj-divider" }, ns = b({
   name: "dj-divider"
-}), rs = /* @__PURE__ */ y({
+}), as = /* @__PURE__ */ b({
   ...ns,
   props: {
     text: {
@@ -540,21 +540,21 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   setup(e) {
-    const r = Q();
-    return (a, i) => (f(), g("div", ss, [
+    const n = Q();
+    return (i, d) => (f(), g("div", rs, [
       s("div", {
         class: C(["dj-divider-inner", ["dj-divider-inner--" + e.type]])
       }, [
-        l(r).default ? $(a.$slots, "default", { key: 0 }) : (f(), g(X, { key: 1 }, [
-          E(k(e.text), 1)
+        l(n).default ? P(i.$slots, "default", { key: 0 }) : (f(), g(X, { key: 1 }, [
+          L(k(e.text), 1)
         ], 64))
       ], 2)
     ]));
   }
-}), as = {
+}), is = {
   key: 0,
   class: "dj-input__prefix"
-}, is = { class: "dj-input__prefix__inner" }, ls = ["id", "placeholder", "enterkeyhint", "disabled", "value"], cs = /* @__PURE__ */ s("svg", {
+}, ls = { class: "dj-input__prefix__inner" }, cs = ["id", "placeholder", "enterkeyhint", "disabled", "value"], ds = /* @__PURE__ */ s("svg", {
   xmlns: "http://www.w3.org/2000/svg",
   width: "16",
   height: "16",
@@ -563,15 +563,15 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
   viewBox: "0 0 16 16"
 }, [
   /* @__PURE__ */ s("path", { d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" })
-], -1), ds = [
-  cs
-], us = {
+], -1), us = [
+  ds
+], ps = {
   key: 2,
   class: "dj-input__suffix"
-}, ps = { class: "dj-input__suffix__inner" }, fs = y({
+}, fs = { class: "dj-input__suffix__inner" }, gs = b({
   name: "dj-input"
-}), gs = /* @__PURE__ */ y({
-  ...fs,
+}), hs = /* @__PURE__ */ b({
+  ...gs,
   props: {
     id: {
       type: String,
@@ -599,37 +599,37 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   emits: ["update:modelValue", "input", "change", "keyup", "focus", "blur", "clear"],
-  setup(e, { expose: r, emit: a }) {
-    const i = e, o = a, d = Q(), c = P(), m = L({
+  setup(e, { expose: n, emit: i }) {
+    const d = e, r = i, a = Q(), c = S(), v = I({
       focus: !1,
       active: !1
-    }), t = (_) => {
-      o("input", _.target.value), o("update:modelValue", _.target.value);
-    }, v = (_) => {
-      o("change", _.target.value);
+    }), m = (_) => {
+      r("input", _.target.value), r("update:modelValue", _.target.value);
+    }, t = (_) => {
+      r("change", _.target.value);
     }, j = (_) => {
-      m.focus = !0, o("focus", _);
-    }, S = (_) => {
-      m.focus = !1, o("blur", _);
-    }, b = (_) => {
-      o("keyup", _);
-    }, M = () => {
+      v.focus = !0, r("focus", _);
+    }, M = (_) => {
+      v.focus = !1, r("blur", _);
+    }, y = (_) => {
+      r("keyup", _);
+    }, $ = () => {
       l(c).focus();
-    }, B = () => {
-      l(c).blur();
     }, A = () => {
-      o("clear", void 0), o("update:modelValue", "");
+      l(c).blur();
+    }, E = () => {
+      r("clear", void 0), r("update:modelValue", "");
     };
-    return r({ focus: M, blur: B, clear: A }), (_, z) => (f(), g("div", {
+    return n({ focus: $, blur: A, clear: E }), (_, z) => (f(), g("div", {
       class: C(["dj-input", [e.disabled ? "is-disabled" : ""]])
     }, [
       s("div", {
-        class: C(["dj-input__wrapper", [m.focus ? "is-focus" : ""]]),
-        onClick: M
+        class: C(["dj-input__wrapper", [v.focus ? "is-focus" : ""]]),
+        onClick: $
       }, [
-        l(d)["prefix-icon"] ? (f(), g("span", as, [
-          s("span", is, [
-            $(_.$slots, "prefix-icon")
+        l(a)["prefix-icon"] ? (f(), g("span", is, [
+          s("span", ls, [
+            P(_.$slots, "prefix-icon")
           ])
         ])) : O("", !0),
         s("input", {
@@ -641,29 +641,29 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
           enterkeyhint: e.enterkeyhint,
           disabled: e.disabled,
           value: e.modelValue,
-          onChange: v,
-          onInput: t,
+          onChange: t,
+          onInput: m,
           onFocus: j,
-          onFocusout: S,
-          onKeyup: Ke(b, ["native"])
-        }, null, 40, ls),
-        i.clear && e.modelValue ? (f(), g("div", {
+          onFocusout: M,
+          onKeyup: Ke(y, ["native"])
+        }, null, 40, cs),
+        d.clear && e.modelValue ? (f(), g("div", {
           key: 1,
           class: "dj-input__clear",
-          onClick: A
-        }, ds)) : O("", !0),
-        l(d)["suffix-icon"] ? (f(), g("span", us, [
-          s("span", ps, [
-            $(_.$slots, "suffix-icon")
+          onClick: E
+        }, us)) : O("", !0),
+        l(a)["suffix-icon"] ? (f(), g("span", ps, [
+          s("span", fs, [
+            P(_.$slots, "suffix-icon")
           ])
         ])) : O("", !0)
       ], 2)
     ], 2));
   }
-}), hs = ["id", "rows", "cols", "placeholder", "disabled", "value"], vs = y({
+}), vs = ["id", "rows", "cols", "placeholder", "disabled", "value"], ms = b({
   name: "dj-textarea"
-}), ms = /* @__PURE__ */ y({
-  ...vs,
+}), _s = /* @__PURE__ */ b({
+  ...ms,
   props: {
     id: {
       type: String,
@@ -691,92 +691,92 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   emits: ["update:modelValue", "input", "change", "focus", "blur"],
-  setup(e, { expose: r, emit: a }) {
-    const i = a, o = P(), d = L({
+  setup(e, { expose: n, emit: i }) {
+    const d = i, r = S(), a = I({
       focus: !1,
       active: !1
-    }), c = (b) => {
-      i("input", b);
-    }, m = (b) => {
-      i("change", b), i("update:modelValue", b.target.value);
-    }, t = (b) => {
-      d.focus = !0, i("focus", b);
-    }, v = (b) => {
-      d.focus = !1, i("blur", b);
+    }), c = (y) => {
+      d("input", y);
+    }, v = (y) => {
+      d("change", y), d("update:modelValue", y.target.value);
+    }, m = (y) => {
+      a.focus = !0, d("focus", y);
+    }, t = (y) => {
+      a.focus = !1, d("blur", y);
     }, j = () => {
-      l(o).focus();
+      l(r).focus();
     };
-    return r({ focus: j, blur: () => {
-      l(o).blur();
-    } }), (b, M) => (f(), g("div", {
+    return n({ focus: j, blur: () => {
+      l(r).blur();
+    } }), (y, $) => (f(), g("div", {
       class: C(["dj-textarea", [e.disabled ? "is-disabled" : ""]])
     }, [
       s("div", {
-        class: C(["dj-textarea__wrapper", [d.focus ? "is-focus" : ""]]),
+        class: C(["dj-textarea__wrapper", [a.focus ? "is-focus" : ""]]),
         onClick: j
       }, [
         s("textarea", {
           id: e.id,
           ref_key: "textareaRef",
-          ref: o,
+          ref: r,
           class: "dj-textarea__inner",
           rows: e.rows,
           cols: e.cols,
           placeholder: e.placeholder,
           disabled: e.disabled,
           value: e.modelValue,
-          onInput: m,
+          onInput: v,
           onChange: c,
-          onFocus: t,
-          onFocusout: v
-        }, null, 40, hs)
+          onFocus: m,
+          onFocusout: t
+        }, null, 40, vs)
       ], 2)
     ], 2));
   }
-}), _s = { class: "dj-video__inner" }, ys = { class: "dj-video-source" }, bs = { class: "dj-video-source__wrapper" }, ws = { class: "dj-video-source__content" }, js = ["src"], Cs = ["src"], ks = ["src"], Ts = { class: "dj-video-progress__wrapper" }, xs = { class: "dj-video-button__wrapper" }, $s = ["disabled"], Ps = {
+}), ys = { class: "dj-video__inner" }, bs = { class: "dj-video-source" }, ws = { class: "dj-video-source__wrapper" }, js = { class: "dj-video-source__content" }, Cs = ["src"], ks = ["src"], Ts = ["src"], xs = { class: "dj-video-progress__wrapper" }, Ps = { class: "dj-video-button__wrapper" }, $s = ["disabled"], Ss = {
   key: 0,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 512 512"
-}, Ss = /* @__PURE__ */ s("path", {
+}, Ms = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M133 440a35.37 35.37 0 0 1-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0 1 35.77.45l247.85 148.36a36 36 0 0 1 0 61l-247.89 148.4A35.5 35.5 0 0 1 133 440"
-}, null, -1), Ms = [
-  Ss
+}, null, -1), Vs = [
+  Ms
 ], Fs = {
   key: 1,
   xmlns: "http://www.w3.org/2000/svg",
   fill: "currentColor",
   class: "icon",
   viewBox: "0 0 32 32"
-}, Vs = /* @__PURE__ */ s("path", {
+}, As = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M12 6h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zm10 0h-2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2z"
-}, null, -1), As = [
-  Vs
-], Es = {
+}, null, -1), Es = [
+  As
+], Ls = {
   key: 1,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, Ls = /* @__PURE__ */ fe('<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"></animate></path><path stroke-dasharray="30" stroke-dashoffset="30" d="M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.3s" values="30;0"></animate></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 8v7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"></animate></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"></animate></path></g>', 1), Bs = [
-  Ls
-], Is = { class: "dj-video-progress__inner" }, Os = { class: "dj-video-progress__start-time" }, Ds = { class: "dj-video-progress__content" }, zs = { class: "dj-video-progress__end-time" }, Rs = { class: "dj-video-button__wrapper" }, Hs = { class: "dj-video-button__group" }, Ns = {
+}, Is = /* @__PURE__ */ ge('<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="2 4" stroke-dashoffset="6" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0"></animate></path><path stroke-dasharray="30" stroke-dashoffset="30" d="M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.3s" values="30;0"></animate></path><path stroke-dasharray="10" stroke-dashoffset="10" d="M12 8v7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0"></animate></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 15.5l3.5 -3.5M12 15.5l-3.5 -3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0"></animate></path></g>', 1), Bs = [
+  Is
+], Os = { class: "dj-video-progress__inner" }, Ds = { class: "dj-video-progress__start-time" }, zs = { class: "dj-video-progress__content" }, Rs = { class: "dj-video-progress__end-time" }, Hs = { class: "dj-video-button__wrapper" }, Ns = { class: "dj-video-button__group" }, Us = {
   key: 0,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, Us = /* @__PURE__ */ s("path", {
+}, qs = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M3 10v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71V6.41c0-.89-1.08-1.34-1.71-.71L7 9H4c-.55 0-1 .45-1 1m13.5 2A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02M14 4.45v.2c0 .38.25.71.6.85C17.18 6.53 19 9.06 19 12s-1.82 5.47-4.4 6.5c-.36.14-.6.47-.6.85v.2c0 .63.63 1.07 1.21.85C18.6 19.11 21 15.84 21 12s-2.4-7.11-5.79-8.4c-.58-.23-1.21.22-1.21.85"
-}, null, -1), qs = [
-  Us
+}, null, -1), Ws = [
+  qs
 ], Js = {
   key: 1,
   class: "icon",
@@ -787,66 +787,66 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
 }, Ks = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M3.63 3.63a.996.996 0 0 0 0 1.41L7.29 8.7L7 9H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h3l3.29 3.29c.63.63 1.71.18 1.71-.71v-4.17l4.18 4.18c-.49.37-1.02.68-1.6.91c-.36.15-.58.53-.58.92c0 .72.73 1.18 1.39.91c.8-.33 1.55-.77 2.22-1.31l1.34 1.34a.996.996 0 1 0 1.41-1.41L5.05 3.63c-.39-.39-1.02-.39-1.42 0M19 12c0 .82-.15 1.61-.41 2.34l1.53 1.53c.56-1.17.88-2.48.88-3.87c0-3.83-2.4-7.11-5.78-8.4c-.59-.23-1.22.23-1.22.86v.19c0 .38.25.71.61.85C17.18 6.54 19 9.06 19 12m-8.71-6.29l-.17.17L12 7.76V6.41c0-.89-1.08-1.33-1.71-.7M16.5 12A4.5 4.5 0 0 0 14 7.97v1.79l2.48 2.48c.01-.08.02-.16.02-.24"
-}, null, -1), Ws = [
+}, null, -1), Gs = [
   Ks
-], Gs = { class: "dj-video-button__group-menu" }, Xs = { class: "dj-video-button__group-menu__wrapper" }, Qs = { class: "dj-video-volume" }, Ys = { class: "dj-video-volume__wrapper" }, Zs = { class: "dj-video-volume__inner" }, en = { class: "dj-video-volume-progress" }, tn = {
+], Xs = { class: "dj-video-button__group-menu" }, Qs = { class: "dj-video-button__group-menu__wrapper" }, Ys = { class: "dj-video-volume" }, Zs = { class: "dj-video-volume__wrapper" }, er = { class: "dj-video-volume__inner" }, tr = { class: "dj-video-volume-progress" }, or = {
   key: 0,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, on = /* @__PURE__ */ s("path", {
+}, sr = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M2 6.25A3.25 3.25 0 0 1 5.25 3h13.5A3.25 3.25 0 0 1 22 6.25V12h-1.5V6.25a1.75 1.75 0 0 0-1.75-1.75H5.25A1.75 1.75 0 0 0 3.5 6.25v9.5c0 .966.784 1.75 1.75 1.75H11V19H5.25A3.25 3.25 0 0 1 2 15.75zM14 13a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2zM5.22 6.22a.75.75 0 0 1 1.06 0L9.5 9.44V7.75a.75.75 0 0 1 1.5 0v3.5a.75.75 0 0 1-.75.75h-3.5a.75.75 0 0 1 0-1.5h1.69L5.22 7.28a.75.75 0 0 1 0-1.06"
-}, null, -1), sn = [
-  on
-], nn = {
+}, null, -1), rr = [
+  sr
+], nr = {
   key: 1,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, rn = /* @__PURE__ */ s("path", {
+}, ar = /* @__PURE__ */ s("path", {
   fill: "currentColor",
   d: "M10 11a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H3a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2zm8.75-4.5H13V5h5.75A3.25 3.25 0 0 1 22 8.25v9.5A3.25 3.25 0 0 1 18.75 21H5.25A3.25 3.25 0 0 1 2 17.75v-5.92c.313.11.65.17 1 .17h.5v5.75c0 .966.784 1.75 1.75 1.75h13.5a1.75 1.75 0 0 0 1.75-1.75v-9.5a1.75 1.75 0 0 0-1.75-1.75M15.94 16h-1.69a.75.75 0 0 0 0 1.5h3.5a.75.75 0 0 0 .75-.75v-3.5a.75.75 0 0 0-1.5 0v1.69l-2.72-2.72a.75.75 0 1 0-1.06 1.06z"
-}, null, -1), an = [
-  rn
-], ln = {
+}, null, -1), ir = [
+  ar
+], lr = {
   key: 0,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, cn = /* @__PURE__ */ s("g", { fill: "none" }, [
+}, cr = /* @__PURE__ */ s("g", { fill: "none" }, [
   /* @__PURE__ */ s("path", { d: "M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" }),
   /* @__PURE__ */ s("path", {
     fill: "currentColor",
     d: "M9.793 12.793a1 1 0 0 1 1.497 1.32l-.083.094L6.414 19H9a1 1 0 0 1 .117 1.993L9 21H4a1 1 0 0 1-.993-.883L3 20v-5a1 1 0 0 1 1.993-.117L5 15v2.586zM20 3a1 1 0 0 1 .993.883L21 4v5a1 1 0 0 1-1.993.117L19 9V6.414l-4.793 4.793a1 1 0 0 1-1.497-1.32l.083-.094L17.586 5H15a1 1 0 0 1-.117-1.993L15 3z"
   })
-], -1), dn = [
-  cn
-], un = {
+], -1), dr = [
+  cr
+], ur = {
   key: 1,
   class: "icon",
   xmlns: "http://www.w3.org/2000/svg",
   width: "32",
   height: "32",
   viewBox: "0 0 24 24"
-}, pn = /* @__PURE__ */ s("g", { fill: "none" }, [
+}, pr = /* @__PURE__ */ s("g", { fill: "none" }, [
   /* @__PURE__ */ s("path", { d: "M24 0v24H0V0zM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" }),
   /* @__PURE__ */ s("path", {
     fill: "currentColor",
     d: "M11 12a1 1 0 0 1 .993.883L12 13v5a1 1 0 0 1-1.993.117L10 18v-2.586l-5.293 5.293a1 1 0 0 1-1.497-1.32l.083-.094L8.586 14H6a1 1 0 0 1-.117-1.993L6 12zm8.293-8.707a1 1 0 0 1 1.497 1.32l-.083.094L15.414 10H18a1 1 0 0 1 .117 1.993L18 12h-5a1 1 0 0 1-.993-.883L12 11V6a1 1 0 0 1 1.993-.117L14 6v2.586z"
   })
-], -1), fn = [
-  pn
-], gn = { class: "dj-video-volumePrompt__wrapper" }, hn = y({
+], -1), fr = [
+  pr
+], gr = { class: "dj-video-volumePrompt__wrapper" }, hr = b({
   name: "dj-video"
-}), vn = /* @__PURE__ */ y({
-  ...hn,
+}), vr = /* @__PURE__ */ b({
+  ...hr,
   props: {
     src: {
       type: String,
@@ -870,15 +870,15 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
     }
   },
   emits: ["abort", "canplay", "canplaythrough", "durationchange", "emptied", "ended", "error", "loadeddata", "loadedmetadata", "loadstart", "pause", "play", "playing", "progress", "ratechange", "seeked", "seeking", "stalled", "suspend", "timeupdate", "volumechange", "waiting", "fullscreenchange", "enterpictureinpicture", "leavepictureinpicture"],
-  setup(e, { emit: r }) {
-    const a = e, i = r, o = P(), d = P(), c = P(), m = P(), t = L({
+  setup(e, { expose: n, emit: i }) {
+    const d = e, r = i, a = S(), c = S(), v = S(), m = S(), t = I({
       error: !1,
       waiting: !0,
       paused: !0,
       isDragProgress: !1,
       mute: !1,
       volume: 1,
-      volumeBackup: 1,
+      beforeVolume: 1,
       volumeProgress: 100,
       isVolumePrompt: !1,
       progress: 0,
@@ -888,141 +888,141 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       isMove: !1,
       fullscreen: !1,
       pictureInPicture: !1
-    }), v = () => {
-      l(o).play();
-    }, j = () => {
-      l(o).pause();
-    }, S = () => {
-      Po() || (t.paused = !t.paused, t.paused ? j() : v());
-    }, b = () => {
-      try {
-        const n = l(o), u = l(d);
-        n === document.pictureInPictureElement && document.exitPictureInPicture(), u !== document.fullscreenElement ? u.requestFullscreen ? u.requestFullscreen() : u.mozRequestFullScreen ? u.mozRequestFullScreen() : u.webkitRequestFullscreen ? u.webkitRequestFullscreen() : u.msRequestFullscreen && u.msRequestFullscreen() : (n.style.height = a.height, document.exitFullscreen());
-      } catch (n) {
-        console.error(`Failed to toggle fullscreen mode: ${n}`);
-      }
+    }), j = () => {
+      l(a).play();
     }, M = () => {
+      l(a).pause();
+    }, y = () => {
+      So() || (t.paused = !t.paused, t.paused ? M() : j());
+    }, $ = () => {
       try {
-        "pictureInPictureEnabled" in document && l(o) && typeof l(o).requestPictureInPicture == "function" && (l(o) !== document.pictureInPictureElement ? l(o).requestPictureInPicture() : document.exitPictureInPicture());
-      } catch (n) {
-        console.error(`Failed to toggle Picture-in-Picture mode: ${n}`);
-      }
-    }, B = () => {
-      try {
-        t.mute = !t.mute;
-        const n = l(o);
-        t.mute ? (t.volumeBackup = t.volume, t.volume = 0, t.volumeProgress = 0, n.volume = 0) : (t.volumeProgress = t.volumeBackup * 100, t.volume = t.volumeBackup, n.volume = t.volume);
-      } catch {
+        const o = l(a), u = l(c);
+        o === document.pictureInPictureElement && document.exitPictureInPicture(), u !== document.fullscreenElement ? u.requestFullscreen ? u.requestFullscreen() : u.mozRequestFullScreen ? u.mozRequestFullScreen() : u.webkitRequestFullscreen ? u.webkitRequestFullscreen() : u.msRequestFullscreen && u.msRequestFullscreen() : (o.style.height = d.height, document.exitFullscreen());
+      } catch (o) {
+        console.error(`Failed to toggle fullscreen mode: ${o}`);
       }
     }, A = () => {
-      const n = l(c);
-      n && clearTimeout(n), c.value = setTimeout(() => {
+      try {
+        "pictureInPictureEnabled" in document && l(a) && typeof l(a).requestPictureInPicture == "function" && (l(a) !== document.pictureInPictureElement ? l(a).requestPictureInPicture() : document.exitPictureInPicture());
+      } catch (o) {
+        console.error(`Failed to toggle Picture-in-Picture mode: ${o}`);
+      }
+    }, E = () => {
+      try {
+        t.mute = !t.mute;
+        const o = l(a);
+        t.mute ? (t.beforeVolume = t.volume, t.volume = 0, t.volumeProgress = 0, o.volume = 0) : (t.volumeProgress = t.beforeVolume * 100, t.volume = t.beforeVolume, o.volume = t.volume);
+      } catch {
+      }
+    }, _ = () => {
+      const o = l(v);
+      o && clearTimeout(o), v.value = setTimeout(() => {
         t.isMove = !1;
       }, 1500);
-    }, _ = () => {
-      const n = l(c);
-      n && (clearTimeout(n), t.isMove = !0), A();
-    }, z = (n) => {
-      i("abort", n);
-    }, N = (n) => {
-      t.waiting = !1, i("canplay", n);
-    }, U = (n) => {
+    }, z = () => {
+      const o = l(v);
+      o && (clearTimeout(o), t.isMove = !0), _();
+    }, N = (o) => {
+      r("abort", o);
+    }, U = (o) => {
+      t.waiting = !1, r("canplay", o);
+    }, q = (o) => {
       var u;
       try {
-        t.waiting = !1, t.duration = H((u = l(o)) == null ? void 0 : u.duration), i("canplaythrough", n);
+        t.waiting = !1, t.duration = H((u = l(a)) == null ? void 0 : u.duration), r("canplaythrough", o);
       } catch {
       }
-    }, q = (n) => {
-      i("durationchange", n);
-    }, p = (n) => {
-      i("emptied", n);
-    }, w = (n) => {
-      t.paused = !0, i("ended", n);
-    }, T = (n) => {
-      t.error = !0, i("error", n);
-    }, F = (n) => {
-      i("loadeddata", n);
-    }, ke = (n) => {
-      i("loadedmetadata", n);
-    }, Te = (n) => {
-      i("loadstart", n);
-    }, xe = (n) => {
-      t.paused = !0, i("pause", n);
-    }, $e = (n) => {
-      t.paused = !1, i("play", n);
-    }, Pe = (n) => {
-      i("playing", n);
-    }, Se = (n) => {
-      i("progress", n);
-    }, Me = (n) => {
-      i("ratechange", n);
-    }, Fe = (n) => {
-      i("seeked", n);
-    }, Ve = (n) => {
-      i("seeking", n);
-    }, Ae = (n) => {
-      i("stalled", n);
-    }, Ee = (n) => {
-      i("suspend", n);
-    }, Le = (n) => {
-      var V, se, ne, re, ae;
+    }, p = (o) => {
+      r("durationchange", o);
+    }, w = (o) => {
+      r("emptied", o);
+    }, T = (o) => {
+      t.paused = !0, r("ended", o);
+    }, V = (o) => {
+      t.error = !0, r("error", o);
+    }, Te = (o) => {
+      r("loadeddata", o);
+    }, xe = (o) => {
+      r("loadedmetadata", o);
+    }, Pe = (o) => {
+      r("loadstart", o);
+    }, $e = (o) => {
+      t.paused = !0, r("pause", o);
+    }, Se = (o) => {
+      t.paused = !1, r("play", o);
+    }, Me = (o) => {
+      r("playing", o);
+    }, Ve = (o) => {
+      r("progress", o);
+    }, Fe = (o) => {
+      r("ratechange", o);
+    }, Ae = (o) => {
+      r("seeked", o);
+    }, Ee = (o) => {
+      r("seeking", o);
+    }, Le = (o) => {
+      r("stalled", o);
+    }, Ie = (o) => {
+      r("suspend", o);
+    }, Be = (o) => {
+      var F, re, ne, ae, ie;
       try {
-        t.currentTime = H((V = l(o)) == null ? void 0 : V.currentTime), t.isDragProgress || (t.progress = parseFloat(Ce((se = l(o)) == null ? void 0 : se.duration, (ne = l(o)) == null ? void 0 : ne.currentTime).toFixed(2)));
-        var u = (re = l(o)) == null ? void 0 : re.buffered;
-        t.buffered = parseFloat((u.end(u.length - 1) / ((ae = l(o)) == null ? void 0 : ae.duration) * 100).toFixed(2)), i("timeupdate", n);
+        t.currentTime = H((F = l(a)) == null ? void 0 : F.currentTime), t.isDragProgress || (t.progress = parseFloat(ke((re = l(a)) == null ? void 0 : re.duration, (ne = l(a)) == null ? void 0 : ne.currentTime).toFixed(2)));
+        var u = (ae = l(a)) == null ? void 0 : ae.buffered;
+        t.buffered = parseFloat((u.end(u.length - 1) / ((ie = l(a)) == null ? void 0 : ie.duration) * 100).toFixed(2)), r("timeupdate", o);
       } catch {
       }
-    }, Be = (n) => {
-      const u = n.target.volume;
-      t.volume = u, t.volumeProgress = Math.floor(u * 100), u == 0 ? t.mute = !0 : t.mute = !1, i("volumechange", n);
-    }, Ie = (n) => {
-      t.waiting = !0, i("waiting", n);
-    }, Oe = (n) => {
+    }, Oe = (o) => {
+      const u = o.target.volume;
+      t.volume = u, t.volumeProgress = Math.floor(u * 100), u == 0 ? t.mute = !0 : t.mute = !1, r("volumechange", o);
+    }, De = (o) => {
+      t.waiting = !0, r("waiting", o);
+    }, ze = (o) => {
       try {
-        l(d) === document.fullscreenElement ? t.fullscreen = !0 : t.fullscreen = !1, i("fullscreenchange", n);
+        l(c) === document.fullscreenElement ? t.fullscreen = !0 : t.fullscreen = !1, r("fullscreenchange", o);
       } catch {
       }
-    }, De = (n) => {
-      t.pictureInPicture = !0, i("enterpictureinpicture", n);
-    }, ze = (n) => {
-      t.pictureInPicture = !1, i("leavepictureinpicture", n);
-    }, Re = () => {
-      var n;
+    }, Re = (o) => {
+      t.pictureInPicture = !0, r("enterpictureinpicture", o);
+    }, He = (o) => {
+      t.pictureInPicture = !1, r("leavepictureinpicture", o);
+    }, Ne = () => {
+      var o;
       try {
-        l(o).currentTime = t.progress / 100 * ((n = l(o)) == null ? void 0 : n.duration), t.isDragProgress = !1;
+        l(a).currentTime = t.progress / 100 * ((o = l(a)) == null ? void 0 : o.duration), t.isDragProgress = !1;
       } catch {
       }
     }, ee = () => {
       t.isMove = !0;
-    }, He = () => {
-      t.isMove = !1;
-    }, Ne = () => {
-      _();
     }, Ue = () => {
+      t.isMove = !1;
+    }, qe = () => {
+      z();
+    }, We = () => {
       try {
-        const n = l(o), u = t.volumeProgress / 100;
-        t.volume = u, t.volumeBackup = u, n.volume = u, u == 0 ? t.mute = !0 : t.mute = !1;
+        const o = l(a), u = t.volumeProgress / 100;
+        t.volume = u, t.beforeVolume = u, o.volume = u, u == 0 ? t.mute = !0 : t.mute = !1;
       } catch {
       }
-    }, te = (n) => {
+    }, te = (o) => {
       try {
-        switch (n.keyCode) {
+        switch (o.keyCode) {
           case 32:
-            n.preventDefault(), t.paused ? l(o).play() : l(o).pause();
+            o.preventDefault(), t.paused ? l(a).play() : l(a).pause();
             break;
           case 37:
-            n.preventDefault(), l(o).currentTime -= 5;
+            o.preventDefault(), l(a).currentTime -= 5;
             break;
           case 39:
-            if (n.preventDefault(), t.paused)
+            if (o.preventDefault(), t.paused)
               return;
-            l(o).currentTime += 5;
+            l(a).currentTime += 5;
             break;
           case 38:
-            n.preventDefault(), l(o).volume = (l(o).volume + 0.05).toFixed(2), oe();
+            o.preventDefault(), l(a).volume = (l(a).volume + 0.05).toFixed(2), oe();
             break;
           case 40:
-            n.preventDefault(), l(o).volume = (l(o).volume - 0.05).toFixed(2), oe();
+            o.preventDefault(), l(a).volume = (l(a).volume - 0.05).toFixed(2), oe();
             break;
         }
       } catch {
@@ -1031,139 +1031,172 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       t.isVolumePrompt = !0, l(m) && clearTimeout(l(m)), m.value = setTimeout(() => {
         t.isVolumePrompt = !1;
       }, 1500);
-    }, qe = () => {
-      l(o).load(), t.error = !1;
+    }, se = () => {
+      l(a).load(), t.error = !1;
     };
     return G(() => {
       document.addEventListener("keydown", te);
-    }), We(() => {
+    }), Ge(() => {
       document.removeEventListener("keydown", te);
-    }), (n, u) => (f(), g("div", {
+    }), n({
+      src: d.src,
+      width: d.width,
+      minWidth: d.minWidth,
+      height: d.height,
+      minHeight: d.minHeight,
+      error: () => t.error,
+      waiting: () => t.waiting,
+      paused: () => t.paused,
+      mute: () => t.mute,
+      volume: () => t.volume,
+      beforeVolume: () => t.beforeVolume,
+      volumeProgress: () => t.volumeProgress,
+      progress: () => t.progress,
+      buffered: () => {
+        var o;
+        return (o = l(a)) == null ? void 0 : o.buffered;
+      },
+      currentTime: () => {
+        var o;
+        return (o = l(a)) == null ? void 0 : o.currentTime;
+      },
+      duration: () => {
+        var o;
+        return (o = l(a)) == null ? void 0 : o.duration;
+      },
+      fullscreen: () => t.fullscreen,
+      pictureInPicture: () => t.pictureInPicture,
+      toggleFullScreen: $,
+      togglePictureInPicture: A,
+      play: j,
+      pause: M,
+      load: se
+    }), (o, u) => (f(), g("div", {
       class: "dj-video",
       style: x({ width: e.width, minWidth: e.minWidth })
     }, [
       s("div", {
         class: C(["dj-video__wrapper", [t.paused ? "" : "is-play"]])
       }, [
-        s("div", _s, [
-          s("div", ys, [
-            s("div", bs, [
+        s("div", ys, [
+          s("div", bs, [
+            s("div", ws, [
               s("div", {
                 class: "dj-video-source__inner",
                 style: x({ height: e.height, minHeight: e.minHeight }),
                 ref_key: "videoFullScreenElementRef",
-                ref: d,
+                ref: c,
                 onMouseenter: ee,
-                onMouseleave: He,
-                onMousemove: Ne,
-                onFullscreenchange: Oe
+                onMouseleave: Ue,
+                onMousemove: qe,
+                onFullscreenchange: ze
               }, [
-                s("div", ws, [
+                s("div", js, [
                   s("video", {
                     ref_key: "videoRef",
-                    ref: o,
+                    ref: a,
                     preload: "auto",
                     controls: !1,
                     "h5-playsinline": "",
                     "x5-video-player-fullscreen": "false",
                     "webkit-playsinline": "false",
                     playsinline: "false",
-                    onClick: S,
-                    onAbort: z,
-                    onCanplay: N,
-                    onCanplaythrough: U,
-                    onDurationchange: q,
-                    onEmptied: p,
-                    onEnded: w,
-                    onError: T,
-                    onLoadeddata: F,
-                    onLoadedmetadata: ke,
-                    onLoadstart: Te,
-                    onPause: xe,
-                    onPlay: $e,
-                    onPlaying: Pe,
-                    onProgress: Se,
-                    onRatechange: Me,
-                    onSeeked: Fe,
-                    onSeeking: Ve,
-                    onStalled: Ae,
-                    onSuspend: Ee,
-                    onTimeupdate: Le,
-                    onVolumechange: Be,
-                    onWaiting: Ie,
-                    onEnterpictureinpicture: De,
-                    onLeavepictureinpicture: ze
+                    onClick: y,
+                    onAbort: N,
+                    onCanplay: U,
+                    onCanplaythrough: q,
+                    onDurationchange: p,
+                    onEmptied: w,
+                    onEnded: T,
+                    onError: V,
+                    onLoadeddata: Te,
+                    onLoadedmetadata: xe,
+                    onLoadstart: Pe,
+                    onPause: $e,
+                    onPlay: Se,
+                    onPlaying: Me,
+                    onProgress: Ve,
+                    onRatechange: Fe,
+                    onSeeked: Ae,
+                    onSeeking: Ee,
+                    onStalled: Le,
+                    onSuspend: Ie,
+                    onTimeupdate: Be,
+                    onVolumechange: Oe,
+                    onWaiting: De,
+                    onEnterpictureinpicture: Re,
+                    onLeavepictureinpicture: He
                   }, [
                     s("source", {
                       src: e.src,
                       type: "video/mp4"
-                    }, null, 8, js),
-                    s("source", {
-                      src: e.src,
-                      type: "video/ogg"
                     }, null, 8, Cs),
                     s("source", {
                       src: e.src,
+                      type: "video/ogg"
+                    }, null, 8, ks),
+                    s("source", {
+                      src: e.src,
                       type: "video/webm"
-                    }, null, 8, ks)
+                    }, null, 8, Ts)
                   ], 544)
                 ]),
                 s("div", {
                   class: C(["dj-video-progress", [t.paused || t.isMove ? "is-show" : ""]]),
                   onMouseenter: ee
                 }, [
-                  s("div", Ts, [
-                    s("div", xs, [
+                  s("div", xs, [
+                    s("div", Ps, [
                       s("button", {
                         class: "dj-video-button__play",
                         disabled: t.waiting,
-                        onClick: S
+                        onClick: y
                       }, [
-                        t.waiting ? (f(), g("svg", Es, Bs)) : (f(), g(X, { key: 0 }, [
-                          t.paused ? (f(), g("svg", Ps, Ms)) : (f(), g("svg", Fs, As))
+                        t.waiting ? (f(), g("svg", Ls, Bs)) : (f(), g(X, { key: 0 }, [
+                          t.paused ? (f(), g("svg", Ss, Vs)) : (f(), g("svg", Fs, Es))
                         ], 64))
                       ], 8, $s)
                     ]),
-                    s("div", Is, [
-                      s("span", Os, k(t.currentTime), 1),
-                      s("div", Ds, [
+                    s("div", Os, [
+                      s("span", Ds, k(t.currentTime), 1),
+                      s("div", zs, [
                         s("div", {
                           class: "dj-video-buffered__bar",
                           style: x({ "--buffer-value": `${t.buffered}%` })
                         }, null, 4),
-                        K(s("input", {
+                        J(s("input", {
                           type: "range",
                           style: x({ "--progress-value": `${t.progress}%` }),
-                          "onUpdate:modelValue": u[0] || (u[0] = (V) => t.progress = V),
-                          onMousedown: u[1] || (u[1] = (V) => t.isDragProgress = !0),
-                          onMouseup: Re
+                          "onUpdate:modelValue": u[0] || (u[0] = (F) => t.progress = F),
+                          onMousedown: u[1] || (u[1] = (F) => t.isDragProgress = !0),
+                          onMouseup: Ne
                         }, null, 36), [
-                          [W, t.progress]
+                          [K, t.progress]
                         ])
                       ]),
-                      s("span", zs, k(t.duration), 1)
+                      s("span", Rs, k(t.duration), 1)
                     ]),
-                    s("div", Rs, [
-                      s("div", Hs, [
+                    s("div", Hs, [
+                      s("div", Ns, [
                         s("button", {
                           class: "dj-video-button__volume",
-                          onClick: B
+                          onClick: E
                         }, [
-                          t.mute ? (f(), g("svg", Js, Ws)) : (f(), g("svg", Ns, qs))
+                          t.mute ? (f(), g("svg", Js, Gs)) : (f(), g("svg", Us, Ws))
                         ]),
-                        s("div", Gs, [
-                          s("div", Xs, [
-                            s("div", Qs, [
-                              s("div", Ys, [
-                                s("div", Zs, [
-                                  s("div", en, [
-                                    K(s("input", {
+                        s("div", Xs, [
+                          s("div", Qs, [
+                            s("div", Ys, [
+                              s("div", Zs, [
+                                s("div", er, [
+                                  s("div", tr, [
+                                    J(s("input", {
                                       type: "range",
                                       style: x({ "--volume-progress-value": `${t.volumeProgress}%` }),
-                                      "onUpdate:modelValue": u[2] || (u[2] = (V) => t.volumeProgress = V),
-                                      onInput: Ue
+                                      "onUpdate:modelValue": u[2] || (u[2] = (F) => t.volumeProgress = F),
+                                      onInput: We
                                     }, null, 36), [
-                                      [W, t.volumeProgress]
+                                      [K, t.volumeProgress]
                                     ])
                                   ])
                                 ])
@@ -1174,15 +1207,15 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
                       ]),
                       s("button", {
                         class: "dj-video-button__picture",
-                        onClick: M
+                        onClick: A
                       }, [
-                        t.pictureInPicture ? (f(), g("svg", nn, an)) : (f(), g("svg", tn, sn))
+                        t.pictureInPicture ? (f(), g("svg", nr, ir)) : (f(), g("svg", or, rr))
                       ]),
                       s("button", {
                         class: "dj-video-button__screen",
-                        onClick: b
+                        onClick: $
                       }, [
-                        t.fullscreen ? (f(), g("svg", un, fn)) : (f(), g("svg", ln, dn))
+                        t.fullscreen ? (f(), g("svg", ur, fr)) : (f(), g("svg", lr, dr))
                       ])
                     ])
                   ])
@@ -1190,7 +1223,7 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
                 s("div", {
                   class: C(["dj-video-volumePrompt", [t.paused || t.isMove ? "is-move" : "", t.isVolumePrompt ? "is-show" : ""]])
                 }, [
-                  s("div", gn, k(t.volumeProgress + "%"), 1)
+                  s("div", gr, k(t.volumeProgress + "%"), 1)
                 ], 2),
                 s("div", {
                   class: C(["dj-video-error-message", [t.error ? "is-error" : ""]])
@@ -1198,7 +1231,7 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
                   s("div", { class: "dj-video-error-message__wrapper" }, [
                     s("button", {
                       class: "dj-video-error-restart",
-                      onClick: qe
+                      onClick: se
                     }, "ERRROR RESTART")
                   ])
                 ], 2)
@@ -1209,23 +1242,23 @@ const wo = { class: "dj-accordion" }, jo = { class: "dj-accordion__header-label"
       ], 2)
     ], 4));
   }
-}), mn = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), mr = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  DJAccordion: xo,
-  DJAudio: Wo,
-  DJButton: Qo,
-  DJCard: os,
-  DJDivider: rs,
-  DJInput: gs,
-  DJTextarea: ms,
-  DJVideo: vn
-}, Symbol.toStringTag, { value: "Module" })), yn = {
+  DJAccordion: Po,
+  DJAudio: Go,
+  DJButton: Yo,
+  DJCard: ss,
+  DJDivider: as,
+  DJInput: hs,
+  DJTextarea: _s,
+  DJVideo: vr
+}, Symbol.toStringTag, { value: "Module" })), yr = {
   install(e) {
-    bo(mn, (r) => {
-      e.component(r.name, r);
+    wo(mr, (n) => {
+      e.component(n.name, n);
     });
   }
 };
 export {
-  yn as default
+  yr as default
 };

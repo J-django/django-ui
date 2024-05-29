@@ -42,7 +42,7 @@ const videoConfig = reactive({
     isDragProgress: <boolean>false,
     mute: <boolean>false,
     volume: <number>1,
-    volumeBackup: <number>1,
+    beforeVolume: <number>1,
     volumeProgress: <number>100,
     isVolumePrompt: <boolean>false,
     progress: <number>0,
@@ -134,13 +134,13 @@ const toggleVolume = () => {
         videoConfig.mute = !videoConfig.mute;
         const element = unref(videoRef);
         if (videoConfig.mute) {
-            videoConfig.volumeBackup = videoConfig.volume;
+            videoConfig.beforeVolume = videoConfig.volume;
             videoConfig.volume = 0;
             videoConfig.volumeProgress = 0;
             element.volume = 0;
         } else {
-            videoConfig.volumeProgress = videoConfig.volumeBackup * 100;
-            videoConfig.volume = videoConfig.volumeBackup;
+            videoConfig.volumeProgress = videoConfig.beforeVolume * 100;
+            videoConfig.volume = videoConfig.beforeVolume;
             element.volume = videoConfig.volume;
         }
     } catch { }
@@ -440,7 +440,7 @@ const volumeProgressInputChange = () => {
         const element = unref(videoRef);
         const volume = videoConfig.volumeProgress / 100;
         videoConfig.volume = volume;
-        videoConfig.volumeBackup = volume;
+        videoConfig.beforeVolume = volume;
         element.volume = volume;
         if (volume == 0) {
             videoConfig.mute = true;
@@ -509,7 +509,7 @@ const volumePromtFunc = () => {
 /**
  * 重新加载
  */
-const videoLoaded = () => {
+const load = () => {
     unref(videoRef).load();
     videoConfig.error = false;
 }
@@ -520,6 +520,32 @@ onMounted(() => {
 
 onUnmounted(() => {
     document.removeEventListener("keydown", videoKeydownChange);
+})
+
+defineExpose({
+    src: props.src,
+    width: props.width,
+    minWidth: props.minWidth,
+    height: props.height,
+    minHeight: props.minHeight,
+    error: () => videoConfig.error,
+    waiting: () => videoConfig.waiting,
+    paused: () => videoConfig.paused,
+    mute: () => videoConfig.mute,
+    volume: () => videoConfig.volume,
+    beforeVolume: () => videoConfig.beforeVolume,
+    volumeProgress: () => videoConfig.volumeProgress,
+    progress: () => videoConfig.progress,
+    buffered: () => unref(videoRef)?.buffered,
+    currentTime: () => unref(videoRef)?.currentTime,
+    duration: () => unref(videoRef)?.duration,
+    fullscreen: () => videoConfig.fullscreen,
+    pictureInPicture: () => videoConfig.pictureInPicture,
+    toggleFullScreen: toggleFullScreen,
+    togglePictureInPicture: togglePictureInPicture,
+    play: play,
+    pause: pause,
+    load: load,
 })
 </script>
 
@@ -700,7 +726,7 @@ onUnmounted(() => {
                             </div>
                             <div class="dj-video-error-message" :class="[videoConfig.error ? 'is-error' : '']">
                                 <div class="dj-video-error-message__wrapper">
-                                    <button class="dj-video-error-restart" @click="videoLoaded">ERRROR RESTART</button>
+                                    <button class="dj-video-error-restart" @click="load">ERRROR RESTART</button>
                                 </div>
                             </div>
                         </div>
