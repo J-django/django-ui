@@ -2,7 +2,7 @@
 // plugins
 import "./index.less"
 import { ref, unref, reactive, onMounted, onUnmounted } from 'vue'
-import { formatSongsTime, formatProgress, isMobileDevice } from "@/utils/tool"
+import { useTime, useDevice } from '@/hooks'
 
 // script
 const props = defineProps({
@@ -54,6 +54,10 @@ const videoConfig = reactive({
     pictureInPicture: <boolean>false,
 })
 
+const { isMobile } = useDevice();
+
+const { formatSongsTime, formatProgress } = useTime();
+
 /**
  * 播放
  */
@@ -72,7 +76,7 @@ const pause = () => {
  * 音频状态切换
  */
 const videoSwitch = () => {
-    if (isMobileDevice()) return;
+    if (isMobile()) return;
     videoConfig.paused = !videoConfig.paused;
     if (!videoConfig.paused) play(); else pause();
 }

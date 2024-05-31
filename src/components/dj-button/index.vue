@@ -1,7 +1,7 @@
 <script setup lang="ts" name="dj-button">
 // plugins
 import "./index.less";
-import { isDarkColor } from '@/utils/tool'
+import { useColor } from "@/hooks"
 
 // script
 defineProps({
@@ -14,6 +14,8 @@ defineProps({
         default: ""
     },
 })
+
+const { isDarkColor } = useColor();
 </script>
 
 <template>

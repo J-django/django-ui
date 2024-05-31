@@ -2,7 +2,7 @@
 // plugins
 import "./index.less"
 import { ref, unref, reactive } from 'vue'
-import { formatSongsTime, formatProgress } from "@/utils/tool"
+import { useTime } from '@/hooks'
 
 // script
 const props = defineProps({
@@ -38,6 +38,8 @@ const audioConfig = reactive({
     currentTime: <string>"00:00",
     duration: <string>"00:00"
 })
+
+const { formatSongsTime, formatProgress } = useTime();
 
 /**
  * 播放
