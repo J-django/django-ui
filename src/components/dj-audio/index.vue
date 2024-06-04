@@ -42,6 +42,13 @@ const audioConfig = reactive({
 const { formatSongsTime, formatProgress } = useTime();
 
 /**
+ * 加载音频资源 
+ */
+const load = () => {
+    unref(audioRef).load();
+}
+
+/**
  * 播放
  */
 const play = () => {
@@ -170,14 +177,15 @@ defineExpose({
     autoplay: props.autoplay,
     loop: props.loop,
     muted: props.muted,
+    load: load,
+    play: play,
+    pause: pause,
     paused: () => audioConfig.paused,
     volume: () => audioConfig.volume,
     progress: () => audioConfig.progress,
     buffered: () => audioConfig.buffered,
     currentTime: () => unref(audioRef)?.currentTime,
-    duration: () => unref(audioRef)?.duration,
-    play: play,
-    pause: pause
+    duration: () => unref(audioRef)?.duration
 })
 </script>
 
