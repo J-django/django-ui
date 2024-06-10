@@ -1,5 +1,5 @@
 <script lang="ts" setup name="dj-audio">
-// plugins
+// plugin
 import "./index.less"
 import { ref, unref, reactive } from 'vue'
 import { useTime } from '@/hooks'

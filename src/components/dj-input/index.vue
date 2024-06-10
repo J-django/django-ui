@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-input">
-// plugins
+// plugin
 import "./index.less";
 import { ref, unref, reactive, useSlots } from 'vue'
 

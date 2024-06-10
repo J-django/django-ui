@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-video">
-// plugins
+// plugin
 import "./index.less"
 import { ref, unref, reactive, onMounted, onUnmounted } from 'vue'
 import { useTime, useDevice } from '@/hooks'

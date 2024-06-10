@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-textarea">
-// plugins
+// plugin
 import "./index.less"
 import { ref, unref, reactive } from "vue";
 

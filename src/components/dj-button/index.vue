@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-button">
-// plugins
+// plugin
 import "./index.less";
 import { useColor } from "@/hooks"
 
@@ -21,7 +21,7 @@ const { isDarkColor } = useColor();
 <template>
     <button class="dj-button"
         :style="{ '--dj-button-custom-background-color': color, '--dj-button-custom-color': color ? isDarkColor(color) ? 'var(--dj-button-white-color)' : 'var(--dj-button-black-color)' : '' }">
-        <span class="dj-button-inner">
+        <span class="jy-button__inner">
             <slot>
                 {{ text }}
             </slot>

@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-accordion">
-// plugins
+// plugin
 import "./index.less";
 import { ref, unref, reactive, watch, onMounted } from 'vue'
 

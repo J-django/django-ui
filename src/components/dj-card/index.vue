@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-card">
-// plugins
+// plugin
 import "./index.less";
 import { reactive, useSlots, onMounted } from 'vue'
 

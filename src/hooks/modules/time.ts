@@ -5,13 +5,18 @@ export const useTime = () => {
      * @returns {string}
      */
     const formatSongsTime = (duration: any): string => {
-        var m = Math.floor(duration % 3600 / 60);
+        var h = Math.floor(duration / 3600);
+        var m = Math.floor((duration % 3600) / 60);
         var s = Math.floor(duration % 3600 % 60);
 
-        var mDisplay = m > 0 ? (m < 10 ? "0" + m : m) : "00";
-        var sDisplay = s > 0 ? (s < 10 ? "0" + s : s) : "00";
+        let formattedTime;
+        if (h > 0) {
+            formattedTime = String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0')
+        } else {
+            formattedTime = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0')
+        }
 
-        return mDisplay + ":" + sDisplay;
+        return formattedTime;
     };
 
     /**

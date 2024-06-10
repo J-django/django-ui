@@ -1,4 +1,4 @@
-// plugins
+// plugin
 import type { App, Component } from 'vue'
 import { forEach } from 'lodash-es'
 import * as components from '@/components'

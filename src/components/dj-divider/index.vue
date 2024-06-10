@@ -1,5 +1,5 @@
 <script setup lang="ts" name="dj-divider">
-// plugins
+// plugin
 import "./index.less";
 import { useSlots } from 'vue'
 

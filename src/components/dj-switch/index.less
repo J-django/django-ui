@@ -1,0 +1,72 @@
+.dj-switch {
+  --dj-switch-height: rem(34px);
+  --dj-switch-padding: rem(4px);
+  --dj-switch-option-padding: rem(5px) rem(10px);
+  --dj-switch-color: #3c3c43;
+  --dj-switch-background-color: #f1f1f2;
+  --dj-switch-indicator-background-color: #ffffff;
+  --dj-switch-border-radius: rem(6px);
+  --dj-switch-option-border-radius: rem(4px);
+
+  .dj-switch__wrapper {
+    background-color: var(--dj-switch-background-color);
+    border-radius: var(--dj-switch-border-radius);
+    display: inline-block;
+
+    .dj-switch__inner {
+      position: relative;
+      padding: var(--dj-switch-padding);
+      width: auto;
+      height: var(--dj-switch-height);
+      display: inline-flex;
+      align-items: center;
+      box-sizing: border-box;
+
+      .dj-swicth-indicator {
+        position: absolute;
+        display: block;
+        width: var(--dj-switch-indicator-width);
+        height: var(--dj-switch-indicator-height);
+        transform: translate(0, 0);
+        background-color: var(--dj-switch-indicator-background-color);
+        border-radius: var(--dj-switch-option-border-radius);
+        transition: transform 0.25s, width 0.25s;
+        z-index: 1;
+      }
+
+      .dj-switch__option {
+        height: calc(var(--dj-switch-height) - rem(4px) - rem(4px));
+        border-radius: var(--dj-switch-option-border-radius);
+        z-index: 2;
+        cursor: pointer;
+
+        .dj-switch__option-label {
+          padding: var(--dj-switch-option-padding);
+          height: 100%;
+          color: var(--dj-switch-color);
+          font-size: rem(14px);
+          font-family: inherit;
+          font-weight: 500;
+          text-align: center;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .dj-switch__wrapper.is-disabled {
+    cursor: not-allowed;
+    .dj-switch__inner {
+      cursor: not-allowed;
+      opacity: 0.75;
+      .dj-switch__option {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

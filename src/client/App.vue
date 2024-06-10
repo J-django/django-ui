@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-// plugins
+// plugin
 import { ref } from "vue";
 import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
 import VideoSrc from '@/assets/video/Blue_Sky_and_Clouds_Timelapse_0892__Videvo_1080p_12000br.mp4'
@@ -7,15 +7,19 @@ import VideoSrc from '@/assets/video/Blue_Sky_and_Clouds_Timelapse_0892__Videvo_
 // script
 const accordion = ref(false);
 const content = ref();
+
+const switchValue = ref("apple");
+const switchArray = ref(["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew"])
 </script>
 
 <template>
     <div class="layout">
         <div class="line">
+            <dj-switch :data="switchArray" v-model="switchValue" />
+        </div>
+        <div class="line">
             <dj-button>Default</dj-button>
             <dj-button disabled>Disabled Default</dj-button>
-            <dj-button color="#0d6efd">Custom Primary</dj-button>
-            <dj-button color="#0d6efd" disabled>Disabled Custom Primary</dj-button>
             <dj-button color="#d63384">Custom Pink</dj-button>
             <dj-button color="#d63384" disabled>Disabled Custom Pink</dj-button>
         </div>
