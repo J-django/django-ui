@@ -9,6 +9,7 @@
   --dj-audio-border-color: rgba(60, 60, 67, 0.12);
   --dj-audio-border-radius: rem(6px);
   --dj-audio-border-focus-color: rgba(60, 60, 67, 0.33);
+  --dj-audio-transition-duration: 750ms;
   position: relative;
   width: 100%;
 
@@ -118,16 +119,10 @@
         font-size: rem(12px);
         font-weight: 500;
         line-height: 1;
-        will-change: color, opacity;
-        opacity: 0;
-        animation: progressTimeAnimation @progressTime 1 forwards;
-        transition: opacity 0.25s;
         z-index: 20;
       }
 
       .dj-audio-progress__end-time {
-        animation-delay: calc(@progressTime - 0.25s);
-
         .icon {
           -webkit-user-select: none;
           user-select: none;
@@ -140,7 +135,7 @@
       .dj-audio-progress__inner {
         @barHeight: rem(6px);
         position: relative;
-        width: 0;
+        width: 100%;
         height: @barHeight;
         border-radius: @radius;
         background-color: var(--dj-audio-progress-color);
@@ -150,8 +145,6 @@
         user-select: none;
         -webkit-user-drag: none;
         will-change: width;
-        opacity: 0;
-        animation: progressInnerAnimation @progressTime 1 forwards;
 
         .dj-audio-process__audio {
           display: none;
@@ -167,7 +160,6 @@
           height: 100%;
           background: -webkit-linear-gradient(@current-buffer-color) no-repeat;
           background-size: var(--dj-audio-buffer-value) 100%;
-          transition: background-size 0.25s;
           z-index: 5;
         }
 
@@ -198,6 +190,34 @@
               no-repeat;
             background-size: var(--dj-audio-progress-value) 100%;
           }
+        }
+      }
+    }
+  }
+
+  .dj-audio__wrapper.is-transition {
+    .dj-audio-progress__wrapper {
+      .dj-audio-progress__start-time,
+      .dj-audio-progress__end-time {
+        will-change: color, opacity;
+        opacity: 0;
+        transition: opacity 0.25s;
+        animation: progressTimeAnimation var(--dj-audio-transition-duration) 1
+          forwards;
+      }
+
+      .dj-audio-progress__end-time {
+        animation-delay: calc(var(--dj-audio-transition-duration) - 250ms);
+      }
+
+      .dj-audio-progress__inner {
+        width: 0;
+        opacity: 0;
+        animation: progressInnerAnimation var(--dj-audio-transition-duration) 1
+          forwards;
+
+        .dj-audio-buffered__bar {
+          transition: background-size 0.25s;
         }
       }
     }

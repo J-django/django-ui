@@ -21,6 +21,10 @@ const props = defineProps({
     muted: {
         type: Boolean,
         default: false
+    },
+    transition: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -191,7 +195,8 @@ defineExpose({
 
 <template>
     <div class="dj-audio">
-        <div class="dj-audio__wrapper" :class="[!audioConfig.paused ? 'is-play' : '']">
+        <div class="dj-audio__wrapper"
+            :class="[!audioConfig.paused ? 'is-play' : '', transition ? 'is-transition' : '']">
             <div class="dj-audio-button__wrapper">
                 <button class="dj-audio-button__play" :disabled="audioConfig.waiting" @click="audioSwitch">
                     <template v-if="!audioConfig.waiting">
