@@ -6,6 +6,7 @@
   --dj-video-current-progress-color: rgba(235, 235, 245, 0.5);
   --dj-video-buffer-color: rgba(235, 235, 245, 0.25);
   --dj-video-border-radius: rem(6px);
+  --dj-video-transition-duration: 750ms;
   .dj-video__wrapper {
     .dj-video__inner {
       .dj-video-source {
@@ -239,15 +240,10 @@
                     font-size: rem(12px);
                     font-weight: 500;
                     line-height: 1;
-                    will-change: color, opacity;
-                    animation: progressTimeAnimation @progressTime 1 forwards;
                     z-index: 20;
-                    opacity: 0;
                   }
 
                   .dj-video-progress__end-time {
-                    animation-delay: calc(@progressTime - 0.25s);
-
                     .icon {
                       -webkit-user-select: none;
                       user-select: none;
@@ -260,7 +256,7 @@
                   .dj-video-progress__content {
                     @barHeight: rem(6px);
                     position: relative;
-                    width: 0;
+                    width: 100%;
                     height: @barHeight;
                     border-radius: @radius;
                     background-color: var(--dj-video-progress-color);
@@ -269,9 +265,6 @@
                     -webkit-user-select: none;
                     user-select: none;
                     -webkit-user-drag: none;
-                    will-change: width;
-                    opacity: 0;
-                    animation: progressInnerAnimation @progressTime 1 forwards;
 
                     .dj-video-process__video {
                       display: none;
@@ -411,6 +404,43 @@
             .dj-video-error-message.is-error {
               opacity: 1;
               visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+  .dj-video__wrapper.is-transition {
+    .dj-video__inner {
+      .dj-video-source {
+        .dj-video-source__wrapper {
+          .dj-video-source__inner {
+            .dj-video-progress {
+              .dj-video-progress__wrapper {
+                .dj-video-progress__inner {
+                  .dj-video-progress__start-time,
+                  .dj-video-progress__end-time {
+                    opacity: 0;
+                    will-change: color, opacity;
+                    animation: progressTimeAnimation
+                      var(--dj-video-transition-duration) 1 forwards;
+                  }
+
+                  .dj-video-progress__end-time {
+                    animation-delay: calc(
+                      var(--dj-video-transition-duration) - 250ms
+                    );
+                  }
+
+                  .dj-video-progress__content {
+                    width: 0;
+                    opacity: 0;
+                    will-change: width;
+                    animation: progressInnerAnimation
+                      var(--dj-video-transition-duration) 1 forwards;
+                  }
+                }
+              }
             }
           }
         }

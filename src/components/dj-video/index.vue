@@ -25,6 +25,10 @@ const props = defineProps({
     minHeight: {
         type: String,
         default: ""
+    },
+    transition: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -555,7 +559,8 @@ defineExpose({
 
 <template>
     <div class="dj-video" :style="{ width: width, minWidth: minWidth }">
-        <div class="dj-video__wrapper" :class="[!videoConfig.paused ? 'is-play' : '']">
+        <div class="dj-video__wrapper"
+            :class="[!videoConfig.paused ? 'is-play' : '', transition ? 'is-transition' : '']">
             <div class="dj-video__inner">
                 <div class="dj-video-source">
                     <div class="dj-video-source__wrapper">
