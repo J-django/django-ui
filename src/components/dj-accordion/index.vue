@@ -13,6 +13,10 @@ const props = defineProps({
         type: String,
         default: ""
     },
+    disabled: {
+        type: Boolean,
+        default: false
+    },
     modelValue: {
         type: Boolean,
         default: false
@@ -50,6 +54,7 @@ watch(() => props.modelValue, (val: boolean) => {
 })
 
 const accordion__toggle = () => {
+    if (props.disabled) return;
     emits("change", !props.modelValue)
     emits("update:modelValue", !props.modelValue)
 }
@@ -84,7 +89,8 @@ onMounted(() => {
 
 <template>
     <div class="dj-accordion">
-        <div class="dj-accordion__wrapper" :class="[props.modelValue ? 'is-active' : '']"
+        <div class="dj-accordion__wrapper"
+            :class="[props.modelValue ? 'is-active' : '', props.disabled ? 'is-disabled' : '']"
             :style="accordionConfig.wrapperStyle">
             <button class="dj-accordion__header" @click="accordion__toggle">
                 <span class="dj-accordion__header-label">
