@@ -1,4 +1,4 @@
-<script lang="ts" setup name="dj-switch">
+<script lang="ts" setup name="dj-segmented">
 // plugin
 import "./index.less";
 import { ref, reactive, watch, onMounted } from 'vue'
@@ -7,7 +7,7 @@ import { ref, reactive, watch, onMounted } from 'vue'
 const props = defineProps({
     data: {
         type: Array<String | Number | Boolean>,
-        default: false,
+        default: [],
     },
     disabled: {
         type: Boolean,

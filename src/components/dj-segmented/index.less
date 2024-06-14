@@ -3,8 +3,12 @@
   --dj-switch-padding: rem(4px);
   --dj-switch-option-padding: rem(5px) rem(10px);
   --dj-switch-color: #3c3c43;
+  --dj-switch-font-size: rem(14px);
+  --dj-switch-font-weight: 500;
   --dj-switch-background-color: #f1f1f2;
   --dj-switch-indicator-background-color: #ffffff;
+  --dj-swicth-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.06);
   --dj-switch-border-radius: rem(6px);
   --dj-switch-option-border-radius: rem(4px);
 
@@ -30,11 +34,13 @@
         transform: translate(0, 0);
         background-color: var(--dj-switch-indicator-background-color);
         border-radius: var(--dj-switch-option-border-radius);
+        box-shadow: var(--dj-swicth-box-shadow);
         transition: transform 0.25s, width 0.25s;
         z-index: 1;
       }
 
       .dj-switch__option {
+        touch-action: manipulation;
         height: calc(var(--dj-switch-height) - rem(4px) - rem(4px));
         border-radius: var(--dj-switch-option-border-radius);
         z-index: 2;
@@ -44,9 +50,9 @@
           padding: var(--dj-switch-option-padding);
           height: 100%;
           color: var(--dj-switch-color);
-          font-size: rem(14px);
+          font-size: var(--dj-switch-font-size);
           font-family: inherit;
-          font-weight: 500;
+          font-weight: var(--dj-switch-font-weight);
           text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -61,9 +67,11 @@
 
   .dj-switch__wrapper.is-disabled {
     cursor: not-allowed;
+    opacity: 0.7;
+
     .dj-switch__inner {
       cursor: not-allowed;
-      opacity: 0.75;
+
       .dj-switch__option {
         cursor: not-allowed;
       }
