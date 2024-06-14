@@ -6,7 +6,7 @@ import DJDivider from './dj-divider'
 import DJInput from './dj-input'
 import DJTextarea from './dj-textarea'
 import DJVideo from './dj-video/index.vue'
-import DJSwitch from './dj-switch/index.vue'
+import DJSegmented from './dj-segmented/index.vue'
 
 
 export {
@@ -18,5 +18,5 @@ export {
     DJInput,
     DJTextarea,
     DJVideo,
-    DJSwitch
+    DJSegmented
 }
