@@ -159,6 +159,7 @@
           height: 100%;
           background: -webkit-linear-gradient(@current-buffer-color) no-repeat;
           background-size: var(--dj-audio-buffer-value) 100%;
+          transition: background-size 0.25s;
           z-index: 5;
         }
 
@@ -214,10 +215,6 @@
         opacity: 0;
         animation: progressInnerAnimation var(--dj-audio-transition-duration) 1
           forwards;
-
-        .dj-audio-buffered__bar {
-          transition: background-size 0.25s;
-        }
       }
     }
   }
