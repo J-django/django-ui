@@ -9,11 +9,13 @@
   --dj-accordion-border-color: #e5e5e5;
   --dj-accordion-border-focus-color: rgba(60, 60, 67, 0.33);
   --dj-accordion-border-radius: rem(6px);
+  --dj-accordion-header-transition: transform 250ms;
+  --dj-accordion-transition: box-shadow 250ms, opacity 250ms;
 
   .dj-accordion__wrapper {
     border-radius: var(--dj-accordion-border-radius);
     background-color: var(--dj-accordion-background-color);
-    transition: box-shadow 0.25s;
+    transition: var(--dj-accordion-transition);
 
     &:hover:not(.is-disabled) {
       box-shadow: 0 0 0 rem(1px) var(--dj-accordion-border-color) inset;
@@ -37,7 +39,6 @@
       -webkit-box-align: center;
       align-items: center;
       cursor: pointer;
-      transition: color 0.25s;
 
       .dj-accordion__header-label {
         color: inherit;
@@ -57,7 +58,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.25s;
+        transition: var(--dj-accordion-header-transition);
 
         .icon {
           color: inherit;
@@ -94,7 +95,7 @@
 
   .dj-accordion__wrapper.is-disabled {
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.6;
 
     .dj-accordion__header {
       cursor: not-allowed;

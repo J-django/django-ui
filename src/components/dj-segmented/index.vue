@@ -1,12 +1,18 @@
 <script lang="ts" setup name="dj-segmented">
 // plugin
 import "./index.less";
-import { ref, reactive, watch, onMounted } from 'vue'
+import { ref, unref, reactive, watch, computed, onMounted } from 'vue'
 
 // script
+abstract class SegmentedItem {
+    abstract label: string;
+    abstract value: string;
+    abstract disabled: boolean;
+}
+
 const props = defineProps({
     data: {
-        type: Array<String | Number | Boolean>,
+        type: Array,
         default: [],
     },
     disabled: {
@@ -14,20 +20,28 @@ const props = defineProps({
         default: false
     },
     modelValue: {
-        type: [String, Number, Boolean],
+        type: String,
         default: false
     }
 })
 
 const emits = defineEmits(['update:modelValue', 'change'])
 
-const switchInnerRef = ref();
+const segmentedInnerRef = ref();
 
-const switchConfig = reactive({
+const segmentedConfig = reactive({
     indicatorWidth: "",
     indicatorHeight: "",
     indicatorTranslateX: "",
     indicatorTranslateY: ""
+})
+
+const isObject = computed(() => (item: String | SegmentedItem) => {
+    return typeof item == "object";
+})
+
+const isDisabled = computed(() => (item: SegmentedItem) => {
+    return typeof item == "object" && item?.disabled
 })
 
 watch(() => props.modelValue, () => {
@@ -39,12 +53,15 @@ watch(() => props.modelValue, () => {
  * 切换选中项
  * @param value 选中值
  */
-const switchToggle = (value: String | Number | Boolean) => {
-    if (props.disabled) return;
-    if (typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
-        if (value !== props.modelValue) {
+const segmentedToggle = (item: String | SegmentedItem) => {
+    if (props.disabled || unref(isDisabled)(item as SegmentedItem)) return;
+    if (unref(isObject)(item)) {
+        init();
+        emits("update:modelValue", (item as SegmentedItem)?.value)
+    } else {
+        if (item !== props.modelValue) {
             init();
-            emits("update:modelValue", value)
+            emits("update:modelValue", item)
         }
     }
 }
@@ -54,15 +71,15 @@ const switchToggle = (value: String | Number | Boolean) => {
  */
 const init = () => {
     setTimeout(() => {
-        const parentStyle = window.getComputedStyle(switchInnerRef.value);
-        const activeElement = switchInnerRef.value.querySelector('.dj-switch__option[data-active="true"]')
+        const parentStyle = window.getComputedStyle(segmentedInnerRef.value);
+        const activeElement = segmentedInnerRef.value.querySelector('.dj-segmented__option[data-active="true"]')
         if (activeElement) {
             const translateX = activeElement.offsetLeft - parseInt(parentStyle.paddingLeft);
             const translateY = activeElement.offsetTop - parseInt(parentStyle.paddingTop);
-            switchConfig.indicatorWidth = activeElement.offsetWidth + 'px';
-            switchConfig.indicatorHeight = activeElement.offsetHeight + 'px';
-            switchConfig.indicatorTranslateX = translateX + 'px';
-            switchConfig.indicatorTranslateY = translateY + 'px';
+            segmentedConfig.indicatorWidth = activeElement.offsetWidth + 'px';
+            segmentedConfig.indicatorHeight = activeElement.offsetHeight + 'px';
+            segmentedConfig.indicatorTranslateX = translateX + 'px';
+            segmentedConfig.indicatorTranslateY = translateY + 'px';
         }
     }, 0);
 }
@@ -76,18 +93,20 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="dj-switch">
-        <div class="dj-switch__wrapper" :class="[disabled ? 'is-disabled' : '']">
-            <div class="dj-switch__inner" ref="switchInnerRef" :aria-disabled="disabled">
-                <div class="dj-swicth-indicator" :style="{
-            '--dj-switch-indicator-width': switchConfig.indicatorWidth,
-            '--dj-switch-indicator-height': switchConfig.indicatorHeight,
-            'transform': `translate(${switchConfig.indicatorTranslateX},${switchConfig.indicatorTranslateY})`
-        }" />
-                <div class="dj-switch__option" v-for="(item, index) of data" :key="index"
-                    :data-active="modelValue === item ? true : false" @click=" switchToggle(item)">
-                    <span class="dj-switch__option-label">
-                        {{ item }}
+    <div class="dj-segmented">
+        <div class="dj-segmented__wrapper" :class="[disabled ? 'is-disabled' : '']">
+            <div class="dj-segmented__inner" ref="segmentedInnerRef" :aria-disabled="disabled">
+                <div class="dj-segmented-indicator" :style="{
+            '--dj-segmented-indicator-width': segmentedConfig.indicatorWidth,
+            '--dj-segmented-indicator-height': segmentedConfig.indicatorHeight,
+            'transform': `translate(${segmentedConfig.indicatorTranslateX},${segmentedConfig.indicatorTranslateY})`
+        }"></div>
+                <div class="dj-segmented__option" v-for="(item, index) of data" :key="index"
+                    :data-active="isObject(item as SegmentedItem) ? modelValue == (item as SegmentedItem).value : modelValue == item"
+                    :class="[(isObject(item as SegmentedItem) && isDisabled(item as SegmentedItem)) ? 'is-disabled' : '']"
+                    @click=" segmentedToggle(item as String | SegmentedItem)">
+                    <span class="dj-segmented__option-label">
+                        {{ isObject(item as String | SegmentedItem) ? (item as SegmentedItem)?.label : item }}
                     </span>
                 </div>
             </div>

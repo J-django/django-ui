@@ -10,6 +10,7 @@
   --dj-audio-border-radius: rem(6px);
   --dj-audio-border-focus-color: rgba(60, 60, 67, 0.33);
   --dj-audio-transition-duration: 750ms;
+
   position: relative;
   width: 100%;
 
@@ -27,7 +28,7 @@
     background-color: var(--dj-audio-background-color);
     border-radius: var(--dj-audio-border-radius);
     transform: translateZ(0);
-    transition: box-shadow 0.25s;
+    transition: box-shadow 250ms;
     box-shadow: 0 0 0 rem(1px) var(--dj-audio-border-color) inset;
     box-sizing: border-box;
 
@@ -58,7 +59,7 @@
         color: inherit;
         display: inline-flex;
         cursor: pointer;
-        transition: opacity 0.25s;
+        transition: opacity 250ms;
 
         &:active {
           transform-origin: center;
@@ -83,7 +84,7 @@
           height: @buttonSize;
           color: inherit;
           will-change: transform;
-          transition: transform 0.25s;
+          transition: transform 250ms;
         }
       }
 
@@ -159,7 +160,7 @@
           height: 100%;
           background: -webkit-linear-gradient(@current-buffer-color) no-repeat;
           background-size: var(--dj-audio-buffer-value) 100%;
-          transition: background-size 0.25s;
+          transition: background-size 250ms;
           z-index: 5;
         }
 
@@ -201,7 +202,7 @@
       .dj-audio-progress__end-time {
         will-change: color, opacity;
         opacity: 0;
-        transition: opacity 0.25s;
+        transition: opacity 250ms;
         animation: progressTimeAnimation var(--dj-audio-transition-duration) 1
           forwards;
       }

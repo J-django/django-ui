@@ -5,7 +5,7 @@ import { useColor } from "@/hooks"
 
 // script
 defineProps({
-    text: {
+    label: {
         type: String,
         default: "",
     },
@@ -23,7 +23,7 @@ const { isDarkColor } = useColor();
         :style="{ '--dj-button-custom-background-color': color, '--dj-button-custom-color': color ? isDarkColor(color) ? 'var(--dj-button-white-color)' : 'var(--dj-button-black-color)' : '' }">
         <span class="jy-button__inner">
             <slot>
-                {{ text }}
+                {{ label }}
             </slot>
         </span>
     </button>

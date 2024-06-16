@@ -1,58 +1,62 @@
-.dj-switch {
-  --dj-switch-height: rem(34px);
-  --dj-switch-padding: rem(4px);
-  --dj-switch-option-padding: rem(5px) rem(10px);
-  --dj-switch-color: #3c3c43;
-  --dj-switch-font-size: rem(14px);
-  --dj-switch-font-weight: 500;
-  --dj-switch-background-color: #f1f1f2;
-  --dj-switch-indicator-background-color: #ffffff;
+.dj-segmented {
+  --dj-segmented-height: rem(34px);
+  --dj-segmented-padding: rem(4px);
+  --dj-segmented-option-padding: rem(5px) rem(10px);
+  --dj-segmented-color: #3c3c43;
+  --dj-segmented-font-size: rem(14px);
+  --dj-segmented-font-weight: 500;
+  --dj-segmented-background-color: #f1f1f2;
+  --dj-segmented-indicator-background-color: #ffffff;
   --dj-swicth-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
     0 1px 2px rgba(0, 0, 0, 0.06);
-  --dj-switch-border-radius: rem(6px);
-  --dj-switch-option-border-radius: rem(4px);
+  --dj-segmented-border-radius: rem(6px);
+  --dj-segmented-option-border-radius: rem(4px);
+  --dj-segmented-indicator-transition: transform 250ms, width 250ms;
+  --dj-segmented-option-transition: opacity 250ms;
 
-  .dj-switch__wrapper {
-    background-color: var(--dj-switch-background-color);
-    border-radius: var(--dj-switch-border-radius);
+  .dj-segmented__wrapper {
+    background-color: var(--dj-segmented-background-color);
+    border-radius: var(--dj-segmented-border-radius);
     display: inline-block;
+    overflow: hidden;
 
-    .dj-switch__inner {
+    .dj-segmented__inner {
       position: relative;
-      padding: var(--dj-switch-padding);
+      padding: var(--dj-segmented-padding);
       width: auto;
-      height: var(--dj-switch-height);
+      height: var(--dj-segmented-height);
       display: inline-flex;
       align-items: center;
       box-sizing: border-box;
 
-      .dj-swicth-indicator {
+      .dj-segmented-indicator {
         position: absolute;
         display: block;
-        width: var(--dj-switch-indicator-width);
-        height: var(--dj-switch-indicator-height);
+        width: var(--dj-segmented-indicator-width);
+        height: var(--dj-segmented-indicator-height);
         transform: translate(0, 0);
-        background-color: var(--dj-switch-indicator-background-color);
-        border-radius: var(--dj-switch-option-border-radius);
+        background-color: var(--dj-segmented-indicator-background-color);
+        border-radius: var(--dj-segmented-option-border-radius);
         box-shadow: var(--dj-swicth-box-shadow);
-        transition: transform 0.25s, width 0.25s;
+        transition: var(--dj-segmented-indicator-transition);
         z-index: 1;
       }
 
-      .dj-switch__option {
+      .dj-segmented__option {
         touch-action: manipulation;
-        height: calc(var(--dj-switch-height) - rem(4px) - rem(4px));
-        border-radius: var(--dj-switch-option-border-radius);
+        height: calc(var(--dj-segmented-height) - rem(4px) - rem(4px));
+        border-radius: var(--dj-segmented-option-border-radius);
         z-index: 2;
+        transition: var(--dj-segmented-option-transition);
         cursor: pointer;
 
-        .dj-switch__option-label {
-          padding: var(--dj-switch-option-padding);
+        .dj-segmented__option-label {
+          padding: var(--dj-segmented-option-padding);
           height: 100%;
-          color: var(--dj-switch-color);
-          font-size: var(--dj-switch-font-size);
+          color: var(--dj-segmented-color);
+          font-size: var(--dj-segmented-font-size);
           font-family: inherit;
-          font-weight: var(--dj-switch-font-weight);
+          font-weight: var(--dj-segmented-font-weight);
           text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -62,18 +66,25 @@
           justify-content: center;
         }
       }
+
+      .dj-segmented__option.is-disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
     }
   }
 
-  .dj-switch__wrapper.is-disabled {
+  .dj-segmented__wrapper.is-disabled {
     cursor: not-allowed;
-    opacity: 0.7;
+    opacity: 0.6;
 
-    .dj-switch__inner {
+    .dj-segmented__inner {
       cursor: not-allowed;
 
-      .dj-switch__option {
+      .dj-segmented__option,
+      .dj-segmented__option.is-disabled {
         cursor: not-allowed;
+        opacity: 1;
       }
     }
   }

@@ -2,7 +2,9 @@
   --dj-divider-color: rgba(60, 60, 67, 0.75);
   --dj-divider-font-size: rem(14px);
   --dj-divider-font-weight: 500;
+  --dj-divider-border-width: rem(1px);
   --dj-divider-border-color: rgba(60, 60, 67, 0.33);
+
   margin: rem(10px) 0;
   width: 100%;
 
@@ -20,7 +22,7 @@
       margin-top: rem(2px);
     }
 
-    .dj-divider__inner {
+    .dj-divider-label {
       margin: 0 var(--dj-divider-margin);
       color: var(--dj-divider-color);
       font-size: var(--dj-divider-font-size);
@@ -43,24 +45,36 @@
     }
   }
 
+  .dj-divider__wrapper,
   .dj-divider__wrapper.dj-divider-type--solid {
     &::before,
     &::after {
-      border-top: rem(1px) solid var(--dj-divider-border-color);
+      border-top: var(--dj-divider-border-width) solid
+        var(--dj-divider-border-color);
     }
   }
 
   .dj-divider__wrapper.dj-divider-type--dashed {
     &::before,
     &::after {
-      border-top: rem(1px) dashed var(--dj-divider-border-color);
+      border-top: var(--dj-divider-border-width) dashed
+        var(--dj-divider-border-color);
     }
   }
 
   .dj-divider__wrapper.dj-divider-type--dotted {
     &::before,
     &::after {
-      border-top: rem(1px) dotted var(--dj-divider-border-color);
+      border-top: var(--dj-divider-border-width) dotted
+        var(--dj-divider-border-color);
+    }
+  }
+
+  .dj-divider__wrapper.dj-divider-type--double {
+    &::before,
+    &::after {
+      border-top: var(--dj-divider-border-width) double
+        var(--dj-divider-border-color);
     }
   }
 }

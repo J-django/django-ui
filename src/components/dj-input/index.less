@@ -9,6 +9,8 @@
   --dj-input-border-color: rgba(60, 60, 67, 0.12);
   --dj-input-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-input-border-radius: rem(6px);
+  --dj-input-transition: box-shadow 250ms, opacity 250ms;
+
   position: relative;
   display: inline-flex;
   width: 100%;
@@ -31,7 +33,7 @@
     background-color: var(--dj-input-background-color);
     border-radius: var(--dj-input-border-radius);
     transform: translateZ(0);
-    transition: box-shadow 0.25s;
+    transition: var(--dj-input-transition);
     box-shadow: 0 0 0 1px transparent inset;
     box-sizing: border-box;
     cursor: text;
@@ -80,7 +82,7 @@
       height: 100%;
       text-align: center;
       color: var(--dj-input-icon-color);
-      transition: color 0.25s;
+      transition: color 250ms;
       pointer-events: none;
 
       .dj-input__prefix__inner,
@@ -96,7 +98,7 @@
           height: @size;
           fill: currentColor;
           margin-right: rem(8px);
-          transition: fill 0.25s;
+          transition: fill 250ms;
         }
       }
     }
@@ -144,7 +146,7 @@
   cursor: not-allowed;
 
   .dj-input__wrapper {
-    opacity: 0.7;
+    opacity: 0.6;
     box-shadow: 0 0 0 rem(1px) transparent inset;
 
     .dj-input__inner {

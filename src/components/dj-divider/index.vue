@@ -6,11 +6,11 @@ import { useSlots, PropType } from 'vue'
 // script
 const slots = useSlots();
 
-type DividerType = "solid" | "dashed" | "dotted";
+type DividerType = "solid" | "dashed" | "dotted" | "double";
 type DividerAlign = "left" | "center" | "right";
 
 defineProps({
-    text: {
+    label: {
         type: String,
         default: ""
     },
@@ -18,7 +18,7 @@ defineProps({
         type: String as PropType<DividerType>,
         default: "solid",
         validator: (type: string): boolean => {
-            return ["solid", "dashed", "dotted"].includes(type as DividerType);
+            return ["solid", "dashed", "dotted", "double"].includes(type as DividerType);
         }
     },
     align: {
@@ -42,10 +42,10 @@ defineProps({
             '--dj-divider-margin': typeof offset === 'string' ? `${margin}` : `${margin}px`,
             '--dj-divider-offset': typeof offset === 'string' ? `${offset}` : `${offset}px`
         }">
-            <span class="dj-divider__inner">
+            <span v-if="label" class="dj-divider-label">
                 <slot v-if="slots['default']" />
                 <template v-else>
-                    {{ text }}
+                    {{ label }}
                 </template>
             </span>
         </div>

@@ -7,13 +7,14 @@
   --dj-video-buffer-color: rgba(235, 235, 245, 0.25);
   --dj-video-border-radius: rem(6px);
   --dj-video-transition-duration: 750ms;
+
   .dj-video__wrapper {
     .dj-video__inner {
       .dj-video-source {
         .dj-video-source__wrapper {
           width: 100%;
           border-radius: var(--dj-video-border-radius);
-          transition: box-shadow 0.25s;
+          transition: box-shadow 250ms;
           overflow: hidden;
 
           .dj-video-source__inner {
@@ -58,7 +59,7 @@
                 background-color: var(--dj-video-background-color);
                 border-radius: var(--dj-video-border-radius);
                 transform: translateZ(0);
-                transition: box-shadow 0.25s;
+                transition: box-shadow 250ms;
                 box-sizing: border-box;
 
                 .dj-video-button__wrapper {
@@ -96,8 +97,8 @@
                       transform: translateX(-50%);
                       opacity: 0;
                       visibility: hidden;
-                      transition: opacity 0.25s, visibility 0.25s,
-                        transform 0.25s;
+                      transition: opacity 250ms, visibility 250ms,
+                        transform 250ms;
 
                       .dj-video-button__group-menu__wrapper {
                         background-color: var(--dj-video-background-color);
@@ -185,7 +186,7 @@
                     padding: 0;
                     color: inherit;
                     display: inline-flex;
-                    transition: opacity 0.25s;
+                    transition: opacity 250ms;
                     border: none;
                     background: none;
                     box-shadow: none;
@@ -215,7 +216,7 @@
                       height: @buttonSize;
                       color: inherit;
                       will-change: transform;
-                      transition: transform 0.25s;
+                      transition: transform 250ms;
                     }
                   }
                 }
@@ -281,7 +282,7 @@
                       background: -webkit-linear-gradient(@current-buffer-color)
                         no-repeat;
                       background-size: var(--buffer-value) 100%;
-                      transition: background-size 0.25s;
+                      transition: background-size 250ms;
                       z-index: 5;
                     }
 
@@ -335,7 +336,7 @@
               left: rem(6px);
               opacity: 0;
               visibility: hidden;
-              transition: opacity 0.25s, visibility 0.25s, transform 0.25s;
+              transition: opacity 250ms, visibility 250ms, transform 250ms;
 
               .dj-video-volumePrompt__wrapper {
                 padding: rem(1px) rem(14px);
@@ -371,7 +372,7 @@
               height: 100%;
               opacity: 0;
               visibility: hidden;
-              transition: opacity 0.25s, visibility 0.25s;
+              transition: opacity 250ms, visibility 250ms;
 
               .dj-video-error-message__wrapper {
                 width: 100%;

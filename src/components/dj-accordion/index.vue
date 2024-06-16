@@ -38,13 +38,13 @@ watch(() => props.modelValue, (val: boolean) => {
             overflow: "hidden",
             height: `${unref(accordionRef).scrollHeight}px`,
             willChange: "height",
-            transition: "height .25s"
+            transition: "height 250ms"
         }
     } else {
         unref(accordionRef).style.height = `${unref(accordionRef)?.scrollHeight}px`;
         setTimeout(() => {
             accordionConfig.contentStyle = {
-                transition: "height .25s",
+                transition: "height 250ms",
                 willChange: "height",
                 height: "0px",
                 overflow: "hidden"

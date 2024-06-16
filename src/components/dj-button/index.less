@@ -7,6 +7,8 @@
   --dj-button-background-color: #f1f1f2;
   --dj-button-border-color: rgba(60, 60, 67, 0.12);
   --dj-button-border-radius: rem(6px);
+  --dj-button-transition: color 250ms, opacity 250ms;
+
   @dj-button-color: var(--dj-button-black-color);
   @dj-button-background-color: var(--dj-button-background-color);
   -webkit-tap-highlight-color: transparent;
@@ -37,12 +39,12 @@
   background-image: none;
   border-radius: var(--dj-button-border-radius);
   cursor: pointer;
-  transition: opacity 0.25s, color 0.25s;
+  transition: var(--dj-button-transition);
   box-sizing: border-box;
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.75;
+    opacity: 0.6;
   }
 
   &:active:not(:disabled) {

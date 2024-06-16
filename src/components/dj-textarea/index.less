@@ -7,6 +7,8 @@
   --dj-textarea-border-color: rgba(60, 60, 67, 0.12);
   --dj-textarea-border-focus-color: rgba(60, 60, 67, 0.33);
   --dj-textarea-border-radius: rem(6px);
+  --dj-textarea-transition: box-shadow 250ms;
+
   position: relative;
   display: inline-block;
   width: 100%;
@@ -26,7 +28,7 @@
     background-color: var(--dj-textarea-background-color);
     border-radius: var(--dj-textarea-border-radius);
     box-shadow: 0 0 0 rem(1px) transparent inset;
-    transition: box-shadow 0.25s;
+    transition: var(--dj-textarea-transition);
     box-sizing: border-box;
     cursor: text;
 
@@ -68,8 +70,8 @@
     cursor: not-allowed;
 
     .dj-textarea__inner {
-      opacity: 0.7;
       box-shadow: 0 0 0 rem(1px) transparent inset;
+      opacity: 0.6;
       cursor: not-allowed;
       resize: none;
     }
