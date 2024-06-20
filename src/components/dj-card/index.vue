@@ -16,6 +16,10 @@ const props = defineProps({
     footer: {
         type: String,
         default: undefined
+    },
+    shadow: {
+        type: Boolean,
+        default: false
     }
 })
 
@@ -33,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="dj-card" :class="[align]">
+    <div class="dj-card" :class="[align, shadow ? 'is-shadow' : '']">
         <div class="dj-card-header" v-if="showCheck.showTitle">
             <slot name="header">
                 {{ title }}
