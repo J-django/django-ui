@@ -7,7 +7,7 @@
   --dj-textarea-border-color: rgba(60, 60, 67, 0.12);
   --dj-textarea-border-focus-color: rgba(60, 60, 67, 0.33);
   --dj-textarea-border-radius: rem(6px);
-  --dj-textarea-transition: box-shadow 250ms;
+  --dj-textarea-transition: box-shadow 250ms, opacity 250ms;
 
   position: relative;
   display: inline-block;
@@ -68,10 +68,10 @@
 .dj-textarea.is-disabled {
   .dj-textarea__wrapper {
     cursor: not-allowed;
+    opacity: 0.6;
 
     .dj-textarea__inner {
       box-shadow: 0 0 0 rem(1px) transparent inset;
-      opacity: 0.6;
       cursor: not-allowed;
       resize: none;
     }
