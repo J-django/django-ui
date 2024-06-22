@@ -17,7 +17,7 @@ const props = defineProps({
         type: String,
         default: undefined
     },
-    shadow: {
+    ghosting: {
         type: Boolean,
         default: false
     }
@@ -37,7 +37,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="dj-card" :class="[align, shadow ? 'is-shadow' : '']">
+    <div class="dj-card" :class="[align, ghosting ? 'is-ghosting' : '']">
         <div class="dj-card-header" v-if="showCheck.showTitle">
             <slot name="header">
                 {{ title }}
