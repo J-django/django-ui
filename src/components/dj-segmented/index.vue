@@ -56,11 +56,11 @@ watch(() => props.modelValue, () => {
 const segmentedToggle = (item: String | SegmentedItem) => {
     if (props.disabled || unref(isDisabled)(item as SegmentedItem)) return;
     if (unref(isObject)(item)) {
-        init();
-        emits("update:modelValue", (item as SegmentedItem)?.value)
+        if ((item as SegmentedItem).value !== props.modelValue) {
+            emits("update:modelValue", (item as SegmentedItem)?.value)
+        }
     } else {
         if (item !== props.modelValue) {
-            init();
             emits("update:modelValue", item)
         }
     }
@@ -74,7 +74,7 @@ const init = () => {
         const parentStyle = window.getComputedStyle(segmentedInnerRef.value);
         const activeElement = segmentedInnerRef.value.querySelector('.dj-segmented__option[data-active="true"]')
         if (activeElement) {
-            const translateX = activeElement.offsetLeft - parseInt(parentStyle.paddingLeft);
+            const translateX = activeElement.offsetLeft - parseInt(parentStyle.paddingRight);
             const translateY = activeElement.offsetTop - parseInt(parentStyle.paddingTop);
             segmentedConfig.indicatorWidth = activeElement.offsetWidth + 'px';
             segmentedConfig.indicatorHeight = activeElement.offsetHeight + 'px';

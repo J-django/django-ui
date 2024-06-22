@@ -1,7 +1,7 @@
 .dj-segmented {
-  --dj-segmented-height: rem(34px);
-  --dj-segmented-padding: rem(4px);
-  --dj-segmented-option-padding: rem(5px) rem(10px);
+  --dj-segmented-option-height: rem(28px);
+  --dj-segmented-padding: rem(3px) rem(3.5px);
+  --dj-segmented-option-padding: rem(2px) rem(16px);
   --dj-segmented-color: #3c3c43;
   --dj-segmented-font-size: rem(14px);
   --dj-segmented-font-weight: 500;
@@ -14,46 +14,52 @@
   --dj-segmented-transition: opacity 250ms;
   --dj-segmented-indicator-transition: transform 250ms, width 250ms;
   --dj-segmented-option-transition: opacity 250ms;
+  display: inline-flex;
 
   .dj-segmented__wrapper {
+    padding: var(--dj-segmented-padding);
     background-color: var(--dj-segmented-background-color);
     border-radius: var(--dj-segmented-border-radius);
-    display: inline-block;
-    overflow: hidden;
     transition: var(--dj-segmented-transition);
+    box-sizing: border-box;
+    overflow: hidden;
 
     .dj-segmented__inner {
       position: relative;
-      padding: var(--dj-segmented-padding);
-      width: auto;
-      height: var(--dj-segmented-height);
-      display: inline-flex;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
       align-items: center;
-      box-sizing: border-box;
 
       .dj-segmented-indicator {
         position: absolute;
-        display: block;
+        left: rem(-0.5px);
+        transform: translate(0px, 0px);
         width: var(--dj-segmented-indicator-width);
         height: var(--dj-segmented-indicator-height);
-        transform: translate(0, 0);
         background-color: var(--dj-segmented-indicator-background-color);
         border-radius: var(--dj-segmented-option-border-radius);
         box-shadow: var(--dj-swicth-box-shadow);
         transition: var(--dj-segmented-indicator-transition);
+        border: none;
+        outline: none;
+        box-sizing: border-box;
         z-index: 1;
       }
 
       .dj-segmented__option {
         touch-action: manipulation;
-        height: calc(var(--dj-segmented-height) - rem(4px) - rem(4px));
+        padding: var(--dj-segmented-option-padding);
+        flex: 1 1 0%;
+        height: var(--dj-segmented-option-height);
         border-radius: var(--dj-segmented-option-border-radius);
-        z-index: 2;
         transition: var(--dj-segmented-option-transition);
+        box-sizing: border-box;
+        z-index: 2;
         cursor: pointer;
 
         .dj-segmented__option-label {
-          padding: var(--dj-segmented-option-padding);
           height: 100%;
           color: var(--dj-segmented-color);
           font-size: var(--dj-segmented-font-size);
@@ -62,7 +68,6 @@
           text-align: center;
           text-overflow: ellipsis;
           white-space: nowrap;
-          box-sizing: border-box;
           display: flex;
           align-items: center;
           justify-content: center;
