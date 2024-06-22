@@ -5,9 +5,8 @@
   --dj-button-height: rem(32px);
   --dj-button-font-size: rem(14px);
   --dj-button-background-color: #f1f1f2;
-  --dj-button-border-color: rgba(60, 60, 67, 0.12);
   --dj-button-border-radius: rem(6px);
-  --dj-button-transition: color 250ms, opacity 250ms;
+  --dj-button-transition: opacity 250ms;
 
   @dj-button-color: var(--dj-button-black-color);
   @dj-button-background-color: var(--dj-button-background-color);
@@ -66,6 +65,32 @@
     justify-content: center;
     height: 100%;
     overflow: visible;
+  }
+}
+
+.dj-button.is-plain {
+  --dj-button-plain-default-color: #3c3c43;
+  --dj-button-plain-default-border-color: rgba(60, 60, 67, 0.33);
+  --dj-button-plain-default-background-color: var(--dj-button-background-color);
+  @default-color: var(--dj-button-plain-default-color);
+  @default-hover-background-color: var(--dj-button-background-color);
+  @default-border-color: var(--dj-button-plain-default-border-color);
+  color: var(--dj-button-plain-color, @default-color);
+  background-color: var(--dj-button-plain-background-color);
+  border: rem(1px) solid
+    var(--dj-button-plain-border-color, @default-border-color);
+
+  &:hover:not(:disabled) {
+    color: var(--dj-button-plain-hover-color, @default-color);
+    background-color: var(
+      --dj-button-plain-hover-background-color,
+      var(--dj-button-plain-default-background-color)
+    );
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 }
 

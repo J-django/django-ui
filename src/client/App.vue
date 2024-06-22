@@ -45,6 +45,10 @@ const toggleDisabled = () => {
             <dj-button disabled>Disabled Default</dj-button>
             <dj-button color="#6610f2">Custom Pink</dj-button>
             <dj-button color="#6610f2" disabled>Disabled Custom Pink</dj-button>
+            <dj-button plain>Plain</dj-button>
+            <dj-button plain disabled>Disabled Plain</dj-button>
+            <dj-button color="#3c3c43" plain>Custom Plain</dj-button>
+            <dj-button color="#3c3c43" plain disabled>Disabled Custom Plain</dj-button>
         </div>
         <div class="line">
             <dj-card align="center" ghosting>
