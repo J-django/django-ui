@@ -113,9 +113,9 @@ defineExpose({ focus: focus, blur: blur, clear: clear })
 <template>
     <div class="dj-input" :class="[disabled ? 'is-disabled' : '']">
         <div class="dj-input__wrapper" :class="[inputConfig.focus ? 'is-focus' : '']" @click="focus">
-            <span class="dj-input__prefix" v-if="slots['prefix-icon']">
+            <span class="dj-input__prefix" v-if="slots['prefix']">
                 <span class="dj-input__prefix__inner">
-                    <slot name="prefix-icon" />
+                    <slot name="prefix" />
                 </span>
             </span>
             <input :id="id" ref="inputRef" class="dj-input__inner" :placeholder="placeholder"
@@ -129,9 +129,9 @@ defineExpose({ focus: focus, blur: blur, clear: clear })
                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                 </svg>
             </div>
-            <span class="dj-input__suffix" v-if="slots['suffix-icon']">
+            <span class="dj-input__suffix" v-if="slots['suffix']">
                 <span class="dj-input__suffix__inner">
-                    <slot name="suffix-icon" />
+                    <slot name="suffix" />
                 </span>
             </span>
         </div>

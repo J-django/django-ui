@@ -1,6 +1,6 @@
 .dj-input {
   --dj-input-height: rem(34px);
-  --dj-input-padding: rem(1px) rem(10px);
+  --dj-input-padding: rem(1px) rem(8px);
   --dj-input-color: #3c3c43;
   --dj-input-icon-color: rgba(60, 60, 67, 0.75);
   --dj-input-placeholder-color: rgba(60, 60, 67, 0.75);
@@ -87,29 +87,27 @@
 
       .dj-input__prefix__inner,
       .dj-input__suffix__inner {
-        @size: 18px;
         pointer-events: all;
         display: inline-flex;
         align-items: center;
         justify-content: center;
 
         .icon {
+          @size: rem(18px);
           width: @size;
           height: @size;
           fill: currentColor;
-          margin-right: rem(8px);
           transition: fill 250ms;
         }
       }
     }
 
+    .dj-input__prefix {
+      margin-right: rem(8px);
+    }
+
     .dj-input__suffix {
-      .dj-input__suffix__inner {
-        .icon {
-          margin-left: rem(8px);
-          margin-right: 0;
-        }
-      }
+      margin-left: rem(8px);
     }
   }
 
