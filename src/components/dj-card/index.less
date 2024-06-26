@@ -10,99 +10,62 @@
   --dj-card-fotter-background-color: rgba(33, 37, 41, 0.03);
 
   margin: rem(4px) 0;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  color: var(--dj-card-color);
-  -webkit-tap-highlight-color: transparent;
-  word-wrap: break-word;
-  background-color: var(--dj-card-background-color);
-  background-clip: border-box;
-  border: rem(1px) solid var(--dj-card-border-color);
-  border-radius: var(--dj-card-border-radius);
 
-  .dj-card-header {
-    padding: var(--dj-card-header-padding);
-    margin-bottom: 0;
-    background-color: var(--dj-card-header-background-color);
-    border-bottom: rem(1px) solid var(--dj-card-border-color);
-    box-sizing: border-box;
-
-    &:first-child {
-      border-radius: var(--dj-card-border-radius) var(--dj-card-border-radius) 0
-        0;
-    }
-  }
-
-  .dj-card-body {
-    flex: 1 1 auto;
-    padding: var(--dj-card-content-padding);
-    box-sizing: border-box;
-
-    &:last-child {
-      border-radius: 0 0 var(--dj-card-border-radius)
-        var(--dj-card-border-radius);
-    }
-  }
-
-  .dj-card-footer {
-    padding: var(--dj-card-footer-padding);
-    border-top: rem(1px) solid var(--dj-card-border-color);
-    background-color: var(--dj-card-fotter-background-color);
-    box-sizing: border-box;
-  }
-}
-
-.dj-card.is-ghosting {
-  --dj-card-shadow-before-width: calc(100% - 16px);
-  --dj-card-shadow-after-width: calc(100% - 34px);
-  --dj-card-shadow-before-transoform: translateX(-50%) translateY(-8px);
-  --dj-card-shadow-after-transoform: translateX(-50%) translateY(-14px);
-  --dj-card-shaodw-before-opacity: 0.5;
-  --dj-card-shaodw-after-opacity: 0.25;
-  --dj-card-shaodw-before-z-index: -1;
-  --dj-card-shaodw-after-z-index: -2;
-
-  margin-top: rem(12px);
-  position: relative;
-
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 100%;
+  .dj-card__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    color: var(--dj-card-color);
+    -webkit-tap-highlight-color: transparent;
+    word-wrap: break-word;
     background-color: var(--dj-card-background-color);
-    border-radius: var(--dj-card-border-radius);
+    background-clip: border-box;
     border: rem(1px) solid var(--dj-card-border-color);
+    border-radius: var(--dj-card-border-radius);
+    box-sizing: border-box;
+
+    .dj-card-header {
+      padding: var(--dj-card-header-padding);
+      margin-bottom: 0;
+      background-color: var(--dj-card-header-background-color);
+      border-bottom: rem(1px) solid var(--dj-card-border-color);
+      box-sizing: border-box;
+
+      &:first-child {
+        border-radius: var(--dj-card-border-radius) var(--dj-card-border-radius)
+          0 0;
+      }
+    }
+
+    .dj-card-body {
+      flex: 1 1 auto;
+      padding: var(--dj-card-content-padding);
+      box-sizing: border-box;
+
+      &:last-child {
+        border-radius: 0 0 var(--dj-card-border-radius)
+          var(--dj-card-border-radius);
+      }
+    }
+
+    .dj-card-footer {
+      padding: var(--dj-card-footer-padding);
+      border-top: rem(1px) solid var(--dj-card-border-color);
+      background-color: var(--dj-card-fotter-background-color);
+      box-sizing: border-box;
+    }
   }
 
-  &::before {
-    width: var(--dj-card-shadow-before-width);
-    transform: var(--dj-card-shadow-before-transoform);
-    opacity: var(--dj-card-shaodw-before-opacity);
-    z-index: var(--dj-card-shaodw-before-z-index);
+  .dj-card__wrapper.left {
+    text-align: left;
   }
 
-  &::after {
-    width: var(--dj-card-shadow-after-width);
-    transform: var(--dj-card-shadow-after-transoform);
-    opacity: var(--dj-card-shaodw-after-opacity);
-    z-index: var(--dj-card-shaodw-after-z-index);
+  .dj-card__wrapper.center {
+    text-align: center;
   }
-}
 
-.dj-card.left {
-  text-align: left;
-}
-
-.dj-card.center {
-  text-align: center;
-}
-
-.dj-card.right {
-  text-align: right;
+  .dj-card__wrapper.right {
+    text-align: right;
+  }
 }

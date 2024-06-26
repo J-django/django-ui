@@ -17,10 +17,6 @@ const props = defineProps({
         type: String,
         default: undefined
     },
-    ghosting: {
-        type: Boolean,
-        default: false
-    }
 })
 
 const slots = useSlots();
@@ -37,19 +33,21 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="dj-card" :class="[align, ghosting ? 'is-ghosting' : '']">
-        <div class="dj-card-header" v-if="showCheck.showTitle">
-            <slot name="header">
-                {{ title }}
-            </slot>
-        </div>
-        <div class="dj-card-body">
-            <slot />
-        </div>
-        <div class="dj-card-footer" v-if="showCheck.showFooter">
-            <slot name="footer">
-                {{ footer }}
-            </slot>
+    <div class="dj-card">
+        <div class="dj-card__wrapper" :class="[align]">
+            <div class="dj-card-header" v-if="showCheck.showTitle">
+                <slot name="header">
+                    {{ title }}
+                </slot>
+            </div>
+            <div class="dj-card-body">
+                <slot />
+            </div>
+            <div class="dj-card-footer" v-if="showCheck.showFooter">
+                <slot name="footer">
+                    {{ footer }}
+                </slot>
+            </div>
         </div>
     </div>
 </template>
