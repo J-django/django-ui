@@ -1,7 +1,7 @@
 <script setup lang="ts" name="dj-card">
 // plugin
 import "./index.less";
-import { reactive, useSlots, onMounted } from 'vue'
+import { computed, useSlots } from 'vue'
 
 // script
 const props = defineProps({
@@ -21,21 +21,15 @@ const props = defineProps({
 
 const slots = useSlots();
 
-const showCheck = reactive({
-    showTitle: true,
-    showFooter: true
-})
+const isHeader = computed(() => props.title || slots.header);
 
-onMounted(() => {
-    showCheck.showTitle = (props.title || slots.header) !== undefined;
-    showCheck.showFooter = (props.footer || slots.footer) !== undefined;
-})
+const isFooter = computed(() => props.footer || slots.footer);
 </script>
 
 <template>
     <div class="dj-card">
         <div class="dj-card__wrapper" :class="[align]">
-            <div class="dj-card-header" v-if="showCheck.showTitle">
+            <div v-if="isHeader" class="dj-card-header">
                 <slot name="header">
                     {{ title }}
                 </slot>
@@ -43,7 +37,7 @@ onMounted(() => {
             <div class="dj-card-body">
                 <slot />
             </div>
-            <div class="dj-card-footer" v-if="showCheck.showFooter">
+            <div v-if="isFooter" class="dj-card-footer">
                 <slot name="footer">
                     {{ footer }}
                 </slot>
