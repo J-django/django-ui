@@ -1,14 +1,14 @@
 .dj-audio {
-  --dj-audio-height: rem(34px);
   --dj-aduio-color: #3c3c43;
   --dj-audio-time-color: rgba(60, 60, 67, 0.75);
+  --dj-audio-height: rem(34px);
   --dj-audio-background-color: #f1f1f2;
   --dj-audio-progress-color: rgba(60, 60, 67, 0.25);
   --dj-audio-current-progress-color: rgba(60, 60, 67, 0.5);
   --dj-audio-buffer-color: rgba(33, 37, 41, 0.25);
   --dj-audio-border-color: rgba(60, 60, 67, 0.12);
   --dj-audio-border-radius: rem(6px);
-  --dj-audio-border-focus-color: rgba(60, 60, 67, 0.33);
+  --dj-audio-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-audio-transition-duration: 750ms;
 
   position: relative;
@@ -221,7 +221,7 @@
   }
 
   .dj-audio__wrapper.is-play {
-    box-shadow: 0 0 0 1px var(--dj-audio-border-focus-color) inset;
+    box-shadow: 0 0 0 1px var(--dj-audio-focus-border-color) inset;
   }
 }
 
