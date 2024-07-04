@@ -47,9 +47,15 @@ watch(() => props.modelValue, () => {
     emits("change", props.modelValue)
 })
 
-const UnChecked = computed(() => props.unCheckedLabel || slots.unChecked)
+/**
+ * 是否显示未选中状态时文字
+ */
+const UnCheckedLabel = computed(() => props.unCheckedLabel || slots.unCheckedLabel)
 
-const checked = computed(() => props.checkedLabel || slots.checked);
+/**
+ * 是否显示选中状态时文字
+ */
+const checkedLabel = computed(() => props.checkedLabel || slots.checkedLabel);
 
 /**
  * 切换switch状态
@@ -69,18 +75,21 @@ defineExpose({ switchToggle })
         '--dj-switch-custom-checked-background-color': checkedBackgroundColor,
         '--dj-switch-custom-unChecked-background-color': unCheckedBackgroundColor
     }" :disabled="disabled" @click.prevent="switchToggle">
-            <span v-if="UnChecked" class="dj-switch__label dj-switch__label-left"
+            <span v-if="UnCheckedLabel" class="dj-switch__label dj-switch__label-left"
                 :class="!modelValue ? 'is-checked' : ''">
-                <slot name="unChecked">
+                <slot name="unChecked-label">
                     {{ unCheckedLabel }}
                 </slot>
             </span>
             <span class="dj-switch__inner">
-                <span class="dj-switch__thumb"></span>
+                <span class="dj-switch__thumb">
+                    <slot name="checked-thumb" v-if="modelValue"></slot>
+                    <slot name="unChecked-thumb" v-else></slot>
+                </span>
             </span>
-            <span v-if="checked" class="dj-switch__label dj-switch__label-right"
+            <span v-if="checkedLabel" class="dj-switch__label dj-switch__label-right"
                 :class="modelValue ? 'is-checked' : ''">
-                <slot name="checked">
+                <slot name="checked-label">
                     {{ checkedLabel }}
                 </slot>
             </span>

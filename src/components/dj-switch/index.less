@@ -25,6 +25,7 @@
     -webkit-appearance: none;
     appearance: none;
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
     padding: var(--dj-switch-padding);
     margin: 0;
     color: inherit;
@@ -93,6 +94,10 @@
         left: 2px;
         bottom: 2px;
         transform: translateX(0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dj-switch-color);
         width: var(--dj-switch-thumb-width);
         height: var(--dj-switch-thumb-height);
         background-color: var(--dj-switch-thumb-background-color);
@@ -114,6 +119,7 @@
       );
 
       .dj-switch__thumb {
+        color: var(--dj-switch-checked-color);
         transform: translateX(18px);
       }
     }
