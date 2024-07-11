@@ -1,0 +1,142 @@
+.dj-dialog {
+  --dj-dialog-header-padding: rem(8px) rem(8px) rem(8px) rem(16px);
+  --dj-dialog-body-padding: rem(16px);
+  --dj-dialog-footer-padding: rem(8px);
+  --dj-dialog-margin: rem(28px);
+  --dj-dialog-max-width: 500px;
+  --dj-dialog-color: #3c3c43;
+  --dj-dialog-font-size: rem(14px);
+  --dj-dialog-font-weight: 500;
+  --dj-dialog-backdrop-background-color: rgba(60, 60, 67, 0.5);
+  --dj-dialog-header-background-color: rgba(33, 37, 41, 0.03);
+  --dj-dialog-background-color: #f1f1f2;
+  --dj-dialog-footer-background-color: rgba(33, 37, 41, 0.03);
+  --dj-dialog-border-color: rgba(60, 60, 67, 0.12);
+  --dj-dialog-border-radius: rem(6px);
+  --dj-dialog-header-border-radius: rem(6px) rem(6px) 0 0;
+  --dj-dialog-footer-border-radius: 0 0 rem(6px) rem(6px);
+  --dj-dialog-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07),
+    0 1px 4px rgba(0, 0, 0, 0.07);
+  --dj-dialog-z-index: 1055;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dj-dialog-backdrop-background-color);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: var(--dj-dialog-z-index);
+
+  .dj-dialog-dialog {
+    @default-top: var(--dj-dialog-margin);
+    position: relative;
+    width: auto;
+    margin: var(--dj-dialog-margin);
+    margin-top: var(--dj-dialog-custom-top, @default-top);
+    pointer-events: none;
+
+    .dj-dialog-content {
+      width: 100%;
+      color: var(--dj-dialog-color);
+      font-size: var(--dj-dialog-font-size);
+      font-weight: var(--dj-dialog-font-weight);
+      background-color: var(--dj-dialog-background-color);
+      border-radius: var(--dj-dialog-border-radius);
+      box-shadow: var(--dj-dialog-box-shadow);
+      pointer-events: auto;
+      border: rem(1px) solid var(--dj-switch-border-color);
+
+      .dj-dialog-header {
+        padding: var(--dj-dialog-header-padding);
+        background-color: var(--dj-dialog-header-background-color);
+        border-bottom: rem(1px) solid var(--dj-dialog-border-color);
+        border-radius: var(--dj-dialog-header-border-radius);
+
+        .dj-dialog-header__wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .dj-dialog-header-closed {
+            -webkit-appearance: none;
+            appearance: none;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            color: var(--dj-dialog-color);
+            background: none;
+            border: none;
+            outline: none;
+            box-shadow: none;
+            cursor: pointer;
+            opacity: 0.8;
+
+            &:hover {
+              opacity: 1;
+            }
+
+            .icon {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+      }
+
+      .dj-dialog-body {
+        padding: var(--dj-dialog-body-padding);
+        color: var(--dj-dialog-color);
+        font-size: var(--dj-dialog-font-size);
+        font-weight: var(--dj-dialog-font-weight);
+      }
+
+      .dj-dialog-footer {
+        padding: var(--dj-dialog-footer-padding);
+        text-align: right;
+        background-color: var(--dj-dialog-footer-background-color);
+        border-top: rem(1px) solid var(--dj-dialog-border-color);
+        border-radius: var(--dj-dialog-footer-border-radius);
+      }
+    }
+  }
+
+  .dj-dialog-dialog.vertical-center {
+    height: calc(100vh - var(--dj-dialog-margin) * 2);
+    margin-top: var(--dj-dialog-margin);
+    display: flex;
+    align-items: center;
+  }
+}
+
+.dialog-enter-active,
+.dialog-leave-active {
+  transition: opacity 350ms;
+
+  .dj-dialog-dialog {
+    transition: transform 350ms, opacity 350ms;
+  }
+}
+
+.dialog-enter-from,
+.dialog-leave-to {
+  opacity: 0;
+
+  .dj-dialog-dialog {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@media (min-width: 576px) {
+  .dj-dialog {
+    .dj-dialog-dialog {
+      max-width: var(--dj-dialog-max-width);
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+}

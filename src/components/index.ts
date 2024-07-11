@@ -8,7 +8,8 @@ import DJTextarea from './dj-textarea'
 import DJVideo from './dj-video/index.vue'
 import DJSegmented from './dj-segmented/index.vue'
 import DJSwitch from './dj-switch/index.vue'
- 
+import DJDialog from './dj-dialog/index.vue'
+
 
 export {
     DJAccordion,
@@ -20,5 +21,6 @@ export {
     DJTextarea,
     DJVideo,
     DJSegmented,
-    DJSwitch
+    DJSwitch,
+    DJDialog
 }
