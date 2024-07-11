@@ -53,13 +53,20 @@ watch(() => props.modelValue, (val: boolean) => {
     }
 })
 
-const accordion__toggle = () => {
+/**
+ * 切换
+ */
+const toggle = () => {
     if (props.disabled) return;
-    emits("change", !props.modelValue)
-    emits("update:modelValue", !props.modelValue)
+    const res = !props.modelValue;
+    emits("change", res)
+    emits("update:modelValue", res)
 }
 
-const accordionTransitionEnd = () => {
+/**
+ * 手风琴动画结束触发
+ */
+const DJAccordion_TransitionendChange = () => {
     if (props.modelValue) {
         accordionConfig.wrapperStyle = {};
         unref(accordionRef).style.display = "";
@@ -74,6 +81,9 @@ const accordionTransitionEnd = () => {
     }
 }
 
+/**
+ * 加载手风琴初始样式
+ */
 const initAccordion = () => {
     if (!props.modelValue) {
         unref(accordionRef).style.display = "none";
@@ -85,6 +95,8 @@ const initAccordion = () => {
 onMounted(() => {
     initAccordion();
 })
+
+defineExpose({ toggle })
 </script>
 
 <template>
@@ -92,7 +104,7 @@ onMounted(() => {
         <div class="dj-accordion__wrapper"
             :class="[props.modelValue ? 'is-active' : '', props.disabled ? 'is-disabled' : '']"
             :style="accordionConfig.wrapperStyle">
-            <button class="dj-accordion__header" @click="accordion__toggle">
+            <button class="dj-accordion__header" @click="toggle">
                 <span class="dj-accordion__header-label">
                     <slot name="title">
                         {{ props.title }}
@@ -106,7 +118,7 @@ onMounted(() => {
                 </span>
             </button>
             <div class="dj-accordion__inner" :style="accordionConfig.contentStyle" ref="accordionRef"
-                @transitionend="accordionTransitionEnd">
+                @transitionend="DJAccordion_TransitionendChange">
                 <div class="dj-accordion__inner-content">
                     <slot name="default">
                         {{ props.content }}

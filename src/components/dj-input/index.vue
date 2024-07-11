@@ -46,7 +46,7 @@ const inputConfig = reactive({
  * 输入时触发
  * @param event Event
  */
-const inputInputChange = (event: Event) => {
+const DJInput_InputChange = (event: Event) => {
     emits("input", (event.target as any).value)
     emits("update:modelValue", (event.target as any).value)
 }
@@ -55,7 +55,7 @@ const inputInputChange = (event: Event) => {
  * 值改变时触发
  * @param event Event
  */
-const inputChange = (event: Event) => {
+const DJInput_Change = (event: Event) => {
     emits("change", (event.target as any).value)
 }
 
@@ -63,7 +63,7 @@ const inputChange = (event: Event) => {
  * 获取焦点时触发
  * @param event Event
  */
-const inputFocusChange = (event: Event) => {
+const DJInput_FocusChange = (event: Event) => {
     inputConfig.focus = true;
     emits("focus", event)
 }
@@ -72,7 +72,7 @@ const inputFocusChange = (event: Event) => {
  * 失去焦点时触发
  * @param event Event
  */
-const inputFocusoutChange = (event: Event) => {
+const DJInput_FocusoutChange = (event: Event) => {
     inputConfig.focus = false;
     emits("blur", event)
 }
@@ -81,7 +81,7 @@ const inputFocusoutChange = (event: Event) => {
  * 回车时触发
  * @param event Event
  */
-const inputKeyupChange = (event: Event) => {
+const DJInput_KeyupChange = (event: Event) => {
     emits("keyup", event);
 }
 
@@ -119,9 +119,9 @@ defineExpose({ focus: focus, blur: blur, clear: clear })
                 </span>
             </span>
             <input :id="id" ref="inputRef" class="dj-input__inner" :placeholder="placeholder"
-                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="inputChange"
-                @input="inputInputChange" @focus="inputFocusChange" @focusout="inputFocusoutChange"
-                @keyup.native="inputKeyupChange" />
+                :enterkeyhint="enterkeyhint" :disabled="disabled" :value="modelValue" @change="DJInput_Change"
+                @input="DJInput_InputChange" @focus="DJInput_FocusChange" @focusout="DJInput_FocusoutChange"
+                @keyup.native="DJInput_KeyupChange" />
             <div class="dj-input__clear" v-if="props.clear && modelValue" @click="clear">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-x-circle-fill icon" viewBox="0 0 16 16">

@@ -44,7 +44,7 @@ const textareaConfig = reactive({
  * 输入时触发
  * @param event Event
  */
-const textareaConfigChange = (event: Event) => {
+const DJTextarea_InputChange = (event: Event) => {
     emits("input", event)
 }
 
@@ -52,7 +52,7 @@ const textareaConfigChange = (event: Event) => {
  * 值改变时触发
  * @param event Event
  */
-const textareaConfigInputChange = (event: Event) => {
+const DJTextarea_Change = (event: Event) => {
     emits("change", event)
     emits("update:modelValue", (event.target as any).value)
 }
@@ -61,7 +61,7 @@ const textareaConfigInputChange = (event: Event) => {
  * 获取焦点时触发
  * @param event Event
  */
-const textareaConfigFocusChange = (event: Event) => {
+const DJTextarea_FocusChange = (event: Event) => {
     textareaConfig.focus = true;
     emits("focus", event)
 }
@@ -70,7 +70,7 @@ const textareaConfigFocusChange = (event: Event) => {
  * 失去焦点时触发
  * @param event Event
  */
-const textareaConfigFocusoutChange = (event: Event) => {
+const DJTextarea_FocusoutChange = (event: Event) => {
     textareaConfig.focus = false;
     emits("blur", event)
 }
@@ -96,9 +96,9 @@ defineExpose({ focus: focus, blur: blur })
     <div class="dj-textarea" :class="[disabled ? 'is-disabled' : '']">
         <div class="dj-textarea__wrapper" :class="[textareaConfig.focus ? 'is-focus' : '']" @click="focus">
             <textarea :id="id" ref="textareaRef" class="dj-textarea__inner" :rows="rows" :cols="cols"
-                :placeholder="placeholder" :disabled="disabled" :value="modelValue" @input="textareaConfigInputChange"
-                @change="textareaConfigChange" @focus="textareaConfigFocusChange"
-                @focusout="textareaConfigFocusoutChange" />
+                :placeholder="placeholder" :disabled="disabled" :value="modelValue" @input="DJTextarea_Change"
+                @change="DJTextarea_InputChange" @focus="DJTextarea_FocusChange"
+                @focusout="DJTextarea_FocusoutChange" />
         </div>
     </div>
 </template>

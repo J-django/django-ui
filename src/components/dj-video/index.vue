@@ -184,7 +184,7 @@ const resetMousemoveTimeout = () => {
  * 当音频/视频的加载已放弃时触发
  * @param event Event
  */
-const videoAbortChange = (event: Event) => {
+const DJVideo_AbortChange = (event: Event) => {
     emits("abort", event);
 }
 
@@ -192,7 +192,7 @@ const videoAbortChange = (event: Event) => {
  * 当浏览器可以开始播放音频/视频时触发
  * @param event Event
  */
-const videoCanplayChange = (event: Event) => {
+const DJVideo_CanplayChange = (event: Event) => {
     videoConfig.waiting = false;
     emits("canplay", event);
 
@@ -202,7 +202,7 @@ const videoCanplayChange = (event: Event) => {
  * 当浏览器可在不因缓冲而停顿的情况下进行播放时触发
  * @param event Event
  */
-const videoCanplaythroughChange = (event: Event) => {
+const DJVideo_CanplaythroughChange = (event: Event) => {
     try {
         videoConfig.waiting = false;
         videoConfig.duration = formatSongsTime(unref(videoRef)?.duration)
@@ -214,7 +214,7 @@ const videoCanplaythroughChange = (event: Event) => {
  * 当音频/视频的时长已更改时触发
  * @param event Event
  */
-const videoDurationchangeChange = (event: Event) => {
+const DJVideo_DurationchangeChange = (event: Event) => {
     emits("durationchange", event);
 }
 
@@ -222,7 +222,7 @@ const videoDurationchangeChange = (event: Event) => {
  * 当目前的播放列表为空时触发
  * @param event Event
  */
-const videoEmptiedChange = (event: Event) => {
+const DJVideo_EmptiedChange = (event: Event) => {
     emits("emptied", event);
 }
 
@@ -230,7 +230,7 @@ const videoEmptiedChange = (event: Event) => {
  * 当目前的播放列表已结束时触发
  * @param event Event
  */
-const videoEndedChange = (event: Event) => {
+const DJVideo_EndedChange = (event: Event) => {
     videoConfig.paused = true;
     emits("ended", event);
 }
@@ -239,7 +239,7 @@ const videoEndedChange = (event: Event) => {
  * 当在音频/视频加载期间发生错误时触发
  * @param event Event
  */
-const videoErrorChange = (event: Event) => {
+const DJVideo_ErrorChange = (event: Event) => {
     videoConfig.error = true;
     emits("error", event);
 }
@@ -248,7 +248,7 @@ const videoErrorChange = (event: Event) => {
  * 当浏览器已加载音频/视频的当前帧时触发
  * @param event Event
  */
-const videoLoadeddataChange = (event: Event) => {
+const DJVideo_LoadeddataChange = (event: Event) => {
     emits("loadeddata", event);
 }
 
@@ -256,7 +256,7 @@ const videoLoadeddataChange = (event: Event) => {
  * 当浏览器已加载音频/视频的元数据时触发
  * @param event Event
  */
-const videoLoadedmetadataChange = (event: Event) => {
+const DJVideo_LoadedmetadataChange = (event: Event) => {
     emits("loadedmetadata", event);
 }
 
@@ -264,7 +264,7 @@ const videoLoadedmetadataChange = (event: Event) => {
  * 当浏览器开始查找音频/视频时触发
  * @param event Event
  */
-const videoLoadstartChange = (event: Event) => {
+const DJVideo_LoadstartChange = (event: Event) => {
     emits("loadstart", event);
 }
 
@@ -272,7 +272,7 @@ const videoLoadstartChange = (event: Event) => {
  * 当音频/视频已暂停时触发
  * @param event Event
  */
-const videoPauseChange = (event: Event) => {
+const DJVideo_PauseChange = (event: Event) => {
     videoConfig.paused = true;
     emits("pause", event);
 }
@@ -281,7 +281,7 @@ const videoPauseChange = (event: Event) => {
  * 当音频/视频已开始或不再暂停时触发
  * @param event Event
  */
-const videoPlayChange = (event: Event) => {
+const DJVideo_PlayChange = (event: Event) => {
     videoConfig.paused = false;
     emits("play", event);
 }
@@ -290,7 +290,7 @@ const videoPlayChange = (event: Event) => {
  * 当音频/视频在因缓冲而暂停或停止后已就绪时触发
  * @param event Event
  */
-const videoPlayingChange = (event: Event) => {
+const DJVideo_PlayingChange = (event: Event) => {
     emits("playing", event);
 }
 
@@ -298,7 +298,7 @@ const videoPlayingChange = (event: Event) => {
  * 当浏览器正在下载音频/视频时触发
  * @param event Event
  */
-const videoProgressChange = (event: Event) => {
+const DJVideo_ProgressChange = (event: Event) => {
     emits("progress", event);
 }
 
@@ -306,7 +306,7 @@ const videoProgressChange = (event: Event) => {
  * 当音频/视频的播放速度已更改时触发
  * @param event Event
  */
-const videoRatechangeChange = (event: Event) => {
+const DJVideo_RatechangeChange = (event: Event) => {
     emits("ratechange", event);
 }
 
@@ -314,7 +314,7 @@ const videoRatechangeChange = (event: Event) => {
  * 当用户已移动/跳跃到音频/视频中的新位置时触发
  * @param event Event
  */
-const videoSeekedChange = (event: Event) => {
+const DJVideo_SeekedChange = (event: Event) => {
     emits("seeked", event);
 }
 
@@ -322,7 +322,7 @@ const videoSeekedChange = (event: Event) => {
  * 当用户开始移动/跳跃到音频/视频中的新位置时触发
  * @param event Event
  */
-const videoSeekingChange = (event: Event) => {
+const DJVideo_SeekingChange = (event: Event) => {
     emits("seeking", event);
 }
 
@@ -330,7 +330,7 @@ const videoSeekingChange = (event: Event) => {
  * 当浏览器尝试获取媒体数据，但数据不可用时触发
  * @param event Event
  */
-const videoStalledChange = (event: Event) => {
+const DJVideo_StalledChange = (event: Event) => {
     emits("stalled", event);
 }
 
@@ -338,7 +338,7 @@ const videoStalledChange = (event: Event) => {
  * 当浏览器刻意不获取媒体数据时触发
  * @param event Event
  */
-const videoSuspendChange = (event: Event) => {
+const DJVideo_SuspendChange = (event: Event) => {
     emits("suspend", event);
 }
 
@@ -346,7 +346,7 @@ const videoSuspendChange = (event: Event) => {
  * 当目前的播放位置已更改时触发
  * @param event Event
  */
-const videoTimeupdateChange = (event: Event) => {
+const DJVideo_TimeupdateChange = (event: Event) => {
     try {
         videoConfig.currentTime = formatSongsTime(unref(videoRef)?.currentTime);
         if (!videoConfig.isDragProgress) videoConfig.progress = parseFloat(formatProgress(unref(videoRef)?.duration, unref(videoRef)?.currentTime).toFixed(2));
@@ -360,7 +360,7 @@ const videoTimeupdateChange = (event: Event) => {
  * 当音量已更改时触发
  * @param event Event
  */
-const videoVolumechangeChange = (event: Event) => {
+const DJVideo_VolumechangeChange = (event: Event) => {
     const volume = (event.target as any).volume;
     videoConfig.volume = volume;
     videoConfig.volumeProgress = Math.floor(volume * 100);
@@ -372,7 +372,7 @@ const videoVolumechangeChange = (event: Event) => {
  * 当视频由于需要缓冲下一帧而停止时触发
  * @param event Event
  */
-const videoWaitingChange = (event: Event) => {
+const DJVideo_WaitingChange = (event: Event) => {
     videoConfig.waiting = true;
     emits("waiting", event);
 }
@@ -381,7 +381,7 @@ const videoWaitingChange = (event: Event) => {
  * 全屏/最小化切换时触发
  * @param event Event
  */
-const videoFullscreenchangeChange = (event: Event) => {
+const DJVideo_FullscreenchangeChange = (event: Event) => {
     try {
         const element = unref(videoFullScreenElementRef);
         if (element === document.fullscreenElement) {
@@ -397,7 +397,7 @@ const videoFullscreenchangeChange = (event: Event) => {
  * 进入画中画时触发
  * @param event Event
  */
-const videoEnterpictureinpictureChange = (event: Event) => {
+const DJVideo_EnterpictureinpictureChange = (event: Event) => {
     videoConfig.pictureInPicture = true;
     emits("enterpictureinpicture", event);
 }
@@ -406,7 +406,7 @@ const videoEnterpictureinpictureChange = (event: Event) => {
  * 离开画中画时触发
  * @param event Event
  */
-const videoLeavepictureinpictureChange = (event: Event) => {
+const DJVideo_LeavepictureinpictureChange = (event: Event) => {
     videoConfig.pictureInPicture = false;
     emits("leavepictureinpicture", event);
 }
@@ -414,7 +414,7 @@ const videoLeavepictureinpictureChange = (event: Event) => {
 /**
  * 拖拽改变音频进度
  */
-const progressMouseupChange = () => {
+const DJVideo_ProgressMouseupChange = () => {
     try {
         unref(videoRef).currentTime = (videoConfig.progress / 100) * unref(videoRef)?.duration;
         videoConfig.isDragProgress = false;
@@ -424,18 +424,18 @@ const progressMouseupChange = () => {
 /**
  * 鼠标移入事件
  */
-const videoFullScreenElementMouseenterChange = () => {
+const DJVideo_FullScreenElementMouseenterChange = () => {
     videoConfig.isMove = true;
 }
 
-const videoFullScreenElementMouseleaveChange = () => {
+const DJVideo_FullScreenElementMouseleaveChange = () => {
     videoConfig.isMove = false;
 }
 
 /**
  * 鼠标移动时触发
  */
-const videoFullScreenElementMousemoveChange = () => {
+const DJVideo_FullScreenElementMousemoveChange = () => {
     resetMousemoveTimeout();
 }
 
@@ -443,7 +443,7 @@ const videoFullScreenElementMousemoveChange = () => {
  * 音量进度条改变时触发
  * @param event Event
  */
-const volumeProgressInputChange = () => {
+const DJVideo_VolumeProgressInputChange = () => {
     try {
         const element = unref(videoRef);
         const volume = videoConfig.volumeProgress / 100;
@@ -462,7 +462,7 @@ const volumeProgressInputChange = () => {
  * 键盘按下时触发
  * @param event Event
  */
-const videoKeydownChange = (event: KeyboardEvent) => {
+const DJVideo_KeydownChange = (event: KeyboardEvent) => {
     try {
         switch (event.keyCode) {
             case 32:
@@ -523,11 +523,11 @@ const load = () => {
 }
 
 onMounted(() => {
-    document.addEventListener("keydown", videoKeydownChange)
+    document.addEventListener("keydown", DJVideo_KeydownChange)
 })
 
 onUnmounted(() => {
-    document.removeEventListener("keydown", videoKeydownChange);
+    document.removeEventListener("keydown", DJVideo_KeydownChange);
 })
 
 defineExpose({
@@ -565,26 +565,27 @@ defineExpose({
                 <div class="dj-video-source">
                     <div class="dj-video-source__wrapper">
                         <div class="dj-video-source__inner" :style="{ height: height, minHeight: minHeight }"
-                            ref="videoFullScreenElementRef" @mouseenter="videoFullScreenElementMouseenterChange"
-                            @mouseleave="videoFullScreenElementMouseleaveChange"
-                            @mousemove="videoFullScreenElementMousemoveChange"
-                            @fullscreenchange="videoFullscreenchangeChange">
+                            ref="videoFullScreenElementRef" @mouseenter="DJVideo_FullScreenElementMouseenterChange"
+                            @mouseleave="DJVideo_FullScreenElementMouseleaveChange"
+                            @mousemove="DJVideo_FullScreenElementMousemoveChange"
+                            @fullscreenchange="DJVideo_FullscreenchangeChange">
                             <div class="dj-video-source__content">
                                 <video ref="videoRef" preload="auto" :controls="false" h5-playsinline
                                     x5-video-player-fullscreen="false" webkit-playsinline="false" playsinline="false"
-                                    @click="videoSwitch" @abort="videoAbortChange" @canplay="videoCanplayChange"
-                                    @canplaythrough="videoCanplaythroughChange"
-                                    @durationchange="videoDurationchangeChange" @emptied="videoEmptiedChange"
-                                    @ended="videoEndedChange" @error="videoErrorChange"
-                                    @loadeddata="videoLoadeddataChange" @loadedmetadata="videoLoadedmetadataChange"
-                                    @loadstart="videoLoadstartChange" @pause="videoPauseChange" @play="videoPlayChange"
-                                    @playing="videoPlayingChange" @progress="videoProgressChange"
-                                    @ratechange="videoRatechangeChange" @seeked="videoSeekedChange"
-                                    @seeking="videoSeekingChange" @stalled="videoStalledChange"
-                                    @suspend="videoSuspendChange" @timeupdate="videoTimeupdateChange"
-                                    @volumechange="videoVolumechangeChange" @waiting="videoWaitingChange"
-                                    @enterpictureinpicture="videoEnterpictureinpictureChange"
-                                    @leavepictureinpicture="videoLeavepictureinpictureChange">
+                                    @click="videoSwitch" @abort="DJVideo_AbortChange" @canplay="DJVideo_CanplayChange"
+                                    @canplaythrough="DJVideo_CanplaythroughChange"
+                                    @durationchange="DJVideo_DurationchangeChange" @emptied="DJVideo_EmptiedChange"
+                                    @ended="DJVideo_EndedChange" @error="DJVideo_ErrorChange"
+                                    @loadeddata="DJVideo_LoadeddataChange"
+                                    @loadedmetadata="DJVideo_LoadedmetadataChange" @loadstart="DJVideo_LoadstartChange"
+                                    @pause="DJVideo_PauseChange" @play="DJVideo_PlayChange"
+                                    @playing="DJVideo_PlayingChange" @progress="DJVideo_ProgressChange"
+                                    @ratechange="DJVideo_RatechangeChange" @seeked="DJVideo_SeekedChange"
+                                    @seeking="DJVideo_SeekingChange" @stalled="DJVideo_StalledChange"
+                                    @suspend="DJVideo_SuspendChange" @timeupdate="DJVideo_TimeupdateChange"
+                                    @volumechange="DJVideo_VolumechangeChange" @waiting="DJVideo_WaitingChange"
+                                    @enterpictureinpicture="DJVideo_EnterpictureinpictureChange"
+                                    @leavepictureinpicture="DJVideo_LeavepictureinpictureChange">
                                     <source :src="src" type="video/mp4">
                                     <source :src="src" type="video/ogg">
                                     <source :src="src" type="video/webm">
@@ -592,7 +593,7 @@ defineExpose({
                             </div>
                             <div class="dj-video-progress"
                                 :class="[videoConfig.paused || videoConfig.isMove ? 'is-show' : '']"
-                                @mouseenter="videoFullScreenElementMouseenterChange">
+                                @mouseenter="DJVideo_FullScreenElementMouseenterChange">
                                 <div class="dj-video-progress__wrapper">
                                     <div class="dj-video-button__wrapper">
                                         <button class="dj-video-button__play" :disabled="videoConfig.waiting"
@@ -652,7 +653,7 @@ defineExpose({
                                                 :style="{ '--progress-value': `${videoConfig.progress}%` }"
                                                 v-model="videoConfig.progress"
                                                 @mousedown="videoConfig.isDragProgress = true"
-                                                @mouseup="progressMouseupChange">
+                                                @mouseup="DJVideo_ProgressMouseupChange">
                                         </div>
                                         <span class="dj-video-progress__end-time">
                                             {{ videoConfig.duration }}
@@ -682,7 +683,7 @@ defineExpose({
                                                                     <input type="range"
                                                                         :style="{ '--volume-progress-value': `${videoConfig.volumeProgress}%` }"
                                                                         v-model="videoConfig.volumeProgress"
-                                                                        @input="volumeProgressInputChange">
+                                                                        @input="DJVideo_VolumeProgressInputChange">
                                                                 </div>
                                                             </div>
                                                         </div>

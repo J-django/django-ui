@@ -62,16 +62,19 @@ const checkedLabel = computed(() => props.checkedLabel || slots.checkedLabel);
 /**
  * 切换switch状态
  */
-const switchToggle = () => {
+const toggle = () => {
     DJSwitchInnerRef.value.style.transition = "background-color 350ms, box-shadow 250ms";
     emits("update:modelValue", !props.modelValue);
 }
 
-const DJSwitcnTransitionendChange = () => {
+/**
+ * 开发动画结束触发
+ */
+const DJSwitcn_TransitionendChange = () => {
     DJSwitchInnerRef.value.style.transition = "box-shadow 250ms";
 }
 
-defineExpose({ switchToggle })
+defineExpose({ toggle })
 </script>
 
 <template>
@@ -81,14 +84,14 @@ defineExpose({ switchToggle })
         '--dj-switch-custom-unChecked-color': unCheckedColor,
         '--dj-switch-custom-checked-background-color': checkedBackgroundColor,
         '--dj-switch-custom-unChecked-background-color': unCheckedBackgroundColor
-    }" :disabled="disabled" @click.prevent="switchToggle">
+    }" :disabled="disabled" @click.prevent="toggle">
             <span v-if="UnCheckedLabel" class="dj-switch__label dj-switch__label-left"
                 :class="!modelValue ? 'is-checked' : ''">
                 <slot name="unChecked-label">
                     {{ unCheckedLabel }}
                 </slot>
             </span>
-            <span class="dj-switch__inner" ref="DJSwitchInnerRef" @transitionend="DJSwitcnTransitionendChange">
+            <span class="dj-switch__inner" ref="DJSwitchInnerRef" @transitionend="DJSwitcn_TransitionendChange">
                 <span class="dj-switch__thumb">
                     <slot name="checked-thumb" v-if="modelValue"></slot>
                     <slot name="unChecked-thumb" v-else></slot>

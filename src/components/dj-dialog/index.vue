@@ -68,7 +68,7 @@ const toggle = () => {
  * dialog键盘按下事件
  * @param event KeyboardEvent
  */
-const dialogKeydownChange = (event: KeyboardEvent) => {
+const DJDialog_KeydownChange = (event: KeyboardEvent) => {
     if (event.keyCode == 27) {
         closed();
     }
@@ -78,7 +78,7 @@ const dialogKeydownChange = (event: KeyboardEvent) => {
  * dialog鼠标按下事件
  * @param event MouseEvent
  */
-const dialogMousedownChange = (event: MouseEvent) => {
+const DJDialog_MousedownChange = (event: MouseEvent) => {
     if (event.target == DJDialogRef.value && props.dialogExternal) {
         closed();
     }
@@ -89,7 +89,7 @@ const dialogMousedownChange = (event: MouseEvent) => {
  */
 const createEscape = () => {
     if (props.escape) {
-        window.addEventListener("keydown", dialogKeydownChange);
+        window.addEventListener("keydown", DJDialog_KeydownChange);
     }
 }
 
@@ -98,7 +98,7 @@ const createEscape = () => {
  */
 const destroyEscape = () => {
     if (props.escape) {
-        window.removeEventListener("keydown", dialogKeydownChange);
+        window.removeEventListener("keydown", DJDialog_KeydownChange);
     }
 }
 
@@ -116,9 +116,9 @@ defineExpose({ open, closed, toggle })
 <template>
     <Teleport to="body" :disabled="!appendBody">
         <Transition name="dialog">
-            <div class="dj-dialog" ref="DJDialogRef" v-show="modelValue" @mousedown="dialogMousedownChange">
+            <div class="dj-dialog" ref="DJDialogRef" v-show="modelValue" @mousedown="DJDialog_MousedownChange">
                 <div class="dj-dialog-dialog" :style="{ '--dj-dialog-custom-top': top }"
-                    :class="[verticalCenter ? 'vertical-center' : '']" @keydown="dialogKeydownChange">
+                    :class="[verticalCenter ? 'vertical-center' : '']">
                     <div class="dj-dialog-content">
                         <header class="dj-dialog-header">
                             <slot name="header">

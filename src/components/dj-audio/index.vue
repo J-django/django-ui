@@ -80,7 +80,7 @@ const audioSwitch = () => {
  * @param event Event
  * @returns
  */
-const audioLoadedMetaDataChange = (event: Event) => {
+const DJAudio_LoadedMetaDataChange = (event: Event) => {
     audioConfig.duration = formatSongsTime(unref(audioRef)?.duration)
     audioConfig.waiting = false;
     emits("loadedmetadata", event)
@@ -90,7 +90,7 @@ const audioLoadedMetaDataChange = (event: Event) => {
  * 可以开始播放时触发
  * @param event Event
  */
-const audioCanplayChange = (event: Event) => {
+const DJAudio_CanplayChange = (event: Event) => {
     audioConfig.waiting = false;
     emits("canplay", event)
 }
@@ -99,7 +99,7 @@ const audioCanplayChange = (event: Event) => {
  * 调用play()方法后触发
  * @param event Event
  */
-const audioPlayChange = (event: Event) => {
+const DJAudio_PlayChange = (event: Event) => {
     audioConfig.paused = false;
     unref(audioRef).volume = audioConfig.volume = 0.5;
     emits("play", event)
@@ -109,7 +109,7 @@ const audioPlayChange = (event: Event) => {
  * 播放暂停触发
  * @param event Event
  */
-const audioPauseChange = (event: Event) => {
+const DJAudio_PauseChange = (event: Event) => {
     emits("pause", event)
     audioConfig.paused = true;
 }
@@ -118,7 +118,7 @@ const audioPauseChange = (event: Event) => {
  * 开始播放后触发
  * @param event Event
  */
-const audioPlayingChange = (event: Event) => {
+const DJAudio_PlayingChange = (event: Event) => {
     emits("playing", event)
 }
 
@@ -126,7 +126,7 @@ const audioPlayingChange = (event: Event) => {
  * 进度改变时触发
  * @param event Event
  */
-const audioProgressChange = (event: Event) => {
+const DJAudio_ProgressChange = (event: Event) => {
     var bufferedTime = unref(audioRef)?.buffered;
     audioConfig.buffered = parseFloat((bufferedTime.end(bufferedTime.length - 1) / unref(audioRef)?.duration * 100).toFixed(2));
     emits("progress", event)
@@ -136,7 +136,7 @@ const audioProgressChange = (event: Event) => {
  * 播放中触发
  * @param event Event
  */
-const audioTimeUpdateChange = (event: Event) => {
+const DJAudio_TimeUpdateChange = (event: Event) => {
     audioConfig.currentTime = formatSongsTime(unref(audioRef)?.currentTime);
     if (!audioConfig.isDragProgress) audioConfig.progress = parseFloat(formatProgress(unref(audioRef)?.duration, unref(audioRef)?.currentTime).toFixed(2));
     emits("timeupdate", audioConfig.progress, event)
@@ -146,7 +146,7 @@ const audioTimeUpdateChange = (event: Event) => {
  * 音频位置发生改变后触发
  * @param event Event
  */
-const audioSeekedChange = (event: Event) => {
+const DJAudio_SeekedChange = (event: Event) => {
     emits("seeked", event)
 }
 
@@ -154,7 +154,7 @@ const audioSeekedChange = (event: Event) => {
  * 缓冲暂停播放时触发
  * @param event Event
  */
-const audioWaitingChange = (event: Event) => {
+const DJAudio_WaitingChange = (event: Event) => {
     audioConfig.waiting = true;
     emits("waiting", event)
 }
@@ -163,7 +163,7 @@ const audioWaitingChange = (event: Event) => {
  * 播放结束时触发
  * @param event Event
  */
-const audioEndedChange = (event: Event) => {
+const DJAudio_EndedChange = (event: Event) => {
     audioConfig.paused = true;
     emits("ended", event)
 }
@@ -171,7 +171,7 @@ const audioEndedChange = (event: Event) => {
 /**
  * 拖拽改变音频进度
  */
-const progressMouseupChange = () => {
+const DJAudio_ProgressMouseupChange = () => {
     unref(audioRef).currentTime = (audioConfig.progress / 100) * unref(audioRef)?.duration;
     audioConfig.isDragProgress = false;
 }
@@ -242,10 +242,10 @@ defineExpose({
                 <span class="dj-audio-progress__start-time">{{ audioConfig.currentTime }}</span>
                 <div class="dj-audio-progress__inner">
                     <audio class="dj-audio-process__audio" ref="audioRef" preload="auto"
-                        @loadedmetadata="audioLoadedMetaDataChange" @progress="audioProgressChange"
-                        @canplay="audioCanplayChange" @play="audioPlayChange" @playing="audioPlayingChange"
-                        @pause="audioPauseChange" @timeupdate="audioTimeUpdateChange" @seeked="audioSeekedChange"
-                        @waiting="audioWaitingChange" @ended="audioEndedChange">
+                        @loadedmetadata="DJAudio_LoadedMetaDataChange" @progress="DJAudio_ProgressChange"
+                        @canplay="DJAudio_CanplayChange" @play="DJAudio_PlayChange" @playing="DJAudio_PlayingChange"
+                        @pause="DJAudio_PauseChange" @timeupdate="DJAudio_TimeUpdateChange"
+                        @seeked="DJAudio_SeekedChange" @waiting="DJAudio_WaitingChange" @ended="DJAudio_EndedChange">
                         <source type="audio/ogg" :src="src">
                         <source type="audio/mpeg" :src="src">
                     </audio>
@@ -254,7 +254,7 @@ defineExpose({
                     </div>
                     <input type="range" :style="{ '--dj-audio-progress-value': `${audioConfig.progress}%` }"
                         v-model="audioConfig.progress" @mousedown="audioConfig.isDragProgress = true"
-                        @mouseup="progressMouseupChange">
+                        @mouseup="DJAudio_ProgressMouseupChange">
                 </div>
                 <span class="dj-audio-progress__end-time">
                     {{ audioConfig.duration }}
