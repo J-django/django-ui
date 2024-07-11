@@ -10,6 +10,18 @@ const props = defineProps({
         type: String,
         default: ""
     },
+    autoplay: {
+        type: Boolean,
+        default: false
+    },
+    loop: {
+        type: Boolean,
+        default: false
+    },
+    muted: {
+        type: Boolean,
+        default: false
+    },
     width: {
         type: String,
         default: "100%"
@@ -40,22 +52,23 @@ const mousemoveTimeout = ref();
 const volumePromtTimeout = ref();
 
 const videoConfig = reactive({
-    error: <boolean>false,
-    waiting: <boolean>true,
-    paused: <boolean>true,
-    isDragProgress: <boolean>false,
-    mute: <boolean>false,
-    volume: <number>1,
-    beforeVolume: <number>1,
-    volumeProgress: <number>100,
-    isVolumePrompt: <boolean>false,
-    progress: <number>0,
-    buffered: <number>0,
-    currentTime: <string>"00:00",
-    duration: <string>"00:00",
-    isMove: <boolean>false,
-    fullscreen: <boolean>false,
-    pictureInPicture: <boolean>false,
+    error: <boolean>false, // 异常
+    waiting: <boolean>true, // 等待
+    paused: <boolean>true, // 播放、暂停
+    isDragProgress: <boolean>false, // 是否拖动进度条
+    mute: <boolean>false, // 静音
+    volume: <number>1, // 音量
+    beforeVolume: <number>1, // 上一次音量
+    volumeProgress: <number>100, // 音量对应进度
+    isVolumePrompt: <boolean>false, // 是否显示音量提示
+    progress: <number>0, // 视频进度
+    buffered: <number>0, // 缓冲进度
+    currentTime: <string>"00:00", // 视频当前播放位置
+    duration: <string>"00:00", // 视频总长度
+    isMove: <boolean>false, // 鼠标是否移入可见区域
+    fullscreen: <boolean>false, // 是否全屏
+    pictureInPicture: <boolean>false, // 是否启用画中画
+    progressController: <boolean>false
 })
 
 const { isMobile } = useDevice();
@@ -77,11 +90,11 @@ const pause = () => {
 }
 
 /**
- * 音频状态切换
+ * 切换
  */
-const videoSwitch = () => {
-    if (isMobile()) return;
+const toggle = () => {
     videoConfig.paused = !videoConfig.paused;
+    videoConfig.progressController = videoConfig.paused;
     if (!videoConfig.paused) play(); else pause();
 }
 
@@ -164,6 +177,9 @@ const showMousemoveTimeout = () => {
     }
     mousemoveTimeout.value = setTimeout(() => {
         videoConfig.isMove = false;
+        if (!videoConfig.paused) {
+            videoConfig.progressController = false;
+        }
     }, 1500);
 }
 
@@ -172,9 +188,13 @@ const showMousemoveTimeout = () => {
  */
 const resetMousemoveTimeout = () => {
     const element = unref(mousemoveTimeout);
+    const mobile = isMobile();
     if (element) {
         clearTimeout(element)
         videoConfig.isMove = true;
+        if (!mobile) {
+            videoConfig.progressController = true;
+        }
     }
     showMousemoveTimeout();
 }
@@ -422,14 +442,40 @@ const DJVideo_ProgressMouseupChange = () => {
 }
 
 /**
+ * 视频点击时触发
+ */
+const DJVideo_FullScreenElementClickChange = () => {
+    const mobile = isMobile();
+    videoConfig.progressController = !videoConfig.progressController;
+    if (!mobile) {
+        videoConfig.paused = !videoConfig.paused;
+        if (!videoConfig.paused) {
+            play();
+            videoConfig.progressController = true;
+            showMousemoveTimeout();
+        } else {
+            pause();
+        }
+    }
+}
+
+/**
  * 鼠标移入事件
  */
 const DJVideo_FullScreenElementMouseenterChange = () => {
+    const mobile = isMobile();
     videoConfig.isMove = true;
+    if (!mobile) {
+        videoConfig.progressController = true;
+    }
 }
 
 const DJVideo_FullScreenElementMouseleaveChange = () => {
+    const mobile = isMobile();
     videoConfig.isMove = false;
+    if (!mobile) {
+        videoConfig.progressController = false;
+    }
 }
 
 /**
@@ -470,8 +516,10 @@ const DJVideo_KeydownChange = (event: KeyboardEvent) => {
                 event.preventDefault();
                 if (videoConfig.paused) {
                     unref(videoRef).play();
+                    showMousemoveTimeout();
                 } else {
                     unref(videoRef).pause();
+                    videoConfig.progressController = true;
                 }
                 break;
             case 37:
@@ -549,11 +597,12 @@ defineExpose({
     duration: () => unref(videoRef)?.duration,
     fullscreen: () => videoConfig.fullscreen,
     pictureInPicture: () => videoConfig.pictureInPicture,
-    toggleFullScreen: toggleFullScreen,
-    togglePictureInPicture: togglePictureInPicture,
-    play: play,
-    pause: pause,
-    load: load,
+    load,
+    play,
+    pause,
+    toggle,
+    toggleFullScreen,
+    togglePictureInPicture,
 })
 </script>
 
@@ -565,15 +614,16 @@ defineExpose({
                 <div class="dj-video-source">
                     <div class="dj-video-source__wrapper">
                         <div class="dj-video-source__inner" :style="{ height: height, minHeight: minHeight }"
-                            ref="videoFullScreenElementRef" @mouseenter="DJVideo_FullScreenElementMouseenterChange"
+                            ref="videoFullScreenElementRef" @click="DJVideo_FullScreenElementClickChange"
+                            @mouseenter="DJVideo_FullScreenElementMouseenterChange"
                             @mouseleave="DJVideo_FullScreenElementMouseleaveChange"
                             @mousemove="DJVideo_FullScreenElementMousemoveChange"
                             @fullscreenchange="DJVideo_FullscreenchangeChange">
                             <div class="dj-video-source__content">
                                 <video ref="videoRef" preload="auto" :controls="false" h5-playsinline
                                     x5-video-player-fullscreen="false" webkit-playsinline="false" playsinline="false"
-                                    @click="videoSwitch" @abort="DJVideo_AbortChange" @canplay="DJVideo_CanplayChange"
-                                    @canplaythrough="DJVideo_CanplaythroughChange"
+                                    :autoplay="autoplay" :loop="loop" :muted="muted" @abort="DJVideo_AbortChange"
+                                    @canplay="DJVideo_CanplayChange" @canplaythrough="DJVideo_CanplaythroughChange"
                                     @durationchange="DJVideo_DurationchangeChange" @emptied="DJVideo_EmptiedChange"
                                     @ended="DJVideo_EndedChange" @error="DJVideo_ErrorChange"
                                     @loadeddata="DJVideo_LoadeddataChange"
@@ -591,13 +641,12 @@ defineExpose({
                                     <source :src="src" type="video/webm">
                                 </video>
                             </div>
-                            <div class="dj-video-progress"
-                                :class="[videoConfig.paused || videoConfig.isMove ? 'is-show' : '']"
+                            <div class="dj-video-progress" :class="[videoConfig.progressController ? 'is-show' : '']"
                                 @mouseenter="DJVideo_FullScreenElementMouseenterChange">
                                 <div class="dj-video-progress__wrapper">
                                     <div class="dj-video-button__wrapper">
                                         <button class="dj-video-button__play" :disabled="videoConfig.waiting"
-                                            @click="videoSwitch">
+                                            @click="toggle">
                                             <template v-if="!videoConfig.waiting">
                                                 <svg v-if="videoConfig.paused" class="icon"
                                                     xmlns="http://www.w3.org/2000/svg" width="32" height="32"
@@ -729,7 +778,7 @@ defineExpose({
                                 </div>
                             </div>
                             <div class="dj-video-volumePrompt"
-                                :class="[videoConfig.paused || videoConfig.isMove ? 'is-move' : '', videoConfig.isVolumePrompt ? 'is-show' : '']">
+                                :class="[videoConfig.progressController ? 'is-move' : '', videoConfig.isVolumePrompt ? 'is-show' : '']">
                                 <div class="dj-video-volumePrompt__wrapper">
                                     {{ videoConfig.volumeProgress + '%' }}
                                 </div>

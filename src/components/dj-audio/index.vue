@@ -69,7 +69,7 @@ const pause = () => {
 /**
  * 音频状态切换
  */
-const audioSwitch = () => {
+const toggle = () => {
     audioConfig.paused = !audioConfig.paused;
     if (!audioConfig.paused) play(); else pause();
 }
@@ -181,9 +181,10 @@ defineExpose({
     autoplay: props.autoplay,
     loop: props.loop,
     muted: props.muted,
-    load: load,
-    play: play,
-    pause: pause,
+    load,
+    play,
+    pause,
+    toggle,
     paused: () => audioConfig.paused,
     volume: () => audioConfig.volume,
     progress: () => audioConfig.progress,
@@ -198,7 +199,7 @@ defineExpose({
         <div class="dj-audio__wrapper"
             :class="[!audioConfig.paused ? 'is-play' : '', transition ? 'is-transition' : '']">
             <div class="dj-audio-button__wrapper">
-                <button class="dj-audio-button__play" :disabled="audioConfig.waiting" @click="audioSwitch">
+                <button class="dj-audio-button__play" :disabled="audioConfig.waiting" @click="toggle">
                     <template v-if="!audioConfig.waiting">
                         <svg v-if="audioConfig.paused" class="icon" xmlns="http://www.w3.org/2000/svg" width="32"
                             height="32" viewBox="0 0 512 512">

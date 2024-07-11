@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 // plugin
 import { ref } from "vue";
-// import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
-// import VideoSrc from '@/assets/video/1579780393-1-192.mp4'
+import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
+import VideoSrc from '@/assets/video/1579780393-1-192.mp4'
 
 // script
 const accordion = ref(false);
@@ -123,12 +123,12 @@ const switchChange = () => { }
         <div class="line">
             <dj-textarea placeholder="Please Input" v-model="content" />
         </div>
-        <!-- <div class="line">
+        <div class="line">
             <dj-audio :src="AudioSrc" />
         </div>
         <div class="line">
             <dj-video :src="VideoSrc" width="100%" min-height="400px" />
-        </div> -->
+        </div>
     </div>
 </template>
 
