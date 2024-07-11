@@ -1,7 +1,7 @@
 <script lang="ts" setup name="dj-switch">
 // plugin
 import "./index.less";
-import { watch, computed, useSlots } from "vue"
+import { ref, watch, computed, useSlots } from "vue"
 
 // script
 const props = defineProps({
@@ -47,6 +47,8 @@ watch(() => props.modelValue, () => {
     emits("change", props.modelValue)
 })
 
+const DJSwitchInnerRef = ref();
+
 /**
  * 是否显示未选中状态时文字
  */
@@ -61,7 +63,12 @@ const checkedLabel = computed(() => props.checkedLabel || slots.checkedLabel);
  * 切换switch状态
  */
 const switchToggle = () => {
+    DJSwitchInnerRef.value.style.transition = "background-color 350ms, box-shadow 250ms";
     emits("update:modelValue", !props.modelValue);
+}
+
+const DJSwitcnTransitionendChange = () => {
+    DJSwitchInnerRef.value.style.transition = "box-shadow 250ms";
 }
 
 defineExpose({ switchToggle })
@@ -81,7 +88,7 @@ defineExpose({ switchToggle })
                     {{ unCheckedLabel }}
                 </slot>
             </span>
-            <span class="dj-switch__inner">
+            <span class="dj-switch__inner" ref="DJSwitchInnerRef" @transitionend="DJSwitcnTransitionendChange">
                 <span class="dj-switch__thumb">
                     <slot name="checked-thumb" v-if="modelValue"></slot>
                     <slot name="unChecked-thumb" v-else></slot>
