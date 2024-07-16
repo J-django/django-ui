@@ -1,5 +1,5 @@
 .dj-dialog {
-  --dj-dialog-header-padding: rem(8px) rem(8px) rem(8px) rem(16px);
+  --dj-dialog-header-padding: rem(8px);
   --dj-dialog-body-padding: rem(16px);
   --dj-dialog-footer-padding: rem(8px);
   --dj-dialog-margin: rem(28px);
@@ -7,7 +7,7 @@
   --dj-dialog-color: #3c3c43;
   --dj-dialog-font-size: rem(14px);
   --dj-dialog-font-weight: 500;
-  --dj-dialog-backdrop-background-color: rgba(60, 60, 67, 0.5);
+  --dj-dialog-backdrop-background-color: rgba(16, 16, 16, 0.65);
   --dj-dialog-header-background-color: rgba(33, 37, 41, 0.03);
   --dj-dialog-background-color: #f1f1f2;
   --dj-dialog-footer-background-color: rgba(33, 37, 41, 0.03);
@@ -29,16 +29,23 @@
   overflow-y: auto;
   z-index: var(--dj-dialog-z-index);
 
-  .dj-dialog-dialog {
+  .dj-dialog__wrapper {
     @default-top: var(--dj-dialog-margin);
     position: relative;
-    width: auto;
-    margin: var(--dj-dialog-margin);
+    width: 50%;
+    min-width: 500px;
+    margin-top: var(--dj-dialog-margin);
+    margin-bottom: var(--dj-dialog-margin);
+    margin-left: auto;
+    margin-right: auto;
     margin-top: var(--dj-dialog-custom-top, @default-top);
     pointer-events: none;
 
-    .dj-dialog-content {
+    .dj-dialog__inner {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
       color: var(--dj-dialog-color);
       font-size: var(--dj-dialog-font-size);
       font-weight: var(--dj-dialog-font-weight);
@@ -46,7 +53,6 @@
       border-radius: var(--dj-dialog-border-radius);
       box-shadow: var(--dj-dialog-box-shadow);
       pointer-events: auto;
-      border: rem(1px) solid var(--dj-dialog-border-color);
 
       .dj-dialog-header {
         padding: var(--dj-dialog-header-padding);
@@ -58,6 +64,10 @@
           display: flex;
           align-items: center;
           justify-content: space-between;
+
+          .dj-dialog-header-title {
+            margin-left: rem(8px);
+          }
 
           .dj-dialog-header-closed {
             -webkit-appearance: none;
@@ -88,10 +98,12 @@
       }
 
       .dj-dialog-body {
+        flex: auto;
         padding: var(--dj-dialog-body-padding);
         color: var(--dj-dialog-color);
         font-size: var(--dj-dialog-font-size);
         font-weight: var(--dj-dialog-font-weight);
+        overflow: auto;
       }
 
       .dj-dialog-footer {
@@ -104,11 +116,17 @@
     }
   }
 
-  .dj-dialog-dialog.vertical-center {
+  .dj-dialog__wrapper.vertical-center {
     height: calc(100vh - var(--dj-dialog-margin) * 2);
     margin-top: var(--dj-dialog-margin);
     display: flex;
     align-items: center;
+  }
+
+  .dj-dialog__wrapper.is-overspread {
+    .dj-dialog__inner {
+      height: calc(100vh - var(--dj-dialog-margin) * 2);
+    }
   }
 }
 
@@ -116,7 +134,7 @@
 .dialog-leave-active {
   transition: opacity 350ms;
 
-  .dj-dialog-dialog {
+  .dj-dialog__wrapper {
     transition: transform 350ms, opacity 350ms;
   }
 }
@@ -125,18 +143,8 @@
 .dialog-leave-to {
   opacity: 0;
 
-  .dj-dialog-dialog {
+  .dj-dialog__wrapper {
     transform: translateY(-30px);
     opacity: 0;
-  }
-}
-
-@media (min-width: 576px) {
-  .dj-dialog {
-    .dj-dialog-dialog {
-      max-width: var(--dj-dialog-max-width);
-      margin-right: auto;
-      margin-left: auto;
-    }
   }
 }
