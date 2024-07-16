@@ -7,7 +7,7 @@
   --dj-audio-current-progress-color: rgba(60, 60, 67, 0.5);
   --dj-audio-buffer-color: rgba(33, 37, 41, 0.25);
   --dj-audio-border-color: rgba(60, 60, 67, 0.12);
-  --dj-audio-border-radius: rem(6px);
+  --dj-audio-border-radius: rem(8px);
   --dj-audio-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-audio-transition-duration: 750ms;
 
@@ -101,7 +101,7 @@
     }
 
     .dj-audio-progress__wrapper {
-      @radius: rem(2px);
+      @radius: rem(4px);
       flex-grow: 1;
       gap: @gap;
       position: relative;
@@ -152,16 +152,14 @@
         }
 
         .dj-audio-buffered__bar {
-          @current-buffer-color: var(--dj-audio-buffer-color),
-            var(--dj-audio-buffer-color);
           position: absolute;
           top: 0;
           left: 0;
-          width: 100%;
+          width: var(--dj-audio-buffer-value);
           height: 100%;
-          background: -webkit-linear-gradient(@current-buffer-color) no-repeat;
-          background-size: var(--dj-audio-buffer-value) 100%;
-          transition: background-size 250ms;
+          background-color: var(--dj-audio-buffer-color);
+          border-radius: 4px;
+          transition: width 250ms;
           z-index: 5;
         }
 
