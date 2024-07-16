@@ -44,6 +44,7 @@ const emits = defineEmits(["update:modelValue", "change"])
 const slots = useSlots();
 
 watch(() => props.modelValue, () => {
+    DJSwitchInnerRef.value.style.transition = "background-color 350ms, box-shadow 250ms";
     emits("change", props.modelValue)
 })
 
@@ -63,7 +64,6 @@ const checkedLabel = computed(() => props.checkedLabel || slots.checkedLabel);
  * 切换switch状态
  */
 const toggle = () => {
-    DJSwitchInnerRef.value.style.transition = "background-color 350ms, box-shadow 250ms";
     emits("update:modelValue", !props.modelValue);
 }
 
