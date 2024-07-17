@@ -15,6 +15,12 @@ export const useColor = () => {
         return luminance <= 0.5;
     }
 
+    /**
+     * hex转rgba
+     * @param hex Hex
+     * @param alpha Number
+     * @returns rgba(r, g, b, a)
+     */
     const hexToRgba = (hex: string, alpha: number) => {
         hex = hex.replace('#', '');
 
@@ -29,6 +35,11 @@ export const useColor = () => {
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
     }
 
+    /**
+     * 拆分rgba
+     * @param rgba rgba
+     * @returns 
+     */
     const splitRGBA = (rgba: string) => {
         rgba = rgba.replace(/\s/g, '');
 
@@ -44,6 +55,14 @@ export const useColor = () => {
         };
     }
 
+    /**
+     * rgba转hex
+     * @param r r
+     * @param g g
+     * @param b b
+     * @param alpha a
+     * @returns Hex
+     */
     const rgbaToHex = (r: number, g: number, b: number, alpha: number) => {
         function componentToHex(c: number) {
             const hex = Math.round(c).toString(16);
@@ -64,18 +83,15 @@ export const useColor = () => {
             return Math.round(value);
         }
 
-        // 验证并转换RGB值
         r = validateRGB(r);
         g = validateRGB(g);
         b = validateRGB(b);
 
-        // 构建Hex字符串
         const hexR = componentToHex(r);
         const hexG = componentToHex(g);
         const hexB = componentToHex(b);
         const hexA = alphaToHex(alpha);
 
-        // 返回Hex格式字符串
         return `#${hexR}${hexG}${hexB}${hexA}`;
     }
 

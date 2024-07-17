@@ -9,6 +9,8 @@ import DJVideo from './dj-video/index.vue'
 import DJSegmented from './dj-segmented/index.vue'
 import DJSwitch from './dj-switch/index.vue'
 import DJDialog from './dj-dialog/index.vue'
+import DJSlider from './dj-slider/index.vue'
+import DJWatermark from './dj-watermark/index.vue'
 
 
 export {
@@ -22,5 +24,7 @@ export {
     DJVideo,
     DJSegmented,
     DJSwitch,
-    DJDialog
+    DJDialog,
+    DJSlider,
+    DJWatermark
 }

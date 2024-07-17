@@ -31,5 +31,39 @@ export const useTime = () => {
         return currentProgress;
     };
 
-    return { formatSongsTime, formatProgress }
+    /**
+     * 节流
+     * @param func Function
+     * @param delay Number
+     */
+    const throttle = (func: Function, delay: number) => {
+        let timer = 0
+
+        const _throttle = function () {
+            const nowTime = new Date().getTime()
+            const remainTime = delay - (nowTime - timer)
+            if (remainTime <= 0) {
+                func()
+                timer = nowTime
+            }
+        }
+        return _throttle
+    }
+
+    /**
+     * 防抖
+     * @param func Function
+     * @param delay Number
+     */
+    function debounce(func: Function, delay: number) {
+        var timer: any = null;
+        return function () {
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () {
+                func();
+            }, delay);
+        }
+    }
+
+    return { formatSongsTime, formatProgress, throttle, debounce }
 }

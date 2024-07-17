@@ -15,17 +15,15 @@ const segmentedValue = ref("apple");
 const segmentedArray = ref([
     "apple",
     { label: "banana", value: "banana", disabled: true },
-    { label: "cherry", value: "cherry", disabled: false },
-    { label: "date", value: "date", disabled: true },
-    { label: "elderberry", value: "elderberry", disabled: false },
-    { label: "fig", value: "fig", disabled: true },
-    { label: "grape", value: "grape", disabled: true },
+    { label: "date", value: "date", disabled: false },
     "honeydew"
 ])
 
 const switchValue = ref(false);
 
 const modalValue = ref(false);
+
+const sliderValue = ref(0);
 
 const modalToggle = () => {
     modalValue.value = !modalValue.value;
@@ -45,13 +43,20 @@ const switchChange = () => { }
 <template>
     <div class="layout">
         <div class="line">
+            <dj-slider v-model="sliderValue" />
+        </div>
+        <div class="line">
+            <dj-watermark :text="['JiangKaiNan']">
+                <div style="height: 600px;"></div>
+            </dj-watermark>
+        </div>
+        <div class="line">
             <dj-button @click="modalToggle">modal toggle</dj-button>
-            <dj-dialog v-model="modalValue" title="Title">
-                This is Dialog!
-                <!-- <template #footer>
+            <dj-dialog v-model="modalValue" title="Title" overspread width="50%" max-width="500px" closeDestroy>
+                <template #footer>
                     <dj-button plain @click="modalValue = false" style="height: 28px;">Closed</dj-button>
                     <dj-button color="#0d6efd" @click="modalValue = false" style="height: 28px;">Confirm</dj-button>
-                </template> -->
+                </template>
             </dj-dialog>
         </div>
         <div class="line">
@@ -93,7 +98,7 @@ const switchChange = () => { }
             <dj-button color="#3c3c43" plain disabled>Disabled Custom Plain</dj-button>
         </div>
         <div class="line">
-            <dj-card align="center" ghosting>
+            <dj-card align="center">
                 Content
             </dj-card>
         </div>
@@ -127,7 +132,7 @@ const switchChange = () => { }
             <dj-audio :src="AudioSrc" />
         </div>
         <div class="line">
-            <dj-video :src="VideoSrc" width="100%" min-height="400px" />
+            <dj-video :src="VideoSrc" />
         </div>
     </div>
 </template>
@@ -136,12 +141,16 @@ const switchChange = () => { }
 .layout {
     display: flex;
     flex-direction: column;
+}
 
-    .line {
-        margin-bottom: rem(8px);
-        padding-bottom: rem(8px);
-        width: 100%;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
+.layout .line {
+    --margin: rem(16px);
+    margin-bottom: var(--margin);
+    padding-bottom: var(--margin);
+    padding-left: var(--margin);
+    padding-right: var(--margin);
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 </style>

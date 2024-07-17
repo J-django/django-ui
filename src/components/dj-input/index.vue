@@ -47,8 +47,8 @@ const inputConfig = reactive({
  * @param event Event
  */
 const DJInput_InputChange = (event: Event) => {
-    emits("input", (event.target as any).value)
     emits("update:modelValue", (event.target as any).value)
+    emits("input", (event.target as any).value)
 }
 
 /**
