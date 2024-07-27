@@ -11,6 +11,7 @@ import DJSwitch from './dj-switch/index.vue'
 import DJDialog from './dj-dialog/index.vue'
 import DJSlider from './dj-slider/index.vue'
 import DJWatermark from './dj-watermark/index.vue'
+import DJScrollbar from './dj-scrollbar/index.vue'
 
 
 export {
@@ -26,5 +27,6 @@ export {
     DJSwitch,
     DJDialog,
     DJSlider,
-    DJWatermark
+    DJWatermark,
+    DJScrollbar,
 }

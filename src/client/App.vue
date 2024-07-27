@@ -38,10 +38,23 @@ const toggleDisabled = () => {
 }
 
 const switchChange = () => { }
+
+const count = ref(20);
 </script>
 
 <template>
     <div class="layout">
+        <div class="line">
+            <dj-button @click="count++">conut++</dj-button>
+            <dj-scrollbar ref="DJScroll" height="800px">
+                <div style="width: 100%;padding: 10px;box-sizing: border-box;">
+                    <div style="width: 100%;height: 80px;border-radius: 8px;background-color: aliceblue;display: flex;align-items: center; justify-content: center;"
+                        :style="{ 'margin-top': item !== 0 ? '10px' : '' }" v-for="item of count">
+                        {{ item }}
+                    </div>
+                </div>
+            </dj-scrollbar>
+        </div>
         <div class="line">
             <dj-slider v-model="sliderValue" />
         </div>

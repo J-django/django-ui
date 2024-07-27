@@ -1,0 +1,133 @@
+.dj-scrollbar {
+  --dj-scrollbar-padding: rem(1px);
+
+  --dj-scrollbar-vertical-width: rem(7px);
+  --dj-scrollbar-hover-vertical-width: rem(12px);
+
+  --dj-scrollbar-horizontal-height: rem(7px);
+  --dj-scrollbar-hover-horizontal-height: rem(12px);
+
+  --dj-scrollbar-vertical-background-color: rgba(255, 255, 255, 0.7);
+  --dj-scrollbar-horizontal-background-color: rgba(255, 255, 255, 0.7);
+
+  --dj-scrollbar-vertical-thumb-background-color: rgba(60, 60, 67, 0.7);
+  --dj-scrollbar-horizontal-thumb-background-color: rgba(60, 60, 67, 0.7);
+
+  --dj-scrollbar-border-color: rgba(60, 60, 67, 0.12);
+
+  --dj-scrollbar-border-radius: rem(6px);
+
+  --dj-scrollbar-vertical-transition: opacity 250ms, visibility 250ms,
+    background-color 250ms, border-color 250ms;
+  --dj-scrollbar-horizontal-transition: opacity 250ms, visibility 250ms,
+    background-color 250ms, border-color 250ms;
+
+  --dj-scrollbar-vertical-thumb-transition: width 250ms;
+  --dj-scrollbar-horizontal-thumb-transition: height 250ms;
+
+  --dj-scrollbar-vertical-z-index: 2;
+  --dj-scrollbar-horizontal-z-index: 1;
+
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+
+  .dj-scrollbar__wrapper {
+    height: 100%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+      display: none;
+    }
+  }
+
+  .dj-scrollbar__vertical {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: var(--dj-scrollbar-padding);
+    height: 100%;
+    background-color: transparent;
+    border-left: rem(0.5px) solid transparent;
+    border-right: rem(0.5px) solid transparent;
+    will-change: opacity, visibility, background-color, border-color;
+    opacity: 1;
+    visibility: visible;
+    transition: var(--dj-scrollbar-vertical-transition);
+    box-sizing: border-box;
+    z-index: var(--dj-scrollbar-vertical-z-index);
+    cursor: default;
+
+    .dj-scrollbar__vertical-thumb {
+      width: var(--dj-scrollbar-vertical-width);
+      height: auto;
+      border-radius: var(--dj-scrollbar-border-radius);
+      background-color: var(--dj-scrollbar-vertical-thumb-background-color);
+      will-change: width;
+      transition: var(--dj-scrollbar-vertical-thumb-transition);
+    }
+  }
+
+  .dj-scrollbar__vertical.is-expand,
+  .dj-scrollbar__vertical.is-drag {
+    background-color: var(--dj-scrollbar-vertical-background-color);
+    border-left-color: var(--dj-scrollbar-border-color);
+    border-right-color: var(--dj-scrollbar-border-color);
+
+    .dj-scrollbar__vertical-thumb {
+      width: var(--dj-scrollbar-hover-vertical-width);
+    }
+  }
+
+  .dj-scrollbar__vertical.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .dj-scrollbar__horizontal {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: var(--dj-scrollbar-padding);
+    width: 100%;
+    background-color: transparent;
+    border-top: rem(0.5px) solid transparent;
+    border-bottom: rem(0.5px) solid transparent;
+    will-change: opacity, visibility, background-color, border-color;
+    opacity: 1;
+    visibility: visible;
+    transition: var(--dj-scrollbar-horizontal-transition);
+    box-sizing: border-box;
+    z-index: var(--dj-scrollbar-horizontal-z-index);
+    cursor: default;
+
+    .dj-scrollbar__horizontal-thumb {
+      width: auto;
+      height: var(--dj-scrollbar-vertical-width);
+      border-radius: var(--dj-scrollbar-border-radius);
+      background-color: var(--dj-scrollbar-horizontal-thumb-background-color);
+      will-change: width;
+      transition: var(--dj-scrollbar-horizontal-thumb-transition);
+    }
+  }
+
+  .dj-scrollbar__horizontal.is-expand,
+  .dj-scrollbar__horizontal.is-drag {
+    background-color: var(--dj-scrollbar-horizontal-background-color);
+    border-top-color: var(--dj-scrollbar-border-color);
+    border-bottom-color: var(--dj-scrollbar-border-color);
+
+    .dj-scrollbar__horizontal-thumb {
+      height: var(--dj-scrollbar-hover-vertical-width);
+    }
+  }
+
+  .dj-scrollbar__horizontal.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -15,7 +15,8 @@ import {
     DJSwitch,
     DJDialog,
     DJSlider,
-    DJWatermark
+    DJWatermark,
+    DJScrollbar
 } from '@/components'
 
 const DjangoUI = {
@@ -40,7 +41,8 @@ export {
     DJSwitch,
     DJDialog,
     DJSlider,
-    DJWatermark
+    DJWatermark,
+    DJScrollbar
 }
 
 export default DjangoUI;

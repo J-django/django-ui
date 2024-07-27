@@ -72,10 +72,12 @@ const ComputedValue = (x: number, width: number): number => {
 
 // Events
 const DJSlider_TouchstartChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbHover = true;
 }
 
 const DJSlider_TouchmoveChange = (event: TouchEvent) => {
+    if (props.disabled) return;
     sliderConfig.thumbDrag = true;
 
     const track = unref(DJSliderTrackRef);
@@ -90,6 +92,7 @@ const DJSlider_TouchmoveChange = (event: TouchEvent) => {
 }
 
 const DJSLider_TouchendChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbHover = false;
     sliderConfig.thumbDrag = false;
 
@@ -115,11 +118,13 @@ const DJSliderTrack_MousedownChange = (event: MouseEvent) => {
 }
 
 const DJSliderTrack_TouchstartChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbHover = true;
 }
 
 // Thumb Events
 const DJSliderThumb_MouseenterChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbHover = true;
 }
 
@@ -134,10 +139,12 @@ const DJSliderThumb_MousedownChange = (event: MouseEvent) => {
 }
 
 const DJSliderThumb_MouseleaveChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbHover = false;
 }
 
 const DJSliderThumb_MousemoveChange = (event: MouseEvent) => {
+    if (props.disabled) return;
     sliderConfig.thumbDrag = true;
 
     const track = unref(DJSliderTrackRef);
@@ -150,6 +157,7 @@ const DJSliderThumb_MousemoveChange = (event: MouseEvent) => {
 }
 
 const DJSliderThumb_MouseupChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbDrag = false;
 
     document.removeEventListener("mousemove", DJSliderThumb_MousemoveChange);
@@ -157,6 +165,7 @@ const DJSliderThumb_MouseupChange = () => {
 }
 
 const DJSliderThumb_TouchstartChange = () => {
+    if (props.disabled) return;
     sliderConfig.thumbHover = true;
 }
 </script>
