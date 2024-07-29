@@ -285,14 +285,30 @@ const DJScrollbar_HorizontalThumbInit = () => {
 }
 
 /**
+ * 鼠标移入最外层触发
+ */
+const DJScrollbar_MouseenterChange = () => {
+    DJScrollbar_VerticalConfig.hidden = false;
+    DJScrollbar_HorizontalConfig.hidden = false;
+    clearTimeout(unref(DJScrollbar_VerticalHiddenTimeoutRef))
+    clearTimeout(unref(DJScrollbar_HorizontalHiddenTimeoutRef))
+}
+
+/**
+ * 鼠标移开最外层触发
+ */
+const DJScrollbar_MouseleaveChange = () => {
+    resetVerticalHidden();
+    resetHorizontalHidden();
+}
+
+/**
  * 移入垂直滚动条触发
  */
 const DJScrollbar_VeticalMouseenterChange = () => {
     DJScrollbar_VerticalConfig.expand = true;
-    const elHidden = unref(DJScrollbar_VerticalHiddenTimeoutRef)
-    const elExpang = unref(DJScrollbar_VerticalExpandTimeoutRef);
-    clearTimeout(elHidden);
-    clearTimeout(elExpang);
+    clearTimeout(unref(DJScrollbar_VerticalHiddenTimeoutRef));
+    clearTimeout(unref(DJScrollbar_VerticalExpandTimeoutRef));
 }
 
 /**
@@ -321,7 +337,6 @@ const DJScrollbar_VerticalMousedownChange = (event: MouseEvent) => {
     const scrollbarHeight = vertical.clientHeight - verticalthumb.clientHeight;
     const targetScrollTop = (targetScrollbarTop / scrollbarHeight) * (wrapper.scrollHeight - wrapper.clientHeight);
     verticalSmoothScrollTo(targetScrollTop);
-
 }
 
 /**
@@ -379,10 +394,8 @@ const DJScrollbar_VerticalThumbMouseupChange = () => {
  */
 const DJScrollbar_HorizontalMouseenterChange = () => {
     DJScrollbar_HorizontalConfig.expand = true;
-    const elHidden = unref(DJScrollbar_HorizontalHiddenTimeoutRef);
-    const elExpand = unref(DJScrollbar_HorizontalExpandTimeoutRef);
-    clearTimeout(elHidden);
-    clearTimeout(elExpand);
+    clearTimeout(unref(DJScrollbar_HorizontalHiddenTimeoutRef));
+    clearTimeout(unref(DJScrollbar_HorizontalExpandTimeoutRef));
 }
 
 /**
@@ -538,7 +551,7 @@ defineExpose({
 </script>
 
 <template>
-    <div class="dj-scrollbar">
+    <div class="dj-scrollbar" @mouseenter="DJScrollbar_MouseenterChange" @mouseleave="DJScrollbar_MouseleaveChange">
         <div class="dj-scrollbar__wrapper" :style="DJScrollbarStyle" ref="DJScrollbar_WrapperRef"
             @scroll="DJScrollbar_ScrollChange">
             <div class="dj-scrollbar__inner" ref="DJScrollbar_InnerRef">

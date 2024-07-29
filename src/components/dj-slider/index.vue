@@ -74,6 +74,8 @@ const ComputedValue = (x: number, width: number): number => {
 const DJSlider_TouchstartChange = () => {
     if (props.disabled) return;
     sliderConfig.thumbHover = true;
+    document.body.style.webkitUserSelect = "none";
+    document.body.style.userSelect = "none";
 }
 
 const DJSlider_TouchmoveChange = (event: TouchEvent) => {
@@ -95,6 +97,8 @@ const DJSLider_TouchendChange = () => {
     if (props.disabled) return;
     sliderConfig.thumbHover = false;
     sliderConfig.thumbDrag = false;
+    document.body.style.webkitUserSelect = "";
+    document.body.style.userSelect = "";
 
     emits("change", props.modelValue);
 
@@ -132,6 +136,8 @@ const DJSliderThumb_MousedownChange = (event: MouseEvent) => {
     if (event.buttons > 1 || props.disabled) return;
 
     sliderConfig.thumbDrag = true;
+    document.body.style.webkitUserSelect = "none";
+    document.body.style.userSelect = "none";
 
     document.addEventListener("mousemove", DJSliderThumb_MousemoveChange);
     document.addEventListener("mouseup", DJSliderThumb_MouseupChange);
@@ -159,6 +165,8 @@ const DJSliderThumb_MousemoveChange = (event: MouseEvent) => {
 const DJSliderThumb_MouseupChange = () => {
     if (props.disabled) return;
     sliderConfig.thumbDrag = false;
+    document.body.style.webkitUserSelect = "";
+    document.body.style.userSelect = "";
 
     document.removeEventListener("mousemove", DJSliderThumb_MousemoveChange);
     document.removeEventListener("mouseup", DJSliderThumb_MouseupChange)
