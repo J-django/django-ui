@@ -41,15 +41,10 @@ const switchChange = () => { }
 
 const count = ref(10);
 
-const imageViwerValue = ref(false);
 </script>
 
 <template>
     <div class="layout">
-        <!-- <div class="line">
-            <dj-button @click="imageViwerValue = true">Open Image Viwer</dj-button>
-            <dj-image-viwer v-model="imageViwerValue"></dj-image-viwer>
-        </div> -->
         <div class="line">
             <dj-input placeholder="Please Input" addon-before="https://" addon-after=".com" />
         </div>
