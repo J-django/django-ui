@@ -3,9 +3,10 @@
   --dj-audio-time-color: rgba(60, 60, 67, 0.75);
   --dj-audio-height: rem(34px);
   --dj-audio-background-color: #f1f1f2;
-  --dj-audio-progress-color: rgba(60, 60, 67, 0.25);
-  --dj-audio-current-progress-color: rgba(60, 60, 67, 0.5);
-  --dj-audio-buffer-color: rgba(33, 37, 41, 0.25);
+  --dj-audio-progress-background-color: rgba(60, 60, 67, 0.25);
+  --dj-audio-current-progress-background-color: rgba(60, 60, 67, 0.5);
+  --dj-audio-buffer-background-color: rgba(33, 37, 41, 0.25);
+  --dj-audio-border-width: rem(1px);
   --dj-audio-border-color: rgba(60, 60, 67, 0.12);
   --dj-audio-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-audio-border-radius: rem(8px);
@@ -29,7 +30,8 @@
     border-radius: var(--dj-audio-border-radius);
     transform: translateZ(0);
     transition: box-shadow 250ms;
-    box-shadow: 0 0 0 rem(1px) var(--dj-audio-border-color) inset;
+    box-shadow: 0 0 0 var(--dj-audio-border-width) var(--dj-audio-border-color)
+      inset;
     box-sizing: border-box;
 
     .dj-audio-button__wrapper {
@@ -139,7 +141,7 @@
         width: 100%;
         height: @barHeight;
         border-radius: @radius;
-        background-color: var(--dj-audio-progress-color);
+        background-color: var(--dj-audio-progress-background-color);
         cursor: pointer;
         overflow: hidden;
         -webkit-user-select: none;
@@ -157,15 +159,17 @@
           left: 0;
           width: var(--dj-audio-buffer-value);
           height: 100%;
-          background-color: var(--dj-audio-buffer-color);
+          background-color: var(--dj-audio-buffer-background-color);
           border-radius: 4px;
           transition: width 250ms;
           z-index: 5;
         }
 
         input {
-          @current-progress-color: var(--dj-audio-current-progress-color),
-            var(--dj-audio-current-progress-color);
+          @current-progress-color: var(
+              --dj-audio-current-progress-background-color
+            ),
+            var(--dj-audio-current-progress-background-color);
           -webkit-appearance: none;
           appearance: none;
           position: absolute;
@@ -220,7 +224,8 @@
   }
 
   .dj-audio__wrapper.is-play {
-    box-shadow: 0 0 0 1px var(--dj-audio-focus-border-color) inset;
+    box-shadow: 0 0 0 var(--dj-audio-border-width)
+      var(--dj-audio-focus-border-color) inset;
   }
 }
 

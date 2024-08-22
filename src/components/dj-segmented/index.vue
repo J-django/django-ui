@@ -1,95 +1,13 @@
-<script lang="ts" setup name="dj-segmented">
+<script lang="ts" setup>
 // plugin
 import "./index.less";
-import { ref, unref, reactive, watch, computed, onMounted } from 'vue'
+import { SegmentedDataType, DJSegmentedOptions, DJSegmentedProps, useSegmented } from './useSegmented'
 
 // script
-abstract class SegmentedItem {
-    abstract label: string;
-    abstract value: string;
-    abstract disabled: boolean;
-}
-
-const props = defineProps({
-    data: {
-        type: Array,
-        default: [],
-    },
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    modelValue: {
-        type: String,
-        default: false
-    }
-})
-
+defineOptions(DJSegmentedOptions)
+const props = defineProps(DJSegmentedProps)
 const emits = defineEmits(['update:modelValue', 'change'])
-
-const segmentedInnerRef = ref();
-
-const segmentedConfig = reactive({
-    indicatorWidth: "",
-    indicatorHeight: "",
-    indicatorTranslateX: "",
-    indicatorTranslateY: ""
-})
-
-const isObject = computed(() => (item: String | SegmentedItem) => {
-    return typeof item == "object";
-})
-
-const isDisabled = computed(() => (item: SegmentedItem) => {
-    return typeof item == "object" && item?.disabled
-})
-
-watch(() => props.modelValue, () => {
-    init();
-    emits("change", props.modelValue)
-})
-
-/**
- * 切换选中项
- * @param value 选中值
- */
-const segmentedToggle = (item: String | SegmentedItem) => {
-    if (props.disabled || unref(isDisabled)(item as SegmentedItem)) return;
-    if (unref(isObject)(item)) {
-        if ((item as SegmentedItem).value !== props.modelValue) {
-            emits("update:modelValue", (item as SegmentedItem)?.value)
-        }
-    } else {
-        if (item !== props.modelValue) {
-            emits("update:modelValue", item)
-        }
-    }
-}
-
-/**
- * 加载标记
- */
-const init = () => {
-    setTimeout(() => {
-        const parentStyle = window.getComputedStyle(segmentedInnerRef.value);
-        const activeElement = segmentedInnerRef.value.querySelector('.dj-segmented__option[data-active="true"]')
-        if (activeElement) {
-            const translateX = activeElement.offsetLeft - parseInt(parentStyle.paddingRight);
-            const translateY = activeElement.offsetTop - parseInt(parentStyle.paddingTop);
-            segmentedConfig.indicatorWidth = activeElement.offsetWidth + 'px';
-            segmentedConfig.indicatorHeight = activeElement.offsetHeight + 'px';
-            segmentedConfig.indicatorTranslateX = translateX + 'px';
-            segmentedConfig.indicatorTranslateY = translateY + 'px';
-        }
-    }, 0);
-}
-
-/**
- * 初始化
- */
-onMounted(() => {
-    init();
-})
+const { segmentedInnerRef, segmentedConfig, isObject, isDisabled, segmentedToggle } = useSegmented(props, emits);
 </script>
 
 <template>
@@ -102,11 +20,11 @@ onMounted(() => {
             'transform': `translate(${segmentedConfig.indicatorTranslateX},${segmentedConfig.indicatorTranslateY})`
         }"></div>
                 <div class="dj-segmented__option" v-for="(item, index) of data" :key="index"
-                    :data-active="isObject(item as SegmentedItem) ? modelValue == (item as SegmentedItem).value : modelValue == item"
-                    :class="[(isObject(item as SegmentedItem) && isDisabled(item as SegmentedItem)) ? 'is-disabled' : '']"
-                    @click=" segmentedToggle(item as String | SegmentedItem)">
+                    :data-active="isObject(item) ? modelValue == (item as SegmentedDataType).value : modelValue == item"
+                    :class="[(isObject(item) && isDisabled(item as SegmentedDataType)) ? 'is-disabled' : '']"
+                    @click=" segmentedToggle(item)">
                     <span class="dj-segmented__option-label">
-                        {{ isObject(item as String | SegmentedItem) ? (item as SegmentedItem)?.label : item }}
+                        {{ isObject(item) ? (item as SegmentedDataType)?.label : item }}
                     </span>
                 </div>
             </div>

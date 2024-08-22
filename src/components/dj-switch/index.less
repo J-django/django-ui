@@ -11,6 +11,7 @@
   --dj-switch-background-color: #f1f1f2;
   --dj-switch-checked-background-color: #0d6efd;
   --dj-switch-thumb-background-color: #ffffff;
+  --dj-switch-border-width: rem(1px);
   --dj-switch-border-color: rgba(60, 60, 67, 0.12);
   --dj-switch-transition: opacity 250ms;
   --dj-switch-label-transition: color 250ms;
@@ -83,7 +84,8 @@
       box-sizing: border-box;
 
       &:hover {
-        box-shadow: 0 0 0 rem(1px) var(--dj-switch-border-color) inset;
+        box-shadow: 0 0 0 var(--dj-switch-border-width)
+          var(--dj-switch-border-color) inset;
       }
 
       .dj-switch__thumb {

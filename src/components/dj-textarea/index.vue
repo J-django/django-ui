@@ -1,93 +1,13 @@
-<script setup lang="ts" name="dj-textarea">
+<script setup lang="ts">
 // plugin
 import "./index.less"
-import { ref, unref, reactive } from "vue";
+import { DJTextareaOptions, DJTextareaProps, DJTextareaEmits, useTextarea } from './useTextarea'
 
 // script
-defineProps({
-    id: {
-        type: String,
-        default: ""
-    },
-    disabled: {
-        type: Boolean,
-        default: false,
-    },
-    placeholder: {
-        type: String,
-        default: ""
-    },
-    rows: {
-        type: Number,
-        default: 3
-    },
-    cols: {
-        type: Number,
-        default: 5
-    },
-    modelValue: {
-        type: String,
-        default: ""
-    },
-})
-
-const emits = defineEmits(["update:modelValue", "input", "change", "focus", "blur"])
-
-const textareaRef = ref();
-const textareaConfig = reactive({
-    focus: false,
-    active: false,
-})
-
-// Event
-/**
- * 输入时触发
- * @param event Event
- */
-const DJTextarea_InputChange = (event: Event) => {
-    emits("input", event)
-}
-
-/**
- * 值改变时触发
- * @param event Event
- */
-const DJTextarea_Change = (event: Event) => {
-    emits("change", event)
-    emits("update:modelValue", (event.target as any).value)
-}
-
-/**
- * 获取焦点时触发
- * @param event Event
- */
-const DJTextarea_FocusChange = (event: Event) => {
-    textareaConfig.focus = true;
-    emits("focus", event)
-}
-
-/**
- * 失去焦点时触发
- * @param event Event
- */
-const DJTextarea_FocusoutChange = (event: Event) => {
-    textareaConfig.focus = false;
-    emits("blur", event)
-}
-
-/**
- * 获取输入框焦点
- */
-const focus = () => {
-    unref(textareaRef).focus();
-}
-
-/**
- * 失去输入框焦点
- */
-const blur = () => {
-    unref(textareaRef).blur();
-}
+defineOptions(DJTextareaOptions)
+defineProps(DJTextareaProps)
+const emits = defineEmits<DJTextareaEmits>()
+const { textareaRef, textareaConfig, DJTextarea_InputChange, DJTextarea_Change, DJTextarea_FocusChange, DJTextarea_FocusoutChange, focus, blur } = useTextarea(emits);
 
 defineExpose({ focus: focus, blur: blur })
 </script>

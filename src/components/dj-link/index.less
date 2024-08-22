@@ -1,0 +1,31 @@
+.dj-link {
+  --dj-link-padding: rem(1px) rem(6px);
+  --dj-link-color: #3c3c43;
+  --dj-link-font-size: rem(14px);
+  --dj-link-font-weight: 500;
+
+  @color: var(--dj-link-color);
+  padding: var(--dj-link-padding);
+  display: inline-flex;
+  align-items: center;
+  color: var(--dj-link-custom-color, @color);
+  font-size: var(--dj-link-font-size);
+  font-weight: var(--dj-link-font-weight);
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.dj-link.is-underline {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.dj-link.is-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+
+  &:hover {
+    text-decoration: none;
+  }
+}

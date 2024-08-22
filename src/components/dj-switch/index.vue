@@ -1,92 +1,21 @@
-<script lang="ts" setup name="dj-switch">
+<script lang="ts" setup>
 // plugin
 import "./index.less";
-import { ref, watch, computed, useSlots } from "vue"
+import { useSlots } from "vue"
+import { DJSwitchOptions, DJSwitchProps, DJSwitchEmits, useSwitch } from './useSwitch'
 
 // script
-const props = defineProps({
-    checkedLabel: {
-        type: String,
-        default: ""
-    },
-    unCheckedLabel: {
-        type: String,
-        default: ""
-    },
-    checkedColor: {
-        type: String,
-        default: ""
-    },
-    unCheckedColor: {
-        type: String,
-        default: ""
-    },
-    checkedBackgroundColor: {
-        type: String,
-        default: ""
-    },
-    unCheckedBackgroundColor: {
-        type: String,
-        default: ""
-    },
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    modelValue: {
-        type: Boolean,
-        default: false
-    },
-})
-
-const emits = defineEmits(["update:modelValue", "change"])
-
-const slots = useSlots();
-
-watch(() => props.modelValue, () => {
-    DJSwitchInnerRef.value.style.transition = "background-color 350ms, box-shadow 250ms";
-    emits("change", props.modelValue)
-})
-
-const DJSwitchInnerRef = ref();
-
-/**
- * 是否显示未选中状态时文字
- */
-const UnCheckedLabel = computed(() => props.unCheckedLabel || slots.unCheckedLabel)
-
-/**
- * 是否显示选中状态时文字
- */
-const checkedLabel = computed(() => props.checkedLabel || slots.checkedLabel);
-
-/**
- * 切换switch状态
- */
-const toggle = () => {
-    emits("update:modelValue", !props.modelValue);
-}
-
-/**
- * 开发动画结束触发
- */
-const DJSwitcn_TransitionendChange = () => {
-    DJSwitchInnerRef.value.style.transition = "box-shadow 250ms";
-}
-
+defineOptions(DJSwitchOptions)
+const props = defineProps(DJSwitchProps)
+const emits = defineEmits<DJSwitchEmits>()
+const { DJSwitchInnerRef, isUnCheckedLabel, isCeckedLabel, DJSwitch_Style, DJSwicth_Class, DJSwitch_LeftClass, DJSwicth_RightClass, toggle, DJSwitcn_TransitionendChange } = useSwitch(props, emits, useSlots());
 defineExpose({ toggle })
 </script>
 
 <template>
-    <label class="dj-switch" :class="[disabled ? 'is-disabled' : '', modelValue ? 'is-checked' : '']">
-        <button class="dj-switch__wrapper" :style="{
-        '--dj-switch-custom-checked-color': checkedColor,
-        '--dj-switch-custom-unChecked-color': unCheckedColor,
-        '--dj-switch-custom-checked-background-color': checkedBackgroundColor,
-        '--dj-switch-custom-unChecked-background-color': unCheckedBackgroundColor
-    }" :disabled="disabled" @click.prevent="toggle">
-            <span v-if="UnCheckedLabel" class="dj-switch__label dj-switch__label-left"
-                :class="!modelValue ? 'is-checked' : ''">
+    <label class="dj-switch" :class="DJSwicth_Class">
+        <button class="dj-switch__wrapper" :style="DJSwitch_Style" :disabled="disabled" @click.prevent="toggle">
+            <span v-if="isUnCheckedLabel" class="dj-switch__label dj-switch__label-left" :class="DJSwitch_LeftClass">
                 <slot name="unChecked-label">
                     {{ unCheckedLabel }}
                 </slot>
@@ -97,8 +26,7 @@ defineExpose({ toggle })
                     <slot name="unChecked-thumb" v-else></slot>
                 </span>
             </span>
-            <span v-if="checkedLabel" class="dj-switch__label dj-switch__label-right"
-                :class="modelValue ? 'is-checked' : ''">
+            <span v-if="isCeckedLabel" class="dj-switch__label dj-switch__label-right" :class="DJSwicth_RightClass">
                 <slot name="checked-label">
                     {{ checkedLabel }}
                 </slot>

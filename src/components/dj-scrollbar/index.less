@@ -1,30 +1,22 @@
 .dj-scrollbar {
   --dj-scrollbar-padding: rem(1px);
-
   --dj-scrollbar-vertical-width: rem(7px);
   --dj-scrollbar-hover-vertical-width: rem(12px);
-
   --dj-scrollbar-horizontal-height: rem(7px);
   --dj-scrollbar-hover-horizontal-height: rem(12px);
-
   --dj-scrollbar-vertical-background-color: rgba(255, 255, 255, 0.7);
   --dj-scrollbar-horizontal-background-color: rgba(255, 255, 255, 0.7);
-
   --dj-scrollbar-vertical-thumb-background-color: rgba(60, 60, 67, 0.7);
   --dj-scrollbar-horizontal-thumb-background-color: rgba(60, 60, 67, 0.7);
-
+  --dj-scrollbar-border-width: rem(0.5px);
   --dj-scrollbar-border-color: rgba(60, 60, 67, 0.12);
-
   --dj-scrollbar-border-radius: rem(6px);
-
   --dj-scrollbar-vertical-transition: opacity 250ms, visibility 250ms,
     background-color 250ms, border-color 250ms;
   --dj-scrollbar-horizontal-transition: opacity 250ms, visibility 250ms,
     background-color 250ms, border-color 250ms;
-
   --dj-scrollbar-vertical-thumb-transition: width 250ms;
   --dj-scrollbar-horizontal-thumb-transition: height 250ms;
-
   --dj-scrollbar-vertical-z-index: 2;
   --dj-scrollbar-horizontal-z-index: 1;
 
@@ -52,8 +44,8 @@
     padding: var(--dj-scrollbar-padding);
     height: 100%;
     background-color: transparent;
-    border-left: rem(0.5px) solid transparent;
-    border-right: rem(0.5px) solid transparent;
+    border-left: var(--dj-scrollbar-border-width) solid transparent;
+    border-right: var(--dj-scrollbar-border-width) solid transparent;
     will-change: opacity, visibility, background-color, border-color;
     opacity: 1;
     visibility: visible;
@@ -95,8 +87,8 @@
     padding: var(--dj-scrollbar-padding);
     width: 100%;
     background-color: transparent;
-    border-top: rem(0.5px) solid transparent;
-    border-bottom: rem(0.5px) solid transparent;
+    border-top: var(--dj-scrollbar-border-width) solid transparent;
+    border-bottom: var(--dj-scrollbar-border-width) solid transparent;
     will-change: opacity, visibility, background-color, border-color;
     opacity: 1;
     visibility: visible;

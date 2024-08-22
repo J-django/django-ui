@@ -6,6 +6,7 @@
   --dj-accordion-header-font-weight: 500;
   --dj-accordion-header-min-height: rem(34px);
   --dj-accordion-background-color: #f1f1f2;
+  --dj-accordion-border-width: rem(1px);
   --dj-accordion-border-color: #e5e5e5;
   --dj-accordion-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-accordion-border-radius: rem(6px);
@@ -18,7 +19,8 @@
     transition: var(--dj-accordion-transition);
 
     &:hover:not(.is-disabled) {
-      box-shadow: 0 0 0 rem(1px) var(--dj-accordion-border-color) inset;
+      box-shadow: 0 0 0 var(--dj-accordion-border-width)
+        var(--dj-accordion-border-color) inset;
     }
 
     .dj-accordion__header {
@@ -81,10 +83,12 @@
   }
 
   .dj-accordion__wrapper.is-active {
-    box-shadow: 0 0 0 rem(1px) var(--dj-accordion-focus-border-color) inset;
+    box-shadow: 0 0 0 var(--dj-accordion-border-width)
+      var(--dj-accordion-focus-border-color) inset;
 
     &:hover {
-      box-shadow: 0 0 0 rem(1px) var(--dj-accordion-focus-border-color) inset;
+      box-shadow: 0 0 0 var(--dj-accordion-border-width)
+        var(--dj-accordion-focus-border-color) inset;
     }
 
     .dj-accordion__header {

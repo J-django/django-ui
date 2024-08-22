@@ -1,0 +1,19 @@
+.dj-button-group {
+  display: flex;
+  .dj-button-group__wrapper {
+    display: inline-block;
+
+    .dj-button {
+      &:nth-child(n):not(&:last-child) {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:nth-child(n + 1):not(&:first-child) {
+        margin-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+}

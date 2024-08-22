@@ -1,11 +1,19 @@
 .dj-input {
-  --dj-input-padding: rem(1px) rem(8px);
+  --dj-input-padding-x: rem(8px);
+  --dj-input-padding-y: rem(1px);
+  --dj-input-addon-padding-x: rem(12px);
+  --dj-input-addon-padding-y: rem(1px);
   --dj-input-color: #3c3c43;
   --dj-input-icon-color: rgba(60, 60, 67, 0.75);
+  --dj-input-addon-color: rgba(60, 60, 67, 0.75);
   --dj-input-placeholder-color: rgba(60, 60, 67, 0.75);
   --dj-input-clear-color: #a8a8a8;
+  --dj-input-font-size: rem(14px);
+  --dj-input-font-weight: 500;
   --dj-input-height: rem(34px);
   --dj-input-background-color: #f1f1f2;
+  --dj-input-addon-background-color: rgba(60, 60, 67, 0.1);
+  --dj-input-border-width: rem(1px);
   --dj-input-border-color: rgba(60, 60, 67, 0.12);
   --dj-input-focus-border-color: rgba(60, 60, 67, 0.33);
   --dj-input-border-radius: rem(6px);
@@ -19,8 +27,42 @@
   vertical-align: middle;
 
   &:hover {
+    .dj-input-addon-before {
+      box-shadow: 1px 0 0 var(--dj-input-border-color) inset,
+        0 1px 0 var(--dj-input-border-color) inset,
+        0 -1px 0 var(--dj-input-border-color) inset;
+    }
+
     .dj-input__wrapper {
-      box-shadow: 0 0 0 rem(1px) var(--dj-input-border-color) inset;
+      box-shadow: 0 0 0 var(--dj-input-border-width)
+        var(--dj-input-border-color) inset;
+    }
+
+    .dj-input-addon-after {
+      box-shadow: -1px 0 0 var(--dj-input-border-color) inset,
+        0 1px 0 var(--dj-input-border-color) inset,
+        0 -1px 0 var(--dj-input-border-color) inset;
+    }
+  }
+
+  .dj-input-addon-before {
+    padding: var(--dj-input-addon-padding-y) var(--dj-input-addon-padding-x);
+    border-top-left-radius: var(--dj-input-border-radius);
+    border-bottom-left-radius: var(--dj-input-border-radius);
+    box-shadow: 1px 0 0 transparent inset, 0 1px 0 transparent inset,
+      0 -1px 0 transparent inset;
+    background-color: var(--dj-input-addon-background-color);
+    transition: var(--dj-input-transition);
+    box-sizing: border-box;
+    cursor: default;
+
+    .dj-input-addon-before__wrapper {
+      @addonheight: calc(
+        var(--dj-input-height) - calc(var(--dj-input-addon-padding-y) * 2)
+      );
+      height: @addonheight;
+      line-height: @addonheight;
+      color: var(--dj-input-addon-color);
     }
   }
 
@@ -29,12 +71,12 @@
     flex-grow: 1;
     align-items: center;
     justify-content: center;
-    padding: var(--dj-input-padding);
+    padding: var(--dj-input-padding-y) var(--dj-input-padding-x);
     background-color: var(--dj-input-background-color);
     border-radius: var(--dj-input-border-radius);
     transform: translateZ(0);
     transition: var(--dj-input-transition);
-    box-shadow: 0 0 0 1px transparent inset;
+    box-shadow: 0 0 0 var(--dj-input-border-width) transparent inset;
     box-sizing: border-box;
     cursor: text;
 
@@ -47,13 +89,16 @@
     }
 
     .dj-input__inner {
-      @inner_height: calc(var(--dj-input-height) - 2px);
+      @inner_height: calc(
+        var(--dj-input-height) - calc(var(--dj-input-padding-y) * 2)
+      );
       -webkit-appearance: none;
       appearance: none;
       padding: 0;
       flex-grow: 1;
-      color: inherit;
-      font-size: inherit;
+      color: var(--dj-input-color);
+      font-size: var(--dj-input-font-size);
+      font-weight: var(--dj-input-font-weight);
       font-family: inherit;
       width: 100%;
       height: @inner_height;
@@ -111,10 +156,6 @@
     }
   }
 
-  .dj-input__wrapper.is-focus {
-    box-shadow: 0 0 0 rem(1px) var(--dj-input-focus-border-color) inset;
-  }
-
   .dj-input__clear {
     @clear_height: calc(var(--dj-input-height) - 6px);
     position: absolute;
@@ -138,6 +179,63 @@
       color: var(--dj-input-clear-color);
     }
   }
+
+  .dj-input-addon-after {
+    padding: var(--dj-input-addon-padding-y) var(--dj-input-addon-padding-x);
+    border-top-right-radius: var(--dj-input-border-radius);
+    border-bottom-right-radius: var(--dj-input-border-radius);
+    box-shadow: -1px 0 0 transparent inset, 0 1px 0 transparent inset,
+      0 -1px 0 transparent inset;
+    background-color: var(--dj-input-addon-background-color);
+    transition: var(--dj-input-transition);
+    box-sizing: border-box;
+    cursor: default;
+
+    .dj-input-addon-after__wrapper {
+      @addonheight: calc(
+        var(--dj-input-height) - calc(var(--dj-input-addon-padding-y) * 2)
+      );
+      height: @addonheight;
+      line-height: @addonheight;
+      color: var(--dj-input-addon-color);
+      font-size: var(--dj-input-font-size);
+      font-weight: var(--dj-input-font-weight);
+      font-family: inherit;
+    }
+  }
+}
+
+.dj-input.is-addon-before {
+  .dj-input__wrapper {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.dj-input.is-addon-after {
+  .dj-input__wrapper {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.dj-input.is-focus {
+  .dj-input-addon-before {
+    box-shadow: 1px 0 0 var(--dj-input-focus-border-color) inset,
+      0 1px 0 var(--dj-input-focus-border-color) inset,
+      0 -1px 0 var(--dj-input-focus-border-color) inset;
+  }
+
+  .dj-input__wrapper {
+    box-shadow: 0 0 0 var(--dj-input-border-width)
+      var(--dj-input-focus-border-color) inset;
+  }
+
+  .dj-input-addon-after {
+    box-shadow: -1px 0 0 var(--dj-input-focus-border-color) inset,
+      0 1px 0 var(--dj-input-focus-border-color) inset,
+      0 -1px 0 var(--dj-input-focus-border-color) inset;
+  }
 }
 
 .dj-input.is-disabled {
@@ -145,7 +243,7 @@
 
   .dj-input__wrapper {
     opacity: 0.6;
-    box-shadow: 0 0 0 rem(1px) transparent inset;
+    box-shadow: 0 0 0 var(--dj-input-border-width) transparent inset;
 
     .dj-input__inner {
       cursor: not-allowed;

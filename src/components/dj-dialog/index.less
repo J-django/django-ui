@@ -1,6 +1,6 @@
 .dj-dialog {
   --dj-dialog-header-padding: rem(8px);
-  --dj-dialog-body-padding: rem(16px);
+  --dj-dialog-body-padding: rem(12px);
   --dj-dialog-footer-padding: rem(8px);
   --dj-dialog-margin: rem(28px);
   --dj-dialog-max-width: 500px;
@@ -11,6 +11,7 @@
   --dj-dialog-header-background-color: rgba(33, 37, 41, 0.03);
   --dj-dialog-background-color: #f1f1f2;
   --dj-dialog-footer-background-color: rgba(33, 37, 41, 0.03);
+  --dj-dialog-border-width: rem(1px);
   --dj-dialog-border-color: rgba(60, 60, 67, 0.12);
   --dj-dialog-border-radius: rem(6px);
   --dj-dialog-header-border-radius: rem(6px) rem(6px) 0 0;
@@ -57,7 +58,8 @@
       .dj-dialog-header {
         padding: var(--dj-dialog-header-padding);
         background-color: var(--dj-dialog-header-background-color);
-        border-bottom: rem(1px) solid var(--dj-dialog-border-color);
+        border-bottom: var(--dj-dialog-border-width) solid
+          var(--dj-dialog-border-color);
         border-radius: var(--dj-dialog-header-border-radius);
 
         .dj-dialog-header__wrapper {
@@ -108,10 +110,19 @@
 
       .dj-dialog-footer {
         padding: var(--dj-dialog-footer-padding);
-        text-align: right;
         background-color: var(--dj-dialog-footer-background-color);
-        border-top: rem(1px) solid var(--dj-dialog-border-color);
+        border-top: var(--dj-dialog-border-width) solid
+          var(--dj-dialog-border-color);
         border-radius: var(--dj-dialog-footer-border-radius);
+
+        .dj-dialog-footer__button {
+          display: flex;
+          justify-content: flex-end;
+
+          .dj-dialog-button {
+            height: rem(28px);
+          }
+        }
       }
     }
   }

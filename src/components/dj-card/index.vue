@@ -1,29 +1,13 @@
-<script setup lang="ts" name="dj-card">
+<script setup lang="ts">
 // plugin
 import "./index.less";
-import { computed, useSlots } from 'vue'
+import { useSlots } from 'vue'
+import { DJCardOptions, DJCardProps, useCard } from './useCard'
 
 // script
-const props = defineProps({
-    align: {
-        type: String,
-        default: "left"
-    },
-    title: {
-        type: String,
-        default: undefined
-    },
-    footer: {
-        type: String,
-        default: undefined
-    },
-})
-
-const slots = useSlots();
-
-const isHeader = computed(() => props.title || slots.header);
-
-const isFooter = computed(() => props.footer || slots.footer);
+defineOptions(DJCardOptions)
+const props = defineProps(DJCardProps)
+const { isHeader, isFooter } = useCard(props, useSlots());
 </script>
 
 <template>

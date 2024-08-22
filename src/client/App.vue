@@ -39,19 +39,51 @@ const toggleDisabled = () => {
 
 const switchChange = () => { }
 
-const count = ref(20);
+const count = ref(10);
+
+const imageViwerValue = ref(false);
 </script>
 
 <template>
     <div class="layout">
+        <!-- <div class="line">
+            <dj-button @click="imageViwerValue = true">Open Image Viwer</dj-button>
+            <dj-image-viwer v-model="imageViwerValue"></dj-image-viwer>
+        </div> -->
+        <div class="line">
+            <dj-input placeholder="Please Input" addon-before="https://" addon-after=".com" />
+        </div>
+        <div class="line">
+            <dj-link target="_blank" href="https://www.baidu.com" underline>Default</dj-link>
+            <dj-link underline color="#6610f2">Default</dj-link>
+            <dj-link underline color="#6610f2" disabled @click="() => { console.log('aaaa') }">Default</dj-link>
+        </div>
+        <div class="line">
+            <dj-button-group>
+                <dj-button color="#6610f2" plain>Default</dj-button>
+                <dj-button color="#3c3c43" plain>Default</dj-button>
+            </dj-button-group>
+        </div>
+        <div class="line">
+            <dj-button>Default</dj-button>
+            <dj-button disabled>Disabled Default</dj-button>
+            <dj-button color="#6610f2">Custom Pink</dj-button>
+            <dj-button color="#6610f2" disabled>Disabled Custom Pink</dj-button>
+            <dj-button plain>Plain</dj-button>
+            <dj-button plain disabled>Disabled Plain</dj-button>
+            <dj-button color="#3c3c43" plain>Custom Plain</dj-button>
+            <dj-button color="#3c3c43" plain disabled>Disabled Custom Plain</dj-button>
+        </div>
         <div class="line">
             <dj-button @click="count++">conut++</dj-button>
-            <dj-scrollbar ref="DJScroll" height="800px">
-                <div style="width: 100%;padding: 10px;box-sizing: border-box;">
-                    <div style="width: 100%;height: 80px;border-radius: 8px;background-color: aliceblue;display: flex;align-items: center; justify-content: center;"
-                        :style="{ 'margin-top': item !== 0 ? '10px' : '' }" v-for="item of count">
-                        {{ item }}
-                    </div>
+            <dj-scrollbar ref="DJScroll" max-height="500px">
+                <p class="dj-scrollbar-item" v-for="item of count" :key="item">{{ item }}</p>
+            </dj-scrollbar>
+        </div>
+        <div class="line">
+            <dj-scrollbar>
+                <div class="dj-scrollbar-inline-flex">
+                    <p class="dj-scrollbar-inline-item" v-for="item of count" :key="item">{{ item }}</p>
                 </div>
             </dj-scrollbar>
         </div>
@@ -65,12 +97,7 @@ const count = ref(20);
         </div>
         <div class="line">
             <dj-button @click="modalToggle">modal toggle</dj-button>
-            <dj-dialog v-model="modalValue" title="Title" overspread width="50%" max-width="500px" closeDestroy>
-                <template #footer>
-                    <dj-button plain @click="modalValue = false" style="height: 28px;">Closed</dj-button>
-                    <dj-button color="#0d6efd" @click="modalValue = false" style="height: 28px;">Confirm</dj-button>
-                </template>
-            </dj-dialog>
+            <dj-dialog v-model="modalValue" title="Title" width="50%" max-width="500px"></dj-dialog>
         </div>
         <div class="line">
             <dj-switch v-model="switchValue" @change="switchChange" checked-label="checked label"
@@ -101,16 +128,6 @@ const count = ref(20);
             <dj-segmented :data="segmentedArray" v-model="segmentedValue" />
         </div>
         <div class="line">
-            <dj-button>Default</dj-button>
-            <dj-button disabled>Disabled Default</dj-button>
-            <dj-button color="#6610f2">Custom Pink</dj-button>
-            <dj-button color="#6610f2" disabled>Disabled Custom Pink</dj-button>
-            <dj-button plain>Plain</dj-button>
-            <dj-button plain disabled>Disabled Plain</dj-button>
-            <dj-button color="#3c3c43" plain>Custom Plain</dj-button>
-            <dj-button color="#3c3c43" plain disabled>Disabled Custom Plain</dj-button>
-        </div>
-        <div class="line">
             <dj-card align="center">
                 Content
             </dj-card>
@@ -125,10 +142,10 @@ const count = ref(20);
                 :content="accordionValue" />
         </div>
         <div class="line">
-            <dj-input placeholder="Please Input" v-model="content" clear />
+            <dj-input placeholder="Please Input" v-model="content" clearable />
         </div>
         <div class="line">
-            <dj-input placeholder="Please Input" v-model="content">
+            <dj-input placeholder="Please Input" v-model="content" clearable>
                 <template #suffix>
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
                         <path fill="currentColor" fill-rule="evenodd"
@@ -165,5 +182,36 @@ const count = ref(20);
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+
+    &:first-of-type {
+        margin-top: var(--margin);
+    }
+}
+
+.dj-scrollbar-item {
+    margin: 10px 0;
+    height: 60px;
+    color: #3c3c43;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f1f2;
+    border-radius: 8px;
+}
+
+.dj-scrollbar-inline-flex {
+    display: inline-flex;
+
+    .dj-scrollbar-inline-item {
+        margin: 0 10px;
+        width: 120px;
+        height: 60px;
+        color: #3c3c43;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f1f1f2;
+        border-radius: 8px;
+    }
 }
 </style>

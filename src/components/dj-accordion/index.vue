@@ -1,96 +1,15 @@
-<script setup lang="ts" name="dj-accordion">
+<script setup lang="ts">
 // plugin
 import "./index.less";
-import { ref, unref, reactive, watch, onMounted } from 'vue'
+import { onMounted } from 'vue'
+import { DJAccordionOptions, DJAccordionProps, DJAccordionEmits, useDJAccordion } from './useAccordion'
 
 // script
-const props = defineProps({
-    title: {
-        type: String,
-        default: ""
-    },
-    content: {
-        type: String,
-        default: ""
-    },
-    disabled: {
-        type: Boolean,
-        default: false
-    },
-    modelValue: {
-        type: Boolean,
-        default: false
-    }
-})
+defineOptions(DJAccordionOptions)
+const props = defineProps(DJAccordionProps)
+const emits = defineEmits<DJAccordionEmits>()
 
-const emits = defineEmits(["update:modelValue", "change"])
-
-const accordionRef = ref();
-const accordionConfig = reactive({
-    wrapperStyle: {},
-    contentStyle: {}
-})
-
-watch(() => props.modelValue, (val: boolean) => {
-    if (val) {
-        unref(accordionRef).style.display = "block"
-        accordionConfig.contentStyle = {
-            overflow: "hidden",
-            height: `${unref(accordionRef).scrollHeight}px`,
-            willChange: "height",
-            transition: "height 250ms"
-        }
-    } else {
-        unref(accordionRef).style.height = `${unref(accordionRef)?.scrollHeight}px`;
-        setTimeout(() => {
-            accordionConfig.contentStyle = {
-                transition: "height 250ms",
-                willChange: "height",
-                height: "0px",
-                overflow: "hidden"
-            }
-        }, 0);
-    }
-})
-
-/**
- * 切换
- */
-const toggle = () => {
-    if (props.disabled) return;
-    const res = !props.modelValue;
-    emits("change", res)
-    emits("update:modelValue", res)
-}
-
-/**
- * 手风琴动画结束触发
- */
-const DJAccordion_TransitionendChange = () => {
-    if (props.modelValue) {
-        accordionConfig.wrapperStyle = {};
-        unref(accordionRef).style.display = "";
-        accordionConfig.contentStyle = {};
-    } else {
-        accordionConfig.wrapperStyle = {};
-        accordionConfig.contentStyle = {
-            height: "0px",
-            overflow: "hidden",
-            display: "none"
-        }
-    }
-}
-
-/**
- * 加载手风琴初始样式
- */
-const initAccordion = () => {
-    if (!props.modelValue) {
-        unref(accordionRef).style.display = "none";
-        unref(accordionRef).style.height = "0";
-        unref(accordionRef).style.overflow = "hidden";
-    }
-}
+const { accordionRef, accordionConfig, DJAccordion_Class, toggle, DJAccordion_TransitionendChange, initAccordion } = useDJAccordion(props, emits);
 
 onMounted(() => {
     initAccordion();
@@ -101,9 +20,7 @@ defineExpose({ toggle })
 
 <template>
     <div class="dj-accordion">
-        <div class="dj-accordion__wrapper"
-            :class="[props.modelValue ? 'is-active' : '', props.disabled ? 'is-disabled' : '']"
-            :style="accordionConfig.wrapperStyle">
+        <div class="dj-accordion__wrapper" :class="DJAccordion_Class" :style="accordionConfig.wrapperStyle">
             <button class="dj-accordion__header" @click="toggle">
                 <span class="dj-accordion__header-label">
                     <slot name="title">

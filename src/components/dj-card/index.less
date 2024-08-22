@@ -5,6 +5,7 @@
   --dj-card-color: #3c3c43;
   --dj-card-header-background-color: rgba(33, 37, 41, 0.03);
   --dj-card-background-color: #f1f1f2;
+  --dj-card-border-width: rem(1px);
   --dj-card-border-color: rgba(60, 60, 67, 0.12);
   --dj-card-border-radius: rem(6px);
   --dj-card-fotter-background-color: rgba(33, 37, 41, 0.03);
@@ -21,7 +22,7 @@
     word-wrap: break-word;
     background-color: var(--dj-card-background-color);
     background-clip: border-box;
-    border: rem(1px) solid var(--dj-card-border-color);
+    border: var(--dj-card-border-width) solid var(--dj-card-border-color);
     border-radius: var(--dj-card-border-radius);
     box-sizing: border-box;
 
@@ -29,7 +30,8 @@
       padding: var(--dj-card-header-padding);
       margin-bottom: 0;
       background-color: var(--dj-card-header-background-color);
-      border-bottom: rem(1px) solid var(--dj-card-border-color);
+      border-bottom: var(--dj-card-border-width) solid
+        var(--dj-card-border-color);
       box-sizing: border-box;
 
       &:first-child {
@@ -51,7 +53,7 @@
 
     .dj-card-footer {
       padding: var(--dj-card-footer-padding);
-      border-top: rem(1px) solid var(--dj-card-border-color);
+      border-top: var(--dj-card-border-width) solid var(--dj-card-border-color);
       background-color: var(--dj-card-fotter-background-color);
       box-sizing: border-box;
     }
