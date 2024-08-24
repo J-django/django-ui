@@ -142,9 +142,8 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const resetVerticalExpand = () => {
         const element = unref(DJScrollbar_VerticalExpandTimeoutRef);
-        if (element) {
-            clearTimeout(element)
-        }
+        if (element) clearTimeout(element)
+
         DJScrollbar_VerticalExpandTimeoutRef.value = setTimeout(() => {
             DJScrollbar_VerticalConfig.expand = false;
         }, 1500);
@@ -155,9 +154,11 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const resetHorizontalExpand = () => {
         const element = unref(DJScrollbar_HorizontalExpandTimeoutRef);
+
         if (element) {
             clearTimeout(element)
         }
+
         DJScrollbar_HorizontalExpandTimeoutRef.value = setTimeout(() => {
             DJScrollbar_HorizontalConfig.expand = false;
         }, 1500);
@@ -168,9 +169,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const resetVerticalHidden = () => {
         const element = unref(DJScrollbar_VerticalHiddenTimeoutRef);
-        if (element) {
-            clearTimeout(element)
-        }
+        if (element) clearTimeout(element)
         DJScrollbar_VerticalHiddenTimeoutRef.value = setTimeout(() => {
             DJScrollbar_VerticalConfig.hidden = true;
         }, 1500);
@@ -181,9 +180,8 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const resetHorizontalHidden = () => {
         const element = unref(DJScrollbar_HorizontalHiddenTimeoutRef);
-        if (element) {
-            clearTimeout(element)
-        }
+        if (element) clearTimeout(element)
+
         DJScrollbar_HorizontalHiddenTimeoutRef.value = setTimeout(() => {
             DJScrollbar_HorizontalConfig.hidden = true;
         }, 1500);
@@ -214,6 +212,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
                 requestAnimationFrame(scrollAnimation);
             }
         }
+
         requestAnimationFrame(scrollAnimation);
     }
 
@@ -261,7 +260,9 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
             DJScrollbar_VerticalConfig.show = false;
             return;
         }
+
         DJScrollbar_VerticalConfig.show = true;
+
         setTimeout(() => {
             const paddingTop = parseFloat(verticalStyle.paddingTop);
             const paddingBottom = parseFloat(verticalStyle.paddingBottom);
@@ -290,6 +291,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
             DJScrollbar_HorizontalConfig.show = false;
             return;
         }
+
         DJScrollbar_HorizontalConfig.show = true;
 
         setTimeout(() => {
@@ -312,6 +314,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
     const DJScrollbar_MouseenterChange = () => {
         DJScrollbar_VerticalConfig.hidden = false;
         DJScrollbar_HorizontalConfig.hidden = false;
+
         clearTimeout(unref(DJScrollbar_VerticalHiddenTimeoutRef))
         clearTimeout(unref(DJScrollbar_HorizontalHiddenTimeoutRef))
     }
@@ -329,6 +332,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const DJScrollbar_VeticalMouseenterChange = () => {
         DJScrollbar_VerticalConfig.expand = true;
+
         clearTimeout(unref(DJScrollbar_VerticalHiddenTimeoutRef));
         clearTimeout(unref(DJScrollbar_VerticalExpandTimeoutRef));
     }
@@ -358,6 +362,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
 
         const scrollbarHeight = vertical.clientHeight - verticalthumb.clientHeight;
         const targetScrollTop = (targetScrollbarTop / scrollbarHeight) * (wrapper.scrollHeight - wrapper.clientHeight);
+
         verticalSmoothScrollTo(targetScrollTop);
     }
 
@@ -366,9 +371,11 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const DJScrollbar_VeticalThumbMousedownChange = (event: MouseEvent) => {
         DJScrollbar_VerticalConfig.drag = true;
+
         const wrapper = unref(DJScrollbar_WrapperRef)
         DJScrollbar_VerticalConfig.startY = event.clientY;
         DJScrollbar_VerticalConfig.startTop = wrapper.scrollTop;
+
         document.body.style.webkitUserSelect = "none";
         document.body.style.userSelect = "none";
         document.body.style.cursor = "default";
@@ -403,6 +410,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const DJScrollbar_VerticalThumbMouseupChange = () => {
         DJScrollbar_VerticalConfig.drag = false;
+
         document.body.style.webkitUserSelect = "";
         document.body.style.userSelect = "";
         document.body.style.cursor = "";
@@ -416,6 +424,7 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
      */
     const DJScrollbar_HorizontalMouseenterChange = () => {
         DJScrollbar_HorizontalConfig.expand = true;
+
         clearTimeout(unref(DJScrollbar_HorizontalHiddenTimeoutRef));
         clearTimeout(unref(DJScrollbar_HorizontalExpandTimeoutRef));
     }
@@ -445,7 +454,6 @@ export const useScrollbar = (props: DJScrollbarPropsType, emits: DJScrollbarEmit
 
         const scrollbarWidth = horizontal.clientWidth - horizontalThumb.clientWidth;
         const targetScrollLeft = (targetScrollbarLeft / scrollbarWidth) * (wrapper.scrollWidth - wrapper.clientWidth);
-
         HorizontalSmoothScrollTo(targetScrollLeft);
     }
 

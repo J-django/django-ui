@@ -51,7 +51,7 @@ const count = ref(10);
         <div class="line">
             <dj-link target="_blank" href="https://www.baidu.com" underline>Default</dj-link>
             <dj-link underline color="#6610f2">Default</dj-link>
-            <dj-link underline color="#6610f2" disabled @click="() => { console.log('aaaa') }">Default</dj-link>
+            <dj-link underline color="#6610f2" disabled>Default</dj-link>
         </div>
         <div class="line">
             <dj-button-group>

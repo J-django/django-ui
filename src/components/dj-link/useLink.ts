@@ -33,7 +33,7 @@ export const DJLinkProps = {
     },
     underline: {
         type: Boolean as PropType<boolean>,
-        default: false
+        default: true
     },
     disabled: {
         type: Boolean as PropType<boolean>,

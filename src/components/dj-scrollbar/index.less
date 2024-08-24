@@ -1,22 +1,22 @@
 .dj-scrollbar {
-  --dj-scrollbar-padding: rem(1px);
-  --dj-scrollbar-vertical-width: rem(7px);
-  --dj-scrollbar-hover-vertical-width: rem(12px);
-  --dj-scrollbar-horizontal-height: rem(7px);
-  --dj-scrollbar-hover-horizontal-height: rem(12px);
-  --dj-scrollbar-vertical-background-color: rgba(255, 255, 255, 0.7);
-  --dj-scrollbar-horizontal-background-color: rgba(255, 255, 255, 0.7);
-  --dj-scrollbar-vertical-thumb-background-color: rgba(60, 60, 67, 0.7);
-  --dj-scrollbar-horizontal-thumb-background-color: rgba(60, 60, 67, 0.7);
-  --dj-scrollbar-border-width: rem(0.5px);
+  --dj-scrollbar-padding: rem(3px);
+  --dj-scrollbar-vertical-width: rem(8px);
+  --dj-scrollbar-horizontal-height: rem(8px);
+  --dj-scrollbar-vertical-background-color: rgba(255, 255, 255, 0.64);
+  --dj-scrollbar-horizontal-background-color: rgba(255, 255, 255, 0.64);
+  --dj-scrollbar-vertical-thumb-background-color: #c2c2c2;
+  --dj-scrollbar-horizontal-thumb-background-color: #c2c2c2;
+  --dj-scrollbar-vertical-thumb-hover-background-color: #7d7d7d;
+  --dj-scrollbar-horizontal-thumb-hover-background-color: #7d7d7d;
+  --dj-scrollbar-border-width: rem(1px);
   --dj-scrollbar-border-color: rgba(60, 60, 67, 0.12);
   --dj-scrollbar-border-radius: rem(6px);
   --dj-scrollbar-vertical-transition: opacity 250ms, visibility 250ms,
     background-color 250ms, border-color 250ms;
   --dj-scrollbar-horizontal-transition: opacity 250ms, visibility 250ms,
     background-color 250ms, border-color 250ms;
-  --dj-scrollbar-vertical-thumb-transition: width 250ms;
-  --dj-scrollbar-horizontal-thumb-transition: height 250ms;
+  --dj-scrollbar-vertical-thumb-transition: background-color 250ms;
+  --dj-scrollbar-horizontal-thumb-transition: background-color 250ms;
   --dj-scrollbar-vertical-z-index: 2;
   --dj-scrollbar-horizontal-z-index: 1;
 
@@ -61,6 +61,20 @@
       background-color: var(--dj-scrollbar-vertical-thumb-background-color);
       will-change: width;
       transition: var(--dj-scrollbar-vertical-thumb-transition);
+
+      &:hover {
+        background-color: var(
+          --dj-scrollbar-vertical-thumb-hover-background-color
+        );
+      }
+    }
+  }
+
+  .dj-scrollbar__vertical.is-drag {
+    .dj-scrollbar__vertical-thumb {
+      background-color: var(
+        --dj-scrollbar-vertical-thumb-hover-background-color
+      );
     }
   }
 
@@ -69,10 +83,6 @@
     background-color: var(--dj-scrollbar-vertical-background-color);
     border-left-color: var(--dj-scrollbar-border-color);
     border-right-color: var(--dj-scrollbar-border-color);
-
-    .dj-scrollbar__vertical-thumb {
-      width: var(--dj-scrollbar-hover-vertical-width);
-    }
   }
 
   .dj-scrollbar__vertical.is-hidden {
@@ -99,11 +109,25 @@
 
     .dj-scrollbar__horizontal-thumb {
       width: auto;
-      height: var(--dj-scrollbar-vertical-width);
+      height: var(--dj-scrollbar-horizontal-height);
       border-radius: var(--dj-scrollbar-border-radius);
       background-color: var(--dj-scrollbar-horizontal-thumb-background-color);
       will-change: width;
       transition: var(--dj-scrollbar-horizontal-thumb-transition);
+
+      &:hover {
+        background-color: var(
+          --dj-scrollbar-horizontal-thumb-hover-background-color
+        );
+      }
+    }
+  }
+
+  .dj-scrollbar__horizontal.is-drag {
+    .dj-scrollbar__horizontal-thumb {
+      background-color: var(
+        --dj-scrollbar-horizontal-thumb-hover-background-color
+      );
     }
   }
 
@@ -112,10 +136,6 @@
     background-color: var(--dj-scrollbar-horizontal-background-color);
     border-top-color: var(--dj-scrollbar-border-color);
     border-bottom-color: var(--dj-scrollbar-border-color);
-
-    .dj-scrollbar__horizontal-thumb {
-      height: var(--dj-scrollbar-hover-vertical-width);
-    }
   }
 
   .dj-scrollbar__horizontal.is-hidden {
