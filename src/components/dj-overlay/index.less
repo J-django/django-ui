@@ -1,0 +1,20 @@
+.dj-overlay {
+  --dj-dialog-backdrop-background-color: rgba(16, 16, 16, 0.65);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.overlay-enter-active,
+.overlay-leave-active {
+  transition: opacity 350ms;
+}
+
+.overlay-enter-from,
+.overlay-leave-to {
+  opacity: 0;
+}

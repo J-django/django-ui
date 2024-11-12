@@ -12,13 +12,23 @@
   --dj-video-transition-duration: 750ms;
 
   .dj-video__wrapper {
+    position: relative;
+    margin: auto;
+    width: auto;
+    height: 100%;
+
     .dj-video__inner {
       position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
 
       .dj-video-source {
+        width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
+        aspect-ratio: 1.666666;
 
         .dj-video-source__wrapper {
           position: relative;
@@ -27,6 +37,9 @@
           background-color: var(--dj-video-backdrop-background-color);
           border-radius: var(--dj-video-border-radius);
           overflow: hidden;
+          display: flex;
+          justify-content: center;
+          aspect-ratio: 1.666666 / 1;
 
           .dj-video-source__inner {
             width: 100%;

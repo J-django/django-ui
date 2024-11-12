@@ -85,7 +85,7 @@ defineExpose({
 </script>
 
 <template>
-    <div class="dj-video" :style="{ width: width, minWidth: minWidth, maxWidth: maxWidth }">
+    <div class="dj-video" :style="{  minWidth: minWidth, maxWidth: maxWidth }">
         <div class="dj-video__wrapper"
             :class="[!videoConfig.paused ? 'is-play' : '', transition ? 'is-transition' : '']">
             <div class="dj-video__inner" ref="videoFullScreenElementRef"

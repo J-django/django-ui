@@ -1,36 +1,145 @@
 .dj-image-viwer {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  --dj-image-viwer-color: #ffffff;
+  --dj-image-viwer-border-radius: rem(8px);
+  --dj-image-viwer-background-color: #f1f1f2;
+  --dj-image-viwer-operate-width: rem(36px);
+  --dj-image-viwer-operate-height: rem(36px);
+  --dj-image-viwer-operate-icon-width: rem(18px);
+  --dj-image-viwer-operate-icon-height: rem(18px);
+  --dj-image-viwer-operate-color: #ffffff;
+  --dj-image-viwer-operate-hover-color: #3c3c43;
+  --dj-image-viwer-operate-background-color: rgba(0, 0, 0, 0.6);
+  --dj-image-viwer-operate-hover-background-color: #ffffff;
 
-  .dj-image-viwer-toolbox {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 1.666666;
+
+  .dj-overlay-image-viwer {
     position: absolute;
     top: 0;
     left: 0;
-    padding-top: rem(20px);
-    padding-left: rem(20px);
-    padding-right: rem(20px);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
     width: 100%;
-    height: rem(60px);
-    box-sizing: border-box;
-    z-index: 10;
-    pointer-events: none !important;
+    height: 100%;
 
-    .dj-image-viwer-toolbox-operate {
-      width: rem(40px);
-      height: rem(40px);
-      margin: 0 8px;
-      border-radius: 999px;
-      border: 0;
-      place-items: center;
-      color: #ffffff;
-      background-color: rgba(0, 0, 0, 0.6);
-      pointer-events: auto;
-      cursor: pointer;
+    .dj-overlay-image-viwer__wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate3d(0px, 0px, 0px);
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+      .dj-image-viwer-zoom {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate3d(0px, 0px, 0px);
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        z-index: 1;
+
+        .dj-image-viwer-zoom__wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: auto;
+          height: auto;
+
+          .dj-image-viwer-zoom-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+    .dj-overlay-image-viwer-toolbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding-top: rem(20px);
+      padding-left: rem(20px);
+      padding-right: rem(20px);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      width: 100%;
+      height: rem(60px);
+      box-sizing: border-box;
+      z-index: 10;
+      pointer-events: none !important;
+
+      .dj-image-viwer-toolbox-operate {
+        padding: 0;
+        width: var(--dj-image-viwer-operate-width);
+        height: var(--dj-image-viwer-operate-height);
+        margin-left: rem(8px);
+        border-radius: 999px;
+        border: 0;
+        display: grid;
+        place-items: center;
+        color: var(--dj-image-viwer-operate-color);
+        background-color: var(--dj-image-viwer-operate-background-color);
+        pointer-events: auto;
+        cursor: pointer;
+
+        .icon {
+          color: inherit;
+          width: var(--dj-image-viwer-operate-icon-width);
+          height: var(--dj-image-viwer-operate-icon-height);
+        }
+
+        &:hover {
+          color: var(--dj-image-viwer-operate-hover-color);
+          background-color: var(
+            --dj-image-viwer-operate-hover-background-color
+          );
+        }
+      }
+    }
+  }
+
+  .dj-image-viwer__wrapper {
+    position: relative;
+    margin: auto;
+    width: auto;
+    height: 100%;
+    display: flex;
+    aspect-ratio: 1.666666 / 1;
+
+    a {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--dj-image-viwer-background-color);
+      border-radius: var(--dj-image-viwer-border-radius);
+      -o-object-fit: contain;
+      object-fit: contain;
+
+      img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: var(--dj-image-viwer-border-radius);
+        -o-object-fit: contain;
+        object-fit: contain;
+      }
     }
   }
 }

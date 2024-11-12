@@ -1,10 +1,13 @@
+import type { Ref } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
+
 export const useDom = () => {
     /**
      * 请求全屏
      * @param element Element
      * @returns Boolean
      */
-    const RequestFullscreen = (element: any): Promise<Boolean> => {
+    function RequestFullscreen(element: any): Promise<Boolean> {
         return new Promise<Boolean>((resolve, reject) => {
             if (!element) reject(false);
             if (element.requestFullscreen) {
@@ -23,7 +26,7 @@ export const useDom = () => {
      * 退出全屏
      * @returns Boolean
      */
-    const ExitFullscreen = (): Promise<Boolean> => {
+    function ExitFullscreen(): Promise<Boolean> {
         return new Promise<Boolean>((resolve, reject) => {
             document.exitFullscreen().then(() => {
                 resolve(true);
@@ -38,7 +41,7 @@ export const useDom = () => {
      * @param element Element
      * @returns Boolean
      */
-    const RequestPictureInPicture = (element: HTMLVideoElement): Promise<Boolean> => {
+    function RequestPictureInPicture(element: HTMLVideoElement): Promise<Boolean> {
         return new Promise<Boolean>((resolve, reject) => {
             element.requestPictureInPicture().then(() => {
                 resolve(true);
@@ -52,7 +55,7 @@ export const useDom = () => {
      * 退出画中画
      * @returns Boolean
      */
-    const ExitPictureInPicture = (): Promise<Boolean> => {
+    function ExitPictureInPicture(): Promise<Boolean> {
         return new Promise<Boolean>((resolve, reject) => {
             document.exitPictureInPicture().then(() => {
                 resolve(true);
@@ -66,7 +69,7 @@ export const useDom = () => {
      * 横屏
      * @returns Boolean
      */
-    const LandscapeScreen = (): Promise<Boolean> => {
+    function LandscapeScreen(): Promise<Boolean> {
         return new Promise<Boolean>((resolve, reject) => {
             const orientation: any = screen.orientation;
             if (orientation && orientation.lock) {
@@ -79,7 +82,7 @@ export const useDom = () => {
      * 滚动条宽度
      * @returns Number
      */
-    const ScrollbarWidth = () => {
+    function ScrollbarWidth() {
         const outer = document.createElement('div');
         outer.style.visibility = 'hidden';
         outer.style.overflow = 'scroll';

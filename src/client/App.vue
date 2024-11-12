@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 // plugin
 import { ref } from "vue";
-import AudioSrc from '@/assets/audio/Uu - 自卑感.flac'
-import VideoSrc from '@/assets/video/1579780393-1-192.mp4'
+import Command from './command.vue'
+import AudioSrc from '@/assets/audio/Uu - 自卑感.flac';
+import VideoSrc from '@/assets/video/1579780393-1-192.mp4';
 
 // script
 const accordion = ref(false);
@@ -40,26 +41,29 @@ const toggleDisabled = () => {
 const switchChange = () => { }
 
 const count = ref(10);
-
 </script>
 
 <template>
-    <div class="layout">
-        <div class="line">
-            <dj-input placeholder="Please Input" addon-before="https://" addon-after=".com" />
+    <div class="p-3 space-y-3 flex flex-col">
+        <Command />
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
+            <div class="mx-auto max-w-300">
+                <dj-image-viwer
+                    src="https://images.pexels.com/photos/28939359/pexels-photo-28939359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></dj-image-viwer>
+            </div>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-link target="_blank" href="https://www.baidu.com" underline>Default</dj-link>
             <dj-link underline color="#6610f2">Default</dj-link>
             <dj-link underline color="#6610f2" disabled>Default</dj-link>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-button-group>
                 <dj-button color="#6610f2" plain>Default</dj-button>
                 <dj-button color="#3c3c43" plain>Default</dj-button>
             </dj-button-group>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-button>Default</dj-button>
             <dj-button disabled>Disabled Default</dj-button>
             <dj-button color="#6610f2">Custom Pink</dj-button>
@@ -69,32 +73,43 @@ const count = ref(10);
             <dj-button color="#3c3c43" plain>Custom Plain</dj-button>
             <dj-button color="#3c3c43" plain disabled>Disabled Custom Plain</dj-button>
         </div>
-        <div class="line">
-            <dj-button @click="count++">conut++</dj-button>
-            <dj-scrollbar ref="DJScroll" max-height="500px">
-                <p class="dj-scrollbar-item" v-for="item of count" :key="item">{{ item }}</p>
-            </dj-scrollbar>
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
+            <div class="space-y-3">
+                <dj-button @click="count++">conut++</dj-button>
+                <dj-scrollbar max-height="500px">
+                    <div class="space-y-3">
+                        <template v-for="item of count" :key="item">
+                            <p class="m-0 h-12 bg-#f1f1f2 grid place-items-center rounded-2">
+                                {{ item }}
+                            </p>
+                        </template>
+                    </div>
+                </dj-scrollbar>
+            </div>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-scrollbar>
-                <div class="dj-scrollbar-inline-flex">
-                    <p class="dj-scrollbar-inline-item" v-for="item of count" :key="item">{{ item }}</p>
+                <div class="space-x-3 inline-flex">
+                    <template v-for="item of count" :key="item">
+                        <p class="m-0 w-24 h-12 bg-#f1f1f2 grid place-items-center rounded-2">{{ item }}</p>
+                    </template>
                 </div>
             </dj-scrollbar>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-slider v-model="sliderValue" />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-watermark :text="['JiangKaiNan']">
                 <div style="height: 600px;"></div>
             </dj-watermark>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-button @click="modalToggle">modal toggle</dj-button>
-            <dj-dialog v-model="modalValue" title="Title" width="50%" max-width="500px"></dj-dialog>
+            <dj-dialog v-model="modalValue" title="Title" width="50%" max-width="500px" @cancel="modalValue = false"
+                @confirm="modalValue = false"></dj-dialog>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-switch v-model="switchValue" @change="switchChange" checked-label="checked label"
                 unChecked-label="Unchecked label">
                 <template #checked-thumb>
@@ -116,30 +131,30 @@ const count = ref(10);
                 </template>
             </dj-switch>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-divider align="left" type="dashed" label="New Divider" :offset="10" />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-segmented :data="segmentedArray" v-model="segmentedValue" />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-card align="center">
                 Content
             </dj-card>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-divider label="New Divider" />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-button style="margin-bottom: 8px;" @click="toggleAccordion">toggle accordion</dj-button>
             <dj-button style="margin-bottom: 8px;" @click="toggleDisabled">toggle disabled</dj-button>
             <dj-accordion v-model="accordion" :disabled="accordionDisabled" :title="accordionTitle"
                 :content="accordionValue" />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-input placeholder="Please Input" v-model="content" clearable />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-input placeholder="Please Input" v-model="content" clearable>
                 <template #suffix>
                     <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
@@ -150,63 +165,19 @@ const count = ref(10);
                 </template>
             </dj-input>
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
+            <dj-input placeholder="Please Input" addon-before="https://" addon-after=".com" />
+        </div>
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-textarea placeholder="Please Input" v-model="content" />
         </div>
-        <div class="line">
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
             <dj-audio :src="AudioSrc" />
         </div>
-        <div class="line">
-            <dj-video :src="VideoSrc" />
+        <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
+            <div class="mx-auto max-w-300">
+                <dj-video :src="VideoSrc" />
+            </div>
         </div>
     </div>
 </template>
-
-<style type="less">
-.layout {
-    display: flex;
-    flex-direction: column;
-}
-
-.layout .line {
-    --margin: rem(16px);
-    margin-bottom: var(--margin);
-    padding-bottom: var(--margin);
-    padding-left: var(--margin);
-    padding-right: var(--margin);
-    width: 100%;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-
-    &:first-of-type {
-        margin-top: var(--margin);
-    }
-}
-
-.dj-scrollbar-item {
-    margin: 10px 0;
-    height: 60px;
-    color: #3c3c43;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f1f1f2;
-    border-radius: 8px;
-}
-
-.dj-scrollbar-inline-flex {
-    display: inline-flex;
-
-    .dj-scrollbar-inline-item {
-        margin: 0 10px;
-        width: 120px;
-        height: 60px;
-        color: #3c3c43;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f1f1f2;
-        border-radius: 8px;
-    }
-}
-</style>

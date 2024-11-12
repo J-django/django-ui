@@ -6,25 +6,30 @@ import {
     DJAccordion,
     DJAudio,
     DJButton,
+    DJButtonGroup,
     DJCard,
+    DJDialog,
     DJDivider,
+    DJImageViwer,
     DJInput,
+    DJLink,
+    DJScrollbar,
+    DJSegmented,
+    DJSlider,
+    DJSwitch,
     DJTextarea,
     DJVideo,
-    DJSegmented,
-    DJSwitch,
-    DJDialog,
-    DJSlider,
     DJWatermark,
-    DJScrollbar
 } from '@/components'
 
 const DjangoUI = {
     install(app: App) {
         forEach(components, (component: Component) => {
-            app.component(component.name!, component);
+            const componentName = component.name;
+            if (componentName) {
+                app.component(componentName, component);
+            }
         });
-
     },
 };
 
@@ -32,17 +37,20 @@ export {
     DJAccordion,
     DJAudio,
     DJButton,
+    DJButtonGroup,
     DJCard,
+    DJDialog,
     DJDivider,
+    DJImageViwer,
     DJInput,
+    DJLink,
+    DJScrollbar,
+    DJSegmented,
+    DJSlider,
+    DJSwitch,
     DJTextarea,
     DJVideo,
-    DJSegmented,
-    DJSwitch,
-    DJDialog,
-    DJSlider,
     DJWatermark,
-    DJScrollbar
 }
 
 export default DjangoUI;
