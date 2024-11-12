@@ -43,7 +43,7 @@ const switchChange = () => { }
 const count = ref(10);
 </script>
 
-<template>
+<template>          
     <div class="p-3 space-y-3 flex flex-col">
         <Command />
         <div class="pb-3 border-b border-b-solid border-b-[rgba(0,0,0,0.1)]">
