@@ -15,7 +15,7 @@ import DJWatermark from './dj-watermark'
 import DJScrollbar from './dj-scrollbar'
 import DJLink from './dj-link'
 import DJImageViwer from './dj-image-viwer'
-
+import DJForm from './dj-form'
 
 export {
     DJAccordion,
@@ -35,4 +35,5 @@ export {
     DJTextarea,
     DJVideo,
     DJWatermark,
+    DJForm
 }
